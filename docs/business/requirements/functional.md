@@ -68,7 +68,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-001](../use-cases/UC-001-scan-single-page-menu.md)
-- Vision: [Scope - Translation](../vision.md#in-scope)
+- Vision: [Strategic Scope](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Extract text from any language/script
@@ -143,7 +143,7 @@ _This file is the Single Source of Truth for all functional requirements._
 **Related:**
 - Use Case: [UC-001](../use-cases/UC-001-scan-single-page-menu.md)
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
-- Vision: [Scope - Translation to ANY language](../vision.md#in-scope)
+- Vision: [Scope - Translation to ANY language](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Support ANY language pair (not limited to specific languages)
@@ -217,7 +217,7 @@ _This file is the Single Source of Truth for all functional requirements._
 **Related:**
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
 - Persona: [Anna](../personas.md#strict-vegan-anna), [Clara](../personas.md#allergy-vegan-clara)
-- Vision: [Scope - Confidence levels](../vision.md#in-scope)
+- Vision: [Scope - Confidence levels](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Three confidence levels: ⚫⚫⚫ (high), ⚫⚫◯ (moderate), ⚫◯◯ (low)
@@ -266,7 +266,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
-- Vision: [Scope - Dish type recognition](../vision.md#in-scope)
+- Vision: [Scope - Dish type recognition](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Recognize common international dish types
@@ -290,7 +290,7 @@ _This file is the Single Source of Truth for all functional requirements._
 **Related:**
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
 - Persona: [Anna](../personas.md#strict-vegan-anna), [David](../personas.md#strict-vegetarian-david)
-- Vision: [Scope - Country/cuisine context](../vision.md#in-scope)
+- Vision: [Scope - Country/cuisine context](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Detect cuisine type from menu
@@ -368,7 +368,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-001](../use-cases/UC-001-scan-single-page-menu.md)
-- Vision: [Scope - Overlay system](../vision.md#in-scope)
+- Vision: [Scope - Overlay system](../vision.md#strategic-scope)
 
 **Acceptance Criteria:**
 - [ ] Toggle controls for: Translations, Vegan/Veggie badges, Allergen icons
@@ -975,7 +975,6 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Persona: [Ben](../personas.md#health-vegan-ben)
-- Vision: [Bonus Features](../vision.md#bonus-features-future-enhancement)
 
 **Acceptance Criteria:**
 - [ ] Generate phrase: "Is this vegan?" in local language
