@@ -1,0 +1,22 @@
+---
+title: VegyScan Data Flow
+---
+%%{init: {'theme':'neutral'}}%%
+%% Last Updated: 2025-11-15
+%% This is a placeholder - will be refined during architecture phase
+
+flowchart LR
+    A[User Scans<br/>Product] --> B[Image Capture]
+    B --> C[OCR Processing]
+    C --> D[Text Extraction]
+    D --> E[Ingredient<br/>Parsing]
+    E --> F[E-number<br/>Identification]
+    F --> G[Database<br/>Lookup]
+    G --> H[Analysis<br/>& Results]
+    H --> I[Display to User]
+
+    I -.->|Save| J[(Local Storage)]
+
+    style A fill:#90EE90,stroke:#333,stroke-width:2px
+    style I fill:#87CEEB,stroke:#333,stroke-width:2px
+    style J fill:#FFD700,stroke:#333,stroke-width:2px

@@ -1,0 +1,14 @@
+---
+title: VegyScan System Context
+---
+%%{init: {'theme':'neutral'}}%%
+%% Last Updated: 2025-11-15
+%% This is a placeholder - will be refined during architecture phase
+
+graph TD
+    User[User<br/>Health-conscious consumer] -->|Uses| VegyScan[VegyScan System<br/>Scans & analyzes ingredients]
+    VegyScan -->|Queries| IngredientDB[Ingredient Database API<br/>E-number information]
+
+    style VegyScan fill:#4A90E2,stroke:#333,stroke-width:2px,color:#fff
+    style User fill:#50C878,stroke:#333,stroke-width:2px
+    style IngredientDB fill:#FFA500,stroke:#333,stroke-width:2px

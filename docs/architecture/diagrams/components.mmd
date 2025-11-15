@@ -1,0 +1,33 @@
+---
+title: VegyScan Component Diagram
+---
+%%{init: {'theme':'neutral'}}%%
+%% Last Updated: 2025-11-15
+%% This is a placeholder - will be refined during architecture phase
+
+graph TB
+    subgraph Frontend
+        UI[User Interface]
+        Camera[Camera Module]
+        Storage[Local Storage]
+    end
+
+    subgraph Backend
+        API[REST API]
+        OCR[OCR Service]
+        Analyzer[Ingredient Analyzer]
+    end
+
+    DB[(Database)]
+
+    UI -->|Capture| Camera
+    Camera -->|Image| API
+    API -->|Process| OCR
+    OCR -->|Text| Analyzer
+    Analyzer -->|Query| DB
+    Analyzer -->|Results| API
+    API -->|Response| UI
+    UI -->|Cache| Storage
+
+    style Frontend fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style Backend fill:#FFF3E0,stroke:#F57C00,stroke-width:2px
