@@ -135,7 +135,47 @@ Clara's needs partially drive **future allergy detection features** - v1 focuses
 
 ---
 
-## Persona 5: Pescatarian - Emma {#pescatarian-emma}
+## Persona 5: Practical Vegetarian - Eric {#practical-vegetarian-eric}
+
+### Dietary Profile
+- **Type:** Vegetarian (practical, not strict)
+- **Strictness:** Low to moderate
+- **Rules:**
+  - ❌ No visible meat (beef, pork, chicken, lamb, etc.)
+  - ❌ No visible fish or seafood pieces
+  - ✅ Meat/fish broths and stocks are OK (bone broth, chicken stock, Dashi, fish sauce)
+  - ✅ Sauces cooked with meat are OK (as long as no meat pieces remain)
+  - ✅ Eggs and dairy OK
+  - ✅ Honey OK
+  - ✅ Cross-contamination not a concern (fried in same oil as meat is fine)
+  - ✅ Vegan options also fine
+
+### Usage Requirements
+- **Needs:** Clear visibility into whether dish contains actual meat/fish pieces
+- **Expects:** Classification distinguishes "contains meat pieces" from "cooked in meat broth"
+- **Values:** Practical information ("vegetable ramen, but broth contains pork stock")
+- **Behavior:** Scans to avoid meat pieces, not concerned about hidden animal products in sauces
+- **Feature needs:**
+  - Nuanced classification: "Vegetarian (but contains fish sauce)" vs. "Contains fish pieces"
+  - Main ingredient focus (what's IN the dish visibly)
+  - Less concerned with confidence levels (⚫⚫◯ or ⚫◯◯ is fine)
+
+### Test Cases for Eric
+- Vegetable ramen with pork bone broth → ✅ OK (no visible meat, broth is fine)
+- Pad Thai with fish sauce → ✅ OK (fish sauce in cooking, no fish pieces)
+- Vegetable soup with chicken stock → ✅ OK (vegetables are main, stock is fine)
+- Caesar salad with bacon bits → ❌ NOT OK (visible bacon pieces)
+- French fries fried in animal fat → ✅ OK (not concerned about cross-contamination)
+- Margherita pizza → ✅ OK (cheese, dairy fine)
+
+### Contrast with Other Personas
+- **vs. David (Strict Vegetarian):** David rejects fish sauce/bone broth; Eric is OK with them
+- **vs. Fabian (Flexitarian):** Fabian still eats meat; Eric avoids all visible meat
+- **vs. Ben (Flexible Vegan):** Ben wants vegan but accepts vegetarian; Eric is OK with animal products in sauces
+
+---
+
+## Persona 6: Pescatarian - Emma {#pescatarian-emma}
 
 ### Dietary Profile
 - **Type:** Pescatarian (no meat, but fish/seafood OK)
@@ -166,7 +206,7 @@ Clara's needs partially drive **future allergy detection features** - v1 focuses
 
 ---
 
-## Persona 6: Flexitarian - Fabian {#flexitarian-fabian}
+## Persona 7: Flexitarian - Fabian {#flexitarian-fabian}
 
 ### Dietary Profile
 - **Type:** Flexitarian (reducing meat, not eliminating)
@@ -198,7 +238,7 @@ Clara's needs partially drive **future allergy detection features** - v1 focuses
 
 ---
 
-## Persona 7: Allergy-Focused (No Dietary Preference) - Grace {#allergy-focused-grace}
+## Persona 8: Allergy-Focused (No Dietary Preference) - Grace {#allergy-focused-grace}
 
 ### Dietary Profile
 - **Type:** No dietary preference (eats everything), but severe allergies
@@ -238,15 +278,16 @@ Grace's needs are **out of scope for v1** (allergen tracking beyond vegan/vegeta
 
 ## Summary: Persona Classification Needs
 
-| Persona | Vegan | Vegetarian | Pescatarian | Allergen | Strictness | Confidence Needed |
-|---------|-------|------------|-------------|----------|------------|-------------------|
-| Anna (Strict Vegan) | ✅ Only | ❌ | ❌ | - | Very High | ⚫⚫⚫ |
-| Ben (Flexible Vegan) | ✅ Preferred | ✅ Fallback | ❌ | - | Medium | ⚫⚫◯ OK |
-| Clara (Vegan + Allergies) | ✅ | ❌ | ❌ | Nuts, Soy, Gluten | Extreme | ⚫⚫⚫ Only |
-| David (Strict Vegetarian) | ✅ OK | ✅ Main | ❌ | - | High | ⚫⚫⚫ |
-| Emma (Pescatarian) | ✅ OK | ✅ OK | ✅ Main | - | Medium | ⚫⚫◯ OK |
-| Fabian (Flexitarian) | ✅ Preferred | ✅ OK | ✅ OK | - | Low | ⚫◯◯ OK |
-| Grace (Allergy-Only) | N/A | N/A | N/A | Nuts, Shellfish, Sesame | Extreme | ⚫⚫⚫ Only |
+| Persona | Vegan | Vegetarian | Visible Meat OK? | Pescatarian | Allergen | Strictness | Confidence Needed |
+|---------|-------|------------|------------------|-------------|----------|------------|-------------------|
+| Anna (Strict Vegan) | ✅ Only | ❌ | ❌ | ❌ | - | Very High | ⚫⚫⚫ |
+| Ben (Flexible Vegan) | ✅ Preferred | ✅ Fallback | ❌ | ❌ | - | Medium | ⚫⚫◯ OK |
+| Clara (Vegan + Allergies) | ✅ | ❌ | ❌ | ❌ | Nuts, Soy, Gluten | Extreme | ⚫⚫⚫ Only |
+| David (Strict Vegetarian) | ✅ OK | ✅ Main | ❌ | ❌ | - | High | ⚫⚫⚫ |
+| Eric (Practical Vegetarian) | ✅ OK | ✅ Main | ❌ (but broth OK) | ❌ | - | Low-Medium | ⚫⚫◯ OK |
+| Emma (Pescatarian) | ✅ OK | ✅ OK | ❌ (fish OK) | ✅ Main | - | Medium | ⚫⚫◯ OK |
+| Fabian (Flexitarian) | ✅ Preferred | ✅ OK | ⚠️ (avoid large portions) | ✅ OK | - | Low | ⚫◯◯ OK |
+| Grace (Allergy-Only) | N/A | N/A | ✅ | N/A | Nuts, Shellfish, Sesame | Extreme | ⚫⚫⚫ Only |
 
 ---
 
@@ -260,19 +301,28 @@ Grace's needs are **out of scope for v1** (allergen tracking beyond vegan/vegeta
 ### Confidence Levels
 - Anna, Clara, Grace: Only trust ⚫⚫⚫ (high confidence)
 - David, Emma: Accept ⚫⚫◯ (moderate) with good reasoning
-- Ben, Fabian: Accept ⚫◯◯ (low) if reasoning explains uncertainty
+- Ben, Eric, Fabian: Accept ⚫◯◯ (low) if reasoning explains uncertainty
 
 ### Cuisine Context Awareness
-- Anna: Needs to know about Belgian fries (animal fat)
-- All vegans: Needs to know about Dashi (fish stock in Japanese cuisine)
-- Emma: Fish sauce is OK (pescatarian), Dashi is OK
+- Anna, David: Need to know about Belgian fries (animal fat), Dashi (fish stock)
+- Ben: Wants to know, but may accept if no alternative
+- Eric: Information is nice, but not critical (broths/sauces are OK)
+- Emma, Fabian: Fish sauce is OK (pescatarian/flexitarian), Dashi is OK
 
 ### Adaptation Suggestions
 - Ben: "Can request without fish sauce" (flexible, willing to customize)
 - Fabian: "Can request no bacon topping" (reduce meat)
 - Anna: Unlikely to customize - needs guaranteed vegan options
 
+### Nuanced Classification Needs
+- **Eric (Practical Vegetarian):** Needs distinction between:
+  - "Contains meat pieces" (NOT OK)
+  - "Cooked in meat broth" (OK)
+  - "Contains fish sauce" (OK, if no fish pieces)
+- This drives requirement for **ingredient type transparency** (visible vs. hidden)
+
 ### Future Features (Out of Scope v1)
 - Clara, Grace: Allergen detection beyond vegan/vegetarian
 - Fabian: Meat-level gradient (not just binary vegan/not vegan)
+- Eric: Nuanced "visible meat" vs. "hidden in broth/sauce" classification
 - All: Community reviews, phrase generation
