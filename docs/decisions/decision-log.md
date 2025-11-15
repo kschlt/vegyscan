@@ -8,6 +8,81 @@ Chronological record of significant decisions across all domains.
 
 ---
 
+## 2025-11-15: Clarify v1 Scope - Community Features and i18n Strategy
+
+**Type:** Product / Scope / UX
+
+**Decision:** Finalized v1 scope constraints: Community features OUT of v1, no user sign-in required, English-first with i18n framework, icon-based UI design.
+
+**Strategic Clarifications Provided:**
+
+**1. Community Features → OUT of V1 Scope**
+- Community-shared scans (REQ-F-027) deferred to v2+
+- User feedback on classifications (REQ-F-028) deferred to v2+
+- Rationale: Requires cloud storage, backend infrastructure, moderation, authentication
+- **Critical requirement:** v1 architecture must be extensible (not rebuildable) for future cloud features
+- v1 uses local-only storage, no cloud backend, works fully offline
+
+**2. User Profiles/Sign-In → NOT Required for V1**
+- No account creation, no cloud authentication
+- User preferences (if any) stored locally on device
+- Rationale: Keeps v1 simple, privacy-friendly, works offline
+- Note: Dietary preference (vegan/vegetarian) only asked if it affects UI (currently menu shown same way regardless)
+- Future: May add accounts if business model requires subscription/billing
+
+**3. Language/Internationalization Strategy**
+- v1 launches in English only
+- i18n framework used throughout (enables future translation without code changes)
+- Icon-based UI design: Minimize text, maximize universal visual indicators
+- Vegan/vegetarian icons language-independent (green checkmark, etc.)
+- Future: Add German, French translations by updating i18n files only
+
+**4. Cost Optimization Remains Critical**
+- Business model decision deferred (one-time vs subscription vs freemium)
+- Constraint: Ongoing LLM/API costs must be minimized regardless of model
+- Drives offline-first architecture (OCR on-device, aggressive caching)
+- Target: <€0.005 per page in LLM costs
+
+**Requirements Updated:**
+
+**New Non-Functional Requirements:**
+- **REQ-NF-017:** Icon-Based UI (Minimal Text) - Should Have
+- **REQ-NF-018:** Internationalization (i18n) Support - Should Have
+
+**Updated Requirements:**
+- **REQ-F-027:** Community-Shared Menu Scans → OUT OF V1 SCOPE (Future v2+)
+- **REQ-F-028:** User Feedback on Classification → OUT OF V1 SCOPE (Future v2+)
+- **REQ-NF-016:** Future Feature Extensibility → Enhanced with community features guidance
+
+**Vision.md Updated:**
+- "What We're NOT Building" section expanded (community features, user accounts)
+- "Open Strategic Questions" → "Strategic Decisions and Constraints"
+- Added v1 scope constraints, cost optimization priority, deferred business decisions
+
+**Architectural Impact:**
+- v1: Local SQLite storage, no cloud backend, no authentication
+- Future extensibility: Design for adding cloud sync layer on top (not replacing)
+- Data models should accommodate future sync (local IDs + future cloud IDs)
+- Core functionality must work offline permanently (offline-first preserved in v2+)
+
+**UX Impact:**
+- No onboarding/sign-in flow needed for v1
+- UI uses icons/colors for vegan/vegetarian classification
+- Minimal text throughout (easier to understand, easier to translate later)
+- Settings/preferences optional (only if they affect behavior)
+
+**Detailed Documentation:**
+- [vision.md](../business/vision.md) - Updated strategic scope and constraints
+- [REQ-NF-017](../business/requirements/non-functional.md#req-nf-017) - Icon-Based UI
+- [REQ-NF-018](../business/requirements/non-functional.md#req-nf-018) - i18n Support
+- [REQ-NF-016](../business/requirements/non-functional.md#req-nf-016) - Future Extensibility (enhanced)
+- [REQ-F-027](../business/requirements/functional.md#req-f-027) - Community Scans (deferred)
+- [REQ-F-028](../business/requirements/functional.md#req-f-028) - User Feedback (deferred)
+
+**Status:** Active
+
+---
+
 ## 2025-11-15: Define Comprehensive Error Handling Strategy
 
 **Type:** Product / UX / Technical

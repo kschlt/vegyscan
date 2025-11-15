@@ -72,34 +72,60 @@ An iOS-native app that transforms foreign-language menus into interactive, augme
 ### What We're NOT Building (Strategic Boundaries)
 
 **Out of scope for v1:**
+- **Community features** - community-shared scans, user feedback, ratings (v2+ consideration)
+- **User accounts/sign-in** - no cloud authentication, local-only storage for v1
 - **Allergen tracking** beyond vegan/vegetarian (future v2+ consideration - complexity and liability)
 - **Nutritional information** (calories, macros) - different value proposition
 - **Recipe suggestions** or cooking instructions - not menu-focused
 - **Web version** - iOS-only focus for v1 (leverage native capabilities)
 - **Android app** - iOS-only focus for v1 (resource constraints)
-- **Social sharing** with friends - privacy and complexity
 
 **Strategic reasons:**
-- **Focus on core value:** Vegan/vegetarian travelers need menu understanding, not nutritional tracking
+- **Focus on core value:** Vegan/vegetarian travelers need menu understanding, not social features or nutritional tracking
+- **Minimize complexity:** Community features require cloud storage, moderation, different architecture
+- **Privacy-first:** Local-only storage, no account required, works offline
 - **Leverage iOS-native:** VisionKit, Core ML, SwiftUI capabilities maximize quality and minimize development time
 - **Manage complexity:** Allergen tracking adds legal liability and requires different accuracy standards
 - **Resource constraints:** Single platform initially allows faster iteration and learning
+- **Future-compatible:** v1 architecture designed to be extensible (not rebuildable) when adding community features later
 
-### Open Strategic Questions
+### Strategic Decisions and Constraints
 
-_These are business/architecture decisions, not features. Features are documented in [Functional Requirements](./requirements/functional.md)._
+_These guide v1 implementation without specifying HOW._
 
-- **Business model:** One-time purchase (€8) vs. subscription vs. freemium
-  - Current assumption: €8 one-time purchase
-  - Drives cost optimization requirements (REQ-NF-013: <€0.005 per page)
+**v1 Scope Constraints:**
 
-- **Offline capability:** Full offline vs. hybrid vs. cloud-only
-  - Decision depends on: LLM cost optimization, on-device ML capabilities, cache hit rates
-  - Impacts: Architecture (local ML models), storage (cache size), UX (connectivity requirements)
+- **Community features:** OUT of v1 scope
+  - Community-shared scans, user feedback, social features deferred to v2+
+  - Rationale: Requires cloud storage, different architecture, increased complexity
+  - **Critical:** v1 architecture must be future-compatible (extensible, not rebuildable)
+  - Design foundation that can be extended with cloud features later
 
-- **Community features:** How much to invest in shared/social aspects
-  - Bonus features: Community-shared scans (REQ-F-027), user feedback (REQ-F-028)
-  - Decision depends on: v1 adoption, privacy considerations, moderation costs
+- **User profiles/sign-in:** NOT required for v1
+  - No account creation, no cloud authentication
+  - User preferences stored locally on device only
+  - Rationale: Keeps v1 simple, privacy-friendly, works offline
+  - Note: May be needed later if business model requires subscription/billing
+
+- **Language/Internationalization:**
+  - v1 launches in English
+  - UI designed with minimal text, maximum icons/colors (universal design)
+  - i18n framework used everywhere (enables future translation)
+  - Vegan/vegetarian icons language-independent
+  - Future: Translate UI to German, French, etc. without redesign
+
+**Cost Optimization Priority:**
+
+- **LLM/API costs must be minimized** (drives architecture decisions)
+  - Offline-first where possible (OCR on-device, aggressive caching)
+  - Target: <€0.005 per page in LLM costs (see REQ-NF-013)
+  - 70%+ cache hit rate required for business viability
+
+**Deferred to Business Planning:**
+
+- **Business model:** One-time purchase vs. subscription vs. freemium
+  - Not relevant for v1 implementation
+  - Constraint: Whatever model chosen, ongoing costs must stay minimal
 
 ## Success Criteria
 

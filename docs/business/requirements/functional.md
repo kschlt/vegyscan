@@ -992,14 +992,21 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Rationale:** If someone scanned a menu yesterday, others can benefit. Reduces processing time and cost.
 
-**Priority:** Nice to Have (Bonus)
+**Priority:** ~~Nice to Have (Bonus)~~ → **OUT OF V1 SCOPE** (Future v2+)
 
-**Status:** Draft (Future)
+**Status:** Deferred (Requires cloud architecture)
+
+**v1 Decision:** Community features OUT of scope for v1
+- Requires cloud storage, backend infrastructure, moderation
+- Adds architectural complexity (authentication, sync, privacy controls)
+- v1 uses local-only storage (no cloud, no accounts)
+- **Critical:** v1 architecture must be extensible (not rebuildable) for future cloud features
 
 **Related:**
-- Vision: [Bonus Features](../vision.md#bonus-features-future-enhancement)
+- Vision: [What We're NOT Building](../vision.md#what-were-not-building-strategic-boundaries)
+- Vision: [Strategic Decisions](../vision.md#strategic-decisions-and-constraints)
 
-**Acceptance Criteria:**
+**Acceptance Criteria (Future v2+):**
 - [ ] Detect if menu was recently scanned at this GPS location
 - [ ] Prompt: "Menu scanned here yesterday. Use that?"
 - [ ] Cloud storage for shared menus (privacy-aware)
@@ -1013,14 +1020,22 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Rationale:** Crowdsourced corrections improve accuracy over time.
 
-**Priority:** Nice to Have (Bonus)
+**Priority:** ~~Nice to Have (Bonus)~~ → **OUT OF V1 SCOPE** (Future v2+)
 
-**Status:** Draft (Future)
+**Status:** Deferred (Requires cloud architecture)
+
+**v1 Decision:** User feedback/community features OUT of scope for v1
+- Requires cloud storage for feedback data
+- Requires backend infrastructure to aggregate feedback
+- Adds complexity (moderation, abuse prevention, consensus algorithms)
+- v1 focuses on accurate classification from LLM, no community input
+- **Critical:** v1 architecture must be extensible for future feedback features
 
 **Related:**
-- Vision: [Bonus Features](../vision.md#bonus-features-future-enhancement)
+- Vision: [What We're NOT Building](../vision.md#what-were-not-building-strategic-boundaries)
+- Vision: [Strategic Decisions](../vision.md#strategic-decisions-and-constraints)
 
-**Acceptance Criteria:**
+**Acceptance Criteria (Future v2+):**
 - [ ] "Report Incorrect" button in detail panel
 - [ ] User can specify: "This is vegan" / "This is not vegan"
 - [ ] Feedback stored and used to improve model
