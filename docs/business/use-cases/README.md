@@ -2,6 +2,28 @@
 
 Detailed descriptions of individual use cases for VegyScan.
 
+## Purpose and Relationship to Requirements
+
+**Use Cases are complementary to Requirements, NOT duplicates:**
+
+- **Requirements (functional.md)** = WHAT the system must do (declarative, feature-level)
+  - Example: "REQ-F-032: System shall support uploading photos from device library"
+
+- **Use Cases** = HOW users interact with features (procedural, scenario-level)
+  - Example: "UC-006: User opens app → taps Upload Photo → iOS Photo Picker opens → selects photo → system processes → interactive menu displayed"
+
+**Value of Use Cases:**
+1. **Interaction flows**: Step-by-step user journeys through features
+2. **Error paths**: What happens when things go wrong (network errors, OCR failures, permission denials)
+3. **Alternative flows**: Different ways to achieve the same goal
+4. **Context**: Real-world scenarios that motivate requirements (Google Maps pre-visit planning)
+5. **Exception handling**: References to error-handling.md message library
+
+**Single Source of Truth Principle:**
+- Requirements = authoritative WHAT
+- Use Cases = authoritative HOW (procedural flows)
+- Use cases always reference requirements (e.g., "see REQ-F-035"), never duplicate them
+
 ## Template
 
 Use [_template.md](./_template.md) as basis for new use cases.
@@ -46,4 +68,20 @@ Use [_template.md](./_template.md) as basis for new use cases.
    - Automatic quality detection
    - Actionable feedback (blur, lighting, glare)
    - Scanner guide lines
+   - Status: Draft
+
+6. **[UC-006: Upload Menu Photo from Photo Library](./UC-006-upload-menu-photo.md)**
+   - Upload single or multiple photos from device library
+   - EXIF GPS extraction (never current GPS)
+   - Same processing pipeline as camera capture
+   - Pre-visit planning use case (Google Maps photos)
+   - Permission graceful degradation
+   - Status: Draft
+
+7. **[UC-007: Share Menu Photo from Other App (iOS Share Extension)](./UC-007-share-from-other-app.md)**
+   - iOS Share Sheet integration (Google Maps, Photos, Safari, Messages, etc.)
+   - App Groups communication between extension and main app
+   - EXIF GPS only (no current GPS for shared photos)
+   - Killer feature for pre-visit restaurant planning
+   - Duplicate menu detection
    - Status: Draft

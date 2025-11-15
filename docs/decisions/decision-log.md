@@ -8,6 +8,124 @@ Chronological record of significant decisions across all domains.
 
 ---
 
+## 2025-11-15: Define Comprehensive Error Handling Strategy
+
+**Type:** Product / UX / Technical
+
+**Decision:** Created comprehensive error handling specification with reusable message library, retry logic strategies, and graceful degradation patterns.
+
+**Problem/Opportunity:**
+- Needed consistent error messages across all use cases (not random LLM-generated messages)
+- Required clear retry strategies (automatic vs manual, exponential backoff)
+- Permission denials should degrade gracefully (not block entire app)
+- Multiple error categories need different handling (user errors vs transient failures)
+
+**Solution Created:**
+
+**1. Error Categories Defined:**
+- Category 1: User Input Issues (no auto-retry: poor photo, permission denied)
+- Category 2: Technical Failures (auto-retry 3x: network errors, API timeouts)
+- Category 3: System Limitations (inform + workaround: handwritten menu, unsupported scenario)
+- Category 4: Critical Errors (log + generic message: bugs, unexpected states)
+
+**2. Retry Logic Strategy:**
+```
+Automatic Retries (Transient Errors):
+Retry 1: Wait 1 second  → Retry
+Retry 2: Wait 2 seconds → Retry
+Retry 3: Wait 4 seconds → Retry
+If all fail: Display error to user with manual retry option
+
+No Automatic Retries (User Errors):
+- Poor photo quality, permission denied, invalid input
+- Immediate feedback with actionable guidance
+```
+
+**3. Message Library Created (MSG-XXX-YYY codes):**
+- MSG-OCR-001: OCR Failed (No Text Recognized)
+- MSG-NET-001: Network Error (General)
+- MSG-PROC-001: Processing Error (Unexpected)
+- MSG-QUALITY-001: Photo Quality Too Poor
+- MSG-PERM-CAM-001: Camera Permission Denied
+- MSG-PERM-PHOTO-001: Photos Permission Denied
+- MSG-STORAGE-001: Device Storage Full
+- Plus additional messages for edge cases
+
+**4. Graceful Permission Degradation:**
+- Camera denied → Upload + Share Extension still work
+- Photos denied → Camera + Share Extension still work
+- Location denied → Feature disabled silently (no error shown)
+
+**5. OCR Failure Handling:**
+- Complete failure: Inform user with actionable guidance
+- Partial success: Show visual feedback (recognized text with hotspots, unrecognized areas grayed out)
+
+**6. Network Failure Handling:**
+- OCR succeeds (on-device) → LLM API fails → automatic retry
+- All retries fail → cache locally → "Save for Later" option
+- User can retry from history when connection restored
+
+**Strategic Impact:**
+- **Consistent UX:** Same messages for same errors across all flows
+- **LLM agent friendly:** Pre-defined messages prevent random error text
+- **User-friendly:** Actionable guidance (not technical jargon)
+- **Resilient:** Automatic recovery from transient errors
+- **Privacy:** Feature degradation allows app to work without all permissions
+
+**Use Cases Updated:**
+- UC-001 to UC-007: Exception flows reference MSG-XXX-YYY codes
+- UC-006 and UC-007: Comprehensive permission handling documented
+
+**Detailed Documentation:**
+- [error-handling.md](../business/requirements/error-handling.md) - Complete error handling specification
+- All use cases now reference error-handling.md for exception flows
+
+**Status:** Active
+
+---
+
+## 2025-11-15: Document Photo Upload and Share Extension Use Cases
+
+**Type:** Product / Documentation
+
+**Decision:** Created UC-006 (Upload from Photo Library) and UC-007 (iOS Share Extension) with detailed flows, error handling, and strategic rationale.
+
+**Artifacts Created:**
+
+**1. UC-006: Upload Menu Photo from Photo Library**
+- Main flow with EXIF GPS extraction (never current GPS)
+- Alternative flows: Permission handling, Google Maps upload, adding pages to existing menu
+- Exception flows: OCR failure (on-device VisionKit), network errors with retry logic, photo quality issues
+- Business rules: Photos permission optional, EXIF GPS only, network auto-retry
+- Pre-visit planning use case documented
+
+**2. UC-007: Share Menu Photo from Other App (iOS Share Extension)**
+- Google Maps pre-visit planning workflow (killer feature scenario)
+- Friend sharing via Messages/WhatsApp
+- Alternative flows: Share from Photos/Safari/Messages, multi-photo share, duplicate detection
+- Exception flows: Extension crash, network errors, unsupported file type
+- Technical implementation notes: App Groups, lightweight extension, Share Sheet integration
+
+**Strategic Value Documented:**
+- **Google Maps integration:** View menu photo → Share to VegyScan → Analyze options → Decide where to eat (competitive advantage)
+- **Viral potential:** Friends share menus asking "Is this vegan-friendly?"
+- **Use case expansion:** From "at restaurant" to "pre-visit trip planning"
+- **Privacy-friendly:** No location permission needed for Share Extension
+
+**Use Cases README Updated:**
+- Added explanation of Requirements vs Use Cases (SoT clarity)
+- Use Cases = HOW (procedural flows), Requirements = WHAT (declarative features)
+- Clarified complementary nature (not duplicates)
+
+**Detailed Documentation:**
+- [UC-006-upload-menu-photo.md](../business/use-cases/UC-006-upload-menu-photo.md)
+- [UC-007-share-from-other-app.md](../business/use-cases/UC-007-share-from-other-app.md)
+- [use-cases/README.md](../business/use-cases/README.md) - Updated with UC-006, UC-007
+
+**Status:** Active
+
+---
+
 ## 2025-11-15: Add Photo Upload & iOS Share Extension Integration
 
 **Type:** Feature / Product
