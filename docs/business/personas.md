@@ -31,11 +31,32 @@ _This file is the Single Source of Truth for all user groups and their dietary p
   - Cuisine context awareness (knows Belgian fries may use animal fat)
   - Detailed ingredient list
 
+### Domain Knowledge (What Anna Knows)
+**High awareness of hidden animal products:**
+- Gelatin (from animal bones) in gummy bears, marshmallows, gelato
+- Rennet (from calf stomach) in most traditional cheeses
+- Albumin (egg protein) used in wine clarification
+- Carmine/Cochineal (crushed insects) in red food coloring
+- L-cysteine (from animal hair/feathers) in bread dough conditioners
+- Isinglass (fish bladder) in beer/wine filtration
+- Lard (pig fat) vs. vegetable shortening
+- Dashi (fish stock) as default base in Japanese cuisine
+- Oyster sauce, fish sauce as common Asian condiments
+- Cross-contamination: shared fryers, grills, cutting boards
+
+**This knowledge informs her expectations:**
+- She expects the app to catch these hidden ingredients
+- She looks for symbols first (most authoritative)
+- She reads ingredient lists carefully even with symbol
+- She asks about preparation methods (frying oil, stock base)
+
 ### Test Cases for Anna
 - Tonkotsu ramen → Must classify as ❌ (pork bone broth)
 - Vegetable tempura → Must warn about potential animal fat in batter/frying
 - Miso soup → Must check if Dashi (fish stock) is used
 - French fries in Belgium → Must warn about animal fat frying
+- Gummy bears → Should detect gelatin if ingredients listed
+- Caesar dressing → Should detect anchovy paste if present
 
 ---
 
@@ -61,10 +82,29 @@ _This file is the Single Source of Truth for all user groups and their dietary p
   - Adaptation suggestions ("order without fish sauce")
   - Comparative view (dish A is vegan, dish B is vegetarian)
 
+### Domain Knowledge (What Ben Knows)
+**Moderate awareness - knows common issues:**
+- Obvious animal products (meat, fish, eggs in dish)
+- Common sauces: fish sauce, oyster sauce
+- Dairy products (cheese, milk, cream)
+- Cross-contamination less of a concern
+
+**Limited knowledge of edge cases:**
+- May not know about gelatin, rennet, carmine
+- May not think about wine/beer filtration
+- May not ask about frying oil
+- Doesn't research every ingredient deeply
+
+**This affects his needs:**
+- Relies on app to catch hidden ingredients he doesn't know about
+- Trusts app more than strict vegans (who double-check)
+- Values practical guidance over technical accuracy
+
 ### Test Cases for Ben
 - Pad Thai → May accept if can remove fish sauce
 - Vegetarian pizza with cheese → Acceptable fallback option
 - Vegetable curry with ghee (clarified butter) → Wants to know, may accept
+- Gummy bears → Unlikely to know about gelatin (app must catch)
 
 ---
 
@@ -160,6 +200,24 @@ Clara's needs partially drive **future allergy detection features** - v1 focuses
   - Main ingredient focus (what's IN the dish visibly)
   - Less concerned with confidence levels (⚫⚫◯ or ⚫◯◯ is fine)
 
+### Domain Knowledge (What Eric Knows)
+**Basic awareness - surface-level only:**
+- Can identify visible meat/fish pieces
+- Knows major animal products (beef, pork, chicken, fish)
+- Recognizes eggs, dairy
+
+**Limited knowledge of hidden ingredients:**
+- Doesn't think about broths/stocks
+- Doesn't know about gelatin, rennet, etc.
+- Doesn't ask about preparation methods
+- Doesn't research ingredient lists
+
+**This affects his needs:**
+- App must distinguish "visible" vs. "hidden" meat
+- Needs simple classification ("has meat pieces" vs. "vegetable dish")
+- Less concerned with technical accuracy
+- Values convenience over strictness
+
 ### Test Cases for Eric
 - Vegetable ramen with pork bone broth → ✅ OK (no visible meat, broth is fine)
 - Pad Thai with fish sauce → ✅ OK (fish sauce in cooking, no fish pieces)
@@ -167,6 +225,7 @@ Clara's needs partially drive **future allergy detection features** - v1 focuses
 - Caesar salad with bacon bits → ❌ NOT OK (visible bacon pieces)
 - French fries fried in animal fat → ✅ OK (not concerned about cross-contamination)
 - Margherita pizza → ✅ OK (cheese, dairy fine)
+- Gummy bears → Doesn't know/care about gelatin
 
 ### Contrast with Other Personas
 - **vs. David (Strict Vegetarian):** David rejects fish sauce/bone broth; Eric is OK with them
