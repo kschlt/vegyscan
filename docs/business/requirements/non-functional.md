@@ -108,50 +108,6 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 
 ---
 
-### REQ-NF-017: Icon-Based UI (Minimal Text)
-
-**Description:** System UI must rely primarily on icons, colors, and visual indicators rather than text labels.
-
-**Rationale:** Minimize language barriers, reduce text to translate, create universal design that works across cultures.
-
-**Priority:** Should Have
-
-**Status:** Draft
-
-**v1 Guidance:**
-- Vegan/vegetarian classifications use icons (not just text labels)
-- Navigation uses iconography where possible
-- Color coding for dietary categories (green = vegan, etc.)
-- Text only where absolutely necessary for clarity
-- Enables easier translation to other languages later (less text = less translation work)
-
-**Related:**
-- Vision: [Strategic Decisions - Language/Internationalization](../vision.md#strategic-decisions-and-constraints)
-
----
-
-### REQ-NF-018: Internationalization (i18n) Support
-
-**Description:** System must use i18n framework for all user-facing text, enabling future translation without code changes.
-
-**Rationale:** v1 launches in English, but architecture must support adding languages (German, French, etc.) without rebuild.
-
-**Priority:** Should Have
-
-**Status:** Draft
-
-**v1 Implementation:**
-- English language only for v1 launch
-- All UI strings in i18n files (not hardcoded)
-- String keys used in code (e.g., `i18n.t('vegan_label')` not `"Vegan"`)
-- Date/number formatting locale-aware
-- Future: Add German, French translations by updating i18n files only
-
-**Related:**
-- Vision: [Strategic Decisions - Language/Internationalization](../vision.md#strategic-decisions-and-constraints)
-
----
-
 ## Platform & Compatibility
 
 ### REQ-NF-007: iOS-Only (v1)
@@ -165,7 +121,7 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 **Status:** Draft
 
 **Related:**
-- Vision: [Out of Scope - Android](../vision.md#out-of-scope-for-now)
+- Vision: [What We're NOT Building](../vision.md#what-were-not-building-strategic-boundaries)
 
 ---
 
@@ -206,7 +162,7 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 **Status:** Draft
 
 **Related:**
-- Vision: [Out of Scope - Offline mode TBD](../vision.md#out-of-scope-for-now)
+- Vision: [Strategic Decisions - Cost Optimization](../vision.md#strategic-decisions-and-constraints)
 
 ---
 
@@ -327,6 +283,50 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 - Vision: [Strategic Decisions - Community features OUT of v1](../vision.md#strategic-decisions-and-constraints)
 - REQ-F-027: Community-Shared Menu Scans (Future v2+)
 - REQ-F-028: User Feedback on Classification (Future v2+)
+
+---
+
+### REQ-NF-017: Icon-Based UI (Minimal Text)
+
+**Description:** System UI must rely primarily on icons, colors, and visual indicators rather than text labels.
+
+**Rationale:** Minimize language barriers, reduce text to translate, create universal design that works across cultures.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**v1 Guidance:**
+- Vegan/vegetarian classifications use icons (not just text labels)
+- Navigation uses iconography where possible
+- Color coding for dietary categories (green = vegan, etc.)
+- Text only where absolutely necessary for clarity
+- Enables easier translation to other languages later (less text = less translation work)
+
+**Related:**
+- Vision: [Strategic Decisions - Language/Internationalization](../vision.md#strategic-decisions-and-constraints)
+
+---
+
+### REQ-NF-018: Internationalization (i18n) Support
+
+**Description:** System must use i18n framework for all user-facing text, enabling future translation without code changes.
+
+**Rationale:** v1 launches in English, but architecture must support adding languages (German, French, etc.) without rebuild.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**v1 Implementation:**
+- English language only for v1 launch
+- All UI strings in i18n files (not hardcoded)
+- String keys used in code (e.g., `i18n.t('vegan_label')` not `"Vegan"`)
+- Date/number formatting locale-aware
+- Future: Add German, French translations by updating i18n files only
+
+**Related:**
+- Vision: [Strategic Decisions - Language/Internationalization](../vision.md#strategic-decisions-and-constraints)
 
 ---
 
