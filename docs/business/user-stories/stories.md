@@ -612,6 +612,100 @@ _CRITICAL for business model viability - maximize cache hits, minimize LLM costs
 
 ---
 
+## Epic: Photo Upload & iOS Integration
+
+_Expand use case from "at restaurant" to "planning trip" - enables pre-visit decision making_
+
+### US-032: Upload Menu Photos [Must Have]
+
+**As a** [All users](../personas.md),
+**I want to** upload menu photos from my photo library instead of taking new photos,
+**so that** I can analyze menus I've already photographed or found online (Google Maps, restaurant websites, etc.).
+
+**Acceptance Criteria:**
+- [ ] "Upload Photo" option on main screen
+- [ ] Can select single or multiple photos from library
+- [ ] Uploaded photos processed same as camera photos
+- [ ] Multi-photo upload creates multi-page menu
+- [ ] Clear UI distinction: "Scan Menu" (camera) vs "Upload Photo" (library)
+
+**Related:**
+- Requirements: [REQ-F-032](../requirements/functional.md#req-f-032)
+- Use Cases: All personas benefit
+
+**Value:**
+- Enables pre-visit planning (upload menu photo from Google Maps before restaurant visit)
+- Reduces friction (can analyze photos taken earlier)
+- Supports friends sharing menu photos
+
+**Development Phase:** v1 (Must Have)
+
+---
+
+### US-033: Add Pages Flexibly [Must Have]
+
+**As a** [All users](../personas.md),
+**I want to** easily add pages to an existing menu (via camera or upload),
+**so that** I can build complete multi-page menu books without confusion.
+
+**Acceptance Criteria:**
+- [ ] "Add Page" button visible when viewing menu
+- [ ] "Add Page" offers: "Take Photo" or "Upload Photo"
+- [ ] Main screen has separate "Scan New Menu" action
+- [ ] Clear distinction between "new menu" and "add to existing"
+- [ ] Can reorder and delete pages after adding
+- [ ] Page numbers displayed (Page 1 of 3, etc.)
+
+**Related:**
+- Requirements: [REQ-F-033](../requirements/functional.md#req-f-033)
+- Use Cases: Multi-page menu scenarios
+
+**Value:**
+- Prevents user confusion ("am I adding to this menu or starting new?")
+- Flexible workflow (mix camera and upload for same menu)
+- Complete control over menu book structure
+
+**Development Phase:** v1 (Must Have)
+
+---
+
+### US-034: Share from Any App [Should Have - Killer Feature]
+
+**As a** [All users](../personas.md),
+**I want to** share menu photos from ANY app (Google Maps, Photos, Safari, WhatsApp) directly to VegyScan,
+**so that** I can instantly analyze menus I find online or receive from friends, BEFORE visiting the restaurant.
+
+**Acceptance Criteria:**
+- [ ] VegyScan appears in iOS Share Sheet for photos
+- [ ] Share from Photos app works
+- [ ] Share from Safari (long-press image) works
+- [ ] Share from Google Maps restaurant photos works
+- [ ] Share from Messages/WhatsApp works
+- [ ] Shared photo opens VegyScan and starts processing
+- [ ] If duplicate detected, prompt to reuse previous results
+
+**Related:**
+- Requirements: [REQ-F-034](../requirements/functional.md#req-f-034)
+- Personas: All users, especially pre-trip planners
+
+**Value:**
+- **Game changer:** User browsing Google Maps → finds menu photo → shares to VegyScan → sees vegan options → decides where to eat BEFORE leaving home
+- **Viral potential:** Friends share menus ("Is this restaurant vegan-friendly?")
+- **Competitive advantage:** Google Translate and ChatGPT don't have this integration
+- **Increased engagement:** Users interact with app during trip planning, not just at restaurant
+
+**Use Case Example - Google Maps Integration:**
+1. User planning trip, browsing restaurants in Google Maps
+2. Opens restaurant, views photos, finds menu
+3. Taps Share → VegyScan
+4. App analyzes menu instantly
+5. User sees 3 vegan options available
+6. Makes informed decision: "Yes, I'll eat here!"
+
+**Development Phase:** v1.5 (Should Have - high value but requires iOS extension work)
+
+---
+
 ## Epic: Future Enhancements (Bonus Features)
 
 _Nice-to-have features for post-v1_
@@ -657,10 +751,13 @@ _Nice-to-have features for post-v1_
 
 ## Notes
 
+**Total User Stories: 34** (US-001 to US-034)
+
 ### Story Prioritization (MoSCoW)
 
 **CRITICAL Must Have (v1):**
 - US-029, US-030, US-031: Cost optimization & smart caching (business viability)
+- US-032, US-033: Photo upload & flexible page addition (core UX)
 
 **Must Have (v1):**
 - US-001 to US-014: Core scanning, classification, navigation
@@ -668,12 +765,13 @@ _Nice-to-have features for post-v1_
 - US-023, US-024: Photo quality feedback
 - US-025, US-026: Performance (instant UX)
 
-**Should Have (v1 or soon after):**
+**Should Have (v1 or v1.5):**
+- US-034: iOS Share Extension (killer feature for pre-visit planning)
 - US-015: Overlay toggles
 - US-019 to US-022: History and favorites
 
 **Nice to Have (Future):**
-- US-027, US-028: Bonus features
+- US-027, US-028: Bonus features (phrase generation, community sharing)
 
 ### Persona Coverage
 

@@ -8,6 +8,81 @@ Chronological record of significant decisions across all domains.
 
 ---
 
+## 2025-11-15: Add Photo Upload & iOS Share Extension Integration
+
+**Type:** Feature / Product
+
+**Decision:** Added photo upload from library and iOS Share Extension integration as core features, dramatically expanding use case from "at restaurant" to "pre-visit trip planning."
+
+**Problem/Opportunity:**
+- Original design only supported in-app camera capture
+- User may have already taken menu photos, or found them online (Google Maps, restaurant websites)
+- iOS Share Sheet integration enables seamless workflow from other apps
+- **Game changer:** User can analyze menus BEFORE visiting restaurant (trip planning use case)
+
+**New Features Added:**
+
+1. **REQ-F-032: Upload from Photo Library** (Must Have)
+   - Upload single or multiple photos from device library
+   - Same processing pipeline as camera capture
+   - Enables pre-visit planning, friend sharing, offline preparation
+   - Location from EXIF data only (see REQ-F-035)
+
+2. **REQ-F-033: Add Page to Existing Menu** (Must Have)
+   - Clear UX: "Scan New Menu" vs "Add Page to This Menu"
+   - Add pages via camera OR upload
+   - Prevents user confusion, flexible workflow
+
+3. **REQ-F-034: iOS Share Extension** (Should Have - Killer Feature)
+   - VegyScan appears in iOS Share Sheet for photos
+   - Works from Photos, Safari, Google Maps, Messages, WhatsApp, etc.
+   - Tapping "Share → VegyScan" opens app and processes photo instantly
+   - **CRITICAL:** Enables Google Maps integration (view menu photo → share → analyze → decide where to eat)
+   - No location tagging for shared photos (see REQ-F-035)
+
+4. **REQ-F-035: Smart Location Tagging** (Must Have - CRITICAL)
+   - Camera capture: Use EXIF GPS if available, fallback to current GPS
+   - Upload/Share: Use EXIF GPS ONLY, never current GPS
+   - Prevents false location tagging (e.g., home GPS for Google Maps shares)
+   - Privacy-friendly: No location permission needed for upload/share
+   - Menus without location still saved (just not GPS-matched)
+
+**Use Case Expansion:**
+
+**Before:** User at restaurant → take photo → analyze menu → order
+**After:** User planning trip → browse Google Maps → find menu photo → share to VegyScan → see vegan options → decide which restaurant to visit → arrive prepared
+
+**Strategic Impact:**
+- **Expands TAM:** From "people currently at restaurants" to "people planning restaurant visits"
+- **Viral potential:** Friends share menus ("Is this place vegan-friendly?")
+- **Competitive moat:** Google Translate and ChatGPT don't have Share Extension integration
+- **Increased engagement:** Users interact with app during trip planning (days/weeks before trip), not just during meals
+- **Pre-visit confidence:** Users know vegan options exist before walking into restaurant
+
+**User Stories:**
+- US-032: Upload Menu Photos
+- US-033: Add Pages Flexibly
+- US-034: Share from Any App (Google Maps integration)
+
+**Technical Notes:**
+- Share Extension requires separate iOS extension target
+- Uses App Groups for communication between extension and main app
+- Photo library access requires PhotoKit framework
+- Extension should be lightweight (hand off to main app quickly)
+- **Location tagging:** iOS ImageIO framework extracts EXIF GPS data
+- Current GPS via Core Location (camera only, not upload/share)
+
+**Detailed Documentation:**
+- [REQ-F-032](../business/requirements/functional.md#req-f-032) - Upload from Photo Library
+- [REQ-F-033](../business/requirements/functional.md#req-f-033) - Add Page to Existing Menu
+- [REQ-F-034](../business/requirements/functional.md#req-f-034) - iOS Share Extension
+- [REQ-F-035](../business/requirements/functional.md#req-f-035) - Smart Location Tagging
+- [US-032 to US-034](../business/user-stories/stories.md) - User stories for iOS integration
+
+**Status:** Active
+
+---
+
 ## 2025-11-15: Enforce Single Source of Truth - Remove Feature Lists from Vision
 
 **Type:** Process / Documentation

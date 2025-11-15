@@ -719,6 +719,248 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ---
 
+## Photo Upload & iOS Integration
+
+### REQ-F-032: Upload from Photo Library
+
+**Description:** System must allow users to upload existing photos from their device's photo library instead of (or in addition to) taking new photos with the camera.
+
+**Rationale:** Users may have already taken menu photos, or want to scan menus from other sources (Google Maps, restaurant websites, friends' photos). This enables pre-visit planning and reduces friction.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- REQ-F-001: Photo Capture (camera-based)
+- REQ-F-016: Multi-Page Scanning
+- REQ-F-033: Add Page to Existing Menu
+- REQ-F-035: Smart Location Tagging (location from EXIF, not current GPS)
+- Persona: All personas benefit from upload flexibility
+
+**Acceptance Criteria:**
+- [ ] "Upload Photo" option available on main screen (alongside "Scan Menu")
+- [ ] Opens iOS Photo Picker (native system UI)
+- [ ] User can select single photo
+- [ ] User can select multiple photos at once (for multi-page menus)
+- [ ] Uploaded photos processed identically to camera-captured photos (same optimization, OCR, classification pipeline)
+- [ ] Multi-photo selection creates multi-page menu automatically
+- [ ] Uploaded photos saved to history same as camera scans
+- [ ] Clear UI distinction between "Scan Menu" (camera) and "Upload Photo" (library)
+- [ ] **Location tagging:** Extract GPS from photo EXIF data (if available), do NOT use current GPS location (see REQ-F-035)
+
+**Use Cases:**
+- User took menu photo earlier, now wants to analyze it
+- User found menu photo on Google Maps before visiting restaurant
+- User received menu photo from friend
+- User wants to prepare before restaurant visit (pre-trip planning)
+
+**Business Impact:**
+- Expands use case from "at restaurant" to "planning where to eat"
+- Enables pre-visit decision making (huge value add)
+- Reduces friction (no need to be at restaurant to use app)
+
+---
+
+### REQ-F-033: Add Page to Existing Menu
+
+**Description:** System must provide clear UX for adding additional pages to an existing menu (either by camera or upload).
+
+**Rationale:** Multi-page menus are common. Users need clear distinction between "start new menu scan" vs "add page to current menu" to avoid confusion.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- REQ-F-016: Multi-Page Scanning
+- REQ-F-032: Upload from Photo Library
+- Use Case: [UC-002](../use-cases/UC-002-create-multi-page-menu-book.md)
+
+**Acceptance Criteria:**
+- [ ] When viewing a menu, "Add Page" button clearly visible
+- [ ] "Add Page" offers two options:
+  - "Take Photo" (opens camera)
+  - "Upload Photo" (opens photo library)
+- [ ] Main screen has separate "Scan New Menu" action (creates new menu)
+- [ ] UI clearly distinguishes "new menu" vs "add to existing"
+- [ ] Confirmation before adding to existing menu (prevents accidental additions)
+- [ ] Can reorder pages after adding (drag & drop)
+- [ ] Can delete pages from multi-page menu
+- [ ] Page numbers displayed (Page 1 of 3, etc.)
+
+**UX Flow Examples:**
+1. **Add via camera**: View Menu → "Add Page" → "Take Photo" → Camera opens → Capture → Added to menu
+2. **Add via upload**: View Menu → "Add Page" → "Upload Photo" → Photo Picker → Select → Added to menu
+3. **Start new menu**: Main Screen → "Scan New Menu" → Choose camera or upload
+
+---
+
+### REQ-F-034: iOS Share Extension
+
+**Description:** System must integrate with iOS Share Sheet, allowing users to share photos from ANY app (Photos, Safari, Google Maps, Messages, etc.) directly to VegyScan for instant menu analysis.
+
+**Rationale:** CRITICAL for pre-visit planning and seamless integration. User can browse restaurant photos in Google Maps, tap Share, select VegyScan, and instantly analyze the menu before visiting. This is a killer feature for trip planning.
+
+**Priority:** Should Have (high value, but requires iOS extension)
+
+**Status:** Draft
+
+**Related:**
+- REQ-F-032: Upload from Photo Library
+- REQ-F-029: Menu Duplicate Detection (shared photos may be duplicates)
+- Vision: [Open Strategic Questions](../vision.md#open-strategic-questions)
+
+**Acceptance Criteria:**
+- [ ] VegyScan appears in iOS Share Sheet for image types
+- [ ] Share Extension accepts single photo
+- [ ] Share Extension accepts multiple photos (creates multi-page menu)
+- [ ] Tapping "VegyScan" in Share Sheet:
+  - Opens VegyScan app
+  - Creates new menu from shared photo(s)
+  - Starts processing immediately
+  - Shows processing progress
+- [ ] Works from Photos app
+- [ ] Works from Safari (long-press image → Share)
+- [ ] Works from Google Maps (restaurant menu photos)
+- [ ] Works from Messages/WhatsApp (friend shares menu photo)
+- [ ] Shared photo saved to history (with source metadata if available)
+- [ ] If duplicate detected (REQ-F-029), prompt "You scanned this menu before. Use previous results?"
+
+**Use Cases:**
+
+**Use Case 1: Google Maps Pre-Visit Planning**
+1. User browsing restaurants in Google Maps for trip
+2. Opens restaurant page, views photos
+3. Finds menu photo
+4. Taps Share icon
+5. Selects "VegyScan" from Share Sheet
+6. VegyScan opens, processes menu
+7. User sees vegan/vegetarian options BEFORE visiting restaurant
+8. Makes informed decision about which restaurant to visit
+
+**Use Case 2: Friend Shares Menu Photo**
+1. Friend sends menu photo via WhatsApp: "Is this restaurant vegan-friendly?"
+2. User taps photo, taps Share
+3. Selects "VegyScan"
+4. App analyzes menu, shows vegan options
+5. User responds: "Yes, 3 vegan dishes available!"
+
+**Use Case 3: Website Menu Photo**
+1. User finds restaurant website with menu photo
+2. Long-presses menu image in Safari
+3. Taps Share → VegyScan
+4. Instantly analyzes menu from website photo
+
+**Business Impact:**
+- **Expands use case dramatically:** From "at restaurant" to "planning trip"
+- **Pre-visit decision making:** Users can research restaurants before visiting
+- **Viral potential:** Easy sharing between friends ("Check this menu out!")
+- **Competitive advantage:** Google Translate and ChatGPT don't have this integration
+- **Increases engagement:** Users interact with app BEFORE trip (not just during)
+
+**Technical Notes:**
+- Requires iOS Share Extension (separate target in Xcode)
+- Extension receives photo URL, passes to main app via App Groups
+- Main app processes photo same as upload/camera
+- Extension should be lightweight (hand off to main app quickly)
+- **Location tagging:** No location data for shared photos (see REQ-F-035)
+
+---
+
+### REQ-F-035: Smart Location Tagging Based on Photo Source
+
+**Description:** System must intelligently determine location data for menu scans based on photo source, using EXIF metadata when available and current GPS only when appropriate.
+
+**Rationale:** CRITICAL for accurate history and restaurant matching. User browsing Google Maps at home should NOT have home GPS tagged to restaurant menu. EXIF data from photo is more reliable than current location for uploaded/shared photos.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- REQ-F-019: GPS-Based History Matching
+- REQ-F-020: Local History Storage
+- REQ-F-032: Upload from Photo Library
+- REQ-F-034: iOS Share Extension
+
+**Location Tagging Strategy (Priority Order):**
+
+**1. In-App Camera Capture (REQ-F-001):**
+- ✅ **Prefer:** EXIF GPS data from captured photo (if iOS saves it automatically)
+- ✅ **Fallback:** Current GPS location at time of capture
+- **Rationale:** User is at restaurant when taking photo - current GPS is accurate
+
+**2. Upload from Photo Library (REQ-F-032):**
+- ✅ **Prefer:** EXIF GPS data from photo (user may have taken photo earlier at restaurant)
+- ❌ **Never:** Current GPS location (user likely browsing from home/elsewhere)
+- ✅ **Fallback:** No location data (menu saved without GPS tag)
+- **Rationale:** Photo may have been taken at restaurant earlier - EXIF is reliable, current GPS is NOT
+
+**3. Share from Other Apps (REQ-F-034):**
+- ✅ **Prefer:** EXIF GPS data from shared photo (if available)
+- ❌ **Never:** Current GPS location (user browsing from home/office/elsewhere)
+- ✅ **Fallback:** No location data
+- **Rationale:** User sharing from Google Maps/Safari is likely planning remotely - current GPS is NOT accurate
+
+**Acceptance Criteria:**
+- [ ] Extract EXIF GPS data from all photos (camera, upload, share)
+- [ ] **Camera capture:** Use EXIF GPS if available, else use current GPS location
+- [ ] **Upload/Share:** Use EXIF GPS ONLY, never use current GPS location
+- [ ] If no EXIF GPS and source is upload/share: Save menu without location tag
+- [ ] Menus without location tags:
+  - Not matched by GPS-based history (REQ-F-019)
+  - Can still be found in "All Scans" history
+  - User can manually add location later (optional future feature)
+- [ ] Location source displayed in menu metadata: "Location: From photo" vs "Location: Current GPS" vs "No location"
+- [ ] Privacy: Request location permission only for camera capture, not for upload/share
+
+**Use Cases:**
+
+**Use Case 1: Camera Capture at Restaurant**
+1. User at restaurant, takes photo with in-app camera
+2. System checks photo EXIF GPS → not available (iOS limitation)
+3. System uses current GPS location
+4. Menu tagged with restaurant location ✅
+
+**Use Case 2: Upload Photo Taken Earlier**
+1. User at home, uploads photo taken yesterday at restaurant
+2. System extracts EXIF GPS from photo → finds restaurant location
+3. System uses EXIF GPS, ignores current location (home)
+4. Menu correctly tagged with restaurant location ✅
+
+**Use Case 3: Share from Google Maps (No EXIF)**
+1. User at home, browsing Google Maps, shares menu photo
+2. System checks EXIF GPS → not available (Google Maps screenshot)
+3. System does NOT use current GPS (would be home address)
+4. Menu saved without location tag
+5. Still searchable in history, just not GPS-matched ✅
+
+**Use Case 4: Friend Shares Menu via WhatsApp**
+1. User receives menu photo from friend via WhatsApp
+2. Photo has EXIF GPS from friend's location (different city)
+3. System uses EXIF GPS (friend's restaurant location)
+4. Menu tagged with restaurant where friend was ✅
+
+**Privacy Considerations:**
+- Location permission only requested for camera capture
+- Upload/share features work WITHOUT location permission
+- User can use app even if location permission denied (just no GPS tagging)
+
+**Technical Notes:**
+- Use iOS ImageIO framework to extract EXIF GPS data
+- EXIF GPS fields: GPSLatitude, GPSLongitude, GPSAltitude
+- Check photo metadata before falling back to current location
+- Current location via Core Location (only for camera captures)
+
+**Business Impact:**
+- Prevents false location tagging (home GPS for Google Maps shares)
+- Accurate restaurant history and GPS matching
+- Privacy-friendly (no location permission needed for upload/share)
+- Better user experience (menus correctly categorized)
+
+---
+
 ## Bonus Features (Future Enhancement)
 
 ### REQ-F-026: Order Phrase Generation
@@ -788,23 +1030,39 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ## Notes
 
+**Total Functional Requirements: 32** (REQ-F-001 to REQ-F-035, including 3 bonus REQ-F-026 to REQ-F-028)
+
 **Feature Prioritization:**
 - **CRITICAL Must Have:** Cost optimization (REQ-F-029, REQ-F-030, REQ-F-031) - business model viability
-- **Must Have:** Core scanning, classification, and navigation features for v1
-- **Should Have:** History, favorites, quality feedback - enhance usability
-- **Nice to Have:** Community features, phrase generation - future enhancements
+- **Must Have:** Core scanning, classification, navigation, photo upload (REQ-F-032, REQ-F-033, REQ-F-035)
+- **Should Have:** iOS Share Extension (REQ-F-034), history, favorites, quality feedback - enhance usability
+- **Nice to Have:** Community features, phrase generation, user feedback - future enhancements
 
 **Persona-Driven Requirements:**
-- Anna/Clara/Grace drive high confidence requirements
+- Anna/Clara drive high confidence requirements
 - David drives vegetarian distinction requirements
 - Eric drives nuanced "visible vs. hidden meat" requirements
 - Emma drives pescatarian classification requirements
+- All personas benefit from photo upload and sharing features
 
 **Cost-Driven Requirements (CRITICAL):**
 - REQ-F-029: Menu duplicate detection (prevent re-scans)
 - REQ-F-030: Dish-level caching (maximize reuse)
 - REQ-F-031: Smart result retrieval (multi-level cache)
 - Target: <€0.005 per page, 70%+ cache hit rate for returning users
+
+**iOS Integration Features (NEW):**
+- REQ-F-032: Upload from Photo Library (Must Have)
+- REQ-F-033: Add Page to Existing Menu (Must Have)
+- REQ-F-034: iOS Share Extension (Should Have - killer feature for pre-visit planning)
+- REQ-F-035: Smart Location Tagging (Must Have - EXIF GPS vs. current GPS based on source)
+
+**Strategic Value of Share Extension (REQ-F-034):**
+- Expands use case from "at restaurant" to "planning trip"
+- Enables Google Maps integration (view menu photo → share to VegyScan → analyze before visiting)
+- Viral potential (friends sharing menu photos)
+- Competitive advantage (Google Translate/ChatGPT don't have this)
+- Increases engagement (users interact with app BEFORE trip)
 
 **Technical Dependencies:**
 - OCR: iOS Vision Framework or Google Cloud Vision API
@@ -814,3 +1072,6 @@ _This file is the Single Source of Truth for all functional requirements._
 - Symbol Recognition: Custom trained model or GPT-4 Vision
 - Image Hashing: pHash or dHash for duplicate detection
 - Cache Storage: SQLite or Core Data for local persistence
+- Photo Library Access: iOS PhotoKit (for upload)
+- Share Extension: iOS Share Extension target (for inter-app sharing)
+- App Groups: For communication between Share Extension and main app
