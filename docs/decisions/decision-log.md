@@ -8,6 +8,62 @@ Chronological record of significant decisions across all domains.
 
 ---
 
+## 2025-11-15: Enforce Single Source of Truth - Remove Feature Lists from Vision
+
+**Type:** Process / Documentation
+
+**Decision:** Removed detailed feature lists from vision.md and enforced strict Single Source of Truth (SoT) principle across all documentation.
+
+**Problem Identified:**
+- vision.md contained "Core Features" and "Bonus Features" lists (lines 60-89)
+- Adding a new feature required updating vision.md + functional.md + possibly use-cases/user-stories
+- This violated SoT principle - same information in multiple places
+- User feedback: "If I add a new feature, I have to update it in many places"
+
+**Changes Made:**
+
+1. **vision.md refactored:**
+   - ❌ Removed: "Core Features" list (detailed features)
+   - ❌ Removed: "Bonus Features" list
+   - ✅ Kept: High-level "What We're Building" (strategic, not detailed)
+   - ✅ Kept: "What We're NOT Building" (strategic boundaries with WHY)
+   - ✅ Kept: "Open Strategic Questions" (business decisions, not features)
+   - ✅ Added: Clear reference to functional.md as SoT for features
+
+2. **Root .claude.md updated:**
+   - Fixed ownership table (vision.md is SoT for WHY, not WHAT features)
+   - Added CRITICAL note: "vision.md is NOT the SoT for features!"
+   - Clarified: functional.md is SoT for ALL features
+
+3. **business/.claude.md updated:**
+   - Clarified vision.md responsibilities (WHY, not feature lists)
+   - Added CRITICAL note: "If you add a new feature, update functional.md ONLY"
+   - Separated functional.md and non-functional.md responsibilities
+
+**New Information Ownership:**
+
+| Information Type | SoT Location | Update When Adding Feature |
+|-----------------|--------------|----------------------------|
+| WHY (problem, vision, goals) | vision.md | ❌ No change |
+| WHAT features | functional.md | ✅ Add REQ-F-XXX |
+| HOW users interact | use-cases/ | ✅ Add/update UC-XXX (if needed) |
+| WHY users need it | user-stories/ | ✅ Add US-XXX (if needed) |
+
+**Impact:**
+- **Adding a feature now requires updating ONLY functional.md** (plus optional use-case/user-story)
+- vision.md remains stable (only updates when strategic direction changes)
+- Eliminates documentation drift and duplication
+- Reinforces SoT principle across all domains
+
+**Detailed Changes:**
+- [vision.md](../business/vision.md) - Removed feature lists, kept strategic scope
+- [.claude.md](../.claude.md) - Fixed ownership table
+- [business/.claude.md](../business/.claude.md) - Clarified responsibilities
+
+**Status:** Active
+
+---
+
 ## 2025-11-15: Refine Personas - Purpose-Driven Structure
 
 **Type:** Business / UX

@@ -57,52 +57,49 @@ Travelers (especially vegans, vegetarians, and people with dietary restrictions)
 4. **Provide transparent reasoning** for vegan/vegetarian classifications
 5. **Create intuitive, instant UX** that feels native to mobile dining experiences
 
-## Scope
+## Strategic Scope
 
-### In Scope
+_For detailed features, see [Functional Requirements](./requirements/functional.md) - the Single Source of Truth for all features._
 
-**Core Features:**
-- Photo capture with image optimization (straightening, brightness, sharpening)
-- Multi-page menu book (scan multiple pages, navigate like a digital menu)
-- Interactive hotspots over each menu item
-- **Symbol recognition** (🌱, V, allergen icons - CRITICAL)
-- Meta-information bundling (group all info belonging to one dish)
-- Translation to user's selected target language (ANY language, not just foreign scripts)
-- Vegan/vegetarian classification with reasoning
-- Confidence levels (simple 1-3 scale with legend)
-- Overlay system (show/hide translations, icons, badges)
-- Dish type recognition (Tonkotsu, Frikandel, Pho, etc.)
-- Country/cuisine context awareness
-- Favorites/marking system (mark dishes as if ordering)
-- History with GPS-based restaurant matching
-- Detail panel per dish (name, translation, description, ingredients, adaptations)
-- Photo quality feedback ("please retake photo")
-- Scanner guide lines during photo capture (iOS camera features)
+### What We're Building (High-Level)
 
-**Bonus Features (Future Enhancement):**
-- Order phrase generation in local language ("without fish sauce" in Japanese)
-- Community-shared scans (restaurant-based menu sharing)
-- Ratings/reviews (Happy Cow style)
-- User feedback on vegan/vegetarian accuracy
-- Named saved menus
-- Restaurant suggestions based on location
+An iOS-native app that transforms foreign-language menus into interactive, augmented experiences through:
+1. **Visual preservation** - the original menu remains the center of interaction
+2. **Intelligent augmentation** - translations, classifications, and insights overlaid on the original
+3. **Vegan/vegetarian intelligence** - diet-specific classification with transparent reasoning
+4. **Instant UX** - perceived response time < 2 seconds (lazy loading, progressive disclosure)
 
-### Out of Scope (for now)
+### What We're NOT Building (Strategic Boundaries)
 
-- Allergen tracking beyond vegan/vegetarian (future consideration)
-- Recipe suggestions or cooking instructions
-- Nutritional information (calories, macros)
-- Social features (sharing with friends) - bonus feature only
-- Web version (iOS-only initially)
-- Android app (iOS-only initially)
-- Offline mode (to be decided based on technical feasibility)
+**Out of scope for v1:**
+- **Allergen tracking** beyond vegan/vegetarian (future v2+ consideration - complexity and liability)
+- **Nutritional information** (calories, macros) - different value proposition
+- **Recipe suggestions** or cooking instructions - not menu-focused
+- **Web version** - iOS-only focus for v1 (leverage native capabilities)
+- **Android app** - iOS-only focus for v1 (resource constraints)
+- **Social sharing** with friends - privacy and complexity
 
-### Open Questions / To Be Decided
+**Strategic reasons:**
+- **Focus on core value:** Vegan/vegetarian travelers need menu understanding, not nutritional tracking
+- **Leverage iOS-native:** VisionKit, Core ML, SwiftUI capabilities maximize quality and minimize development time
+- **Manage complexity:** Allergen tracking adds legal liability and requires different accuracy standards
+- **Resource constraints:** Single platform initially allows faster iteration and learning
 
-- **Business model:** One-time purchase (€8-10) vs. time-based premium (14-day pass) vs. freemium
-- **Offline capability:** Depends on LLM cost optimization and on-device processing
+### Open Strategic Questions
+
+_These are business/architecture decisions, not features. Features are documented in [Functional Requirements](./requirements/functional.md)._
+
+- **Business model:** One-time purchase (€8) vs. subscription vs. freemium
+  - Current assumption: €8 one-time purchase
+  - Drives cost optimization requirements (REQ-NF-013: <€0.005 per page)
+
+- **Offline capability:** Full offline vs. hybrid vs. cloud-only
+  - Decision depends on: LLM cost optimization, on-device ML capabilities, cache hit rates
+  - Impacts: Architecture (local ML models), storage (cache size), UX (connectivity requirements)
+
 - **Community features:** How much to invest in shared/social aspects
-- **RAG/Database strategy:** Balance between LLM queries and cached dish knowledge
+  - Bonus features: Community-shared scans (REQ-F-027), user feedback (REQ-F-028)
+  - Decision depends on: v1 adoption, privacy considerations, moderation costs
 
 ## Success Criteria
 
