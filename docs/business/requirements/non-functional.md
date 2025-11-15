@@ -196,18 +196,36 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 
 ### REQ-NF-013: LLM Cost Optimization
 
-**Description:** System must minimize LLM API costs through efficient prompting, caching, and on-device processing.
+**Description:** System must minimize LLM API costs through aggressive caching, deduplication, smart result retrieval, and on-device processing to make business model viable.
 
-**Rationale:** LLM costs directly impact business model viability.
+**Rationale:** LLM costs directly impact business model viability. At €8 app price with 30% App Store fee, a user scanning 100 pages on holiday would cost €5 at €0.05/scan, making the business unprofitable. Cost must be dramatically lower.
 
-**Priority:** Must Have
+**Priority:** CRITICAL - Must Have
 
 **Status:** Draft
 
-**Target:** < €0.05 per menu scan in LLM costs
+**Target:** < €0.01 per 2-page menu scan (€0.005 per page) in LLM costs
+
+**Business Model Analysis:**
+- App price: €8.00
+- App Store fee (30%): -€2.40
+- Available margin: €5.60
+- Holiday scenario: 100 pages scanned
+- Required cost per page: < €0.005 to remain profitable
+- Target total cost for 100-page trip: ~€0.50 (9% of revenue)
+
+**Cost Optimization Strategies (See Functional Requirements):**
+- Menu duplicate detection (same restaurant, same menu) → REQ-F-029
+- Dish-level caching (same dish across sessions) → REQ-F-030
+- Smart result retrieval (image similarity matching) → REQ-F-031
+- UX design to minimize re-scans
+- On-device processing where possible → REQ-NF-014
 
 **Related:**
 - Vision: [Success Criteria - Cost-efficient LLM usage](../vision.md#success-criteria)
+- REQ-F-029: Menu Duplicate Detection
+- REQ-F-030: Dish-Level Caching
+- REQ-F-031: Smart Result Retrieval
 
 ---
 

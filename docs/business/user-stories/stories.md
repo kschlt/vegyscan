@@ -526,6 +526,92 @@ _Instant feel, lazy loading, smooth experience_
 
 ---
 
+## Epic: Cost Optimization & Smart Caching
+
+_CRITICAL for business model viability - maximize cache hits, minimize LLM costs_
+
+### US-029: Avoid Re-scanning Same Menu [CRITICAL]
+
+**As a** [All users](../personas.md),
+**I want to** be notified if I'm scanning a menu I already scanned before,
+**so that** I can reuse previous results instead of waiting and wasting processing costs.
+
+**Acceptance Criteria:**
+- [ ] System detects duplicate menu photo (perceptual hash)
+- [ ] Prompt: "You scanned this menu 2 days ago. Use previous results?"
+- [ ] If user accepts: instant retrieval (€0.00 cost)
+- [ ] If user declines: proceed with new scan (menu may have changed)
+- [ ] Detection completes < 0.5 seconds
+- [ ] Works at same GPS location (±50m)
+
+**Related:**
+- Requirements: [REQ-F-029](../requirements/functional.md#req-f-029), [REQ-NF-013](../requirements/non-functional.md#req-nf-013)
+- Persona: All users benefit from instant results
+
+**Business Impact:**
+- Prevents redundant €0.01 LLM calls
+- Critical for users who revisit same restaurants on holiday
+
+**Development Phase:** v1 (Must Have)
+
+---
+
+### US-030: Reuse Dish Classifications [CRITICAL]
+
+**As a** [All users](../personas.md),
+**I want to** benefit from dishes I've already classified across different menus and restaurants,
+**so that** I get instant results for familiar dishes.
+
+**Acceptance Criteria:**
+- [ ] System caches dish classifications by normalized name + ingredients
+- [ ] "Vegetable Tempura" at Restaurant A matches "野菜の天ぷら" at Restaurant B
+- [ ] Cache hit = instant classification (€0.00 cost)
+- [ ] Cache miss = classify and store for future
+- [ ] Fuzzy matching handles minor text variations
+- [ ] Cache persists across sessions
+- [ ] Max 10,000 dishes cached (LRU eviction)
+
+**Related:**
+- Requirements: [REQ-F-030](../requirements/functional.md#req-f-030), [REQ-NF-013](../requirements/non-functional.md#req-nf-013)
+- Persona: Frequent travelers benefit most (multiple Japanese restaurants)
+
+**Business Impact:**
+- Target: 70%+ cache hit rate for returning users
+- 100-page holiday trip: ~€0.50 instead of €1.00 in LLM costs
+
+**Development Phase:** v1 (Must Have)
+
+---
+
+### US-031: Smart Cache Hierarchy [CRITICAL]
+
+**As a** [All users](../personas.md),
+**I want to** the app to intelligently retrieve previous results at multiple levels,
+**so that** I minimize processing time and costs across all scenarios.
+
+**Acceptance Criteria:**
+- [ ] L1: Exact image match → retrieve all results instantly
+- [ ] L2: Similar image (different angle) → retrieve all results
+- [ ] L3: Same dishes detected → retrieve per-dish results
+- [ ] L4: Location + cuisine context → suggest similar dishes
+- [ ] Subtle UX: "Using previous scan from 3 days ago"
+- [ ] "Scan again" option always available
+- [ ] Retrieval completes < 0.3 seconds
+- [ ] Fallback to normal processing if retrieval fails
+
+**Related:**
+- Requirements: [REQ-F-031](../requirements/functional.md#req-f-031), [REQ-NF-013](../requirements/non-functional.md#req-nf-013)
+- Persona: All users benefit from intelligent caching
+
+**Business Impact:**
+- First scan at restaurant: €0.01 cost
+- Subsequent scans: €0.00 cost (cache hit)
+- Essential for €8 app with €5.60 margin after App Store fee
+
+**Development Phase:** v1 (Must Have)
+
+---
+
 ## Epic: Future Enhancements (Bonus Features)
 
 _Nice-to-have features for post-v1_
@@ -572,6 +658,9 @@ _Nice-to-have features for post-v1_
 ## Notes
 
 ### Story Prioritization (MoSCoW)
+
+**CRITICAL Must Have (v1):**
+- US-029, US-030, US-031: Cost optimization & smart caching (business viability)
 
 **Must Have (v1):**
 - US-001 to US-014: Core scanning, classification, navigation

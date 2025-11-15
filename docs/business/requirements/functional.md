@@ -615,6 +615,110 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ---
 
+## Cost Optimization & Smart Caching
+
+### REQ-F-029: Menu Duplicate Detection
+
+**Description:** System must detect when user is scanning the same menu they (or someone else at this location) scanned previously and offer to retrieve cached results instead of re-processing.
+
+**Rationale:** CRITICAL for cost optimization. Re-scanning the same menu at a restaurant wastes LLM API costs. With target of <€0.005 per page, preventing duplicate scans is essential for business model viability.
+
+**Priority:** Must Have (CRITICAL for cost)
+
+**Status:** Draft
+
+**Related:**
+- REQ-NF-013: LLM Cost Optimization
+- REQ-F-027: Community-Shared Menu Scans (future enhancement)
+- Vision: [Success Criteria - Cost-efficient LLM usage](../vision.md#success-criteria)
+
+**Acceptance Criteria:**
+- [ ] Compute perceptual hash of captured menu photo
+- [ ] Check local cache for similar hash (same device, previous scan)
+- [ ] Compare with GPS location + timestamp (same restaurant, recent scan)
+- [ ] If match found (>90% similarity): prompt "You scanned this menu [timeframe] ago. Use previous results?"
+- [ ] If user accepts: retrieve cached translation & classification (0 LLM cost)
+- [ ] If user declines: proceed with new scan (may be updated menu)
+- [ ] Cache expires after 30 days (configurable)
+- [ ] Detection completes within 0.5 seconds
+
+**Implementation Notes:**
+- Perceptual hashing (pHash or dHash) for image similarity
+- Local SQLite database for cache storage
+- GPS location stored with ±50m accuracy for privacy
+- Future: cloud-based sharing (REQ-F-027) for cross-user deduplication
+
+---
+
+### REQ-F-030: Dish-Level Caching
+
+**Description:** System must cache individual dish classifications at a granular level, allowing reuse even when menu layout changes or user scans different pages.
+
+**Rationale:** Restaurants often have the same dishes across multiple locations or reprint menus with layout changes. Caching at dish level (not just full menu) maximizes cache hit rate and cost savings.
+
+**Priority:** Must Have (CRITICAL for cost)
+
+**Status:** Draft
+
+**Related:**
+- REQ-NF-013: LLM Cost Optimization
+- REQ-F-008: Vegan/Vegetarian Classification
+
+**Acceptance Criteria:**
+- [ ] Create cache key from: dish name (normalized) + ingredients text + cuisine context
+- [ ] Store: translation, classification, confidence, reasoning per dish
+- [ ] Match dishes even if menu layout/formatting differs
+- [ ] Normalize text for matching: lowercase, remove special chars, trim whitespace
+- [ ] Use fuzzy matching (Levenshtein distance) for minor variations
+- [ ] Cache hit = skip LLM call for that dish (€0.00 cost)
+- [ ] Cache miss = LLM classify and store result
+- [ ] Cache persists across sessions (local storage)
+- [ ] Cache size limit: 10,000 dishes (configurable)
+- [ ] LRU eviction when cache full
+
+**Example:**
+- User scans menu in Tokyo restaurant
+- Dish: "Vegetable Tempura - 野菜の天ぷら"
+- Cached: {name_en: "Vegetable Tempura", vegan: false, vegetarian: true, reasoning: "May contain egg in batter"}
+- User scans same restaurant next week: cache hit, €0.00 cost
+- User scans different Tokyo restaurant with same dish: cache hit, €0.00 cost
+
+---
+
+### REQ-F-031: Smart Result Retrieval
+
+**Description:** System must intelligently retrieve previously computed results using image similarity, text matching, and location context to minimize redundant LLM calls.
+
+**Rationale:** Users may accidentally scan the same page twice, or scan slightly different angles of the same menu. Smart retrieval prevents wasteful re-processing.
+
+**Priority:** Must Have (CRITICAL for cost)
+
+**Status:** Draft
+
+**Related:**
+- REQ-NF-013: LLM Cost Optimization
+- REQ-F-029: Menu Duplicate Detection
+- REQ-F-030: Dish-Level Caching
+
+**Acceptance Criteria:**
+- [ ] Multi-level cache hierarchy:
+  - L1: Exact image hash match (same photo) → retrieve all results
+  - L2: Perceptual hash match (similar photo) → retrieve all results
+  - L3: Dish-level text match (same dishes) → retrieve per-dish results
+  - L4: Location + cuisine context → suggest similar dishes
+- [ ] UX for cache hits: "Using previous scan from [timeframe]" (subtle indicator)
+- [ ] User can override: "Scan again" option always available
+- [ ] Track cache hit rate as success metric (target: >70% for returning users)
+- [ ] Smart retrieval completes within 0.3 seconds
+- [ ] Failed retrieval falls back to normal LLM processing
+
+**Business Impact:**
+- First scan at restaurant: €0.01 LLM cost (full processing)
+- Second scan (same menu): €0.00 LLM cost (cache hit)
+- 100-page holiday trip with 50% revisits to same restaurants: €0.50 instead of €1.00
+
+---
+
 ## Bonus Features (Future Enhancement)
 
 ### REQ-F-026: Order Phrase Generation
@@ -685,6 +789,7 @@ _This file is the Single Source of Truth for all functional requirements._
 ## Notes
 
 **Feature Prioritization:**
+- **CRITICAL Must Have:** Cost optimization (REQ-F-029, REQ-F-030, REQ-F-031) - business model viability
 - **Must Have:** Core scanning, classification, and navigation features for v1
 - **Should Have:** History, favorites, quality feedback - enhance usability
 - **Nice to Have:** Community features, phrase generation - future enhancements
@@ -695,9 +800,17 @@ _This file is the Single Source of Truth for all functional requirements._
 - Eric drives nuanced "visible vs. hidden meat" requirements
 - Emma drives pescatarian classification requirements
 
+**Cost-Driven Requirements (CRITICAL):**
+- REQ-F-029: Menu duplicate detection (prevent re-scans)
+- REQ-F-030: Dish-level caching (maximize reuse)
+- REQ-F-031: Smart result retrieval (multi-level cache)
+- Target: <€0.005 per page, 70%+ cache hit rate for returning users
+
 **Technical Dependencies:**
 - OCR: iOS Vision Framework or Google Cloud Vision API
 - Translation: Google Translate API or similar
 - LLM: GPT-4 Vision, Claude, or similar for classification
 - GPS: iOS Core Location
 - Symbol Recognition: Custom trained model or GPT-4 Vision
+- Image Hashing: pHash or dHash for duplicate detection
+- Cache Storage: SQLite or Core Data for local persistence
