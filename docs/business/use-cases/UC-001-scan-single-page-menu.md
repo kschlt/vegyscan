@@ -7,7 +7,7 @@
 
 ## Actors
 
-- **Primary:** [Sarah the Vegan Backpacker](../personas.md#sarah-vegan-backpacker), [Marcus the Health-Conscious Professional](../personas.md#marcus-health-professional)
+- **Primary:** [Anna (Strict Vegan)](../personas.md#strict-vegan-anna), [Ben (Health-Oriented Vegan)](../personas.md#health-vegan-ben)
 - **Secondary:** Any traveler needing menu translation
 
 ## Preconditions

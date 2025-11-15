@@ -7,7 +7,7 @@
 
 ## Actors
 
-- **Primary:** [Emma & Tom the Adventure Travelers](../personas.md#emma-tom-adventurers)
+- **Primary:** [Emma (Pescatarian)](../personas.md#pescatarian-emma)
 - **Secondary:** Any user with multi-page physical menus
 
 ## Preconditions

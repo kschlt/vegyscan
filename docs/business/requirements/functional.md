@@ -191,7 +191,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
-- Persona: [Anna](../personas.md#strict-vegan-anna), [Ben](../personas.md#flexible-vegan-ben), [David](../personas.md#strict-vegetarian-david), [Eric](../personas.md#practical-vegetarian-eric)
+- Persona: [Anna](../personas.md#strict-vegan-anna), [Ben](../personas.md#health-vegan-ben), [David](../personas.md#strict-vegetarian-david), [Eric](../personas.md#practical-vegetarian-eric)
 - Vision: [Goals #1, #4](../vision.md#goals)
 
 **Acceptance Criteria:**
@@ -216,7 +216,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
-- Persona: [Anna](../personas.md#strict-vegan-anna), [Clara](../personas.md#vegan-allergies-clara)
+- Persona: [Anna](../personas.md#strict-vegan-anna), [Clara](../personas.md#allergy-vegan-clara)
 - Vision: [Scope - Confidence levels](../vision.md#in-scope)
 
 **Acceptance Criteria:**
@@ -393,7 +393,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-002](../use-cases/UC-002-create-multi-page-menu-book.md)
-- Persona: [Emma & Tom](../personas.md#emma-tom-adventurers)
+- Persona: [Emma](../personas.md#pescatarian-emma)
 
 **Acceptance Criteria:**
 - [ ] "Add Page" button available after first scan
@@ -461,7 +461,7 @@ _This file is the Single Source of Truth for all functional requirements._
 
 **Related:**
 - Use Case: [UC-004](../use-cases/UC-004-mark-favorites-and-save-history.md)
-- Persona: [Sarah](../personas.md#sarah-vegan-backpacker), [Emma & Tom](../personas.md#emma-tom-adventurers)
+- Persona: [Anna](../personas.md#strict-vegan-anna), [Emma](../personas.md#pescatarian-emma)
 
 **Acceptance Criteria:**
 - [ ] Favorite icon (heart/star) in dish detail panel
@@ -974,7 +974,7 @@ _This file is the Single Source of Truth for all functional requirements._
 **Status:** Draft (Future)
 
 **Related:**
-- Persona: [Ben](../personas.md#flexible-vegan-ben)
+- Persona: [Ben](../personas.md#health-vegan-ben)
 - Vision: [Bonus Features](../vision.md#bonus-features-future-enhancement)
 
 **Acceptance Criteria:**

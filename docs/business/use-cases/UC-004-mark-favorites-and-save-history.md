@@ -7,7 +7,7 @@
 
 ## Actors
 
-- **Primary:** [Sarah the Vegan Backpacker](../personas.md#sarah-vegan-backpacker), [Emma & Tom the Adventure Travelers](../personas.md#emma-tom-adventurers)
+- **Primary:** [Anna (Strict Vegan)](../personas.md#strict-vegan-anna), [Emma (Pescatarian)](../personas.md#pescatarian-emma)
 - **Secondary:** Any user wanting to remember dishes or restaurants
 
 ## Preconditions

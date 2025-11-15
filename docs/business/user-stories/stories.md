@@ -12,7 +12,7 @@ _Core scanning functionality - capture photo, optimize, extract text, recognize 
 
 ### US-001: Capture Menu Photo with Guide Lines [Draft]
 
-**As a** [Marcus](../personas.md#marcus-health-professional),
+**As a** [Ben (Health-Oriented Vegan)](../personas.md#health-vegan-ben),
 **I want to** see guide lines when photographing a menu,
 **so that** I can quickly align the photo properly without fumbling.
 
@@ -310,7 +310,7 @@ _Scan multiple pages, navigate as menu book_
 
 ### US-016: Scan Multiple Pages [Draft]
 
-**As a** [Emma & Tom (Travelers)](../personas.md#emma-tom-adventurers),
+**As a** [Emma (Pescatarian)](../personas.md#pescatarian-emma),
 **I want to** scan multiple menu pages (appetizers, mains, drinks),
 **so that** I have the complete menu in one place.
 
@@ -329,7 +329,7 @@ _Scan multiple pages, navigate as menu book_
 
 ### US-017: Navigate Between Pages [Draft]
 
-**As a** [Emma & Tom (Travelers)](../personas.md#emma-tom-adventurers),
+**As a** [Emma (Pescatarian)](../personas.md#pescatarian-emma),
 **I want to** swipe between menu pages,
 **so that** I can browse the full menu like flipping physical pages.
 
@@ -493,7 +493,7 @@ _Instant feel, lazy loading, smooth experience_
 
 ### US-025: Instant Feel - < 2 Seconds [Draft]
 
-**As a** [Marcus (Business Traveler)](../personas.md#marcus-health-professional),
+**As a** [Ben (Health-Oriented Vegan)](../personas.md#health-vegan-ben),
 **I want to** see my menu with hotspots in < 2 seconds,
 **so that** I can quickly scan menus during tight lunch breaks.
 
@@ -712,7 +712,7 @@ _Nice-to-have features for post-v1_
 
 ### US-027: Order Phrase Generation [Bonus]
 
-**As a** [Ben (Flexible Vegan)](../personas.md#flexible-vegan-ben),
+**As a** [Ben (Health-Oriented Vegan)](../personas.md#health-vegan-ben),
 **I want to** generate phrases like "without fish sauce" in local language,
 **so that** I can customize dishes when ordering.
 
@@ -776,10 +776,9 @@ _Nice-to-have features for post-v1_
 ### Persona Coverage
 
 - **Anna (Strict Vegan):** US-003, US-008, US-009, US-010, US-011 (high confidence, reasoning)
-- **Ben (Flexible Vegan):** US-010, US-027 (practical, phrases)
+- **Ben (Health-Oriented Vegan):** US-001, US-010, US-025, US-027 (speed, efficiency, practical, phrases)
 - **Eric (Practical Vegetarian):** US-012 (visible vs. hidden meat)
-- **Marcus (Business):** US-001, US-025 (speed, efficiency)
-- **Emma & Tom (Travelers):** US-016, US-017, US-018 (multi-page menus)
+- **Emma (Pescatarian):** US-016, US-017, US-018 (multi-page menus)
 - **All users:** US-002, US-004, US-005, US-006, US-013, US-014, US-020, US-023, US-024
 
 ### Development Phases (Suggestion)
