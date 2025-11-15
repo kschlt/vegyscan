@@ -8,6 +8,50 @@ Chronological record of significant decisions across all domains.
 
 ---
 
+## 2025-11-15: Refine Personas - Purpose-Driven Structure
+
+**Type:** Business / UX
+
+**Decision:** Refined persona set from 8 to 7 personas with explicit "Purpose in Design" structure, clearer literacy levels, and actionable UX implications.
+
+**Key Changes:**
+1. **Added:** Sarah (Social/Flexible Vegetarian) - tests lowest-detail UI, "don't overwhelm" constraints
+2. **Enhanced:** Ben (now "Health-Oriented Vegan") - added health metadata needs (fried/fresh tags)
+3. **Enhanced:** Clara (merged with Grace) - now comprehensive allergy + vegan persona
+4. **Removed:** Fabian (Flexitarian) - replaced by Sarah (clearer vegetarian focus)
+5. **Removed:** Grace (Allergy-Only) - merged into Clara (allergen testing + vegan use case)
+6. **Kept:** Emma (Pescatarian) - valuable for fish vs. meat distinction, future icon system
+
+**New Structure for Each Persona:**
+- **Purpose in Design:** What this persona tests (accuracy, information layering, classification nuance, safety)
+- **Profile:** Demographics, motivation, literacy level, confidence threshold
+- **Domain Knowledge:** What they know vs. don't know (tests edge case detection)
+- **Implications for Requirements:** Functional + Non-functional requirements driven by this persona
+- **UX Needs:** Default view, warning style, progressive disclosure, tolerance for uncertainty
+- **Test Cases:** Specific dishes that test this persona's boundaries
+
+**Literacy Levels Defined:**
+- **Expert:** Anna, Clara (deep knowledge, zero tolerance for uncertainty)
+- **High:** David (knows hidden fish/meat in broths, sauces)
+- **Intermediate:** Ben (knows obvious issues, not edge cases)
+- **Medium:** Eric, Emma (surface-level awareness, doesn't research deeply)
+- **Low:** Sarah (knows obvious meat only, easily overwhelmed)
+
+**Information Layering Guidance:**
+- **Anna, Clara:** Default expanded view (show all details upfront)
+- **Ben, David, Emma:** Default collapsed, expandable on demand
+- **Eric:** Simple overview (won't expand details)
+- **Sarah:** Minimal view (hide everything except yes/no/maybe)
+
+**Impact:** Personas are now directly actionable for requirements definition, architecture design, and UX patterns. Each persona has clear "test purpose" - no mode switching, personas test requirements.
+
+**Detailed Documentation:**
+- [personas.md](../business/personas.md) - Complete rewrite with 7 optimized personas
+
+**Status:** Active
+
+---
+
 ## 2025-11-15: Critical Cost Constraint - Aggressive Caching Required
 
 **Type:** Business / Architecture
