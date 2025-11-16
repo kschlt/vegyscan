@@ -961,6 +961,213 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ---
 
+### REQ-F-036: First-Time User Onboarding
+
+**Description:** System must provide optional onboarding experience for first-time users to introduce core functionality.
+
+**Rationale:** While app should be intuitive without tutorial (REQ-NF-006), brief onboarding reduces friction and sets expectations for new users. Optional design respects power users who want to skip.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Onboarding triggered only on first app launch
+- [ ] 3-screen tutorial (skippable at any time):
+  - Screen 1: "Scan any menu in any language" with camera icon
+  - Screen 2: "See vegan/vegetarian options instantly" with classification demo
+  - Screen 3: "All data stays on your device" with privacy message
+- [ ] "Skip" button visible on all screens
+- [ ] "Get Started" button on final screen
+- [ ] Never shown again after completion or skip
+- [ ] Optional: "Show Tutorial Again" in settings
+
+**Related:**
+- REQ-NF-006: Intuitive First-Time Use
+- Use Case: UC-008 (to be created)
+
+---
+
+### REQ-F-037: User Settings & Preferences
+
+**Description:** System must provide settings screen for user preferences and app configuration.
+
+**Rationale:** Users need control over app behavior, data retention, and privacy settings. Required for GDPR compliance (user control over data).
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Settings accessible from main menu
+- [ ] **Privacy Settings:**
+  - Camera permission status and link to iOS Settings
+  - Photos permission status and link to iOS Settings
+  - Location permission status and link to iOS Settings
+- [ ] **Data Management:**
+  - Clear all scan history (with confirmation)
+  - Clear cache (with confirmation)
+  - Data retention period: 30/60/90 days (default: 90)
+  - Export all data (JSON format) - REQ-F-038
+- [ ] **Preferences (Optional - only if behavior changes):**
+  - Dietary preference: Vegan/Vegetarian/Pescatarian/All (default: All)
+  - Default UI language (if i18n implemented)
+- [ ] **About:**
+  - App version number
+  - Privacy policy link
+  - Terms of service link
+  - Open source licenses (if any)
+  - Support/contact email
+
+**Related:**
+- REQ-NF-022: GDPR Compliance
+- REQ-F-038: Data Export
+- REQ-F-039: Delete Scan History
+- Use Case: UC-011 (to be created)
+
+---
+
+### REQ-F-038: Data Export (GDPR Requirement)
+
+**Description:** System must allow users to export all stored data in machine-readable format.
+
+**Rationale:** GDPR Article 20 (Data Portability) requires users can obtain their data in structured, commonly used format. Legal requirement for EU market.
+
+**Priority:** Must Have (Legal Requirement)
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] "Export Data" button in settings
+- [ ] Exports all user data as JSON file
+- [ ] Data included:
+  - All scanned menus (metadata: date, location if available, restaurant name)
+  - Favorited dishes (dish name, restaurant, date favorited)
+  - User preferences (dietary preference, settings)
+- [ ] Photos NOT included in export (too large, stored locally already)
+- [ ] User can share exported JSON via iOS Share Sheet (email, cloud storage, etc.)
+- [ ] Export includes timestamp and app version for reference
+- [ ] Export format documented in privacy policy
+
+**Example Export Format:**
+```json
+{
+  "export_date": "2025-11-16T14:30:00Z",
+  "app_version": "1.0.0",
+  "menus": [
+    {
+      "id": "uuid",
+      "date_scanned": "2025-11-15T19:00:00Z",
+      "restaurant_name": "Trattoria Roma",
+      "location": {"lat": 41.9028, "lng": 12.4964},
+      "pages": 2,
+      "favorites": ["Pasta Pomodoro", "Insalata Mista"]
+    }
+  ],
+  "preferences": {
+    "dietary_preference": "vegan",
+    "data_retention_days": 90
+  }
+}
+```
+
+**Related:**
+- REQ-NF-022: GDPR Compliance (Data Portability)
+- REQ-F-037: User Settings
+
+---
+
+### REQ-F-039: Delete Scan History
+
+**Description:** System must allow users to delete individual menus or clear all scan history.
+
+**Rationale:** GDPR Article 17 (Right to Erasure) requires users can delete their data. Also practical need for users to manage storage and privacy.
+
+**Priority:** Must Have (Legal Requirement)
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Delete individual menu: Long-press menu in history → Delete option
+- [ ] Confirmation dialog: "Delete this menu? This cannot be undone."
+- [ ] Deleted menu removed from local storage (SQLite + photo files)
+- [ ] Clear all history: Option in settings
+- [ ] Confirmation dialog: "Delete all scanned menus? This cannot be undone."
+- [ ] "Clear All" removes all menus, favorites, and cache
+- [ ] Preferences retained (dietary preference, settings)
+- [ ] User can still use app after clearing all data
+
+**Related:**
+- REQ-NF-022: GDPR Compliance (Right to Erasure)
+- REQ-F-020: Local History Storage
+- REQ-F-037: User Settings
+- Use Case: UC-010 (to be created)
+
+---
+
+### REQ-F-040: View Scan History
+
+**Description:** System must provide browsable history of all scanned menus with search and filter capabilities.
+
+**Rationale:** Users want to revisit previously scanned menus to find restaurants, remember dishes, or show friends. Core value of saving scans.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] History screen accessible from main menu
+- [ ] Display all scanned menus in chronological order (newest first)
+- [ ] Each menu shows:
+  - Thumbnail of first page
+  - Restaurant name (if GPS matched or user-named)
+  - Date scanned
+  - Number of pages (if multi-page)
+  - Location (city/country if GPS available)
+- [ ] Tap menu to reopen in full interactive view
+- [ ] Search by restaurant name or dish name
+- [ ] Filter by:
+  - Date range (Last week, Last month, Last 3 months, All)
+  - Location (if GPS data available)
+  - Favorites only
+- [ ] Empty state if no history: "No scanned menus yet. Scan your first menu!"
+- [ ] Pull to refresh (if needed)
+
+**Related:**
+- REQ-F-020: Local History Storage
+- REQ-F-019: GPS-Based History Matching
+- REQ-F-021: Favorite Dishes
+- Use Case: UC-009 (to be created)
+
+---
+
+### REQ-F-041: Auto-Delete Old Scans (Data Retention)
+
+**Description:** System must automatically delete scans older than user-configured retention period to comply with GDPR data minimization principle.
+
+**Rationale:** GDPR requires data not kept longer than necessary. User control over retention period balances usability with privacy compliance.
+
+**Priority:** Must Have (Legal Requirement)
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Default retention period: 90 days
+- [ ] User can configure in settings: 30/60/90/180 days or Never
+- [ ] Auto-delete runs on app launch
+- [ ] Menus older than retention period automatically deleted
+- [ ] Favorited dishes NOT auto-deleted (user explicitly saved)
+- [ ] User notified if menus auto-deleted: "X old menus deleted to respect your privacy settings"
+- [ ] User can change retention period at any time
+- [ ] Changing retention period applies to future, not retroactive
+
+**Related:**
+- REQ-NF-022: GDPR Compliance (Data Minimization)
+- REQ-F-037: User Settings
+- REQ-F-039: Delete Scan History
+
+---
+
 ## Bonus Features (Future Enhancement)
 
 ### REQ-F-026: Order Phrase Generation
@@ -1044,13 +1251,22 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ## Notes
 
-**Total Functional Requirements: 32** (REQ-F-001 to REQ-F-035, including 3 bonus REQ-F-026 to REQ-F-028)
+**Total Functional Requirements: 41** (REQ-F-001 to REQ-F-041, including 3 bonus REQ-F-026 to REQ-F-028)
 
 **Feature Prioritization:**
-- **CRITICAL Must Have:** Cost optimization (REQ-F-029, REQ-F-030, REQ-F-031) - business model viability
-- **Must Have:** Core scanning, classification, navigation, photo upload (REQ-F-032, REQ-F-033, REQ-F-035)
-- **Should Have:** iOS Share Extension (REQ-F-034), history, favorites, quality feedback - enhance usability
-- **Nice to Have:** Community features, phrase generation, user feedback - future enhancements
+- **CRITICAL Must Have:**
+  - Cost optimization (REQ-F-029, REQ-F-030, REQ-F-031) - business model viability
+  - Legal compliance (REQ-F-038, REQ-F-039, REQ-F-041) - GDPR requirements
+  - Core scanning, classification, navigation (REQ-F-001 to REQ-F-015)
+- **Must Have:**
+  - Photo upload, smart location tagging (REQ-F-032, REQ-F-033, REQ-F-035)
+  - User data management (REQ-F-037, REQ-F-040) - settings and history
+- **Should Have:**
+  - iOS Share Extension (REQ-F-034) - killer feature for pre-visit planning
+  - Onboarding (REQ-F-036) - improved first-time experience
+  - History, favorites, quality feedback - enhance usability
+- **Nice to Have:**
+  - Community features (OUT of v1), phrase generation, user feedback - future enhancements
 
 **Persona-Driven Requirements:**
 - Anna/Clara drive high confidence requirements

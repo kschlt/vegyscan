@@ -108,6 +108,81 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 
 ---
 
+## Accessibility
+
+### REQ-NF-019: VoiceOver Support
+
+**Description:** System must be fully navigable using iOS VoiceOver screen reader for blind and low-vision users.
+
+**Rationale:** Blind and low-vision travelers also eat at restaurants and deserve equal access to menu information. Accessibility is both a legal requirement and ethical obligation.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] All UI elements have descriptive accessibility labels
+- [ ] All images have accessibility descriptions (menu photos describe cuisine type/layout)
+- [ ] Dish classifications announced clearly by VoiceOver ("Pasta Carbonara, Contains Meat, High Confidence")
+- [ ] All interactive elements (buttons, hotspots) have clear labels and hints
+- [ ] Dish detail panel fully navigable with VoiceOver
+- [ ] Multi-page menus: Page number announced when swiping
+- [ ] Error messages announced by VoiceOver
+
+**Related:**
+- Vision: [Target Users - Inclusive design](../vision.md#target-users)
+
+---
+
+### REQ-NF-020: Dynamic Type Support
+
+**Description:** System must respect user's iOS Dynamic Type text size preferences and scale all text appropriately.
+
+**Rationale:** 30% of iPhone users increase default text size. Low-vision users, elderly users, and those with reading difficulties rely on larger text.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] All text scales with iOS Dynamic Type settings
+- [ ] Layout adapts gracefully to larger text sizes (no truncation)
+- [ ] All text remains readable at largest accessibility size
+- [ ] Interactive elements maintain minimum tap target size (44x44pt) at all sizes
+- [ ] No horizontal scrolling required at larger text sizes
+
+**Related:**
+- REQ-NF-006: Intuitive First-Time Use (readability is part of usability)
+
+---
+
+### REQ-NF-021: Color Contrast & Color-Blind Accessibility
+
+**Description:** System must meet WCAG 2.1 Level AA color contrast requirements and not rely solely on color to convey information.
+
+**Rationale:** 8% of men and 0.5% of women have color vision deficiency. Legal requirement in many markets (ADA, EU accessibility laws). Benefits all users in bright sunlight or low-light conditions.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] All text meets WCAG 2.1 Level AA contrast ratio (4.5:1 for normal text, 3:1 for large text)
+- [ ] Vegan/vegetarian classifications use icons + text, not color alone
+- [ ] Interactive elements clearly distinguishable from non-interactive (not just color)
+- [ ] Error states use icons/text in addition to color
+- [ ] All information conveyed by color is also conveyed another way (shape, icon, text)
+
+**Examples:**
+- ✅ Good: Green checkmark icon + "Vegan" text
+- ❌ Bad: Green text only (color-blind users can't distinguish)
+
+**Related:**
+- REQ-NF-017: Icon-Based UI (icons help accessibility)
+- Vision: [Success Criteria - No information overload](../vision.md#success-criteria)
+
+---
+
 ## Platform & Compatibility
 
 ### REQ-NF-007: iOS-Only (v1)
@@ -189,6 +264,111 @@ _This file is the Single Source of Truth for all non-functional requirements (qu
 **Priority:** Must Have
 
 **Status:** Draft
+
+---
+
+## Legal & Compliance
+
+### REQ-NF-022: GDPR Compliance
+
+**Description:** System must comply with EU General Data Protection Regulation (GDPR) requirements for data collection, storage, and user rights.
+
+**Rationale:** Legal requirement for operating in EU market. Non-compliance can result in fines up to 4% of revenue or €20 million. Builds user trust through transparent data practices.
+
+**Priority:** Must Have (Legal Requirement)
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Privacy policy accessible from app (before first use and in settings)
+- [ ] User can export all stored data in machine-readable format (JSON/CSV) - Data portability (Article 20)
+- [ ] User can delete all stored data from device - Right to be forgotten (Article 17)
+- [ ] User consent obtained before accessing location, photos, camera
+- [ ] Data retention policy enforced: Menus auto-deleted after 90 days (configurable in settings)
+- [ ] No data shared with third parties without explicit consent
+- [ ] User can withdraw consent for location/photo access and delete associated data
+
+**Data Collected (for GDPR transparency):**
+- Menu photos (stored locally on device only)
+- GPS coordinates (if user grants permission, stored with menu)
+- Scan history (dates, restaurant names if GPS available)
+- Favorited dishes
+- User preferences (dietary preference, language)
+
+**Data NOT Collected:**
+- No user account information (no sign-in in v1)
+- No data sent to cloud (except OCR text sent to LLM API for classification)
+- LLM API does not retain user data (verify with provider)
+
+**Related:**
+- REQ-NF-010: Data Persistence - Local Storage
+- REQ-NF-011: GPS Privacy
+- Vision: [Strategic Decisions - Privacy-first](../vision.md#strategic-decisions-and-constraints)
+
+---
+
+### REQ-NF-023: App Store Privacy Labels & Requirements
+
+**Description:** System must accurately declare data collection practices in Apple App Store privacy labels.
+
+**Rationale:** Required by Apple App Store Review Guidelines. Inaccurate labels result in app rejection. Builds user trust through transparency.
+
+**Priority:** Must Have (Legal Requirement)
+
+**Status:** Draft
+
+**Acceptance Criteria:**
+- [ ] Privacy labels accurately reflect data collection:
+  - **Data Used to Track You:** None
+  - **Data Linked to You:** None (no user accounts in v1)
+  - **Data Not Linked to You:** Photos (not sent to cloud), Precise Location (optional, stored locally)
+- [ ] Privacy policy URL provided in App Store listing
+- [ ] App description clearly states: "All data stored locally on your device. No cloud storage. No user accounts."
+
+**App Store Privacy Label Declaration:**
+```
+Data Not Linked to You:
+- Photos (menu photos stored locally on device)
+- Precise Location (optional, stored with menus for restaurant matching)
+
+Data Used for Analytics:
+- None (or if analytics added: Usage data, anonymized, opt-in)
+```
+
+**Related:**
+- REQ-NF-022: GDPR Compliance
+- Vision: [Strategic Decisions - No user accounts for v1](../vision.md#strategic-decisions-and-constraints)
+
+---
+
+### REQ-NF-024: Privacy-First Analytics (Optional)
+
+**Description:** If analytics are implemented, they must respect user privacy and comply with GDPR.
+
+**Rationale:** Product metrics needed to improve app, but must not compromise user privacy or legal compliance.
+
+**Priority:** Should Have
+
+**Status:** Draft (Future - Not in v1 MVP)
+
+**Acceptance Criteria (if implemented):**
+- [ ] No third-party analytics services (no Google Analytics, Mixpanel, etc.)
+- [ ] Custom analytics implementation or privacy-first service (e.g., TelemetryDeck)
+- [ ] User can opt out in settings (default: opt-in required)
+- [ ] All metrics anonymous (no user identification)
+- [ ] Metrics tracked: Scans per session, error rates, cache hit rates, feature usage counts
+- [ ] No personally identifiable information (PII) collected
+- [ ] Analytics data retention: 12 months maximum
+
+**Recommended Metrics (Privacy-Safe):**
+- Count: Total scans, cache hits, OCR errors, network errors
+- Averages: Scans per session, time to first scan
+- Feature usage: Upload vs. Camera, Share Extension usage, favorites count
+- NO: Location data, menu content, user behavior tracking, cross-session tracking
+
+**Related:**
+- REQ-NF-022: GDPR Compliance
+- Vision: [Success Criteria - Need metrics to validate](../vision.md#success-criteria)
 
 ---
 
