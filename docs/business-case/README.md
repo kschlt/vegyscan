@@ -1,5 +1,120 @@
 # Business Case Documentation
 
+**Last Updated:** 2024-11-17
+**Status:** Living documentation (evolves as we validate hypotheses)
+**Current Phase:** Phase 0 - Planning Complete
+
+---
+
+## 🚀 Start Here
+
+**New to this business case?** Read in this order:
+1. [0-EXECUTION-ROADMAP.md](./0-EXECUTION-ROADMAP.md) - What to do, in what order
+2. [hypotheses.md](./hypotheses.md) - All open questions (no assumptions)
+3. [STATUS.md](./STATUS.md) - Current progress tracking
+
+**Ready to validate?** Go to:
+- [validation/README.md](./validation/README.md) - Phase 1 validation experiments
+
+---
+
+## 📋 Execution Order
+
+This business case follows a **hypothesis-driven, validation-first** approach:
+
+### Phase 1: Critical Validation (2 weeks) → START HERE
+**Goal:** Validate 3 critical assumptions before investing months in development
+
+**Work:**
+- [validation/llm-accuracy-test.md](./validation/llm-accuracy-test.md) - LLM accuracy
+- [validation/willingness-to-pay-survey.md](./validation/willingness-to-pay-survey.md) - Pricing & market
+- [validation/competitor-gap-test.md](./validation/competitor-gap-test.md) - Differentiation
+
+**Decision Gate:** GO / CONDITIONAL GO / NO-GO
+
+---
+
+### Phase 2: Feasibility Study (1-2 weeks)
+**Goal:** Validate we can build this (technical + economic + schedule)
+
+**Work:**
+- [feasibility-study.md](./feasibility-study.md) - Full feasibility analysis
+
+**Decision Gate:** GO / CONDITIONAL GO / NO-GO
+
+---
+
+### Phase 3: Business Model Definition (1 week)
+**Goal:** Define validated business model based on Phase 1 & 2 data
+
+**Work:**
+- [business-model.md](./business-model.md) - Fill with validated data
+- [financial-projections.md](./financial-projections.md) - 3-scenario model
+
+**Decision Gate:** Business model viable?
+
+---
+
+### Phase 4: Go-to-Market Planning (Deferred until MVP)
+**Goal:** Plan launch strategy
+
+**Work:**
+- [go-to-market.md](./go-to-market.md) - Launch & growth strategy
+
+**Status:** ⚪ Deferred (premature to plan GTM before product exists)
+
+---
+
+## 🎯 Key Principles
+
+### 1. No Hard-Coded Assumptions
+**Every strategic decision validated with data, not intuition.**
+
+**Removed assumptions:**
+- ❌ One-time purchase model (now: TO BE VALIDATED)
+- ❌ €8 price point (now: TO BE VALIDATED)
+- ❌ Germany market first (now: TO BE VALIDATED)
+
+**See:** [hypotheses.md](./hypotheses.md) for all open questions
+
+---
+
+### 2. Validation Before Investment
+**Don't build for months before validating core assumptions.**
+
+**Phase 1 tests critical assumptions with ~40 hours of work.**
+
+If Phase 1 fails → STOP (saved months of wasted effort)
+If Phase 1 passes → Confident to invest in development
+
+---
+
+### 3. Living Documentation
+**This business case evolves as we learn.**
+
+**Status tracking:**
+- ⚪ Not Started
+- 🟡 In Progress
+- ✅ Complete
+- ❌ Failed / Rejected
+
+**See:** [STATUS.md](./STATUS.md) for current state
+
+---
+
+### 4. UX as Differentiator
+**Win on experience, not technology.**
+
+**Key insight:** LLM power is commoditized (anyone can call GPT-4)
+**Our advantage:** Purpose-built UX for vegan/vegetarian menu scanning
+- Faster (< 2 seconds)
+- Simpler (one-handed, in-restaurant use)
+- Better (visual context preserved, iOS-native)
+
+**Positioning:** "Same AI, 10x better experience"
+
+---
+
 ## Purpose
 
 This directory contains strategic business groundwork artifacts that validate the market opportunity and assess the viability of the VegyScan product **before** detailed product development begins.
@@ -43,18 +158,56 @@ This is the **pre-project foundation** that answers:
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## 📂 Document Index
+
+### Execution & Status
+- [0-EXECUTION-ROADMAP.md](./0-EXECUTION-ROADMAP.md) - Execution phases & timeline
+- [STATUS.md](./STATUS.md) - Detailed progress tracking
+- [hypotheses.md](./hypotheses.md) - All open questions (no assumptions)
+
+### Phase 1: Validation
+- [validation/README.md](./validation/README.md) - Validation overview
+- [validation/llm-accuracy-test.md](./validation/llm-accuracy-test.md)
+- [validation/willingness-to-pay-survey.md](./validation/willingness-to-pay-survey.md)
+- [validation/competitor-gap-test.md](./validation/competitor-gap-test.md)
+- [validation/DECISIONS.md](./validation/DECISIONS.md) - Validation results
+
+### Phase 2: Feasibility
+- [feasibility-study.md](./feasibility-study.md) - Technical, economic, schedule feasibility
+
+### Phase 3: Business Model
+- [business-model.md](./business-model.md) - Business model canvas, monetization, unit economics
+- [financial-projections.md](./financial-projections.md) - Financial modeling
+
+### Supporting Analysis
+- [market-analysis.md](./market-analysis.md) - Market sizing & trends (simplified for bootstrapped founder)
+- [competitor-analysis.md](./competitor-analysis.md) - Competitive landscape
+
+### Phase 4: GTM (Deferred)
+- [go-to-market.md](./go-to-market.md) - Launch & growth strategy
+
+---
+
 ## Directory Structure
 
 ```
 business-case/
-├── README.md                    # This file
-├── .claude.md                   # AI assistant instructions
-├── market-analysis.md           # Market size, trends, opportunity assessment
-├── competitor-analysis.md       # Competitive landscape and positioning
-├── feasibility-study.md         # Technical, operational, and economic feasibility
-├── business-model.md            # Revenue streams, cost structure, pricing
-├── go-to-market.md              # Customer acquisition and growth strategy
-└── financial-projections.md     # Financial forecasts, ROI, break-even analysis
+├── README.md                        # This file
+├── 0-EXECUTION-ROADMAP.md           # Execution phases (START HERE)
+├── STATUS.md                        # Progress tracking
+├── hypotheses.md                    # Open questions to validate
+├── validation/                      # Phase 1: Critical Validation
+│   ├── README.md                    # Validation overview
+│   ├── llm-accuracy-test.md         # Experiment 1
+│   ├── willingness-to-pay-survey.md # Experiment 2
+│   ├── competitor-gap-test.md       # Experiment 3
+│   └── DECISIONS.md                 # Validation results
+├── market-analysis.md               # Market size, trends, opportunity assessment
+├── competitor-analysis.md           # Competitive landscape and positioning
+├── feasibility-study.md             # Technical, operational, and economic feasibility
+├── business-model.md                # Revenue streams, cost structure, pricing
+├── go-to-market.md                  # Customer acquisition and growth strategy (deferred)
+└── financial-projections.md         # Financial forecasts, ROI, break-even analysis
 ```
 
 ## Artifacts Overview
