@@ -231,11 +231,11 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ### REQ-F-010: Classification Reasoning
 
-**Description:** System must provide transparent reasoning for vegan/vegetarian classification.
+**Description:** System must provide transparent reasoning for vegan/vegetarian classification using uncertainty-aware language that encourages verification rather than blind trust.
 
-**Rationale:** Users need to understand WHY something is/isn't vegan. Builds trust and enables informed decisions.
+**Rationale:** Users need to understand WHY something is/isn't vegan. Builds trust through honesty and enables informed decisions. **CRITICAL (Nov 2025 Research):** Users do NOT trust absolute claims. They trust tools that help them verify intelligently. System must NEVER make absolute guarantees without qualification.
 
-**Priority:** Must Have
+**Priority:** Must Have (CRITICAL for trust)
 
 **Status:** Draft
 
@@ -243,14 +243,58 @@ _This file is the Single Source of Truth for all functional requirements._
 - Use Case: [UC-003](../use-cases/UC-003-view-dish-details.md)
 - Persona: [All vegan/vegetarian personas](../personas.md)
 - Vision: [Goals #4 - Transparent reasoning](../vision.md#goals)
+- User Research: [Trust Mechanisms - Assisted Verification](../user-research-report.md#core-trust-insight-assisted-verification-over-guaranteed-vegan)
+- User Research: [Trust-Building UX - Present Uncertainty as Normal](../user-research-report.md#1-present-uncertainty-as-normal)
+
+**Language Guidelines (Research-Validated):**
+
+**Use Uncertainty Language:**
+- ✅ "This dish **appears to be** vegan"
+- ✅ "**Likely** vegan if you confirm no fish sauce"
+- ✅ "This **might** contain X - please verify"
+- ✅ "Traditionally contains Y - ask to make sure"
+- ❌ "This **IS** vegan" (overly confident without context)
+- ❌ "100% vegan" (false certainty)
+- ❌ "Guaranteed safe" (users distrust guarantees)
+
+**Emphasize Verification Assistance:**
+- ✅ "VegyScan suggests asking: 'Does this have fish sauce?'"
+- ✅ "Let's verify this together - ask about the broth"
+- ❌ "VegyScan guarantees this is vegan"
+
+**Provide Context for Flags:**
+- ✅ "May contain oyster sauce. Why? Oyster sauce is commonly used in Chinese vegetable stir-fries"
+- ✅ "Fish sauce often added to this dish in Thai cuisine - verify with staff"
+- Tappable "Why?" tooltip for every warning
 
 **Acceptance Criteria:**
-- [ ] Explain WHY dish is vegan/not vegan
+- [ ] Explain WHY dish is/isn't vegan using qualifying language ("appears to", "likely", "traditionally")
+- [ ] NEVER use absolute language ("IS vegan", "guaranteed") without qualification
 - [ ] Identify specific animal products ("contains fish sauce", "pork bone broth")
-- [ ] Reference cuisine context ("Belgian fries traditionally fried in animal fat")
-- [ ] Explain uncertainty ("ingredients not clearly listed")
+- [ ] Reference cuisine context ("Belgian fries traditionally fried in animal fat - ask about the oil")
+- [ ] Explain uncertainty ("ingredients not clearly listed - recommend asking staff")
+- [ ] Provide "Why?" explanation for every flag (tappable tooltip)
+- [ ] Frame suggestions as questions to ask, not facts to believe
 - [ ] Reasoning displayed in detail panel
-- [ ] Concise (1-2 sentences max)
+- [ ] Concise (1-2 sentences max) but always with context
+- [ ] Encourage verification: "If staff seems unsure, ask them to check with the chef"
+
+**Examples of Good Reasoning:**
+
+```
+🟢 Appears vegan
+ℹ️ No obvious animal products detected. We recommend confirming:
+   • "Is the broth vegetable-based?"
+   • "Any butter or dairy in the sauce?"
+
+🟡 Likely vegan with modifications
+⚠️ This dish traditionally contains fish sauce
+ℹ️ Ask: "Can you make this without fish sauce?"
+
+🔴 Contains animal products
+❌ Pork bone broth (tonkotsu)
+ℹ️ This type of ramen is made with pork bone stock
+```
 
 ---
 
@@ -1249,6 +1293,73 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ---
 
+### REQ-F-053: Community Dish Confirmation
+
+**Description:** System should allow users to mark individual dishes as "confirmed vegan" after eating and display social proof confirmations to other users ("✓ Confirmed vegan by 3 users").
+
+**Rationale:** **RESEARCH-VALIDATED HIGH VALUE FEATURE.** Deep research (Nov 2025) found vegan travelers heavily rely on community confirmations for dining decisions. HappyCow's >1M paying users proves community trust at scale. Users explicitly seek: *"Has any vegan tried X here?"* Social proof ("3 users confirmed this dish was vegan") significantly reduces anxiety and increases trust while still encouraging personal verification.
+
+**Priority:** **Should Have** for v1.5 or early v2 (Reconsidered from OUT OF SCOPE)
+
+**Status:** Under Review (Based on Deep Research Findings)
+
+**Research Evidence:**
+- *"I only go to restaurants with recent HappyCow reviews confirming vegan options"*
+- *"If multiple reviews say a dish is vegan, I feel a lot less anxious"*
+- Community confirmations provide trust boost without replacing verification: *"HappyCow reviews confirmed the curry was vegan, so I ordered it – but I still asked about fish sauce to be sure"*
+- NO competitor has dish-level community confirmation in menu scanning context = **key differentiator**
+
+**v1.5 Decision Rationale:**
+- **Start simple:** Lightweight implementation (just confirmations, not full reviews)
+- **High value:** Directly addresses trust - #1 barrier to app usage
+- **Network effects:** More users = more confirmations = more trust = more users
+- **Competitive moat:** Community data grows over time, hard to replicate
+- **Engagement:** Users check BEFORE meal (see confirmations) AND AFTER meal (contribute)
+
+**Implementation - Start Simple:**
+- ✅ Simple thumbs up: "Did you confirm this dish was vegan?" [Yes] [No]
+- ✅ Display count + timestamp: "✓ Confirmed vegan by 3 users (last: 2025-10-10)"
+- ✅ Optional 1-line note: "They have vegan mayo if you ask"
+- ❌ NO full review system (v1.5) - keep lightweight
+- ❌ NO ratings, photos, social profile features
+- ❌ NO comments section (v1.5) - just simple confirmations
+
+**Technical Requirements:**
+- Cloud backend for confirmation storage (minimal - just dish hash + GPS + timestamp + user ID)
+- Dish matching algorithm (OCR text similarity + GPS proximity)
+- Data freshness: Show confirmations from last 12 months only
+- Privacy: No personal data exposed, just count + recency
+- Moderation: Simple abuse prevention (rate limiting, report button)
+
+**Related:**
+- User Research: [Community Verification Analysis](../user-research-report.md#community-verification-analysis)
+- User Research: [Feature Priority Matrix #2](../user-research-report.md#2-community-confirmation-system)
+- REQ-NF-016: Future Feature Extensibility (v1 must support adding this)
+
+**Acceptance Criteria (v1.5):**
+- [ ] After meal, app prompts: "Did you confirm this dish was vegan?" [Yes] [No] [Add note]
+- [ ] User confirmation synced to cloud with dish identifier (OCR hash + GPS)
+- [ ] Future scans at same location show: "✓ Confirmed vegan by X users (last: [date])"
+- [ ] Tapping checkmark shows breakdown: "3 confirmations in last 30 days"
+- [ ] Optional 1-line note displayed: e.g., "Ask for no fish sauce"
+- [ ] Data expires after 12 months (menus change)
+- [ ] User can report abuse ("This confirmation is wrong")
+- [ ] Gamification: "You've helped 12 vegans find safe food!"
+
+**UX Guidance:**
+- **Emphasize transparency:** "Community-confirmed, not guaranteed - always verify"
+- **Show recency:** Recent confirmations (< 30 days) more prominent than old ones
+- **No pressure:** Make contribution optional, celebrated, not mandatory
+- **Trust but verify:** Display alongside AI classification, not instead of it
+
+**What This Is NOT:**
+- NOT a full review platform (that's HappyCow)
+- NOT a social network (no profiles, followers, feeds)
+- NOT a guarantee (still encourage verification)
+- NOT replacing REQ-F-027/028 (full community features still v2+)
+
+---
+
 ## Cultural Intelligence & Context (NEW - Based on User Research)
 
 ### REQ-F-042: Cultural Context Database
@@ -1292,21 +1403,45 @@ Country: Japan
    └─ Modifications rarely accepted in traditional restaurants
 ```
 
+**Detailed Database Content (Research Foundation):**
+
+Deep research (Nov 2025) provides extensive cuisine-specific intelligence that should populate this database. See comprehensive breakdown in deep research report for:
+
+- **Thai Cuisine:** Fish sauce (nam pla), oyster sauce, shrimp paste (kapi), with Thai phrases
+- **Japanese Cuisine:** Dashi, katsuobushi, cultural notes about "vegan" not being understood
+- **Chinese Cuisine:** Oyster sauce in stir-fries, lard, chicken powder
+- **Vietnamese Cuisine:** Fish sauce (nước mắm), shrimp paste (mắm tôm)
+- **Indian Cuisine:** Ghee, paneer, cream/yogurt in curries
+- **Italian Cuisine:** Egg in fresh pasta, butter in sauces, rennet in cheeses
+- **Mexican Cuisine:** Lard in beans/tortillas, chicken stock in rice
+- **Middle Eastern, Central/Eastern European** cuisines
+
+Each includes:
+- Hidden ingredients with local names
+- Effective phrases in local language
+- Common oversights travelers make
+- Safe-ish default dishes
+- Cultural notes on how "vegetarian" is understood
+
+**Reference:** See detailed cuisine intelligence in attached deep research report (31-page analysis, Nov 2025) - Section "Cuisine-Specific Intelligence Database"
+
 **Acceptance Criteria:**
 - [ ] Database covers top 20 travel destinations for vegans
 - [ ] Each country includes:
-  - Local terminology for vegan/vegetarian
+  - Local terminology for vegan/vegetarian (with phonetic pronunciation)
   - Vegan awareness level (1-10 scale)
-  - Common hidden ingredients (min 5)
-  - Watch-out dishes (min 5)
-  - Safe local dishes (min 5)
+  - Common hidden ingredients (min 5, with local names and translations)
+  - Watch-out dishes (min 5, with specific warnings)
+  - Safe local dishes (min 5, with modification tips)
   - Cultural eating customs relevant to vegans
-- [ ] Database for each major cuisine type (Thai, Indian, Japanese, Italian, etc.)
-- [ ] Regional variations (Northern vs Southern Thai)
+  - Key phrases to use when ordering (based on research validation)
+- [ ] Database for each major cuisine type (Thai, Indian, Japanese, Italian, Mexican, Chinese, Vietnamese, etc.)
+- [ ] Regional variations (Northern vs Southern Thai, North vs South India)
 - [ ] Downloadable as offline packs (by region)
 - [ ] User can access via "Cultural Tips" panel
 - [ ] Context automatically applied during menu analysis
 - [ ] Database updatable without app update (JSON config)
+- [ ] All content sourced from user research validation (not assumed)
 
 **User Experience:**
 
@@ -1940,7 +2075,7 @@ You're getting an authentic taste of Thailand! 🥭
 
 ## Notes
 
-**Total Functional Requirements: 52** (REQ-F-001 to REQ-F-052, including 3 deferred REQ-F-026 to REQ-F-028)
+**Total Functional Requirements: 53** (REQ-F-001 to REQ-F-053, including 3 deferred REQ-F-026 to REQ-F-028, plus 1 under review REQ-F-053)
 
 **Feature Prioritization:**
 - **CRITICAL Must Have:**

@@ -33,26 +33,35 @@
 3. App identifies cuisine: Thai
 4. App automatically displays "Cultural Context" panel with expand/collapse button
 5. User taps to expand Cultural Context panel
-6. App displays Thai-specific information:
+6. App displays Thai-specific information (based on deep research Nov 2025):
    ```
    💡 You're in Thailand
 
-   ⚠️ Watch out for:
-   • Fish sauce (น้ำปลา) - in most dishes
-   • Shrimp paste (กะปิ) - in curry pastes
-   • Oyster sauce (น้ำมันหอย) - common in stir-fries
+   ⚠️ Watch out for (research-validated):
+   • Fish sauce (น้ำปลา / nam pla) - in MOST dishes, even "vegetarian"
+   • Shrimp paste (กะปิ / kapi) - in curry pastes and sauces
+   • Oyster sauce (น้ำมันหอย / sot hoi nang rom) - common in stir-fries
+
+   ℹ️ Research insight: "I asked if the curry was vegetarian and they said yes,
+   but it had fish sauce. I didn't know I needed to specifically ask."
 
    🌱 Look for these local dishes:
-   • Mango Sticky Rice - usually vegan
-   • Som Tam Jay - vegan papaya salad
-   • Pad Pak Ruam - mixed veg stir-fry
+   • Mango Sticky Rice (ข้าวเหนียวมะม่วง) - usually vegan
+   • Som Tam Jay (ส้มตำเจ) - vegan papaya salad (ask: no fish sauce)
+   • Pad Pak Ruam (ผัดผักรวม) - mixed veg stir-fry (verify oil, no oyster sauce)
 
-   💬 Useful phrases:
-   "ทานอาหารเจ" (Tan ahaan jay) = I eat vegan
-   "มีน้ำปลาไหม" (Mee nam pla mai?) = Does this have fish sauce?
+   💬 Useful phrases (research-validated):
+   "กินเจ ไม่ใส่น้ำปลา ไม่ใส่หอยนางรม"
+   (Gin jay, mai sai nam pla, mai sai sot hoi nang rom)
+   = I eat vegan (jay), no fish sauce, no oyster sauce
 
-   💡 Tip: In Thailand, "เจ" (Jay) means vegan
-   Buddhist food. Restaurants understand this concept.
+   "ไม่ใส่ไข่" (Mai sai khai) = No egg
+
+   💡 Tip: In Thailand, "เจ" (Jay) means Buddhist vegan
+   food. During Thai Vegetarian Festival (Tesagan Gin Jay),
+   many places serve truly vegan food marked with a special symbol.
+
+   📚 Source: Deep research analysis of 50+ vegan traveler stories (Nov 2025)
    ```
 7. User reads context information
 8. User decides to use Smart Vegan Passport
