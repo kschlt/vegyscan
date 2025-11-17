@@ -372,6 +372,125 @@ Data Used for Analytics:
 
 ---
 
+### REQ-NF-025: Trust-Building UX Patterns
+
+**Description:** System must use UX patterns that build user trust through transparency, humility, and emphasis on verification assistance rather than false certainty.
+
+**Rationale:** **RESEARCH-VALIDATED (Nov 2025):** Users do NOT trust absolute claims that a dish is vegan. They trust tools that help them verify intelligently. App must position as **verification assistant**, not guarantee machine. Trust comes from honesty about uncertainty and empowering users to verify themselves.
+
+**Priority:** Must Have (CRITICAL for user trust and retention)
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Trust Mechanisms](../user-research-report.md#trust-mechanisms--verification-behaviors)
+- User Research: [Trust-Building UX Recommendations](../user-research-report.md#trust-building-ux-recommendations)
+- REQ-F-010: Classification Reasoning (language guidelines)
+- Vision: [Positioning - Verification Assistant](../vision.md#positioning-based-on-deep-research-nov-2025)
+
+**Design Principles:**
+
+**1. Present Uncertainty as Normal and Expected**
+- ✅ "Likely vegan, but please verify these points:"
+- ✅ "This dish appears to be vegan based on description"
+- ❌ "This IS vegan" (overly confident without qualification)
+- **Rationale:** Users appreciate when staff admit they're not sure and go check - app should do same
+- Evidence: *"I appreciate when they admit they aren't sure and go check – I trust that more than a quick yes"*
+
+**2. Emphasize Assistive Role (Not Oracle)**
+- Frame VegyScan as *"VegyScan Assistant"* persona throughout app
+- Language patterns:
+  - ✅ "VegyScan suggests asking:"
+  - ✅ "Let's verify this together - ask about the broth"
+  - ✅ "We recommend confirming:"
+  - ❌ "VegyScan guarantees this is vegan"
+  - ❌ "This is definitely safe"
+- Collaborative, supportive tone (not authoritative declarations)
+
+**3. Provide Explanations for Every Flag**
+- Every warning/alert must have tappable "Why?" tooltip or explanation
+- Examples:
+  - "May contain oyster sauce. Why? Oyster sauce is commonly used in Chinese vegetable stir-fries"
+  - "Fish sauce often added to this dish in Thai cuisine - verify with staff"
+- **Benefit:** Educates user, shows app's reasoning, builds credibility through transparency
+
+**4. Visual Cues for Community Data (When Available)**
+- Green checkmark with count for community confirmations: *"✓ Confirmed vegan by 3 users (last: Jan 2025)"*
+- Grey for no confirmations: *"No community confirmations yet – be the first!"*
+- **Transparency:** User sees what's validated by community vs what's AI-only analysis
+- Never hide the source of confidence (AI vs community vs both)
+
+**5. Encourage At-the-Table Verification**
+- After providing questions/analysis, include supportive verification message:
+  - *"If the staff seems unsure, don't hesitate to ask them to double-check with the chef. Your peace of mind matters!"*
+- Aligns app with community's cautious attitude (research shows users verify even with high confidence)
+- **Benefit:** Shows app cares about outcomes, not just giving advice and disappearing
+
+**6. Tone: Reassuring but Not Overconfident**
+- Balance: Reduce anxiety WITHOUT creating false sense of security
+- ✅ "It should be fine if you confirm no fish sauce"
+- ✅ "Most restaurants will understand if you say this..."
+- ✅ "This traditionally contains X - worth asking to be sure"
+- ❌ "This will definitely be fine"
+- ❌ "100% guaranteed vegan"
+- Acknowledge social anxiety: *"It's okay to ask - restaurants handle dietary questions all the time"*
+
+**Acceptance Criteria:**
+
+- [ ] All classification results use qualifying language ("appears to", "likely", "traditionally")
+- [ ] NEVER use absolute language ("IS vegan", "guaranteed") without heavy qualification
+- [ ] Every flag/warning has tappable "Why?" explanation with cultural context
+- [ ] UI copy frames app as "assistant" not "authority" (terminology audit)
+- [ ] Community confirmation data (when available) displayed with transparency about source
+- [ ] At least one verification encouragement message per dish detail view
+- [ ] Tone is supportive and reassuring, acknowledging that asking questions is normal
+- [ ] Error states/uncertainties explained rather than hidden
+- [ ] No "100% Vegan" badges or similar absolute guarantees (forbidden by research)
+- [ ] Visual distinction between AI classification vs community confirmation vs both
+
+**UX Testing Validation:**
+
+Test with users:
+- [ ] "Does this app make you feel confident asking questions?" (target: 80%+ yes)
+- [ ] "Do you trust the app's suggestions?" (target: 75%+ yes)
+- [ ] "Would you still ask staff even with app's guidance?" (target: 60%+ yes = good! Means they're verifying)
+- [ ] "Does the app feel honest about uncertainty?" (target: 85%+ yes)
+
+**Examples of Good vs Bad UX:**
+
+**Good Example (Verification Assistance):**
+```
+🟢 Appears vegan
+ℹ️ No obvious animal products detected in description.
+
+💬 We recommend confirming with staff:
+   • "Is the broth vegetable-based?"
+   • "Any butter or dairy in the sauce?"
+
+[Show in Thai] [Copy questions]
+
+ℹ️ Why these questions? Broths often contain fish stock
+in Thai cuisine, and butter is a common hidden ingredient.
+
+✓ 2 users confirmed this was vegan (last: 2 days ago)
+```
+
+**Bad Example (False Certainty):**
+```
+✅ VEGAN - 100% SAFE
+This dish is guaranteed vegan.
+No need to ask staff.
+
+[Order Now]
+```
+
+**Related:**
+- REQ-F-010: Classification Reasoning (implements this via language)
+- REQ-F-053: Community Dish Confirmation (implements social proof aspect)
+- REQ-NF-006: Intuitive First-Time Use (trust is part of usability)
+
+---
+
 ## Cost Efficiency
 
 ### REQ-NF-013: LLM Cost Optimization

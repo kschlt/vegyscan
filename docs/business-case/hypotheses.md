@@ -326,6 +326,49 @@
 
 ---
 
+### 15. Community Confirmation Value
+**Question:** Would community dish confirmations ("✓ Confirmed vegan by 3 users") significantly increase trust and app value, justifying the complexity of v1.5 implementation?
+
+**Current Status:** ✅ **VALIDATED** (Deep Research November 2025)
+
+**Validation Method:** Deep qualitative research analyzing vegan traveler trust mechanisms and community reliance patterns
+
+**Evidence:**
+- **Strong reliance on community confirmations:** Users plan entire itineraries around HappyCow community reviews: *"I only go to restaurants with recent HappyCow reviews confirming vegan options"*
+- **High trust in social proof:** *"If multiple reviews say a dish is vegan, I feel a lot less anxious"*
+- **Existing behavior validation:** HappyCow has >1M paying users (4.8★, 100k+ reviews), proving community verification works at scale
+- **Active seeking behavior:** Users explicitly search: *"Has any vegan tried X here?"*
+- **Mental model validation:** Community data = initial confidence boost, then personal verification = final check (complementary, not replacement)
+
+**Key Finding:** Community confirmations provide **HIGH value** as trust-building mechanism while still encouraging verification
+
+**Important Caveat:**
+- NOT a replacement for vigilance - users still verify even with community confirmations
+- Data freshness matters (users prefer confirmations < 12 months old)
+- Location specificity important (same restaurant, different branches vary)
+
+**Recommendation:** **Reconsider community confirmation for v1.5 or early v2** (was OUT OF v1 SCOPE)
+
+**Rationale for Priority Increase:**
+1. Directly addresses major trust factor: "Others like me have eaten this and it was safe"
+2. Leverages existing behavior - users already do this on HappyCow/Reddit
+3. Network effects: More users = more data = more trust = more users (virtuous cycle)
+4. **Competitive differentiator:** NO competitor has dish-level community confirmation in menu scanning context
+5. Engagement: Users check BEFORE meal (see confirmations) AND AFTER meal (contribute)
+
+**Implementation Guidance:**
+- Start simple: Just confirmations (✓ + count + date), not full reviews
+- Lightweight cloud infrastructure: Minimal backend (dish hash + GPS + timestamp)
+- Transparent UX: "Community-confirmed, not guaranteed - always verify"
+- See REQ-F-053 for full specification
+
+**Related:**
+- User Research: [Community Verification Analysis](../docs/business/user-research-report.md#community-verification-analysis)
+- REQ-F-053: Community Dish Confirmation
+- Vision: [Strategic Decisions - Community Features Phased Approach](../docs/business/vision.md#strategic-decisions-and-constraints)
+
+---
+
 ## ❌ Removed Assumptions (Previously Hard-Coded)
 
 **These were assumptions that have been REMOVED:**

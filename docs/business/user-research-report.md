@@ -283,6 +283,393 @@ Vegan and vegetarian travelers face **significant, anxiety-inducing challenges**
 
 ---
 
+## Trust Mechanisms & Verification Behaviors
+
+> **Source:** Deep research analysis (November 2025) examining how vegan travelers build trust and verify food safety
+>
+> **Key Insight:** Users do NOT inherently trust absolute claims that a dish is vegan. Instead, they rely on **verification through questions and evidence**.
+
+### Core Trust Insight: Assisted Verification Over "Guaranteed Vegan"
+
+**Critical Finding:** Vegan and vegetarian travelers would trust a tool that **empowers them to verify intelligently** more than one that claims to magically guarantee a dish is vegan without context.
+
+**Evidence:**
+- *"I wish I knew what to ask about for that dish"* - Users seek intelligent assistance, not absolute certainty
+- One traveler read on HappyCow that garlic sauce contained egg. Armed with that knowledge, she "asked the server specifically if it contained dairy or eggs, but he insisted it didn't... Lo and behold, I ask the cook... 'Of course it does, it's garlic mayo.'" - The app's explanation built trust in the need to double-check.
+- Users explicitly express wanting to know **what questions to ask**, not just a yes/no answer
+
+**Implication:** VegyScan should position as an **intelligent verification assistant**, NOT as a guarantee machine. The research question reframed by users is: *"Will users trust an app that empowers them to verify intelligently, rather than one that gives a simple yes/no without context?"* Evidence strongly suggests **yes**.
+
+---
+
+### How Users Currently Verify Food
+
+Through analysis of user stories, a clear verification process emerges:
+
+#### Typical Questioning Strategies
+
+1. **Listing Specific Animal Ingredients** (Most Common & Successful)
+   - Instead of asking "Is this vegan?", users list: "Does this have meat, fish, eggs, or dairy?"
+   - Example: *"No eggs or dairy, while also ordering from vegetarian menus"*
+   - Japan tourism guide advises: *"When ordering, be specific about what you cannot eat. Say no meats, seafoods, or animal products including dashi or stocks"*
+   - **Why this works:** Forces staff to think of each component (meat, milk, butter, etc.) rather than misunderstanding "vegan"
+
+2. **The Allergy Ploy** (Common in Difficult Situations)
+   - Users claim allergy to ensure seriousness: *"You could just say that you're allergic to dairy and eggs"*
+   - Used when "vegan" isn't understood or taken seriously
+   - Ethical conflict for some, but practical strategy
+
+3. **Translation Cards & Pre-Written Phrases**
+   - Physical cards with "I am vegan. I do not eat meat, fish, seafood, dairy, eggs or animal products" in local language
+   - User in Thailand: *"Try and make up a card that says no egg and no fish sauce in Thai so you can show it"*
+   - One user asked native speakers to vet Chinese translation card in online forum
+   - **High success rate** when well-translated, but static (can't cover every possible hidden ingredient)
+
+4. **Double Confirmation Tactics**
+   - Ask waiter, then confirm with person who brings food (if different)
+   - *"If they do that [check with chef], I feel a lot better"*
+   - Some ask to speak to chef directly if waiter seems unsure
+   - Community encourages this: *"Be direct and specific. Also let them know as early as possible"*
+
+---
+
+### Common Verification Oversights (What Users Forget to Ask)
+
+**Pain Point:** Users often don't know what they don't know
+
+**Most Common Oversights:**
+
+1. **Hidden Animal Ingredients** (Cuisine-Specific)
+   - **Fish sauce in Southeast Asia:** *"I asked if the curry was vegetarian and they said yes, but it had fish sauce. I didn't know I needed to specifically ask"*
+   - **Dashi in Japan:** Bonito broth in miso soup, "vegetable" soup made with fish stock
+   - **Broth/Stock:** Rice cooked in meat broth, sauces with chicken bouillon
+   - **Dairy as stealth ingredient:** Butter in tomato sauce, milk powder in breads
+   - **Eggs:** Noodles made with egg, fried rice with egg by default
+
+2. **Cooking Methods**
+   - What oil used for frying (animal fat vs vegetable oil)
+   - Shared cooking surfaces (grills, fryers)
+   - Use of lard in cooking even when dish appears vegetable-based
+
+3. **Menu Language Assumptions**
+   - Trusting "vegetarian" labels without asking further
+   - Example: *"The veggie pad thai was marked as vegan but it contains egg. The staff didn't understand what vegan means"*
+   - Restaurant's definition of "vegetarian" may include fish sauce or cheese
+
+4. **Social Pressure Leading to Skipped Questions**
+   - *"I felt bad holding up the line at a street stall, so I didn't ask about the broth"*
+   - Group dinner pressure - rushing and forgetting questions
+   - *"I know they're busy and I try not to get entitled about it"*
+
+**VegyScan Opportunity:** App can remind users of these oversights they wouldn't think to ask about themselves. It externalizes thoroughness: *"my app is prompting me to ask this"* rather than seeming high-maintenance.
+
+---
+
+### Successful Verification Strategies (What Works)
+
+1. **Research & List-Making Ahead of Time**
+   - Read blogs: *"Vegan in [Country] – what to watch out for"*
+   - Memorize key ingredients for that cuisine (fish sauce in Thai, ghee in India, lard in Mexico)
+   - Prepare translation of "no [specific ingredients]" in local language
+   - **Success rate:** Users who do homework report "far smoother experiences"
+
+2. **Leverage Community Knowledge**
+   - Check HappyCow reviews for specific dish warnings
+   - Reddit threads: *"Has any vegan tried X here?"*
+   - Example: HappyCow review warned about non-vegan sauce; user used that info to ask right question
+   - **Trust signal:** *"If multiple reviews say a dish is vegan, I'll still mention I'm vegan when ordering it, but I feel a lot less anxious"*
+
+3. **Visual Inspection & Final Verification**
+   - Give menu visual scan before eating
+   - *"Sorry, just to double confirm, no butter on this, right?"*
+   - Smell test, appearance check for suspicious ingredients
+   - One user: *"I asked after 10 minutes if it was really vegan. They checked... and confirmed it was actually labneh (dairy)"*
+
+---
+
+## Community Verification Analysis ⭐
+
+> **Research Question:** Would community-confirmed data (e.g., "X users have confirmed this dish is vegan") significantly increase trust?
+>
+> **Answer:** **YES - HIGH VALUE** with strong evidence
+
+### Evidence of Heavy Reliance on Community Data
+
+**HappyCow as Primary Trust Source:**
+- Thailand travel thread responses: *"Download HappyCow app!"*, *"Happy Cow, every time, everywhere"*
+- Users plan entire itineraries around HappyCow listings: *"I only go to restaurants with recent HappyCow reviews confirming vegan options"*
+- Paris user trusted HappyCow review warning about non-vegan sauce, used it to ask right question
+- **4.8★ rating, 100k+ reviews, >1M paying members** proves community trust at scale
+
+**Dish-Level Confirmations Influence Decisions:**
+- Users cite: *"Someone on HappyCow/Reddit said the vegetable curry here is safe if you ask for no fish sauce"*
+- One traveler: *"I saw on HappyCow that 3 vegans had the spring rolls at ___ stand and confirmed they're fried in vegetable oil. So I went for it"*
+- **Without community info:** Users avoid or approach with extreme caution
+- **With community info:** Users feel comfortable trying local cuisine (still verify, but reduced anxiety)
+
+**Community as Collective Wisdom:**
+- *"Paying it forward"* behavior strong - vegans leave reviews to help others
+- Multiple confirmations reduce fear: "3 other vegans marked this dish vegan" = powerful reassurance
+- Users search: *"vegan in [country]"* to find collective advice before trips
+
+---
+
+### Trust in Community Data: Caveats
+
+**Not a Replacement for Vigilance:**
+- Even with positive reviews, users still ask basic verification questions
+- *"HappyCow reviews confirmed the curry was vegan, so I ordered it – but I still asked about fish sauce to be sure"*
+- **Mental model:** Community data = initial confidence boost, then personal verification = final check
+- **No evidence** of users saying "I won't ask questions if app shows confirmed vegan"
+
+**Concerns About Data Freshness:**
+- Users prefer recent confirmations (within last year)
+- Menus and chefs change - *"Check the dates on HappyCow reviews; something from 2018 might no longer apply"*
+- **Mitigation:** Show timestamps, "last confirmed on [date]"
+
+**Location Specificity Matters:**
+- Same restaurant chain, different branches = different staff knowledge
+- **Mitigation:** Confirmations tied to specific location (GPS), not just restaurant name
+
+---
+
+### Recommendation: Build Community Verification Feature
+
+**Priority:** **SHOULD HAVE** for v1.5 or early v2 (reconsider from "OUT OF SCOPE")
+
+**Rationale:**
+1. **Directly addresses major trust factor:** "Others like me have eaten this and it was safe"
+2. **Leverages existing behavior:** Users already do this on HappyCow/Reddit - VegyScan can make it seamless
+3. **Network effects:** More users = more data = more trust = more users (virtuous cycle)
+4. **Differentiator:** NO competitor has dish-level community confirmation in menu scanning context
+
+**Execution - Start Simple:**
+- ✅ Checkmark + count: *"✓ Confirmed vegan by 3 users (last on 2025-10-10)"*
+- ✅ Simple thumbs up/down after eating
+- ✅ Optional short note: *"They have vegan mayo if you ask"*
+- ❌ NO full reviews (v1.5) - keep lightweight
+- ❌ NO social platform features - just confirmations
+
+**User Contribution Loop:**
+- After meal, prompt: *"Did you confirm this dish was vegan?"* [Yes] [No] [Add note]
+- Gamification: *"You've helped 12 vegans find safe food!"*
+- Builds engagement and retention
+
+**Impact Projection:**
+- Users check app BEFORE meal (to see confirmations) AND AFTER meal (to contribute)
+- Increases app stickiness
+- Creates moat: community data = competitive advantage that grows over time
+
+---
+
+## Feature Priority Matrix (Research-Validated)
+
+> **Source:** Deep research analysis synthesizing user demand, trust impact, and feasibility
+>
+> **Purpose:** Guide MVP and v1.5 feature decisions based on evidence, not assumptions
+
+### MUST-HAVE (High Trust Impact, High User Demand)
+
+#### 1. Ingredient Risk Alerts & Question Suggestions (Per Dish) ⭐⭐⭐⭐⭐
+
+**What:** Automatically flag hidden animal ingredients common to that dish/cuisine and suggest exact questions to ask
+
+**Evidence:**
+- Users frequently lament: *"I wish I had known to ask about fish sauce"*, *"I didn't think to ask about..."*
+- They explicitly desire: *"Someone to tell me, for THIS dish, ask about THESE ingredients"*
+- After learning the hard way: *"Lesson learned: always ask if there's fish sauce in 'vegetarian' dishes in Thailand"*
+
+**Trust Impact:** HIGH - Shows app's expertise, prevents mistakes, empowers user
+
+**Complexity:** Medium - Requires curated cuisine-specific database (deep research provides foundation)
+
+**Status:** ✅ Covered by REQ-F-042, REQ-F-043, REQ-F-044 in functional requirements
+
+**Example UX:**
+```
+🔍 Pad Thai
+⚠️ This dish often contains:
+• Fish sauce (น้ำปลา) - in sauce
+• Egg - scrambled into noodles
+
+💬 Ask the waiter:
+"Can you make this without fish sauce and egg?"
+[Copy to clipboard] [Show in Thai]
+```
+
+---
+
+#### 2. Community Confirmation System ⭐⭐⭐⭐⭐
+
+**What:** Allow users to mark dishes as "confirmed vegan" and display social proof to others
+
+**Evidence:**
+- *"I only go to restaurants with recent HappyCow reviews confirming vegan options"*
+- *"If multiple reviews say a dish is vegan, I feel a lot less anxious"*
+- HappyCow's >1M paying users proves community verification works at scale
+- Users actively seek: *"Has any vegan tried X here?"*
+
+**Trust Impact:** VERY HIGH - Taps into social proof and shared experience
+
+**Complexity:** High (database, matching, moderation) but justified by value
+
+**Status:** ⚠️ Currently OUT OF v1 SCOPE (REQ-F-027) - **Recommend reconsidering for v1.5**
+
+**Execution:** Start simple (✓ + count + date), expand later if validated
+
+---
+
+#### 3. Multi-Language Vegan Phrases / Translation Integration ⭐⭐⭐⭐⭐
+
+**What:** Provide translations for key questions and "show the chef" explanations in local language
+
+**Evidence:**
+- *"Try and make up a card that says no egg and no fish sauce in Thai so you can show it"*
+- Users carry printed vegan cards or struggle with Google Translate
+- Many blogs recommend translation cards - indicates unmet need in existing tools
+- User in China asked native speakers to vet translation card in forum
+
+**Trust Impact:** HIGH - Clear communication = correct info = trust in outcomes
+
+**Demand:** HIGH - Numerous posts about needing translation help
+
+**Complexity:** Medium - Translation database needed, TTS optional
+
+**Status:** ✅ Covered by REQ-F-043 (Smart Vegan Passport)
+
+---
+
+#### 4. Transparency in Analysis (Explain Why to Ask) ⭐⭐⭐⭐⭐
+
+**What:** When app flags something, note WHY (e.g., "Traditionally contains shrimp paste")
+
+**Evidence:**
+- Paris example: User appreciated HappyCow explanation of *why* to ask about egg in sauce - compliance increased
+- Users respond positively to knowing context
+- Avoids "black box" effect
+
+**Trust Impact:** HIGH - Shows app is knowledgeable and honest about uncertainty
+
+**Complexity:** Low-Medium - Add explanatory text from ingredient database
+
+**Status:** ✅ Covered by REQ-F-010 (Classification Reasoning)
+
+**Example UX:**
+```
+⚠️ May contain oyster sauce
+ℹ️ Why? Oyster sauce is commonly used in Chinese vegetable stir-fries
+```
+
+---
+
+### SHOULD-HAVE (Moderate Impact, Medium Feasibility)
+
+#### 5. Allergy Mode / "Strict" Warnings
+
+**What:** Option to treat vegan queries like allergies, prompting user to mention allergies for extra caution
+
+**Evidence:** Some users pretend to be allergic to ensure seriousness: *"Just say allergic, it's easier"*
+
+**Trust Impact:** Medium - Not all will use it, but for those who do, adds confidence
+
+**Complexity:** Low - Just changes wording in translations
+
+**Status:** Not yet specified - Could be added as REQ-F-XXX
+
+---
+
+#### 6. Restaurant Vegan-Friendliness Indicator
+
+**What:** Show if restaurant is known to understand vegan needs (via HappyCow data or community)
+
+**Evidence:** *"I only go where staff get it"*
+
+**Trust Impact:** Medium - Helps choose where to eat, sets expectations
+
+**Status:** Could integrate with HappyCow API
+
+---
+
+#### 7. Cuisine-Specific Education Modules
+
+**What:** Brief tips when traveling to new country (e.g., "In Japan, always ask about dashi")
+
+**Evidence:** Many forum posts compile such tips; users search *"vegan in X country"* beforehand
+
+**Impact:** Medium - Not directly part of scanning, but prepares users
+
+**Status:** Covered by REQ-F-042 (Cultural Context Database)
+
+---
+
+### NICE-TO-HAVE (Lower Priority Initially)
+
+- Offline database for key phrases (useful but not critical)
+- Detailed ingredient scanner beyond animal products (Jain diets - niche)
+- Social sharing of restaurant experiences (redundant with HappyCow)
+
+---
+
+### DON'T BUILD ❌
+
+#### 100% Vegan Guarantee Badges
+
+**Why NOT to build:** Research explicitly warns this could backfire
+
+**Evidence:**
+- Users are skeptical of absolute claims: *"No app can be 100% certain because restaurants differ"*
+- Even with app's guidance, users verify critical points with staff
+- Overly confident label might **reduce necessary caution** (dangerous!)
+
+**Instead:** Always frame as "appears to be" + "verify with staff"
+
+**Design Principle:** Never make dish appear infallibly vetted without user confirmation. Focus on **facilitating verification**, not replacing it.
+
+---
+
+### Trust-Building UX Recommendations
+
+> **Purpose:** Design patterns that increase user trust through transparency and humility
+
+#### 1. Present Uncertainty as Normal
+
+- ✅ "Likely vegan, but please verify these points:"
+- ❌ "This IS vegan" (overly confident)
+- **Rationale:** Users appreciate when staff admit they're not sure and go check - app should do same
+
+#### 2. Emphasize Assistive Role
+
+- Frame VegyScan as *"VegyScan Assistant"* persona
+- Language: *"VegyScan suggests asking:"* not *"VegyScan guarantees:"*
+- Collaborative feel: *"Let's make sure! Ask if the broth is vegetable."*
+
+#### 3. Provide Explanations for Flags
+
+- Every warning should have tappable *"Why?"* tooltip
+- Example: *"Fish sauce (nam pla) is commonly used even in vegetable dishes in Thai cuisine"*
+- **Benefit:** Educates user, shows app's reasoning, builds credibility
+
+#### 4. Visual Cues for Community Data
+
+- Green checkmark with count: *"✓ Confirmed vegan by 3 users (last on Jan 2025)"*
+- Grey for no confirmations: *"No community confirmations yet – be the first!"*
+- **Benefit:** Transparency - user sees what's validated vs what's AI-only
+
+#### 5. Encourage At-the-Table Verification
+
+- After providing questions, add note: *"If the staff seems unsure, don't hesitate to ask them to double-check with the chef. Your peace of mind matters!"*
+- Aligns app with community's cautious attitude
+- **Benefit:** Shows app cares about outcomes, not just giving advice
+
+#### 6. Tone: Reassuring but Not Overconfident
+
+- ✅ "It should be fine if you confirm no fish sauce"
+- ❌ "This will be fine"
+- ✅ "Most restaurants will understand if you say this..."
+- Acknowledge social anxiety: *"It's okay to ask - restaurants handle dietary questions all the time"*
+
+---
+
 ## Critical Unmet Needs
 
 ### 1. Accurate, Instant Menu Translation with Dietary Intelligence ⭐⭐⭐⭐⭐
@@ -503,13 +890,18 @@ Vegan and vegetarian travelers face **significant, anxiety-inducing challenges**
 
 ### Core Value Proposition
 
-**"Your Personal Vegan Translator & Food Guardian"**
+**"Your Intelligent Vegan Verification Assistant"**
 
-Eliminate guesswork and anxiety from ordering food abroad for vegans/vegetarians.
+Empower vegan/vegetarian travelers to confidently verify food safety through smart questions and cultural intelligence, not blind guarantees.
 
 **The Promise:**
-- **Functional:** Know what you're eating, anywhere in the world
-- **Emotional:** Stop worrying about food. Start enjoying your travels.
+- **Functional:** Know exactly what questions to ask to verify your food is safe, anywhere in the world
+- **Emotional:** Stop worrying about what you DON'T know to ask. Feel confident verifying food yourself.
+- **Trust:** Get help from an expert assistant, not false certainty from an AI oracle
+
+**Positioning Shift (Based on Deep Research Nov 2025):**
+- ❌ NOT: "AI that tells you if food is vegan" (users don't trust absolute claims)
+- ✅ YES: "Intelligent assistant that helps you verify food is vegan" (users trust verification tools)
 
 ### Must-Have Features (MVP)
 
@@ -574,7 +966,12 @@ Based on pain point severity and user demand:
 - ✅ VegyScan: Instant, offline, purpose-built UI
 - ❌ ChatGPT: Requires typing, internet, can hallucinate
 
-**Unique Position:** Only app combining translation + cultural knowledge + dietary intelligence + community verification in one seamless, offline-capable experience.
+**Unique Position:** Only app combining translation + cultural knowledge + dietary intelligence + dish-level community confirmation in one seamless, offline-capable experience.
+
+**Key Differentiator (Nov 2025 Research):**
+- **Verification assistance** over false guarantees - helps users ask right questions
+- **Community confirmation** at dish-level (not just restaurant-level like HappyCow)
+- **Trust through transparency** - explains WHY to ask, not just WHAT to ask
 
 ### Key Risks
 

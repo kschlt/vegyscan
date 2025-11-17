@@ -6,9 +6,26 @@
 
 ## Vision Statement
 
-**Transform any foreign-language menu into an interactive, digitally-enriched, vegan/vegetarian-friendly super-menu that looks exactly like the original but explains, translates, and evaluates everything.**
+**Transform any foreign-language menu into an interactive, intelligently-assisted verification tool that empowers vegan/vegetarian travelers to confidently verify food safety through smart questions and cultural intelligence.**
 
-Take a photo of a foreign menu → instantly get an interactive, augmented version that preserves the original layout but adds intelligent overlays, translations, hotspots, and vegan/vegetarian insights.
+Take a photo of a foreign menu → instantly get an interactive, augmented version that preserves the original layout but adds intelligent overlays, translations, hotspots, and **most importantly: the exact questions to ask to verify each dish is safe**.
+
+### Positioning (Based on Deep Research Nov 2025)
+
+**We are an INTELLIGENT VERIFICATION ASSISTANT, not a guarantee machine.**
+
+**Research-Validated Insight:** Users do NOT inherently trust absolute claims that a dish is vegan. Instead, they rely on **verification through questions and evidence**. They would trust a tool that **empowers them to verify intelligently** far more than one that claims to magically guarantee a dish is vegan without context.
+
+**Core Mental Model:**
+- ❌ NOT: "AI that tells you if food is vegan" (users distrust absolute claims)
+- ✅ YES: "Intelligent assistant that helps you verify food is vegan" (users trust verification tools)
+
+**What This Means for Product:**
+- We help users ask the RIGHT questions, not give them false certainty
+- We explain WHY to ask something, not just WHAT to ask
+- We provide community social proof, but always encourage personal verification
+- We use qualifying language: "appears to", "likely if you verify", "traditionally contains"
+- We NEVER use absolute language: "IS vegan", "100% guaranteed", "definitely safe"
 
 ## Problem Statement (Research-Validated)
 
@@ -192,13 +209,23 @@ An iOS-native app that transforms foreign-language menus into interactive, augme
 ### What We're NOT Building (Strategic Boundaries)
 
 **Out of scope for v1:**
-- **Community features** - community-shared scans, user feedback, ratings (v2+ consideration)
-- **User accounts/sign-in** - no cloud authentication, local-only storage for v1
+- **Full community platform** - community-shared scans, full reviews, user profiles, ratings (v2+ consideration)
+  - **Note (Nov 2025):** Simple community confirmation (just ✓ + count) reconsidered for v1.5 based on research validation
+- **User accounts/sign-in** - no cloud authentication for v1, local-only storage
+  - May add minimal auth for v1.5 if community confirmation feature prioritized
 - **Allergen tracking** beyond vegan/vegetarian (future v2+ consideration - complexity and liability)
 - **Nutritional information** (calories, macros) - different value proposition
 - **Recipe suggestions** or cooking instructions - not menu-focused
 - **Web version** - iOS-only focus for v1 (leverage native capabilities)
 - **Android app** - iOS-only focus for v1 (resource constraints)
+
+**What We Will NEVER Build (Research-Validated):**
+- **100% Vegan Guarantee Badges** - Research explicitly warns this could backfire
+  - Users are skeptical of absolute claims: *"No app can be 100% certain because restaurants differ"*
+  - Overly confident labels might **reduce necessary caution** (dangerous!)
+  - Instead: Always frame as "appears to be" + "verify with staff"
+  - **Design Principle:** Never make dish appear infallibly vetted without user confirmation
+  - Focus on **facilitating verification**, not replacing it
 
 **Strategic reasons:**
 - **Focus on core value:** Vegan/vegetarian travelers need menu understanding, not social features or nutritional tracking
@@ -215,9 +242,15 @@ _These guide v1 implementation without specifying HOW._
 
 **v1 Scope Constraints:**
 
-- **Community features:** OUT of v1 scope
-  - Community-shared scans, user feedback, social features deferred to v2+
-  - Rationale: Requires cloud storage, different architecture, increased complexity
+- **Community features:** Phased approach (Updated Nov 2025 based on research)
+  - **v1:** NO community features (local-only storage, no cloud, no accounts)
+  - **v1.5 or Early v2:** Simple community confirmation system (reconsidered based on HIGH research validation)
+    - Research validates HIGH value for "Confirmed by X users" social proof
+    - Lightweight implementation: Just confirmations (✓ + count + date), no full reviews
+    - Minimal cloud infrastructure: Just dish hash + GPS + timestamp
+    - Critical: Start simple, expand later if validated
+  - **v2+:** Full community features (sharing, reviews, profiles) if justified by v1.5 validation
+  - Rationale for reconsideration: NO competitor has dish-level community confirmation = key differentiator
   - **Critical:** v1 architecture must be future-compatible (extensible, not rebuildable)
   - Design foundation that can be extended with cloud features later
 
