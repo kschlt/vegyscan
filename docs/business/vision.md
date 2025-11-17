@@ -1,7 +1,7 @@
 # Product Vision
 
-> **Status:** Draft
-> **Last Updated:** 2025-11-15
+> **Status:** Draft (Research-Integrated 2025-11-17)
+> **Last Updated:** 2025-11-17
 > **Working Names:** VegyScan / Veggie Lens / Menu Vision / GreenScan
 
 ## Vision Statement
@@ -10,44 +10,164 @@
 
 Take a photo of a foreign menu → instantly get an interactive, augmented version that preserves the original layout but adds intelligent overlays, translations, hotspots, and vegan/vegetarian insights.
 
-## Problem Statement
+## Problem Statement (Research-Validated)
+
+> **Research Basis:** Analysis of 50+ vegan/vegetarian traveler stories from Reddit, forums, and travel blogs (Nov 2025)
+>
+> **Key Finding:** "Meals are the biggest source of travel stress" for vegan/vegetarian travelers. User research recommends: **"Should VegyScan Be Built? Answer: YES, with high confidence."**
 
 ### Who
-Travelers (especially vegans, vegetarians, and people with dietary restrictions) visiting foreign countries with unfamiliar languages and food cultures.
+Vegan and vegetarian travelers dining at foreign restaurants with unfamiliar languages and food cultures.
 
-### What Problems
+**Target User Validation:**
+- **Primary:** Strict ethical vegans (Anna persona), health-oriented vegans (Ben), strict vegetarians (David)
+- **Secondary:** Practical vegetarians (Eric), pescatarians (Emma), allergy-constrained users (Clara)
+- **Market Size Evidence:** HappyCow has >1M members (4.8★, 100k+ reviews), proving substantial user base exists and pays
 
-**1. Language Barriers**
-- Unfamiliar writing systems (Japanese, Korean, Thai, Arabic, etc.)
-- Mixed-language menus with poor translations
-- Translations alone don't explain what the dish actually is
-- Complex menu layouts with scattered information
+---
 
-**2. Dietary Uncertainty**
-- Hidden animal ingredients in traditional dishes
-- Cooking methods (e.g., Belgian fries fried in animal fat)
-- Broths made with bones/fish (Dashi, Tonkotsu)
-- Local standards and traditions unknown to travelers
-- Symbols and allergen info not understood
+### Critical Pain Points (Research-Validated)
 
-**3. Current Tools Are Inadequate**
+Through deep user research, we identified **5 critical pain points** with severity and frequency ratings:
+
+#### Pain Point #1: Hidden Non-Obvious Ingredients ⚠️ CRITICAL
+**Severity:** Critical | **Frequency:** Very High | **Affects:** ALL vegan/vegetarian travelers
+
+**Research Evidence:**
+- **User Quotes:**
+  - *"Several times I would order the tofu dish to find it came with unadvertised pork, fish or crab"*
+  - *"Strictly 'vegetable' soups usually had egg throughout them"*
+  - *"They often make both rice and beans with lard or chicken broth, so that's something to check"*
+
+**Hidden Ingredients Documented:**
+- Fish sauce in "vegetable" dishes (Thai, Vietnamese cuisine)
+- Dashi (fish stock) in Japanese miso soup, ramen
+- Lard in Chinese pastries, Latin American refried beans
+- Gelatin in desserts, marshmallows
+- Rennet in traditional cheeses
+- Butter in "vegan" dishes (miscommunication)
+
+**Current Inadequate Workarounds:**
+- Granular questioning ("Does this have fish sauce? Chicken stock? Butter?")
+- Researching hidden ingredients by country manually
+- Avoiding complex dishes entirely
+- Sticking to obviously safe foods (fries, fruit)
+
+**Emotional Impact:** Causes betrayal, guilt, distress. For ethical vegans, accidental consumption is traumatic.
+
+---
+
+#### Pain Point #2: Language Barrier + Cultural Gaps ⚠️ CRITICAL
+**Severity:** Critical | **Frequency:** Nearly Universal | **Affects:** ALL travelers in foreign countries
+
+**Research Evidence:**
+- **User Quotes:**
+  - *"If you say you're vegetarian, you may get served fish... If you say you're vegan, lots of people won't understand"*
+  - *"The fact that English was his second language made it difficult to convey what I was trying to avoid... I wondered if he actually understood me"*
+  - *"Lots of people don't realize fish isn't vegetarian"*
+
+**Cultural Knowledge Gaps:**
+- Local concept of "vegetarian" varies by culture (fish may be included)
+- Technical terms invisible to generic translators (Dashi, ghee, rennet)
+- Cooking methods not apparent from translation (Belgian fries in animal fat)
+
+**Current Inadequate Workarounds:**
+- Using multiple translation tools simultaneously (Google Translate + phrasebooks)
+- Carrying Vegan Passport (multilingual explanation cards)
+- Listing every forbidden item individually
+- Using local terminology ("strict vegetarian" in India)
+
+---
+
+#### Pain Point #3: Trust & Verification Anxiety ⚠️ HIGH
+**Severity:** High | **Frequency:** Constant | **Affects:** Safety-conscious users, ethical vegans
+
+**Research Evidence:**
+- **User Quotes:**
+  - *"I'm having a hard time trusting that things... will actually be vegan, or if something will get lost in translation"*
+  - *"I feel nervous/embarrassed/scared asking servers... I wonder if the owner actually understood me"*
+  - *"Is anyone else paranoid eating out?"*
+
+**Emotional Impact:** Chronic anxiety, inability to relax during meals, exhaustion from constant vigilance.
+
+**Current Inadequate Workarounds:**
+- Double and triple-checking with staff
+- Inspecting food closely before eating
+- Having backup snacks in case meal is unsafe
+- Only eating at explicitly vegan restaurants (limits options)
+
+---
+
+#### Pain Point #4: Time-Intensive Multi-Tool Workflow ⚠️ HIGH
+**Severity:** High | **Frequency:** Every Meal | **Affects:** ALL users
+
+**Research Evidence:**
+- **User Quotes:**
+  - *"I feel like I spend more time translating menus than enjoying my meal"*
+  - *"By the time I explained my needs, my friends had often finished their first drink"*
+  - *"First I use Google Lens to translate, then I show the waiter my phone with the translated phrase"*
+
+**Current Fragmented Workflow:**
+Users employ multiple apps/tools in succession:
+1. HappyCow (find restaurant)
+2. Google Translate (translate menu)
+3. Vegan Passport (explain dietary restrictions)
+4. Google Images (research dish names)
+5. Reddit (verify hidden ingredients)
+
+**Impact:** 5-10 minutes to decipher menu vs 2 minutes for others. Drawing unwanted attention, analysis paralysis, battery drain, social pressure.
+
+---
+
+#### Pain Point #5: Limited/Boring Food Options ⚠️ MEDIUM-HIGH
+**Severity:** Medium-High | **Frequency:** Very Common | **Affects:** Users who avoid complexity
+
+**Research Evidence:**
+- **User Quotes:**
+  - *"I survived on nuts, french fries, and raw vegetables... apples and bananas when there seemed to be nothing else"*
+  - *"I ate rice & beans many days... sometimes even that had pork fat... other nights it was junk food for dinner"*
+
+**Impact:** Missing out on local cuisine, nutritional deficiencies, food fatigue, reduced enjoyment of travel.
+
+---
+
+### Why Current Tools Fail (Competitive Gap Validation)
+
+**Research Finding:** Users combine 2-4 tools because **no single solution addresses the full workflow**. Competitive analysis validates 5 high-priority gaps:
 
 **Google Translate Camera:**
-- Doesn't recognize which texts belong together
-- No menu context understanding
-- No dish explanations
-- No vegan/vegetarian intelligence
-- No country/cultural context
-- No interactivity
-- Can't handle multi-page menus
+- ✅ Fast, free, ubiquitous (billions of installs)
+- ❌ **Zero dietary intelligence** - literal translation only, no hidden ingredient detection
+- ❌ No cultural context awareness (doesn't understand Dashi, fish sauce, lard)
+- ❌ No order assistance
+- **User Quote:** *"Google Translate gives you the words but not the ingredients"*
 
 **ChatGPT with Photo:**
-- Delivers unstructured text output
-- Loses menu visual structure
-- No interactive UX
-- Often slow
-- Uncertain classifications without context
-- Hard to use for actual ordering (you still point at the original)
+- ✅ Can classify vegan/vegetarian (when prompted)
+- ❌ **Slow** (30+ seconds) - causes social pressure at restaurant
+- ❌ Loses menu visual structure (unstructured text output)
+- ❌ Requires internet, typing, copy-paste workflow
+- **User Quote:** *"I still ask the waiter even after translating just to be safe"* (trust gap)
+
+**Menu Translator App (Direct Competitor, 2024):**
+- ✅ Menu scanning with dietary icons
+- ❌ **Slow** (10 seconds) vs our <2s target
+- ❌ **No offline mode** (critical gap for travelers)
+- ❌ Uses "educated guess" disclaimers instead of confidence levels (trust gap)
+- ❌ No systematic cultural food knowledge
+
+**AnyMenu (Direct Competitor, 2025):**
+- ✅ Order builder feature (closes scan→ORDER workflow)
+- ❌ **No offline mode** (critical gap)
+- ❌ Generic dietary approach, lacks vegan-specific intelligence
+- ❌ Very new (no established trust, community)
+
+**HappyCow:**
+- ✅ Established brand (>1M members, 4.8★, $4-6 iOS validates WTP)
+- ❌ **Different use case** - restaurant discovery, not menu scanning
+- ❌ Only finds vegan restaurants, doesn't help at non-vegan establishments
+
+**Validated Opportunity:** NO competitor combines menu translation + dietary filtering + cultural intelligence + offline capability in one purpose-built, iOS-native solution.
 
 ## Goals
 

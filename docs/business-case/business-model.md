@@ -2,9 +2,32 @@
 
 ## Executive Summary
 
-> **Instructions:** Complete this section LAST. Provide 3-5 paragraphs covering: (1) Core business model, (2) Revenue streams, (3) Cost structure, (4) Unit economics, and (5) Path to profitability.
+> **Status:** ⚠️ **Partial - Research-Informed, Awaiting Phase 1 Validation**
+>
+> **Research Basis:** Competitive pricing analysis (Nov 2025) provides preliminary business model guidance. Final validation required via Phase 1 willingness-to-pay survey.
 
-**Status:** 🔄 Template - Awaiting Business Model Definition
+**Preliminary Business Model (Research-Informed):**
+
+VegyScan operates as a **premium mobile app for vegan/vegetarian travelers**. The monetization model is **undecided** - competitive research shows multiple viable approaches (one-time purchase, subscription, freemium), each with different trade-offs. Competitive research indicates the **$4-8 price range** exists in this market for premium features.
+
+**Revenue Model Evidence from Competitive Research:**
+- **Multiple models observed**: One-time purchase (HappyCow $4-6, Waygo $6), Freemium (Menu Translator App), Low-cost reference (Vegan Passport $2)
+- **User sentiment varies by model**: HappyCow users say "well worth it" for one-time purchase, butfreemium may lower adoption barriers
+- **Users express willingness to pay**: "I'd pay good money for something I knew I could trust 100%" (user research quote)
+- **⚠️ Critical gap**: No validation on WHICH model users prefer for VegyScan specifically
+
+**Cost Structure:**
+Primary costs are LLM API usage (target: <€0.005 per page via smart caching), development time (solo dev + AI), and App Store fees (30%). The business model requires achieving 70%+ cache hit rate to maintain viable unit economics.
+
+**Path to Profitability:**
+As a bootstrapped side project, profitability depends on: (1) validating optimal price point (Phase 1 survey), (2) achieving technical feasibility targets (Phase 2), and (3) organic user acquisition via App Store, vegan communities (Reddit, Facebook groups), and iOS Share Extension viral loop.
+
+**Critical Validation Needed (Phase 1):**
+- ❓ Which pricing model optimizes adoption + revenue? (One-time vs. Subscription vs. Freemium)
+- ❓ What specific price point within $4-8 range maximizes revenue?
+- ❓ Which market (US/UK vs DE) has highest WTP and lowest CAC?
+
+**Status:** 🔄 Awaiting Phase 1 Van Westendorp survey to finalize business model
 
 ---
 
@@ -168,14 +191,131 @@ Evaluate each revenue model for VegyScan:
 
 ---
 
-#### Recommended Revenue Model
+#### Competitive Pricing Research (Nov 2025)
 
-**Primary Revenue Model:** [e.g., "Freemium with Subscription Tiers"]
+> **Source:** Competitive analysis of similar apps in vegan/dietary restriction space
+>
+> **Status:** ✅ Evidence collected, ⚠️ Final validation needed via Phase 1 survey
 
-**Why This Model:**
-- [Rationale 1: Balances user acquisition and monetization]
-- [Rationale 2: Industry standard for mobile apps]
-- [Rationale 3: Aligns with user value - pay for advanced features]
+**Validated Pricing in Market:**
+
+| App | Price | Model | User Sentiment | Market Position |
+|-----|-------|-------|----------------|-----------------|
+| **HappyCow** | $4-6 iOS (one-time) | One-time purchase | "Well worth it" | Established (>1M members, 4.8★, 100k+ reviews) |
+| **Waygo** | $6 (one-time unlimited) | One-time purchase | "Life saver", "So worth the cost" | Declining (Google caught up on offline OCR) |
+| **Vegan Passport** | $2 (one-time) | One-time purchase | Widely recommended | Long-established (pre-smartphone era) |
+| **Menu Translator App** | Freemium + IAP | Freemium | Unknown conversion | New (2024 launch, ~5k downloads) |
+| **AnyMenu** | Free (currently) | Unknown future monetization | Too new | Very new (2025 launch) |
+
+**Key Insights:**
+
+1. **$4-8 Range is Validated**
+   - HappyCow success at $4-6 proves willingness to pay in this range
+   - Waygo's $6 price validated for food-specific translation
+   - Users describe these prices as "worth it" despite free alternatives existing
+
+2. **One-Time Purchase Model is Proven**
+   - All successful monetized apps use one-time purchase
+   - No established subscription model in this space yet
+   - Users prefer "pay once, own forever" for travel tools
+
+3. **Freemium is Emerging But Unproven**
+   - Menu Translator App uses freemium (too new to assess success)
+   - AnyMenu is currently free (monetization strategy unclear)
+   - No data on conversion rates for freemium in this niche
+
+4. **User WTP Signals from Research**
+   - "I'd pay good money for something I knew I could trust 100%" (user research)
+   - Pain severity is high (CRITICAL-rated pain points)
+   - Users already pay for multiple tools (HappyCow + Vegan Passport + others)
+
+**Preliminary Recommendation (Pre-Validation):**
+
+Based on competitive evidence, **one-time purchase in $4-8 range** is likely optimal starting point because:
+- Proven model in this market (HappyCow, Waygo)
+- Simpler to implement (no subscription infrastructure needed for v1)
+- Aligns with travel tool purchase behavior (buy before trip)
+- Lower friction than recurring charges
+
+**However:** Phase 1 Van Westendorp survey MUST validate:
+- Optimal price point within range ($4.99 vs $6.99 vs $7.99?)
+- Whether subscription model could yield higher LTV
+- Whether freemium increases adoption enough to justify lower ARPU
+
+---
+
+#### Revenue Model Options (All Under Consideration)
+
+**Status:** ⚠️ **Undecided** - Three viable models identified, each with pros/cons. User validation required.
+
+---
+
+**Option 1: One-Time Purchase**
+- **Price Range:** $4.99 - $7.99
+- **Competitive Evidence:** HappyCow ($4-6), Waygo ($6) use this model successfully
+- **Pros:**
+  - Simpler implementation (no subscription infrastructure)
+  - Users own forever (good for seasonal travelers)
+  - Proven in this market segment
+- **Cons:**
+  - High barrier to entry (pay before trying)
+  - Only works with strong reputation/trust
+  - No recurring revenue (lower LTV)
+  - Harder to justify ongoing development costs
+
+---
+
+**Option 2: Subscription (Monthly or Annual)**
+- **Price Range:** $2.99-4.99/month OR $19.99-29.99/year
+- **Competitive Evidence:** Menu Translator App uses freemium/subscription (conversion unknown)
+- **Pros:**
+  - Higher LTV (recurring revenue)
+  - Lower upfront barrier ($2.99/month vs $6.99 one-time)
+  - Justifies ongoing development (users expect updates)
+  - Better for frequent travelers (use multiple times per year)
+- **Cons:**
+  - Requires subscription infrastructure
+  - "Subscription fatigue" - users resist recurring charges
+  - Churn risk if seasonal usage (cancel between trips)
+  - Harder to compete with free tools
+
+---
+
+**Option 3: Freemium (Free Tier + Premium Unlock)**
+- **Free Tier:** 5-10 scans/month OR basic features only
+- **Premium:** $4.99 one-time OR $2.99/month for unlimited
+- **Competitive Evidence:** Menu Translator App uses this (conversion rate unknown)
+- **Pros:**
+  - **Lowest barrier** - users can try before buying
+  - Builds trust through experience (addresses "will this work?" anxiety)
+  - Viral potential (free users recommend to others)
+  - Conversion happens AFTER value is proven
+- **Cons:**
+  - Highest implementation complexity (feature gating, usage tracking)
+  - Support costs for free users
+  - LLM costs for free tier (must optimize caching aggressively)
+  - Risk: Users satisfied with free tier, never convert
+
+---
+
+**Decision Criteria (To Be Validated via User Interviews):**
+
+| Factor | One-Time | Subscription | Freemium |
+|--------|----------|--------------|----------|
+| **User Preference** | ? | ? | ? |
+| **Adoption Barrier** | High (pay first) | Medium (monthly cost) | Low (try free) |
+| **LTV Potential** | Low (one payment) | High (recurring) | Medium (depends on conversion) |
+| **Trust Building** | Requires reviews/reputation | Requires reviews/reputation | Built-in via free trial |
+| **Implementation** | Simple | Medium | Complex |
+| **Revenue Predictability** | Low | High | Medium |
+
+**Critical Open Questions:**
+1. Do users want to "try before they buy" given trust anxiety? → Freemium advantage
+2. Is usage frequent enough to justify subscription? (Multiple trips/year?) → Subscription advantage
+3. Is this a "buy before trip" tool or "ongoing companion"? → One-time vs Subscription
+4. What's the purchase trigger? (Planning trip vs in-restaurant panic?) → Impacts model choice
+
+**Next Step:** User interviews to understand preferences, not just pricing sensitivity
 
 ---
 
