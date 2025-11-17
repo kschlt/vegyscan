@@ -146,6 +146,95 @@ _These guide v1 implementation without specifying HOW._
 - Better than free alternatives (Google Translate, ChatGPT)
 - Positive reviews highlighting speed, accuracy, and trust
 
+## Post-Launch Success Metrics
+
+**Product Metrics (First 3 Months):**
+- **Downloads:** 10,000 total downloads
+- **Active Users:** 60% retention after 1 week, 40% retention after 1 month
+- **Engagement:** Average 5+ menus scanned per active user per trip
+- **Feature Adoption:**
+  - 70%+ of users scan at least one menu
+  - 40%+ of users use history feature
+  - 20%+ of users try iOS Share Extension (UC-007)
+  - 30%+ of users favorite at least one dish
+
+**User Experience Metrics:**
+- **Onboarding:** 90% of users complete first scan within 2 minutes of opening app
+- **Success Rate:** <5% error rate on scans (OCR failures, network errors combined)
+- **Performance:** 95% of scans complete in <2 seconds (perceived response time)
+- **Satisfaction:** 4.5+ stars average rating on App Store
+- **Customer Support:** <2% of users contact support (indicates good UX)
+
+**Business Metrics:**
+- **LLM Cost Efficiency:** <€0.005 per page in LLM API costs (CRITICAL for viability)
+- **Cache Hit Rate:** 70%+ cache hit rate for returning users
+- **Revenue per User:** €8 net revenue per sale (before API costs, after App Store fees)
+- **Refund Rate:** <2% refund rate (indicates product-market fit)
+- **Customer Acquisition Cost (CAC):** <€3 per user (must be profitable at €8 price)
+
+**Technical Health Metrics:**
+- **Crash Rate:** <0.5% sessions (industry standard: <1%)
+- **API Uptime:** 99.5%+ availability (dependent on LLM provider)
+- **OCR Success Rate:** 85%+ of photos successfully extract text
+- **Classification Accuracy:** 90%+ accuracy on vegan/vegetarian classification (measured via user feedback in v2)
+
+**Growth Metrics (3-6 Months):**
+- **Organic Growth:** 60%+ of downloads from organic (App Store search, word-of-mouth, Share Extension)
+- **Viral Coefficient:** >1.2 (each user brings 1.2 new users via sharing)
+- **Geographic Expansion:** Users in 10+ countries
+- **Month-over-Month Growth:** 20%+ growth in monthly active users
+
+**Analytics Implementation (REQ-NF-024):**
+- **Privacy-First:** No third-party analytics, custom implementation or TelemetryDeck
+- **User Opt-In:** Analytics opt-in required (GDPR compliance)
+- **Metrics Tracked:**
+  - Scans per session, scans per user, scans per trip
+  - Feature usage: Upload vs Camera, Share Extension usage, History views
+  - Error rates: OCR failures, network failures, LLM errors
+  - Cache hit rates: Menu-level, dish-level, perceptual hash
+  - Performance: Time to first scan, scan processing time, UI responsiveness
+- **NO Tracking:**
+  - No personally identifiable information (PII)
+  - No location data (respect privacy)
+  - No menu content (privacy-sensitive)
+  - No cross-session user tracking
+
+**Success Thresholds:**
+
+**Green (Exceeding Expectations):**
+- 10,000+ downloads in first 3 months
+- 4.7+ star rating
+- <€0.003 per page LLM costs
+- CAC <€2
+
+**Yellow (Meeting Expectations):**
+- 5,000-10,000 downloads
+- 4.3-4.7 star rating
+- €0.003-0.005 per page costs
+- CAC €2-3
+
+**Red (Below Expectations - Action Required):**
+- <5,000 downloads in 3 months → Increase marketing, improve ASO
+- <4.0 star rating → Critical UX issues, fix immediately
+- >€0.005 per page costs → Business model unsustainable, pivot pricing or caching
+- CAC >€3 → Cannot scale profitably, focus on organic growth
+
+**Break-Even Analysis:**
+- **Revenue per sale:** €8
+- **App Store fee (30%):** €2.40
+- **Net revenue:** €5.60
+- **Target LLM cost (10 scans/user):** €0.05
+- **Available margin:** €5.55 per user
+- **Break-even (covering development):** Depends on development costs (TBD)
+- **Example:** If development costs €20,000, need 3,600 sales to break even
+
+**Long-Term Success Indicators (6-12 Months):**
+- Sustainable growth without paid advertising (organic CAC <€3)
+- Strong App Store ratings (4.5+) indicating product-market fit
+- Low churn (users return app on subsequent trips)
+- Feature requests indicate engagement (users care enough to suggest improvements)
+- Competitor validation (others enter space = market confirmed)
+
 ## Target Users
 
 _[Detailed personas in [personas.md](./personas.md)]_

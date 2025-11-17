@@ -85,3 +85,35 @@ Use [_template.md](./_template.md) as basis for new use cases.
    - Killer feature for pre-visit restaurant planning
    - Duplicate menu detection
    - Status: Draft
+
+### User Lifecycle & Data Management
+
+8. **[UC-008: First-Time User Onboarding](./UC-008-first-time-onboarding.md)**
+   - Optional 3-screen tutorial (skippable)
+   - Privacy-first messaging
+   - No account creation required
+   - Graceful permission handling
+   - Status: Draft
+
+9. **[UC-009: View Scan History](./UC-009-view-scan-history.md)**
+   - Browse all scanned menus chronologically
+   - Search by restaurant or dish name
+   - Filter by date, location, favorites
+   - GPS-based restaurant matching
+   - Empty state handling
+   - Status: Draft
+
+10. **[UC-010: Delete Menu from History](./UC-010-delete-menu-from-history.md)**
+   - Long-press or swipe to delete individual menu
+   - Confirmation dialog (prevent accidents)
+   - Clear all history from settings
+   - GDPR Right to Erasure compliance
+   - Permanent deletion (photos + metadata)
+   - Status: Draft
+
+11. **[UC-011: Manage Settings & Preferences](./UC-011-manage-settings-preferences.md)**
+   - Privacy settings (Camera, Photos, Location permissions)
+   - Data management (Clear cache, Export data, Retention period)
+   - User preferences (optional dietary preference)
+   - About section (Version, Privacy Policy, Support)
+   - Status: Draft

@@ -1,10 +1,225 @@
 # Decision Log
 
-> **Last Updated:** 2025-11-15
+> **Last Updated:** 2025-11-16
 
 Chronological record of significant decisions across all domains.
 
 **Format:** Newest first (reverse chronological)
+
+---
+
+## 2025-11-16: Business Architecture Review - Address Critical Documentation Gaps
+
+**Type:** Business Analysis / Risk Management / Compliance
+
+**Decision:** Conducted comprehensive business architecture review and addressed 10 critical gaps in documentation to ensure complete business analysis before development.
+
+**Context:**
+- Transitioned from "what/how" (technical) to "what/why/for who" (business) analysis
+- Reviewed documentation through lens of business architect
+- Identified gaps that could derail project if not addressed
+
+**Critical Gaps Addressed:**
+
+### 1. Legal & Compliance Requirements (CRITICAL - Legal Requirement)
+
+**Gap:** No GDPR compliance, no App Store privacy requirements documented
+**Impact:** Cannot launch in EU without GDPR compliance, App Store rejection risk
+**Solution Implemented:**
+- **REQ-NF-022:** GDPR Compliance (Must Have)
+  - Privacy policy accessible, data export (Article 20), right to erasure (Article 17)
+  - Data retention policy, user consent mechanisms
+  - Documented what data is collected vs NOT collected
+- **REQ-NF-023:** App Store Privacy Labels & Requirements (Must Have)
+  - Accurate privacy label declaration
+  - No user tracking, local-only storage messaging
+- **REQ-NF-024:** Privacy-First Analytics (Optional)
+  - If analytics needed: opt-in, anonymous, no third-party services
+
+**New Functional Requirements:**
+- **REQ-F-038:** Data Export (GDPR Data Portability) - JSON export via Share Sheet
+- **REQ-F-039:** Delete Scan History (GDPR Right to Erasure) - Individual or bulk delete
+- **REQ-F-041:** Auto-Delete Old Scans (GDPR Data Minimization) - 90-day default retention
+
+**Files Created:**
+- Updated non-functional.md with legal requirements
+
+### 2. Accessibility Requirements (CRITICAL - Legal & Ethical)
+
+**Gap:** No accessibility requirements documented (excludes 15% of users, legal risk)
+**Impact:** Cannot serve blind/low-vision users, ADA/EU accessibility law violations
+**Solution Implemented:**
+- **REQ-NF-019:** VoiceOver Support (Must Have)
+  - Full screen reader navigation, dish classifications announced
+- **REQ-NF-020:** Dynamic Type Support (Must Have)
+  - Text scaling, layout adaptation for low-vision users
+- **REQ-NF-021:** Color Contrast & Color-Blind Accessibility (Must Have)
+  - WCAG 2.1 Level AA compliance, icons + text (not color alone)
+
+**Rationale:** Accessibility is not optional - legal requirement and ethical obligation
+
+### 3. User Lifecycle & Data Management (HIGH Priority)
+
+**Gap:** No use cases for onboarding, settings, data management
+**Impact:** Incomplete product definition, GDPR gaps, poor first-time experience
+**Solution Implemented:**
+
+**New Use Cases:**
+- **UC-008:** First-Time User Onboarding
+  - Optional 3-screen tutorial (skippable)
+  - Privacy-first messaging ("All data stays on your device")
+  - No account creation required
+- **UC-009:** View Scan History
+  - Search by restaurant/dish, filter by date/location/favorites
+  - GPS-based restaurant matching, empty state handling
+- **UC-010:** Delete Menu from History
+  - Long-press or swipe to delete, confirmation dialog
+  - Clear all history from settings, GDPR Right to Erasure compliance
+- **UC-011:** Manage Settings & Preferences
+  - Privacy settings (Camera, Photos, Location permissions)
+  - Data management (Clear cache, Export data, Retention period)
+  - About section (Version, Privacy Policy, Support)
+
+**New Functional Requirements:**
+- **REQ-F-036:** First-Time User Onboarding (Should Have)
+- **REQ-F-037:** User Settings & Preferences (Must Have)
+- **REQ-F-040:** View Scan History (Must Have)
+
+**Total Requirements:** Increased from 35 to 41 functional requirements
+
+### 4. Risk Analysis (HIGH Priority - Business Viability)
+
+**Gap:** No documented risks or mitigation strategies
+**Impact:** Blind to threats that could kill business
+**Solution Implemented:**
+- **Created risks.md** with 11 identified risks across all categories:
+
+**Critical Risks:**
+1. LLM Classification Accuracy Too Low (<90%) - Test EARLY, set go/no-go threshold
+2. LLM API Costs Exceed Viability (>€0.005/page) - Aggressive caching, cost monitoring
+3. Users Don't Trust AI Classifications - Transparency (show reasoning), confidence levels
+
+**High Risks:**
+4. User Acquisition Costs Too High (CAC >€3) - Organic growth focus, viral Share Extension
+5. Competitors Copy Features (Google adds to Lens) - Execution excellence, niche focus
+6. OCR Accuracy Too Low - Quality guidance, graceful failure handling
+
+**Risk Monitoring:** Weekly error rates, monthly risk register review, quarterly comprehensive assessment
+
+**Files Created:**
+- risks.md (comprehensive risk register)
+
+### 5. Constraints & Assumptions Documentation (MEDIUM Priority)
+
+**Gap:** Assumptions scattered, not explicit or testable
+**Impact:** Building on unvalidated beliefs, potential for major pivots later
+**Solution Implemented:**
+- **Created constraints-assumptions.md** documenting:
+
+**Constraints (Cannot Change):**
+- Budget: Resource-constrained (solo/small team)
+- Timeline: 6-9 months for MVP realistic
+- Technology: iOS 16+, VisionKit dependency, LLM API dependency
+- Legal: GDPR compliance required, App Store requirements
+- Market: Niche vegan/vegetarian travelers
+
+**Critical Assumptions (Must Validate):**
+1. Users willing to pay €8 upfront - **Validate via interviews before dev**
+2. LLM accuracy >90% achievable - **Test 100+ menus Week 1**
+3. 70% cache hit rate achievable - **Validate in beta**
+4. Users have internet in restaurants - **Survey target users**
+5. Vegan/vegetarian travel market large enough - **Market research**
+
+**Validation Plan:** Prioritized assumptions requiring immediate testing
+
+**Files Created:**
+- constraints-assumptions.md
+
+### 6. Success Metrics & Analytics (HIGH Priority)
+
+**Gap:** No post-launch KPIs defined, no way to measure success
+**Impact:** Cannot know if product succeeding or failing, no data for decisions
+**Solution Implemented:**
+- **Added to vision.md:** Comprehensive post-launch success metrics
+
+**Product Metrics (First 3 Months):**
+- 10,000 downloads target
+- 60% retention after 1 week, 40% after 1 month
+- 5+ menus scanned per user per trip
+- Feature adoption rates tracked
+
+**Business Metrics:**
+- <€0.005 per page LLM costs (CRITICAL)
+- 70%+ cache hit rate
+- CAC <€3 (must be profitable)
+- <2% refund rate
+
+**Success Thresholds:**
+- Green: 10,000+ downloads, 4.7+ stars, <€0.003/page costs
+- Yellow: 5,000-10,000 downloads, 4.3-4.7 stars
+- Red: <5,000 downloads → action required
+
+**Analytics Implementation:**
+- Privacy-first (no third-party analytics)
+- User opt-in required (GDPR)
+- Track: scans, errors, cache hits, feature usage
+- NO tracking: PII, location, menu content
+
+### 7. Updated Requirements Counts
+
+**Before Business Review:**
+- Functional: 35 requirements (REQ-F-001 to REQ-F-035)
+- Non-Functional: 18 requirements (REQ-NF-001 to REQ-NF-018)
+- Use Cases: 7 (UC-001 to UC-007)
+
+**After Business Review:**
+- Functional: 41 requirements (REQ-F-001 to REQ-F-041) - **+6 critical requirements**
+- Non-Functional: 24 requirements (REQ-NF-001 to REQ-NF-024) - **+6 critical requirements**
+- Use Cases: 11 (UC-001 to UC-011) - **+4 user lifecycle use cases**
+
+**New Requirement Categories:**
+- Legal compliance: REQ-NF-022, REQ-NF-023, REQ-NF-024, REQ-F-038, REQ-F-039, REQ-F-041
+- Accessibility: REQ-NF-019, REQ-NF-020, REQ-NF-021
+- User lifecycle: REQ-F-036, REQ-F-037, REQ-F-040
+
+**Strategic Impact:**
+
+**Strengths Identified:**
+- ✅ Clear problem-solution fit
+- ✅ Well-defined personas with testing purpose
+- ✅ Strong requirements traceability
+- ✅ Rigorous Single Source of Truth principle
+
+**Critical Gaps Closed:**
+- ✅ Legal compliance (GDPR, App Store) - launch blockers resolved
+- ✅ Accessibility (VoiceOver, WCAG) - inclusive design, legal compliance
+- ✅ Risk analysis - threats identified, mitigations defined
+- ✅ Success metrics - can now measure product health
+- ✅ User lifecycle - complete product experience defined
+
+**Deferred for Future Validation:**
+- Market validation (20-30 user interviews) - BEFORE development starts
+- Competitive analysis (deep dive on Google Translate, Lens, ChatGPT)
+- Business model canvas (formalize value proposition, market size)
+- Pricing validation (A/B test €5 vs €8 vs €12)
+
+**Documentation Status:** Ready for handoff to architecture and implementation phases
+
+**Files Modified:**
+- vision.md (added post-launch success metrics)
+- functional.md (added REQ-F-036 to REQ-F-041)
+- non-functional.md (added REQ-NF-019 to REQ-NF-024, reorganized sections)
+- use-cases/README.md (added UC-008 to UC-011)
+
+**Files Created:**
+- UC-008-first-time-onboarding.md
+- UC-009-view-scan-history.md
+- UC-010-delete-menu-from-history.md
+- UC-011-manage-settings-preferences.md
+- risks.md
+- constraints-assumptions.md
+
+**Status:** Active - Documentation complete, ready for development planning
 
 ---
 
