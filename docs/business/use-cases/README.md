@@ -117,3 +117,38 @@ Use [_template.md](./_template.md) as basis for new use cases.
    - User preferences (optional dietary preference)
    - About section (Version, Privacy Policy, Support)
    - Status: Draft
+
+### Cultural Intelligence & Communication (NEW - Based on User Research)
+
+12. **[UC-012: Access Cultural Context and Use Smart Vegan Passport](./UC-012-cultural-context-vegan-passport.md)** ⭐ KILLER FEATURE
+   - Automatic cultural context display for detected country/cuisine
+   - Hidden ingredients warnings specific to culture (dashi in Japan, ghee in India)
+   - Local vegan dish suggestions
+   - Smart Vegan Passport with culturally-adapted terminology
+   - Auto-translation to detected language
+   - Customizable dietary restrictions with visual icons
+   - "Show to Waiter" full-screen mode
+   - Status: Draft
+   - **Priority:** CRITICAL - Top differentiator from competitors
+
+13. **[UC-013: Build and Show Visual Order Basket](./UC-013-visual-order-basket.md)**
+   - Add dishes with modifications to order basket
+   - Professional restaurant slip-style formatting
+   - Display in both local language and English
+   - "Show Order to Waiter" full-screen mode
+   - Edit/remove items before showing
+   - Save order for future visits to same restaurant
+   - Load previously saved orders
+   - Status: Draft
+   - **Priority:** Must Have - Solves communication pain point
+
+14. **[UC-014: Switch Between Photo and Text View with Filtering](./UC-014-dual-view-filtering.md)**
+   - Toggle between Photo View (original menu) and Text View (digital list)
+   - Filter menu items: [All] [Vegan] [Vegetarian] [Can Modify]
+   - Smart sorting: Safest First, Local Dishes, Favorites, Confidence Level
+   - "View in Photo" button - highlights dish in original menu for pointing
+   - Preserve menu item numbers for easy ordering
+   - Search within menu
+   - Seamless view switching with state preservation
+   - Status: Draft
+   - **Priority:** Must Have - Combines analysis + ordering workflow

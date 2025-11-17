@@ -1249,9 +1249,698 @@ _This file is the Single Source of Truth for all functional requirements._
 
 ---
 
+## Cultural Intelligence & Context (NEW - Based on User Research)
+
+### REQ-F-042: Cultural Context Database
+
+**Description:** System must maintain comprehensive database of country/cuisine-specific dietary information including hidden ingredients, cooking methods, local concepts, and traditional vegan dishes.
+
+**Rationale:** CRITICAL DIFFERENTIATOR. User research shows travelers repeatedly encounter hidden ingredients specific to cultures (dashi in Japan, ghee in India, lard in Latin America). Generic translators lack this context. This is the #1 requested feature.
+
+**Priority:** Must Have (CRITICAL - Killer Feature)
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Pain Point #1 - Hidden Ingredients](../user-research-report.md#1-hidden-non-obvious-ingredients)
+- User Research: [Unmet Need #3 - Cultural Context](../user-research-report.md#3-cultural-context--hidden-ingredient-database)
+- REQ-F-012: Cuisine Context Awareness
+
+**Database Structure (per country/cuisine):**
+
+```
+Country: Japan
+├─ Language: Japanese
+├─ Vegan Awareness Level: Low (3/10)
+├─ Local Terminology:
+│  ├─ "Vegan" → "ビーガン" (not widely understood)
+│  ├─ Recommendation: Use full explanation
+│  └─ Alternative: "精進料理" (Shojin Ryori - Buddhist vegan)
+├─ Common Hidden Ingredients:
+│  ├─ だし (Dashi) - fish stock in EVERYTHING
+│  ├─ かつお節 (Katsuobushi) - bonito flakes
+│  └─ みりん (Mirin) - may contain fish
+├─ Watch-Out Dishes:
+│  ├─ Miso Soup → usually made with dashi
+│  ├─ Ramen → broth almost always pork/chicken/fish
+│  └─ Tempura batter → may contain egg
+├─ Safe Local Dishes:
+│  ├─ Edamame (枝豆) - 95% vegan
+│  ├─ Natto (納豆) - fermented soybeans
+│  └─ Onigiri with ume - check for bonito
+└─ Cultural Notes:
+   └─ Modifications rarely accepted in traditional restaurants
+```
+
+**Acceptance Criteria:**
+- [ ] Database covers top 20 travel destinations for vegans
+- [ ] Each country includes:
+  - Local terminology for vegan/vegetarian
+  - Vegan awareness level (1-10 scale)
+  - Common hidden ingredients (min 5)
+  - Watch-out dishes (min 5)
+  - Safe local dishes (min 5)
+  - Cultural eating customs relevant to vegans
+- [ ] Database for each major cuisine type (Thai, Indian, Japanese, Italian, etc.)
+- [ ] Regional variations (Northern vs Southern Thai)
+- [ ] Downloadable as offline packs (by region)
+- [ ] User can access via "Cultural Tips" panel
+- [ ] Context automatically applied during menu analysis
+- [ ] Database updatable without app update (JSON config)
+
+**User Experience:**
+
+When user scans Japanese menu:
+```
+💡 You're in Japan
+
+⚠️ Watch out for:
+• Dashi (fish stock) in most soups
+• Bonito flakes on rice dishes
+• Egg in tempura batter
+
+🌱 Look for these local dishes:
+• Edamame - steamed soybeans
+• Natto - fermented soybeans
+• Vegetable tempura (ask about batter)
+
+💬 Useful phrase:
+"Dashi wa haitte imasuka?"
+(Does this have fish stock?)
+
+💡 Tip: "Vegan" is not widely understood.
+Explain what you don't eat specifically.
+```
+
+**Business Impact:**
+- Solves most painful problem (hidden ingredients)
+- No competitor has this
+- Massive barrier to entry (takes months to build)
+- Network effects (community contributions later)
+
+---
+
+### REQ-F-043: Smart Vegan Passport
+
+**Description:** System must provide customizable, culturally-adaptive vegan passport that generates appropriate explanations based on detected country/language.
+
+**Rationale:** Users currently carry physical Vegan Passport or create translation cards. Digital version can be smarter, adapting to local culture (use "strict vegetarian" in India, full explanation in Japan).
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Unmet Need #4 - Communication Tools](../user-research-report.md#4-seamless-communication-tools)
+- REQ-F-042: Cultural Context Database
+
+**Acceptance Criteria:**
+- [ ] Settings panel: "What I DON'T eat"
+  - [ ] Customizable checkboxes: Meat, Fish, Seafood, Eggs, Dairy, Honey
+  - [ ] Custom additions (for Jain: Onion, Garlic, Root vegetables)
+- [ ] Visual icons for each restriction (🥩, 🐟, 🥚, 🥛, 🍯)
+- [ ] Auto-translation to detected language (from menu scan)
+- [ ] Culturally-adapted terminology:
+  - [ ] India: "I follow strict vegetarian (शुद्ध शाकाहारी)"
+  - [ ] Japan: Full explanation (not just "vegan")
+  - [ ] Thailand: Option for "เจ" (Jay - Buddhist vegan)
+  - [ ] Germany: "Vegan" (widely understood)
+- [ ] Generated message includes:
+  - [ ] Polite greeting in local language
+  - [ ] List of restrictions with icons
+  - [ ] "Can you help me find something I can eat?"
+- [ ] "Show to Waiter" full-screen mode:
+  - [ ] Large, clear text
+  - [ ] Both local language and English
+  - [ ] Icons for visual clarity
+  - [ ] Thank you message
+- [ ] Quick profiles: [Vegan] [Vegetarian] [Custom]
+- [ ] One-tap switch between profiles
+- [ ] Auto-populates from scanned menu (if app detects oyster sauce, adds "Fish Sauce" to passport)
+
+**UI Example:**
+```
+┌─────────────────────────────┐
+│   VEGAN PASSPORT 🌱         │
+├─────────────────────────────┤
+│ What I DON'T eat:           │
+│ ☑️ Meat     (🥩 icon)        │
+│ ☑️ Fish     (🐟 icon)        │
+│ ☑️ Eggs     (🥚 icon)        │
+│ ☑️ Dairy    (🥛 icon)        │
+│ ☑️ Honey    (🍯 icon)        │
+│ ☐ Onion/Garlic (custom)     │
+├─────────────────────────────┤
+│ Generated for Thailand:      │
+│                              │
+│ 🇹🇭 "ดิฉัน/ผมทานอาหารเจ     │
+│  ไม่ทานเนื้อสัตว์ ไข่ นม    │
+│  และปลา คุณช่วยแนะนำอาหาร   │
+│  ที่ฉันทานได้ไหมคะ/ครับ"    │
+│                              │
+│ 🇬🇧 "I eat vegan food.      │
+│  I don't eat meat, fish,    │
+│  eggs, or dairy. Can you    │
+│  help me find something?"   │
+│                              │
+│ [Show to Waiter] button     │
+└─────────────────────────────┘
+```
+
+---
+
+### REQ-F-044: Dish Modification Question Generator
+
+**Description:** System must generate contextual, dish-specific modification questions in local language when dish contains animal products that can potentially be removed/substituted.
+
+**Rationale:** Generic "make it vegan" is not actionable. Users need specific questions: "Can you make Pad Thai without egg and fish sauce, using soy sauce instead?" This is much more effective.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Communication Pain Point](../user-research-report.md#at-restaurant-discovery)
+
+**Acceptance Criteria:**
+- [ ] When dish classified as non-vegan but modifiable:
+  - [ ] Identify specific animal ingredients (egg, fish sauce, butter)
+  - [ ] Generate removal question in local language
+  - [ ] Suggest vegan alternatives if applicable
+- [ ] Question format:
+  ```
+  Can you make [Dish Name] without [Ingredient 1],
+  [Ingredient 2], and [Ingredient 3]?
+  [Optional: Use [Alternative] instead.]
+  ```
+- [ ] Display in both English and local language
+- [ ] Polite phrasing appropriate to culture
+- [ ] "Show to Waiter" full-screen mode
+- [ ] "Copy Text" button (for use in other apps)
+- [ ] "Add to Order Basket" button
+- [ ] Examples per dish analyzed
+
+**Example Output:**
+
+For Pad Thai in Thailand:
+```
+💬 ASK THE WAITER
+
+🇬🇧 English:
+"Can you make the Pad Thai without egg
+and fish sauce? Please use soy sauce instead."
+
+🇹🇭 Thai:
+"ทำผัดไทยไม่ใส่ไข่และน้ำปลา
+ใช้ซีอิ๊วแทนได้ไหมครับ/ค่ะ"
+
+[Show to Waiter]  [Copy Text]  [Add to Order]
+```
+
+For Green Curry in Thailand:
+```
+💬 ASK THE WAITER
+
+🇬🇧 English:
+"Can you make the Green Curry without fish sauce,
+shrimp paste, and oyster sauce?"
+
+🇹🇭 Thai:
+"ทำแกงเขียวหวานไม่ใส่น้ำปลา กะปิ
+และน้ำมันหอยได้ไหมครับ/ค่ะ"
+
+⚠️ Note: Curry paste usually contains shrimp paste.
+Some restaurants can't modify this.
+
+[Show to Waiter]  [Copy Text]  [Add to Order]
+```
+
+---
+
+### REQ-F-045: Visual Order Basket
+
+**Description:** System must allow users to build a visual order in local language showing all dishes and modifications, formatted like a restaurant order slip.
+
+**Rationale:** Reduces back-and-forth with waiter. User shows one screen with complete order including all modifications clearly formatted.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Communication Tools Need](../user-research-report.md#4-seamless-communication-tools)
+- REQ-F-044: Modification Question Generator
+
+**Acceptance Criteria:**
+- [ ] "Add to Order Basket" button on each dish detail
+- [ ] Order basket accessible from main menu
+- [ ] Shows all selected dishes with:
+  - [ ] Dish name in local language
+  - [ ] Menu item number (if available)
+  - [ ] Modifications (❌ symbols for removals, ✅ for additions)
+  - [ ] Both local language and English
+- [ ] "Show Order to Waiter" mode:
+  - [ ] Full-screen view
+  - [ ] Large, clear text
+  - [ ] Restaurant slip styling
+  - [ ] Numbered list
+  - [ ] Thank you message at bottom
+- [ ] Edit order (remove items, adjust modifications)
+- [ ] Clear all
+- [ ] Save order for this restaurant (reorder next visit)
+
+**Visual Design:**
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    📋 MY ORDER           ┃
+┃    คำสั่งของฉัน          ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                          ┃
+┃  ① #24 ผัดไทย             ┃
+┃     (Pad Thai)           ┃
+┃     🚫 ไม่ใส่ไข่          ┃
+┃        (No egg)          ┃
+┃     🚫 ไม่ใส่น้ำปลา       ┃
+┃        (No fish sauce)   ┃
+┃     ✅ ใส่ซีอิ๊ว          ┃
+┃        (Use soy sauce)   ┃
+┃                          ┃
+┃  ② #15 ส้มตำ             ┃
+┃     (Papaya Salad)       ┃
+┃     🚫 ไม่ใส่กุ้งแห้ง     ┃
+┃        (No dried shrimp) ┃
+┃     🚫 ไม่ใส่น้ำปลา       ┃
+┃        (No fish sauce)   ┃
+┃                          ┃
+┃  ③ ข้าวเหนียวมะม่วง      ┃
+┃     (Mango Sticky Rice)  ┃
+┃     ✅ เจ (Vegan)         ┃
+┃                          ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃   ขอบคุณมากครับ/ค่ะ 🙏  ┃
+┃   (Thank you very much)  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+---
+
+### REQ-F-046: Digitalized Menu View with Smart Filtering
+
+**Description:** System must provide text-only view of menu (extracted from scan) with filtering capabilities and cross-reference to original photo.
+
+**Rationale:** User research shows some users prefer clean text list for quick scanning, while others want to point at original menu. Provide both with seamless switching.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Multi-Tool Workflow Pattern](../user-research-report.md#pattern-1-the-multi-tool-workflow)
+
+**Acceptance Criteria:**
+- [ ] Toggle between [Photo View] and [Text View]
+- [ ] Photo View: Original menu with hotspots (existing)
+- [ ] Text View: Clean digitalized text extraction
+  - [ ] All menu items listed
+  - [ ] Preserves menu item numbers (e.g., "#24 Pad Thai")
+  - [ ] Shows price (if detected)
+  - [ ] Vegan/Vegetarian badge on each item
+  - [ ] Confidence level indicator
+- [ ] Filter controls in Text View:
+  - [ ] [All Items] [Vegan] [Vegetarian] [Can Be Modified]
+  - [ ] Filter updates list in real-time
+- [ ] Tap item in Text View:
+  - [ ] Opens detail panel (existing)
+  - [ ] OR "View in Photo" button → switches to Photo View with item highlighted/zoomed
+- [ ] Highlight/zoom feature in Photo View:
+  - [ ] Centers on selected item
+  - [ ] Spotlight effect (dimming background slightly)
+  - [ ] Makes pointing to waiter easy
+- [ ] Switching between views maintains scroll position/selection
+- [ ] Smooth transitions (<300ms)
+
+**User Flow Example:**
+1. User scans menu
+2. App shows Photo View (default)
+3. User taps [Text View] toggle
+4. Sees filtered list: [Vegan] shows 8 items
+5. Selects "Mango Sticky Rice"
+6. Taps "View in Photo"
+7. Photo View zooms to that menu item
+8. User points phone at waiter: "This one, number 12"
+
+---
+
+### REQ-F-047: Prioritized Safe Sorting
+
+**Description:** System must provide intelligent sorting of menu items by safety/suitability level for user's dietary preference.
+
+**Rationale:** User research shows travelers mentally categorize dishes as safe/risky. App should match this decision-making process.
+
+**Priority:** Must Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Decision Making Patterns](../user-research-report.md#decision-making-evaluation)
+
+**Sorting Options:**
+```
+[Sort by: Safest First ▼]
+
+Other options:
+- By Menu Order (default)
+- Local Dishes First
+- Your Favorites First
+- By Confidence Level
+```
+
+**Safest First Logic:**
+```
+🟢 SAFEST OPTIONS (95%+ confidence vegan)
+├─ Fresh Fruit Plate
+├─ Steamed Jasmine Rice
+└─ Mango Sticky Rice
+   "Usually vegan, confirm coconut milk"
+
+🟡 LIKELY VEGAN (70-94% confidence or modifiable)
+├─ Pad Thai ⚙️
+   "Usually has egg & fish sauce → Ask to remove"
+├─ Spring Rolls
+   "Check wrapper (may contain egg)"
+
+🟠 MIGHT BE VEGAN (50-69% confidence)
+├─ Green Curry
+   "Curry paste often has shrimp → Confirm"
+
+🔴 CONTAINS ANIMAL PRODUCTS
+├─ Tom Yum Soup (shrimp, fish sauce)
+├─ Massaman Curry (usually chicken)
+```
+
+**Acceptance Criteria:**
+- [ ] Sorting available in Text View
+- [ ] Visual grouping by safety level
+- [ ] Color coding (green/yellow/orange/red)
+- [ ] Can collapse/expand sections
+- [ ] Badge shows reasoning for classification
+- [ ] Empty sections hidden (if no items in category)
+
+---
+
+### REQ-F-048: Local Dish Highlighting
+
+**Description:** System must identify and badge menu items that are local/traditional dishes to encourage cultural food experiences.
+
+**Rationale:** User research shows major pain point is missing out on local cuisine (eating fries everywhere). Help users find local vegan options.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Pain Point #5 - Limited Options](../user-research-report.md#5-limitedboringfood-options)
+- REQ-F-042: Cultural Context Database
+
+**Acceptance Criteria:**
+- [ ] Detect local dishes from Cultural Context Database
+- [ ] Badge local dishes: 🌍 LOCAL SPECIALTY
+- [ ] In detail panel, show:
+  - [ ] "This is a traditional [Country] dish"
+  - [ ] Brief description
+  - [ ] Typical ingredients
+  - [ ] Vegan status / How to veganize
+- [ ] Sorting option: "Local Vegan First"
+  - [ ] Priority: Local + Vegan > Local + Modifiable > International Vegan
+- [ ] Filtering option: [Show Only Local Dishes]
+- [ ] Highlight local dishes visually in menu
+
+**Example:**
+```
+┌─────────────────────────────┐
+│ 🟢 Mango Sticky Rice         │
+│    🌍 THAI LOCAL SPECIALTY   │
+│    ข้าวเหนียวมะม่วง          │
+│                              │
+│    Traditional Thai dessert  │
+│    Coconut milk, mango, rice │
+│    ✓ Usually vegan           │
+│    ⚠️ Confirm coconut milk   │
+│       has no dairy added     │
+│                              │
+│ Confidence: ⚫⚫⚫ High        │
+└─────────────────────────────┘
+```
+
+---
+
+### REQ-F-049: Context-Aware Favorites
+
+**Description:** System must save favorite dishes by context (country + cuisine type) and intelligently surface them when scanning similar menus.
+
+**Rationale:** Users want to remember good dishes and easily reorder them. Context-aware = "You enjoyed Pad Thai at 3 Thai restaurants - it's here too!"
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Behavioral Patterns](../user-research-report.md#behavioral-patterns)
+- REQ-F-019: Mark Dishes as Favorites
+
+**Acceptance Criteria:**
+- [ ] Save favorites with context:
+  - [ ] Dish name
+  - [ ] Cuisine type (Thai, Indian, Japanese, etc.)
+  - [ ] Country scanned in
+  - [ ] Restaurant name
+  - [ ] Date saved
+  - [ ] User notes (optional)
+  - [ ] Modifications used
+- [ ] Match favorites across menus:
+  - [ ] Same dish at different restaurant
+  - [ ] Same cuisine in different country (Thai restaurant in Japan)
+- [ ] Show favorites in scan results:
+  ```
+  🎉 Great news! Found 8 vegetarian dishes
+
+  💚 2 of them are already your favorites:
+  • Pad Thai (no egg) - You loved this at 3 places
+  • Mango Sticky Rice - Your go-to dessert
+
+  [View All Options →]
+  ```
+- [ ] "Your Favorites" filter in menu view
+- [ ] Export favorites list (for sharing/backup)
+- [ ] Suggest similar dishes: "You like Pad Thai, try Pad See Ew?"
+
+---
+
+### REQ-F-050: Smart Search Shortcuts (Google Maps Integration)
+
+**Description:** System must provide pre-configured search shortcuts for finding restaurants via Google Maps using local terminology.
+
+**Rationale:** Users struggle with what to search for in foreign languages. App should offer ready-made searches.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Pre-Trip Planning Pain](../user-research-report.md#pre-trip-preparation)
+
+**Acceptance Criteria:**
+- [ ] "Find Restaurants" panel in app
+- [ ] Shows context-aware shortcuts based on detected country:
+
+For Thailand:
+```
+┌─────────────────────────────┐
+│ 🔍 FIND RESTAURANTS          │
+├─────────────────────────────┤
+│ Quick searches near you:     │
+│                              │
+│ [Search: "ร้านอาหารเจ"] 🔍   │
+│ (Vegan Buddhist restaurants) │
+│                              │
+│ [Search: "อาหารเจ"] 🔍        │
+│ (Vegan food)                 │
+│                              │
+│ [Search: "vegetarian"] 🔍    │
+│ (English - tourist areas)    │
+├─────────────────────────────┤
+│ Local vegan dishes:          │
+│                              │
+│ 🥭 Mango Sticky Rice         │
+│    [Find on Google Maps] 🔍  │
+│                              │
+│ 🍜 Guay Teow Pak             │
+│    (Veg Noodle Soup)         │
+│    [Find on Google Maps] 🔍  │
+└─────────────────────────────┘
+```
+
+- [ ] Tapping search button opens Google Maps with pre-filled search
+- [ ] Uses user's current location
+- [ ] Searches in appropriate language for region
+- [ ] Returns to VegyScan after (deep linking)
+- [ ] Database of search terms per country (in Cultural Context DB)
+
+---
+
+### REQ-F-051: Restaurant Planning & Map View
+
+**Description:** System must provide map view of all saved restaurants with analyzed menus, enabling trip planning and revisits.
+
+**Rationale:** Users want to organize researched restaurants spatially and quickly navigate to known-safe options.
+
+**Priority:** Should Have
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Pre-Trip Planning](../user-research-report.md#pre-trip-preparation)
+- REQ-F-020: Auto-Save Menu to History
+
+**Acceptance Criteria:**
+- [ ] Map view showing all saved restaurant locations
+- [ ] Pin colors indicate status:
+  - [ ] 🟢 Green: Verified vegan options
+  - [ ] 🟡 Yellow: Vegetarian options available
+  - [ ] 🔵 Blue: Menu scanned, analysis available
+  - [ ] 📷 Gray: Menu photo saved, not analyzed yet
+- [ ] Tap pin to see restaurant quick info:
+  - [ ] Restaurant name
+  - [ ] Number of vegan dishes found
+  - [ ] User notes
+  - [ ] Distance from current location
+  - [ ] Last visited
+  - [ ] Preview of favorite dishes
+- [ ] List view (alternative to map):
+  - [ ] Sorted by distance or last visited
+  - [ ] Filter by: Has vegan options, Has favorites, Visited, Not visited
+- [ ] Quick actions:
+  - [ ] Navigate (opens Apple Maps)
+  - [ ] View menu (opens analyzed menu)
+  - [ ] Add notes
+  - [ ] Mark as visited
+- [ ] Offline maps (cached map tiles for saved area)
+- [ ] Export list (share with travel companions)
+
+**Example List View:**
+```
+┌─────────────────────────────┐
+│      📍 MY SAVED SPOTS       │
+├─────────────────────────────┤
+│ 🟢 Cafe de Nimman            │
+│    ✓ 3 vegan dishes found    │
+│    💚 Pad Thai (favorited)   │
+│    📝 "Great Khao Soi!"      │
+│    📍 0.5 km away            │
+│    [Navigate] [View Menu]    │
+│                              │
+│ 🟡 Indian Palace             │
+│    ✓ 8 vegetarian options    │
+│    ⚠️ Ask for oil not ghee   │
+│    📍 1.2 km away            │
+│    [Navigate] [View Menu]    │
+└─────────────────────────────┘
+```
+
+---
+
+### REQ-F-052: Celebratory Messaging & Positive UX
+
+**Description:** System must use encouraging, celebratory language to reduce anxiety and create positive emotional experiences.
+
+**Rationale:** User research shows food causes significant anxiety. Positive messaging provides emotional relief and joy.
+
+**Priority:** Must Have (UX Philosophy)
+
+**Status:** Draft
+
+**Related:**
+- User Research: [Emotional Journey](../user-research-report.md#emotional-journey)
+- All user-facing messages
+
+**Messaging Principles:**
+- ✅ Encouraging, supportive friend tone
+- ✅ Celebrate wins ("Great news!")
+- ✅ Provide actionable guidance, not just warnings
+- ❌ Never judgmental or preachy
+- ❌ Never panic-inducing
+
+**Example Messages:**
+
+**Good Results:**
+```
+🎉 Great news!
+
+Found 8 vegetarian dishes on this menu!
+
+💚 2 of them are already your favorites:
+• Pad Thai (modified)
+• Mango Sticky Rice
+
+[View All Options →]
+```
+
+**Modest Results:**
+```
+Found 3 dishes that can be made vegan with modifications.
+
+I'll show you exactly what to ask for. 💬
+
+[View Options →]
+```
+
+**Poor Results:**
+```
+❌ BAD: "No vegan options detected. ⚠️"
+
+✅ GOOD:
+"No clear vegan options on this menu yet.
+
+Here are some things to try:
+• Ask about [suggested dishes from cultural DB]
+• Use your Vegan Passport to explain your needs
+• Check nearby restaurants [link to map]
+
+You've got this! 💪"
+```
+
+**Warnings:**
+```
+❌ BAD: "⚠️ WARNING: Contains meat ⚠️"
+
+✅ GOOD:
+"This dish typically includes fish sauce.
+
+Would you like to see how to ask for a vegan version? →"
+```
+
+**Local Dish Found:**
+```
+🌟 Awesome! This is a local specialty and it's vegan!
+
+Mango Sticky Rice is a traditional Thai dessert.
+You're getting an authentic taste of Thailand! 🥭
+```
+
+**Acceptance Criteria:**
+- [ ] All user-facing messages reviewed for tone
+- [ ] Icons used appropriately (🎉, 💚, 🌟, 💬, 💡)
+- [ ] Warnings provide solutions, not just problems
+- [ ] Celebrate local dish discoveries
+- [ ] Acknowledge when things are difficult
+- [ ] Provide encouragement
+- [ ] No fear-mongering or anxiety-inducing language
+
+---
+
 ## Notes
 
-**Total Functional Requirements: 41** (REQ-F-001 to REQ-F-041, including 3 bonus REQ-F-026 to REQ-F-028)
+**Total Functional Requirements: 52** (REQ-F-001 to REQ-F-052, including 3 deferred REQ-F-026 to REQ-F-028)
 
 **Feature Prioritization:**
 - **CRITICAL Must Have:**
