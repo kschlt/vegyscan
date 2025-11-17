@@ -148,9 +148,112 @@
 
 ---
 
+### 6. User Pain Points Exist & Are Severe
+**Question:** Do vegan/vegetarian travelers experience severe, frequent pain points when ordering abroad that justify building this product?
+
+**Current Status:** ✅ **VALIDATED** (Research-backed evidence)
+**Evidence from User Research (2025-11-17):**
+
+**Critical Validation from [User Research Report](../business/user-research-report.md):**
+- **50+ user stories analyzed** from Reddit, forums, travel blogs
+- **5 critical pain points identified** with severity and frequency ratings
+- **Emotional impact documented**: "Meals are the biggest source of travel stress" for this user group
+- **Strong recommendation**: "Should VegyScan Be Built? Answer: YES, with high confidence"
+
+**Pain Point #1: Hidden Non-Obvious Ingredients** (⚠️ CRITICAL Severity, Very High Frequency)
+- User quotes: "Several times I would order tofu to find it came with unadvertised pork", "Strictly 'vegetable' soups usually had egg throughout them"
+- Affects: ALL vegan/vegetarian travelers, especially in Asia
+- Current solution: Granular questioning, avoiding complex dishes entirely (inadequate)
+
+**Pain Point #2: Language Barrier + Cultural Gaps** (⚠️ CRITICAL Severity, Nearly Universal)
+- User quotes: "If you say you're vegetarian, you may get served fish", "Lots of people don't realize fish isn't vegetarian"
+- Affects: ALL travelers in foreign countries
+- Current solution: Multiple translation tools + phrasebooks (inadequate)
+
+**Pain Point #3: Trust & Verification Anxiety** (⚠️ HIGH Severity, Constant Frequency)
+- User quotes: "I'm having a hard time trusting... if something will get lost in translation", "Is anyone else paranoid eating out?"
+- Affects: Safety-conscious vegans, ethical vegans
+- Emotional impact: Chronic anxiety, inability to relax during meals
+
+**Pain Point #4: Time-Intensive Multi-Tool Workflow** (⚠️ HIGH Severity, Every Meal)
+- User quotes: "I feel like I spend more time translating menus than enjoying my meal", "By the time I explained my needs, my friends had often finished their first drink"
+- Workflow: HappyCow + Google Translate + Vegan Passport + research (5-10 minutes per meal)
+- Affects: ALL users, social pressure, battery drain
+
+**Pain Point #5: Limited/Boring Food Options** (⚠️ MEDIUM-HIGH Severity, Very Common)
+- User quotes: "I survived on nuts, french fries, and raw vegetables", "I ate rice & beans many days... sometimes even that had pork fat"
+- Affects: Users who avoid complexity due to uncertainty
+- Impact: Nutritional deficiencies, reduced enjoyment of travel
+
+**Validation Method:** Deep user research complete. See [user-research-report.md](../business/user-research-report.md)
+
+**Decision Criteria:** ✅ PASSED
+- Pain points are **severe** (CRITICAL to HIGH severity ratings)
+- Pain points are **frequent** (Very High to Constant frequency)
+- Pain points are **underserved** (current tools inadequate)
+- Users **explicitly wish for this solution**: "Users explicitly wish for this solution" documented in research
+
+**Impact:** Market need validated. Problem severity justifies dedicated solution.
+
+---
+
+### 7. Features Align with User Needs
+**Question:** Do our planned features directly address the documented user pain points?
+
+**Current Status:** ✅ **VALIDATED** (Research-mapped to requirements)
+**Evidence from User Research + Requirements Mapping (2025-11-17):**
+
+**Pain Point → Feature Mapping:**
+
+| Pain Point | Severity | Planned Feature | Requirement | Validation |
+|------------|----------|----------------|-------------|------------|
+| **Hidden Ingredients** | CRITICAL | Cultural Intelligence Database | REQ-F-012 | ✅ Direct match |
+| **Language + Cultural Gaps** | CRITICAL | Multi-language translation + Context | REQ-F-006, REQ-F-012 | ✅ Direct match |
+| **Trust & Verification Anxiety** | HIGH | Confidence Scoring + Reasoning | REQ-F-009, REQ-F-010 | ✅ Direct match |
+| **Time-Intensive Workflow** | HIGH | Speed <2s + Offline Caching | REQ-NF-001, REQ-F-029-031 | ✅ Direct match |
+| **Limited Food Options** | MEDIUM-HIGH | Menu scanning + Symbol recognition | REQ-F-001, REQ-F-004 | ✅ Direct match |
+
+**Feature Validation Examples:**
+
+**REQ-F-012 (Cuisine Context Awareness) → Addresses Pain Point #1**
+- User need: Detect fish sauce, Dashi, lard, gelatin (hidden ingredients)
+- User quote: "They often make rice and beans with lard or chicken broth"
+- Our solution: Systematic cultural food trap database by cuisine
+- Research validation: "KILLER DIFFERENTIATOR" - no competitor has this
+
+**REQ-F-009 + REQ-F-010 (Confidence + Reasoning) → Addresses Pain Point #3**
+- User need: Trust in classification results
+- User quote: "I'd pay good money for something I knew I could trust 100%"
+- Our solution: Transparent confidence levels (⚫⚫⚫/⚫⚫◯/⚫◯◯) + reasoning
+- Research validation: Competitive gap - all competitors use black-box AI or disclaimers
+
+**REQ-NF-001 (Speed <2s) → Addresses Pain Point #4**
+- User need: Fast results without social pressure
+- User quote: "I felt awkward taking forever to order while everyone waited"
+- Our solution: <2 second response time (5x faster than Menu Translator's 10s)
+- Research validation: Competitive gap - Menu Translator 10s, ChatGPT 30s+
+
+**REQ-F-029-031 (Offline Caching) → Addresses Pain Point #4**
+- User need: Works without internet connection
+- User quote: "Mountain hut with no signal", "expensive roaming charges"
+- Our solution: Smart caching with 70%+ hit rate target
+- Research validation: Competitive gap - Menu Translator & AnyMenu have NO offline mode
+
+**Validation Method:** Requirements mapped to research. See [user-research-report.md](../business/user-research-report.md#must-have-features-mvp)
+
+**Decision Criteria:** ✅ PASSED
+- All 5 critical pain points have corresponding features
+- Features are research-validated, not assumed
+- Competitive gaps confirm features are differentiated
+- User research explicitly recommends these features
+
+**Impact:** Feature set validated. Confidence to build.
+
+---
+
 ## 🟡 High-Priority Questions (Answer in Phase 2)
 
-### 6. iOS VisionKit OCR Reliability
+### 8. iOS VisionKit OCR Reliability
 **Question:** Can iOS VisionKit extract text from 80%+ of real-world menus?
 
 **Current Status:** ❓ Unknown
@@ -162,7 +265,7 @@
 
 ---
 
-### 7. LLM Cost Management
+### 9. LLM Cost Management
 **Question:** Can we achieve <€0.005 per page through caching?
 
 **Current Status:** ❓ Unknown (target: 70%+ cache hit rate)
@@ -174,7 +277,7 @@
 
 ---
 
-### 8. Development Timeline
+### 10. Development Timeline
 **Question:** Can solo dev with AI assistance build MVP in 6-12 months?
 
 **Current Status:** ❓ Unknown
@@ -186,7 +289,7 @@
 
 ---
 
-### 9. Break-Even Analysis
+### 11. Break-Even Analysis
 **Question:** How many paying users needed to cover costs and generate sustainable side income?
 
 **Current Status:** ❓ Unknown (depends on pricing, costs)
@@ -199,7 +302,7 @@
 
 ## 🟢 Medium-Priority Questions (Answer in Phase 3+)
 
-### 10. Customer Acquisition Strategy
+### 12. Customer Acquisition Strategy
 **Question:** Which channels can acquire users at <€3 CAC?
 
 **Current Status:** ❓ Unknown (hypothesis: organic via Reddit, Share Extension)
@@ -207,7 +310,7 @@
 
 ---
 
-### 11. User Retention
+### 13. User Retention
 **Question:** What retention rate can we expect (D7, D30)?
 
 **Current Status:** ❓ Unknown (seasonal usage pattern expected)
@@ -215,7 +318,7 @@
 
 ---
 
-### 12. LTV Optimization
+### 14. LTV Optimization
 **Question:** Which features drive long-term value and reduce churn?
 
 **Current Status:** ❓ Unknown
@@ -261,11 +364,13 @@
 | 2 | Which pricing model? | 1 | ⚪ | Exp 2 | TBD | TBD |
 | 3 | What price point? | 1 | ⚪ | Exp 2 | TBD | TBD |
 | 4 | Which market? | 1 | ⚪ | Exp 2+4 | TBD | TBD |
-| 5 | Competitive gap? | 1 | ⚪ | Exp 3 | TBD | TBD |
-| 6 | VisionKit reliable? | 2 | ⚪ | Testing | TBD | TBD |
-| 7 | LLM costs viable? | 2 | ⚪ | Simulation | TBD | TBD |
-| 8 | Timeline realistic? | 2 | ⚪ | Estimation | TBD | TBD |
-| 9 | Break-even users? | 3 | ⚪ | Financial model | TBD | TBD |
+| 5 | Competitive gap? | 1 | ✅ | Competitive Research | PASS | 2025-11-17 |
+| 6 | User pain points severe? | 0 | ✅ | User Research | PASS | 2025-11-17 |
+| 7 | Features align with needs? | 0 | ✅ | Requirements Mapping | PASS | 2025-11-17 |
+| 8 | VisionKit reliable? | 2 | ⚪ | Testing | TBD | TBD |
+| 9 | LLM costs viable? | 2 | ⚪ | Simulation | TBD | TBD |
+| 10 | Timeline realistic? | 2 | ⚪ | Estimation | TBD | TBD |
+| 11 | Break-even users? | 3 | ⚪ | Financial model | TBD | TBD |
 
 ---
 
@@ -285,6 +390,6 @@
 
 ---
 
-**Last Updated:** 2024-11-17
+**Last Updated:** 2025-11-17
 **Owner:** [Your Name]
 **Next Review:** After each experiment completes

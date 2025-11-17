@@ -2,9 +2,31 @@
 
 ## Executive Summary
 
-> **Instructions:** Complete this section LAST. Provide 3-5 paragraphs covering: (1) Core business model, (2) Revenue streams, (3) Cost structure, (4) Unit economics, and (5) Path to profitability.
+> **Status:** ⚠️ **Partial - Research-Informed, Awaiting Phase 1 Validation**
+>
+> **Research Basis:** Competitive pricing analysis (Nov 2025) provides preliminary business model guidance. Final validation required via Phase 1 willingness-to-pay survey.
 
-**Status:** 🔄 Template - Awaiting Business Model Definition
+**Preliminary Business Model (Research-Informed):**
+
+VegyScan operates as a **premium mobile app for vegan/vegetarian travelers**, monetized through a **one-time purchase or subscription model** (to be validated in Phase 1). Competitive research indicates the **$4-8 price range** has established willingness to pay in this market, with successful examples including HappyCow ($4-6 iOS), Waygo ($6), and Vegan Passport ($2).
+
+**Revenue Model Evidence from Competitive Research:**
+- **One-time purchase models are working**: HappyCow users say "well worth it" at $4-6, Waygo users say "so worth the cost" at $6
+- **Subscription models exist**: Menu Translator App uses freemium (conversion rate unknown)
+- **Users express willingness to pay**: "I'd pay good money for something I knew I could trust 100%" (user research quote)
+
+**Cost Structure:**
+Primary costs are LLM API usage (target: <€0.005 per page via smart caching), development time (solo dev + AI), and App Store fees (30%). The business model requires achieving 70%+ cache hit rate to maintain viable unit economics.
+
+**Path to Profitability:**
+As a bootstrapped side project, profitability depends on: (1) validating optimal price point (Phase 1 survey), (2) achieving technical feasibility targets (Phase 2), and (3) organic user acquisition via App Store, vegan communities (Reddit, Facebook groups), and iOS Share Extension viral loop.
+
+**Critical Validation Needed (Phase 1):**
+- ❓ Which pricing model optimizes adoption + revenue? (One-time vs. Subscription vs. Freemium)
+- ❓ What specific price point within $4-8 range maximizes revenue?
+- ❓ Which market (US/UK vs DE) has highest WTP and lowest CAC?
+
+**Status:** 🔄 Awaiting Phase 1 Van Westendorp survey to finalize business model
 
 ---
 
@@ -168,14 +190,84 @@ Evaluate each revenue model for VegyScan:
 
 ---
 
-#### Recommended Revenue Model
+#### Competitive Pricing Research (Nov 2025)
 
-**Primary Revenue Model:** [e.g., "Freemium with Subscription Tiers"]
+> **Source:** Competitive analysis of similar apps in vegan/dietary restriction space
+>
+> **Status:** ✅ Evidence collected, ⚠️ Final validation needed via Phase 1 survey
 
-**Why This Model:**
-- [Rationale 1: Balances user acquisition and monetization]
-- [Rationale 2: Industry standard for mobile apps]
-- [Rationale 3: Aligns with user value - pay for advanced features]
+**Validated Pricing in Market:**
+
+| App | Price | Model | User Sentiment | Market Position |
+|-----|-------|-------|----------------|-----------------|
+| **HappyCow** | $4-6 iOS (one-time) | One-time purchase | "Well worth it" | Established (>1M members, 4.8★, 100k+ reviews) |
+| **Waygo** | $6 (one-time unlimited) | One-time purchase | "Life saver", "So worth the cost" | Declining (Google caught up on offline OCR) |
+| **Vegan Passport** | $2 (one-time) | One-time purchase | Widely recommended | Long-established (pre-smartphone era) |
+| **Menu Translator App** | Freemium + IAP | Freemium | Unknown conversion | New (2024 launch, ~5k downloads) |
+| **AnyMenu** | Free (currently) | Unknown future monetization | Too new | Very new (2025 launch) |
+
+**Key Insights:**
+
+1. **$4-8 Range is Validated**
+   - HappyCow success at $4-6 proves willingness to pay in this range
+   - Waygo's $6 price validated for food-specific translation
+   - Users describe these prices as "worth it" despite free alternatives existing
+
+2. **One-Time Purchase Model is Proven**
+   - All successful monetized apps use one-time purchase
+   - No established subscription model in this space yet
+   - Users prefer "pay once, own forever" for travel tools
+
+3. **Freemium is Emerging But Unproven**
+   - Menu Translator App uses freemium (too new to assess success)
+   - AnyMenu is currently free (monetization strategy unclear)
+   - No data on conversion rates for freemium in this niche
+
+4. **User WTP Signals from Research**
+   - "I'd pay good money for something I knew I could trust 100%" (user research)
+   - Pain severity is high (CRITICAL-rated pain points)
+   - Users already pay for multiple tools (HappyCow + Vegan Passport + others)
+
+**Preliminary Recommendation (Pre-Validation):**
+
+Based on competitive evidence, **one-time purchase in $4-8 range** is likely optimal starting point because:
+- Proven model in this market (HappyCow, Waygo)
+- Simpler to implement (no subscription infrastructure needed for v1)
+- Aligns with travel tool purchase behavior (buy before trip)
+- Lower friction than recurring charges
+
+**However:** Phase 1 Van Westendorp survey MUST validate:
+- Optimal price point within range ($4.99 vs $6.99 vs $7.99?)
+- Whether subscription model could yield higher LTV
+- Whether freemium increases adoption enough to justify lower ARPU
+
+---
+
+#### Recommended Revenue Model (Preliminary)
+
+**Primary Revenue Model:** One-Time Purchase (to be validated in Phase 1)
+
+**Price Point:** $4.99 - $7.99 (to be refined via Van Westendorp survey)
+
+**Why This Model (Preliminary):**
+- **Proven in market**: HappyCow ($4-6) and Waygo ($6) successfully monetize with one-time purchase
+- **User preference validated**: Travel tools typically purchased once before trip, not subscribed to
+- **Simpler v1 implementation**: No subscription infrastructure, no ongoing billing, no retention mechanics needed
+- **Aligns with value delivery**: Core value is delivered upfront (scan menus during trip), not ongoing service
+- **Lower friction**: Users more willing to pay one-time than commit to recurring charges
+- **Competitive positioning**: Can be priced competitively against HappyCow + Vegan Passport combined ($4-8 total)
+
+**Alternative Models to Test in Phase 1:**
+1. **Monthly Subscription** ($2.99-4.99/month) - Test if higher LTV justifies lower adoption
+2. **Annual Subscription** ($19.99-29.99/year) - Test if discount drives adoption
+3. **Freemium** (10 free scans, then $4.99) - Test if trial increases conversion
+
+**Decision Criteria:**
+- Choose model with highest Expected Value = (Adoption Rate × Price Point × LTV Factor)
+- Must achieve break-even within 18-24 months
+- Must maintain viable unit economics given LLM costs
+
+**Next Step:** Run Phase 1 willingness-to-pay survey to validate model choice and price point
 
 ---
 
