@@ -108,11 +108,15 @@ _These guide v1 implementation without specifying HOW._
   - Note: May be needed later if business model requires subscription/billing
 
 - **Language/Internationalization:**
-  - v1 launches in English
+  - **UI language:** TO BE VALIDATED (Phase 1 market selection)
+    - If US/UK market selected: English-first
+    - If Germany market selected: German-first
+    - If multi-market: English + German from Day 1
   - UI designed with minimal text, maximum icons/colors (universal design)
   - i18n framework used everywhere (enables future translation)
   - Vegan/vegetarian icons language-independent
-  - Future: Translate UI to German, French, etc. without redesign
+  - Future: Translate UI to additional languages based on market expansion
+  - **Decision driver:** Market selection from Phase 1 survey, not developer familiarity
 
 **Cost Optimization Priority:**
 
@@ -123,9 +127,63 @@ _These guide v1 implementation without specifying HOW._
 
 **Deferred to Business Planning:**
 
-- **Business model:** One-time purchase vs. subscription vs. freemium
+- **Business model:** TO BE VALIDATED (Phase 1 survey)
+  - Options: One-time purchase, subscription, freemium, hybrid, pay-per-use
   - Not relevant for v1 implementation
   - Constraint: Whatever model chosen, ongoing costs must stay minimal
+  - See: [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+
+- **Target market:** TO BE VALIDATED (Phase 1 survey)
+  - Options: US/UK (English), Germany, or multi-market
+  - Decision driven by WTP data, iOS penetration, and CAC potential
+  - See: [business-case/hypotheses.md](../business-case/hypotheses.md)
+
+- **Price point:** TO BE VALIDATED (Phase 1 Van Westendorp survey)
+  - Will be determined by user research, not developer intuition
+  - See: [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+
+---
+
+## Differentiation Strategy
+
+**Core Insight:** LLM power is commoditized. Anyone can call GPT-4/Claude. We don't win on AI - we win on UX.
+
+### Why UX is Our Moat
+
+**The Problem with Competitors:**
+- **Google Lens:** Has good AI, but clunky UX for dietary restrictions (generic translation, no dietary intelligence, multiple steps)
+- **ChatGPT:** Can classify menus, but slow (30+ seconds), manual (copy-paste), loses visual context
+- **Google Translate Camera:** Fast translation, but zero dietary understanding
+
+**Our Advantage:**
+- **Purpose-built** for vegan/vegetarian menu scanning (not generic translation)
+- **Fast** < 2 seconds scan-to-result (vs 30+ seconds manual ChatGPT)
+- **Visual context preserved** (augmented view, not text dump)
+- **iOS-native excellence** (one-handed use, Share Extension, VisionKit integration)
+- **Zero friction** (point camera, instant results - no copy-paste, no app switching)
+
+**Strategy:** Nail the experience for ONE specific problem (menu scanning), not build features.
+
+### What "Best UX" Means
+1. **Speed:** Instant results (< 2 second perceived latency)
+2. **Simplicity:** One-handed use in restaurant, no learning curve
+3. **Visual context:** Original menu remains center of interaction (augmented, not replaced)
+4. **Transparency:** Show reasoning ("Why is this flagged?"), not black box
+5. **iOS-native:** Leverage platform (Share Extension, VisionKit, SwiftUI)
+6. **Zero leaving app:** All info needed in-app (no Google searches, no asking staff for English menu)
+
+### Positioning
+**Tagline:** "The best app for vegan/vegetarian travelers to scan menus"
+
+**Not:** "AI-powered menu translator" (commoditized)
+**Instead:** "Purpose-built experience for finding safe dishes abroad" (differentiated)
+
+**Key Messaging:**
+- "Same AI power as ChatGPT, but 10x faster and easier"
+- "Google Lens translates. We understand."
+- "Built for vegans/vegetarians, not everyone"
+
+---
 
 ## Success Criteria
 
@@ -168,9 +226,9 @@ _These guide v1 implementation without specifying HOW._
 **Business Metrics:**
 - **LLM Cost Efficiency:** <€0.005 per page in LLM API costs (CRITICAL for viability)
 - **Cache Hit Rate:** 70%+ cache hit rate for returning users
-- **Revenue per User:** €8 net revenue per sale (before API costs, after App Store fees)
+- **Revenue per User:** [TO BE VALIDATED - depends on pricing model & price point from Phase 1 survey]
 - **Refund Rate:** <2% refund rate (indicates product-market fit)
-- **Customer Acquisition Cost (CAC):** <€3 per user (must be profitable at €8 price)
+- **Customer Acquisition Cost (CAC):** <€3 per user (must be profitable at validated price point)
 
 **Technical Health Metrics:**
 - **Crash Rate:** <0.5% sessions (industry standard: <1%)
@@ -220,13 +278,15 @@ _These guide v1 implementation without specifying HOW._
 - CAC >€3 → Cannot scale profitably, focus on organic growth
 
 **Break-Even Analysis:**
-- **Revenue per sale:** €8
-- **App Store fee (30%):** €2.40
-- **Net revenue:** €5.60
+- **IMPORTANT:** All pricing assumptions TO BE VALIDATED in Phase 1 survey
+- **Revenue per sale:** [TBD - from Van Westendorp survey]
+- **App Store fee (30%):** [TBD - depends on final price]
+- **Net revenue:** [TBD - 70% of sale price minus App Store fee]
 - **Target LLM cost (10 scans/user):** €0.05
-- **Available margin:** €5.55 per user
-- **Break-even (covering development):** Depends on development costs (TBD)
-- **Example:** If development costs €20,000, need 3,600 sales to break even
+- **Available margin:** [TBD - net revenue minus LLM costs]
+- **Break-even (covering development):** Depends on development costs and validated price point
+- **Example:** Will be calculated in Phase 3 (Business Model Definition) using validated pricing data
+- **See:** [business-case/financial-projections.md](../business-case/financial-projections.md) for full analysis
 
 **Long-Term Success Indicators (6-12 Months):**
 - Sustainable growth without paid advertising (organic CAC <€3)

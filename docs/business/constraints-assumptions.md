@@ -115,14 +115,23 @@ Constraints are limitations that CANNOT be changed. These are fixed boundaries f
 ### Market Constraints
 
 **Target Market:**
-- **Primary:** Vegan/vegetarian travelers (English-speaking for v1)
+- **Primary:** Vegan/vegetarian travelers (iOS users)
+- **Market Selection:** TO BE VALIDATED in Phase 1 (US/UK vs Germany vs multi-market)
+- **Language:** TO BE VALIDATED (depends on market selection)
+  - If US/UK selected: English-first
+  - If Germany selected: German-first
+  - Decision driven by WTP data, iOS penetration, CAC potential
 - **Constraint:** Niche market (smaller TAM than general translation apps)
 - **Impact:** Must dominate niche before expanding
+- **See:** [business-case/hypotheses.md](../business-case/hypotheses.md) - Question #4
 
 **Pricing Constraints:**
 - **Constraint:** Users expect low-cost or free travel apps
 - **Benchmark:** Google Translate (free), ChatGPT (free tier)
-- **Impact:** €8 one-time may be upper limit, must demonstrate 10x value
+- **Challenge:** Must demonstrate 10x value to justify paid app
+- **Pricing Model:** TO BE VALIDATED (one-time vs subscription vs freemium)
+- **Price Point:** TO BE VALIDATED (Van Westendorp survey in Phase 1)
+- **See:** [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
 
 ---
 
@@ -138,14 +147,17 @@ Assumptions are beliefs we're operating on but have NOT validated. These SHOULD 
 - **Risk if Wrong:** Excluding 50%+ of potential market (Android users)
 - **Mitigation:** If demand high, consider Android app in v2
 
-**Assumption 2: Users Willing to Pay €8 Upfront**
-- **Assumption:** Users will pay one-time €8 for app (no subscription)
-- **Validation Needed:**
-  - User interviews: "Would you pay €8 for this?"
-  - Competitor pricing analysis
-  - Beta pricing test (A/B test €5 vs €8 vs €12)
-- **Risk if Wrong:** Low conversion, poor revenue
-- **Mitigation:** Test freemium model (10 free scans, then pay) if needed
+**Assumption 2: Pricing Model and Price Point**
+- **STATUS:** ❌ REMOVED - Now TO BE VALIDATED in Phase 1
+- **Previous Assumption:** Users will pay one-time €8 for app (no subscription)
+- **Removed:** 2024-11-17
+- **Reason:** Developer intuition, not user research. Multiple pricing models possible (one-time, subscription, freemium, hybrid, pay-per-use)
+- **Now Validating:**
+  - Pricing model preference (Van Westendorp survey)
+  - Optimal price point (data-driven, not assumed)
+  - Market-specific pricing (US vs UK vs DE may differ)
+- **See:** [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+- **See:** [business-case/hypotheses.md](../business-case/hypotheses.md) - Questions #2 and #3
 
 **Assumption 3: Users Have Internet in Restaurants**
 - **Assumption:** Most restaurants have WiFi or users have data roaming
@@ -191,7 +203,7 @@ Assumptions are beliefs we're operating on but have NOT validated. These SHOULD 
 - **Risk if Wrong:**
   - If MORE (20+ pages): Costs higher than expected
   - If LESS (1-2 pages): Less value, lower willingness to pay
-- **Impact on Business Model:** €8 price based on 10-page trip at €0.005/page = €0.05 cost
+- **Impact on Business Model:** At 10-page trip and €0.005/page = €0.05 LLM cost per user (pricing model TBD in Phase 1)
 
 **Assumption 9: 70% Cache Hit Rate Achievable**
 - **Assumption:** Aggressive caching will achieve 70%+ hit rate (reduce LLM costs)
@@ -218,8 +230,9 @@ Assumptions are beliefs we're operating on but have NOT validated. These SHOULD 
 **Assumption 12: Organic Growth Sufficient (Low CAC Achievable)**
 - **Assumption:** Can acquire users organically for <€3 CAC (via viral features, community)
 - **Validation Needed:** Track CAC from Day 1, measure viral coefficient
-- **Risk if Wrong:** CAC €10-20, unprofitable at €8 price
+- **Risk if Wrong:** CAC €10-20, unprofitable at validated price point
 - **Mitigation:** iOS Share Extension for viral growth, target niche communities
+- **Note:** Acceptable CAC depends on validated pricing model from Phase 1
 
 ### Technical Assumptions
 
@@ -245,18 +258,32 @@ Assumptions are beliefs we're operating on but have NOT validated. These SHOULD 
 
 ## Assumptions Requiring Immediate Validation
 
-**BEFORE Development Starts:**
-1. ✅ **Test LLM classification accuracy** (100+ real menus) - CRITICAL
-2. ✅ **Test iOS VisionKit OCR** (50+ diverse menus) - CRITICAL
-3. ✅ **User interviews** (20-30 vegan/vegetarian travelers) - Validate pain points, willingness to pay
+**Phase 1: Critical Validation (BEFORE Development Starts) - 2 weeks**
+See: [business-case/validation/](../business-case/validation/)
+
+1. ⚪ **Test LLM classification accuracy** (100+ real menus) - CRITICAL
+   - See: [business-case/validation/llm-accuracy-test.md](../business-case/validation/llm-accuracy-test.md)
+   - Target: >90% accuracy
+
+2. ⚪ **Willingness to Pay Survey** (50-100 respondents) - CRITICAL
+   - See: [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+   - Validates: Pricing model, price point, target market
+
+3. ⚪ **Competitor Gap Test** - Validate differentiation
+   - See: [business-case/validation/competitor-gap-test.md](../business-case/validation/competitor-gap-test.md)
+   - Tests: Google Lens, ChatGPT, Google Translate gaps
+
+**Phase 2: Feasibility Study (AFTER Phase 1 GO decision) - 1-2 weeks**
+4. ⚪ **Test iOS VisionKit OCR** (50+ diverse menus)
+   - See: [business-case/feasibility-study.md#technical-feasibility](../business-case/feasibility-study.md#technical-feasibility)
+   - Target: >80% success rate
 
 **DURING Development:**
-4. **Beta test with real users** (20+ users, measure usage patterns)
-5. **Measure actual LLM costs** (track per-scan costs, cache hit rates)
-6. **Test Share Extension** (across multiple iOS apps, versions)
+5. **Beta test with real users** (20+ users, measure usage patterns)
+6. **Measure actual LLM costs** (track per-scan costs, cache hit rates)
+7. **Test Share Extension** (across multiple iOS apps, versions)
 
 **BEFORE Launch:**
-7. **Pricing test** (A/B test €5 vs €8 vs €12 if possible)
 8. **CAC measurement** (test 2-3 acquisition channels, measure cost)
 
 ---
@@ -269,13 +296,19 @@ For each assumption, track:
 - **Result:** Confirmed / Rejected / Partially True
 - **Action:** What do we do based on result?
 
-**Example:**
+**Phase 1 Validation Tracking:**
 
-| Assumption | Validation Method | Target Date | Status | Action if Rejected |
-|------------|-------------------|-------------|--------|-------------------|
-| Users willing to pay €8 | 30 user interviews | Before dev | Pending | Test €5 or freemium model |
-| 70% cache hit rate | Beta testing | After v1 alpha | Pending | Increase price or subscription |
-| LLM accuracy >90% | Test 100 menus | Week 1 | Pending | Pivot to translation-only |
+| Assumption | Validation Method | Phase | Status | Action if Rejected |
+|------------|-------------------|-------|--------|-------------------|
+| Pricing model preference | WTP survey (Phase 1) | 1 | ⚪ Not Started | Test alternative models |
+| Price point viable | Van Westendorp survey | 1 | ⚪ Not Started | Adjust pricing or model |
+| Target market selection | Market analysis + WTP | 1 | ⚪ Not Started | Choose alternative market |
+| LLM accuracy >90% | Test 100 menus | 1 | ⚪ Not Started | Pivot to translation-only |
+| Competitive gap exists | Competitor testing | 1 | ⚪ Not Started | Find new differentiation |
+| VisionKit >80% OCR | Test 50 menus | 2 | ⚪ Not Started | Use alternative OCR |
+| 70% cache hit rate | Beta testing | During dev | ⚪ Not Started | Adjust pricing/model |
+
+**See:** [business-case/validation/DECISIONS.md](../business-case/validation/DECISIONS.md) for results
 
 ---
 
@@ -312,3 +345,80 @@ For each assumption, track:
 - Jointly review this document monthly
 - Update based on new learnings
 - Communicate changes to stakeholders
+
+---
+
+## Removed Assumptions (Now TO BE VALIDATED)
+
+**The following assumptions have been REMOVED and moved to Phase 1 validation:**
+
+### 1. Pricing Model: One-Time Purchase
+**Previous Assumption:** €8 one-time purchase
+**Removed:** 2024-11-17
+**Reason:** Solo dev bias toward one-time purchase (personal preference), but subscription may have better LTV. Must validate with users, not assume.
+**Now:** TO BE VALIDATED in Phase 1 (Willingness to Pay Survey)
+**Options:** One-time purchase, monthly subscription, annual subscription, freemium, hybrid, pay-per-use
+**See:** [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+
+---
+
+### 2. Price Point: €8
+**Previous Assumption:** €8 is the right price
+**Removed:** 2024-11-17
+**Reason:** Developer intuition, not user research. Must validate optimal price point with Van Westendorp methodology.
+**Now:** TO BE VALIDATED in Phase 1 (Van Westendorp Price Sensitivity Meter)
+**Method:** Survey asking "too cheap", "good value", "expensive", "too expensive" thresholds
+**See:** [business-case/validation/willingness-to-pay-survey.md](../business-case/validation/willingness-to-pay-survey.md)
+
+---
+
+### 3. Target Market: Germany First
+**Previous Assumption:** Launch in Germany (familiar market for developer)
+**Removed:** 2024-11-17
+**Reason:** Familiarity bias. Business logic suggests US/UK may be better (higher WTP, more iOS users). Personal comfort shouldn't override data.
+**Now:** TO BE VALIDATED in Phase 1 (Market Selection Analysis)
+**Options:**
+- US market (English, high WTP, 50%+ iOS penetration)
+- UK market (English, high WTP, 50%+ iOS, strong vegan culture)
+- Germany (familiar, but lower WTP, 30% iOS)
+- Multi-market (English + German from Day 1)
+**Decision Criteria:**
+- Highest willingness to pay
+- Best iOS penetration in target demographic
+- Lowest competitive intensity
+- Easiest organic acquisition (lowest CAC potential)
+**See:** [business-case/hypotheses.md](../business-case/hypotheses.md) - Question #4
+
+---
+
+### 4. UI Language: English First
+**Previous Assumption:** v1 launches in English
+**Removed:** 2024-11-17
+**Reason:** Depends on market selection (Question #3 above). If DE market wins, German-first makes more sense.
+**Now:** CONDITIONAL on market selection from Phase 1
+- If US/UK selected → English-first
+- If Germany selected → German-first
+- If multi-market → English + German from Day 1
+**See:** [business/vision.md - Differentiation Strategy](./vision.md#differentiation-strategy)
+
+---
+
+## Principle: Data-Driven Decision Making
+
+**How we make decisions:**
+1. **Data-driven, not assumption-driven** - Validate every hypothesis
+2. **User research over developer intuition** - What users want, not what we think
+3. **Business logic over personal comfort** - Best market, not familiar market
+4. **Optimize for LTV, not just price** - Long-term value, not one-time extraction
+5. **UX as differentiator** - Win on experience, not technology
+
+**When to challenge assumptions:**
+- Developer says "I prefer X" → Ask "What do users prefer?"
+- Feeling says "X is easier" → Ask "What does data say?"
+- Intuition says "X will work" → Ask "How do we validate?"
+
+**See:** [business-case/hypotheses.md](../business-case/hypotheses.md) for all open questions
+
+---
+
+**Last Updated:** 2024-11-17
