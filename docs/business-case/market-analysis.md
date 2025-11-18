@@ -225,6 +225,251 @@ Through analysis of 50+ vegan/vegetarian traveler stories and comprehensive comp
 
 ---
 
+## 7. Geographic Market Opportunity Analysis
+
+> **Source:** Deep research on menu scanning problem by geography, cuisine, and language (November 2025)
+>
+> **Status:** ✅ Comprehensive market scoring and prioritization complete
+
+**Research Method:** Multi-factor analysis scoring markets on: (1) Problem intensity, (2) Market size (vegan population), (3) iOS adoption %, (4) Competition level, (5) Willingness to pay
+
+### Market Opportunity Scoring Matrix
+
+| Market | Problem Intensity | Market Size | iOS Adoption | Competition | WTP | **Total Score** |
+|--------|-------------------|-------------|--------------|-------------|-----|----------------|
+| **United States** | 8/10 | 10/10 (~5M vegans) | 9/10 (58% iOS) | 9/10 (low) | 9/10 | **45/50 = 9.0** |
+| **United Kingdom** | 7/10 | 7/10 (~1.5M vegans) | 8/10 (52% iOS) | 9/10 (low) | 8/10 | **39/50 = 7.8** |
+| **Canada** | 7/10 | 6/10 (~1.5M vegans) | 9/10 (60% iOS) | 9/10 (low) | 8/10 | **39/50 = 7.8** |
+| **Australia** | 8/10 | 5/10 (~800k vegans) | 9/10 (55-60% iOS) | 9/10 (low) | 8/10 | **39/50 = 7.8** |
+| **Germany** | 6.5/10 | 7/10 (~1.2M vegans) | 6/10 (39% iOS) | 9/10 (low) | 6/10 | **34.5/50 = 6.9** |
+| **Japan** (niche) | 9/10 | 4/10 (<1M vegans) | 10/10 (69% iOS) | 8/10 (low) | 7/10 | **38/50 = 7.6** |
+| **Nordics** (Sweden) | 6/10 | 4/10 (~400k vegans) | 8/10 (high) | 9/10 (low) | 7/10 | **34/50 = 6.8** |
+
+**Score Interpretation:**
+- **9.0-10.0**: Excellent market opportunity (Primary launch target)
+- **7.5-8.9**: Strong market opportunity (Secondary launch target)
+- **6.5-7.4**: Good market opportunity (Phase 2 expansion)
+- **<6.5**: Consider Phase 3 or lower priority
+
+---
+
+### Primary Market: United States (Score: 9.0)
+
+**Market Sizing:**
+- **Vegan population**: ~5 million (2-3% of 330M population)
+- **Vegetarian population**: ~10-15 million (additional ~5%)
+- **iOS users**: ~58% smartphone market share = ~191M iOS users total
+- **Addressable market**: ~5M vegans × 58% iOS = ~2.9M potential iOS vegan users
+
+**Problem Intensity:** 8/10 - **HIGH**
+- Many US vegans travel internationally to challenging destinations (Asia, Latin America, Europe)
+- Language barriers for Spanish, Japanese, Thai, Chinese menus
+- Cultural unfamiliarity with hidden ingredients abroad
+- Evidence: "Thailand is driving me crazy" (Reddit), "22 Days in Japan as a Vegan" (numerous struggle stories)
+
+**Willingness to Pay:** 9/10 - **VERY HIGH**
+- HappyCow: $4-6 iOS app, >1M paying members, 4.8★ rating validates WTP
+- iOS users in North America spend 2x more on apps than Android globally
+- Travel spending context: $2-8 app cost trivial vs. $2000+ international trip
+- Direct quote: "I'd pay good money for something I knew I could trust 100%"
+
+**Competitive Intensity:** 9/10 (Low competition = HIGH opportunity score)
+- NO direct competitor with cultural intelligence + menu scanning
+- Menu Translator App (2024, ~5k downloads, generic approach)
+- AnyMenu (2025, very new, no offline mode)
+- Google Translate (generic, no dietary intelligence)
+
+**Strategic Implications:**
+- ✅ **PRIMARY LAUNCH MARKET** - Focus all initial marketing here
+- Launch with English UI, support scanning Spanish/French/Italian/German/Japanese
+- Target travel season (spring/summer) for Japan/Europe trips
+- Marketing channels: Reddit r/VeganTravel, travel bloggers, App Store featuring
+
+---
+
+### Secondary Markets: UK, Canada, Australia (Scores: 7.8)
+
+**United Kingdom** (7.8/10)
+
+**Market Sizing:**
+- Vegan population: ~1.3M (2% of 67M)
+- iOS adoption: 52% (slightly over half)
+- Addressable: ~680K iOS vegan users
+
+**Why Strong Secondary:**
+- High vegan awareness, active travel community
+- Europe on doorstep (Spain, France, Italy travel common)
+- Southeast Asia popular destination (Thailand, Vietnam backpackers)
+- Language: Same English UI as US
+- WTP: Good app spend culture, HappyCow popular
+
+**Strategic Implications:**
+- Launch simultaneously with US (same English UI)
+- Marketing: UK vegan travel bloggers, Vegan Society partnerships
+- Emphasize Europe + Asia travel use cases
+
+**Canada & Australia** (7.8/10 each)
+
+**Combined Characteristics:**
+- High iOS adoption (60% Canada, 55-60% Australia)
+- Affluent travelers, strong vegan communities
+- English-speaking (same UI as US/UK)
+- Smaller populations but high per-capita opportunity
+
+**Strategic Implications:**
+- Include in Phase 1 launch (no extra localization cost)
+- Marketing via same channels as US (Reddit, travel blogs)
+- Canadian focus: travel to Mexico, Europe, Asia
+- Australian focus: Asia-Pacific travel (Indonesia, Thailand, Japan)
+
+---
+
+### Tertiary Market: Germany (Score: 6.9)
+
+**Market Sizing:**
+- Vegan population: ~1.2M (1-2% of 83M)
+- iOS adoption: **39%** (Android-dominant = challenge for iOS-only)
+- Addressable: ~468K iOS vegan users
+
+**Challenges:**
+- Lower iOS adoption means missing 61% of market with iOS-only
+- More price-sensitive (prefer one-time purchase over subscriptions)
+- Strong DIY culture (may use free tools like Google Translate)
+
+**Opportunities:**
+- Large absolute vegan population (comparable to UK)
+- Strong travel culture (Germans travel extensively)
+- Berlin "vegan capital of Europe" (community hub for marketing)
+- ProVeg International (German org, partnership potential)
+
+**Strategic Implications:**
+- **Phase 2 expansion** (after US/UK validation)
+- Localize UI to German language
+- Consider Android version by this phase (61% market)
+- Pricing: One-time purchase option for price-sensitive segment
+- Marketing: German vegan influencers, ProVeg partnership
+
+---
+
+### Strategic Market: Japan (Score: 7.6 - Niche but High Need)
+
+**Market Sizing:**
+- Vegan population: <1M (~0.5-1% of 125M) = **SMALL**
+- iOS adoption: **69%** = highest globally = **EXCELLENT**
+- Addressable: ~500-700K iOS users (but only small % are vegan)
+
+**Why Score is Deceptive:**
+- **Problem intensity: 9/10** - Japan is HARDEST cuisine for vegans (dashi everywhere)
+- Target is NOT Japanese vegans (too small)
+- Target is **foreign tourists in Japan** (~30M annually pre-COVID, 10% with dietary needs = 3M)
+
+**Strategic Positioning:**
+- Japan is a **DESTINATION**, not a primary user market
+- Value: Supporting Japanese language scanning serves US/UK/AU travelers IN JAPAN
+- PR opportunity: "App that solves the notorious Japan vegan problem" = media attention
+
+**Strategic Implications:**
+- **Phase 2**: Add Japanese language support (high demand from US/UK users traveling there)
+- Marketing angle: "Finally, navigate Japanese menus confidently"
+- Possible Phase 3: Localize UI for Japanese vegans + expats living in Japan
+- Partnership potential: Japan tourism boards, vegan tours
+
+---
+
+### Market Selection Summary
+
+**Phase 1 Launch (Month 0): English-Speaking Markets**
+- 🎯 **PRIMARY**: United States (9.0/10)
+- 🎯 **SIMULTANEOUS**: UK, Canada, Australia (7.8/10 each)
+- **Rationale**: Same language (no UI localization), highest scores, similar cultures, high iOS adoption
+- **Combined addressable**: ~4.5M iOS vegan users
+- **Languages supported**: English UI + scan Spanish/French/Italian/German/Japanese
+
+**Phase 2 Expansion (Month 3-6): European Markets**
+- 🟡 Germany (6.9/10) - after adding German UI
+- 🟡 Nordics (6.8/10) - possibly with English UI (most speak English)
+- **Rationale**: Large populations, good opportunity, requires localization
+- **Action**: Add German UI, consider French/Spanish UI for France/Spain
+
+**Phase 2 Parallel: Asian Language Support**
+- 🟡 Japan (7.6/10) - not for local market, but for tourists
+- **Rationale**: Japanese, Chinese, Thai scanning highly requested by Phase 1 users
+- **Action**: Add OCR for Japanese/Chinese/Thai to serve US/UK travelers
+
+**Phase 3 (Month 6-12): Global Completion**
+- Lower-priority markets (France, Spain, Italy, etc.)
+- Full Android version to capture markets like Germany
+
+**Platform Strategy:**
+- **Phase 1**: iOS-only (captures 52-60% in target markets, acceptable for validation)
+- **Phase 2**: Consider Android (critical for Germany where only 39% iOS)
+- Rationale: US/UK iOS adoption sufficient for initial traction, but Germany requires Android for full market capture
+
+---
+
+### Geographic Market Risk Assessment
+
+**Primary Risk: Niche Market Perception**
+- **Risk**: VegyScan seen as "too small" a market (only vegans who travel)
+- **Mitigation**: HappyCow proves >1M paying vegan travelers exist; focus on strict vegans first, expand to vegetarians/allergies later
+- **Evidence**: HappyCow $4-6 app has 1M+ paying members = market validation
+
+**Secondary Risk: Seasonal Usage**
+- **Risk**: Travel app usage is seasonal (summer peaks, winter lulls)
+- **Mitigation**: Local dining use case (scanning menus at home too), year-round vegan dining
+- **Evidence**: User research shows daily dining struggles, not just travel
+
+**Market Entry Risk: Competitive Response**
+- **Risk**: Google adds dietary intelligence to Translate
+- **Likelihood**: Low (Google's generic strategy, niche market not priority)
+- **Mitigation**: Cultural intelligence database as moat (takes time to build), community features for lock-in
+
+**Geographic Risk: Different Needs by Market**
+- **Risk**: What works in US may not work in Germany/Japan
+- **Mitigation**: Localize pricing model per market (US subscriptions, Germany one-time, Japan month pass)
+- **Validation**: Phase 1 survey tests US/UK WTP before expansion
+
+---
+
+### Key Geographic Insights from Research
+
+**Insight 1: Problem Intensity Varies by Destination, Not Origin**
+- US/UK/German vegans ALL struggle in Thailand/Japan/China (destination problem)
+- Strategy: Market to travelers going TO difficult destinations, not based on home country cuisine
+
+**Insight 2: iOS Adoption is Critical for iOS-Only Strategy**
+- US (58%), UK (52%), Australia (60%): Good for iOS-only launch
+- Germany (39%), India (4%): Require Android eventually
+- Japan (69%): Excellent, but small vegan population
+
+**Insight 3: Willingness to Pay Correlates with iOS + Affluence**
+- US/UK/Australia: High iOS, high travel spend, high WTP
+- Germany: Lower WTP, prefer one-time vs. subscription
+- Strategy: Flexible monetization per market
+
+**Insight 4: Language Support ≠ Geographic Market**
+- Japanese language support serves **US travelers in Japan**, not Japanese vegans
+- Spanish language serves **US travelers in Mexico/Spain**, not locals
+- Strategy: Language roadmap driven by WHERE users travel, not WHERE they live
+
+**Market Selection Conclusion:**
+
+✅ **GO for US/UK/Canada/Australia as Phase 1 launch markets**
+
+**Rationale:**
+- Combined 9.0 + 7.8 + 7.8 + 7.8 = **Excellent average score (8.6/10)**
+- ~4.5M addressable iOS vegan users
+- English language = no UI localization cost
+- High WTP = viable monetization
+- Low competition = strategic window open
+
+**Next Geographic Validation:**
+- [ ] Phase 1 WTP survey: US vs UK comparison (which has higher WTP?)
+- [ ] App Store metrics: Track downloads by country to confirm US/UK dominance
+- [ ] User feedback: Where are users traveling TO? (informs language priorities)
+
+---
+
 ## Research Framework
 
 ### Key Questions to Answer
