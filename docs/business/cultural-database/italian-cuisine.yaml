@@ -1,0 +1,491 @@
+# Italian Cuisine - Cultural Intelligence Database
+# Source: Global Vegan Menu Scanning Challenges Research (Nov 2025)
+# Problem Intensity: MEDIUM-HIGH (40-50% of dishes contain hidden animal products)
+
+cuisine:
+  name: "Italian"
+  name_local: "Cucina italiana"
+  transliteration: "Cucina italiana"
+  region: "Southern Europe"
+  problem_intensity: "MEDIUM_HIGH"
+  problem_frequency: "40-50% of dishes contain cheese with rennet, anchovies, or animal fats"
+  vegan_awareness_level: 6  # 1-10 scale (6 = moderate, growing awareness in cities)
+
+# Research Citations
+research_evidence:
+  - source: "Utopia - Is Parmesan Vegetarian?"
+    url: "https://utopia.org/guide/is-parmesan-vegetarian/"
+    quote: "Parmesan is not vegetarian due to animal rennet (calf stomach lining)."
+  - source: "The Nomadic Vegan - Vegan Sicily Food Guide"
+    url: "https://www.thenomadicvegan.com/ultimate-vegan-guide-to-sicily/"
+    quote: "Anchovies sneaked into sauces for umami. Some Southern recipes use anchovies (acciughe)."
+
+# Hidden Ingredients (Most Common → Least Common)
+hidden_ingredients:
+  - name: "Parmesan cheese (animal rennet)"
+    name_local: "Parmigiano Reggiano"
+    category: "cheese"
+    frequency: "VERY_HIGH"  # 60-70% of pasta dishes
+    severity: "HIGH"  # Vegetarian concern (contains calf rennet)
+    description: "Traditional Parmesan contains animal rennet (calf stomach lining). NOT vegetarian."
+    typical_dishes:
+      - "Almost all pasta dishes"
+      - "Risotto"
+      - "Salads"
+      - "Soups"
+      - "Pizza"
+    user_complaints:
+      - "Parmesan seems vegetarian but contains animal rennet"
+      - "Waiters don't always know Parmesan isn't vegetarian"
+    modification_feasibility: "EASY"  # Can be left off
+
+  - name: "Anchovies"
+    name_local: "Acciughe"
+    category: "fish"
+    frequency: "MEDIUM"  # 20-30% (especially in Southern Italy)
+    severity: "CRITICAL"
+    description: "Small fish used in sauces, on pizza, in dressings for umami"
+    typical_dishes:
+      - "Caesar salad dressing"
+      - "Puttanesca sauce"
+      - "Some pizza (especially Naples)"
+      - "Bagna cauda (Piedmont dip)"
+    modification_feasibility: "EASY_IF_TOPPING_MODERATE_IF_SAUCE"
+
+  - name: "Egg in fresh pasta"
+    name_local: "Uova nella pasta fresca"
+    category: "protein"
+    frequency: "VERY_HIGH"  # 80%+ of fresh pasta
+    severity: "HIGH"
+    description: "Fresh pasta (pasta fresca) almost always contains eggs. Dried pasta usually doesn't."
+    typical_dishes:
+      - "Tagliatelle"
+      - "Pappardelle"
+      - "Ravioli"
+      - "Tortellini"
+      - "Lasagna sheets"
+    modification_feasibility: "IMPOSSIBLE"  # Eggs in dough
+    alternative: "Ask for 'pasta secca' (dried pasta) which is usually just wheat + water"
+
+  - name: "Butter"
+    name_local: "Burro"
+    category: "dairy"
+    frequency: "HIGH"  # 50-60%
+    severity: "HIGH"
+    description: "Butter used in sauces, risotto, cooking vegetables"
+    typical_dishes:
+      - "Risotto"
+      - "Pasta al burro"
+      - "Sautéed vegetables"
+    modification_feasibility: "MODERATE"  # Can substitute olive oil
+
+  - name: "Lard"
+    name_local: "Strutto"
+    category: "animal fat"
+    frequency: "LOW_TO_MEDIUM"  # 15-25% (more in Central Italy)
+    severity: "CRITICAL"
+    description: "Pork fat used in some traditional recipes, especially Central Italian cooking"
+    typical_dishes:
+      - "Some pizza doughs"
+      - "Traditional pastries"
+      - "Some pasta sauces (Amatriciana)"
+    modification_feasibility: "IMPOSSIBLE_IF_ALREADY_USED"
+
+  - name: "Gelatin"
+    name_local: "Gelatina"
+    category: "animal product"
+    frequency: "MEDIUM"  # 30% of desserts
+    severity: "CRITICAL"
+    description: "Animal-derived gelatin in desserts, panna cotta"
+    typical_dishes:
+      - "Panna cotta"
+      - "Some mousses"
+      - "Gummy candies"
+    modification_feasibility: "IMPOSSIBLE"  # Structural component
+
+  - name: "Meat broth"
+    name_local: "Brodo di carne"
+    category: "broth"
+    frequency: "MEDIUM"  # 30-40% of soups/risottos
+    severity: "CRITICAL"
+    description: "Chicken or beef broth in risotto, soups"
+    typical_dishes:
+      - "Risotto"
+      - "Tortellini in brodo"
+      - "Some soups"
+    modification_feasibility: "MODERATE"  # Can ask for vegetable broth
+
+# Watch-Out Dishes
+watch_out_dishes:
+  - name: "Pasta dishes"
+    name_local: "Pasta"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Parmesan cheese (topping)"
+      - "Egg in fresh pasta dough"
+      - "Butter in sauce"
+      - "Meat in sauce (ragù)"
+    modification_feasibility: "EASY_TO_MODERATE"
+    success_rate: 70
+    notes: |
+      Pasta itself: Dried pasta (pasta secca) usually vegan. Fresh pasta (pasta fresca) contains eggs.
+      Toppings: Parmesan almost always added. Easy to refuse.
+      Sauce: Check for cream, butter, meat.
+    modification_instructions:
+      question_english: "Can I have pasta with marinara sauce, no Parmesan cheese, using dried pasta?"
+      question_local: "Posso avere la pasta al pomodoro, senza formaggio, con pasta secca?"
+      transliteration: "Posso avere la pasta al pomodoro, senza formaggio, con pasta secca?"
+
+  - name: "Pizza"
+    name_local: "Pizza"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Mozzarella cheese"
+      - "Parmesan cheese"
+      - "Anchovies (on some pizzas)"
+      - "Meat toppings"
+    modification_feasibility: "EASY"
+    success_rate: 85
+    notes: "Pizza dough usually vegan (flour, water, yeast, salt). Easy to order without cheese."
+    modification_instructions:
+      question_english: "Can I have pizza marinara (tomato, garlic, olive oil) without cheese?"
+      question_local: "Posso avere la pizza marinara senza formaggio?"
+      safe_option: "Pizza marinara is traditionally without cheese - just tomato, garlic, oregano, olive oil"
+
+  - name: "Risotto"
+    name_local: "Risotto"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Butter"
+      - "Parmesan cheese"
+      - "Chicken or vegetable broth"
+      - "Sometimes cream"
+    modification_feasibility: "MODERATE"
+    success_rate: 50
+    notes: "Risotto traditionally uses butter and Parmesan. Some restaurants can make with olive oil and no cheese."
+    modification_instructions:
+      question_english: "Can you make risotto with olive oil instead of butter, no Parmesan, with vegetable broth?"
+      question_local: "Potete fare il risotto con olio d'oliva invece di burro, senza Parmigiano, con brodo vegetale?"
+
+  - name: "Pesto"
+    name_local: "Pesto"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Parmesan cheese (Parmigiano Reggiano)"
+      - "Pecorino cheese (sheep milk, often has rennet)"
+    modification_feasibility: "MODERATE"
+    success_rate: 40
+    notes: "Traditional pesto contains cheese. Some restaurants have vegan pesto (without cheese)."
+    alternative: "Ask for aglio e olio (garlic and oil) instead"
+
+  - name: "Gelato"
+    name_local: "Gelato"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Milk"
+      - "Cream"
+      - "Eggs (in some flavors)"
+    modification_feasibility: "N/A"
+    success_rate: 20
+    notes: "Most gelato contains dairy. Look for 'sorbetto' (sorbet) which is usually dairy-free."
+    alternative: "Sorbetto (fruit sorbet) - usually vegan"
+
+# Safe/Naturally Vegan Dishes
+safe_dishes:
+  - name: "Pizza Marinara"
+    name_local: "Pizza marinara"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Traditional Neapolitan pizza with tomato, garlic, oregano, olive oil. NO cheese. Naturally vegan."
+    verification: "Confirm no cheese: 'Senza formaggio, giusto?' (Without cheese, right?)"
+
+  - name: "Pasta al Pomodoro (with dried pasta)"
+    name_local: "Pasta al pomodoro"
+    confidence: "HIGH"  # 85%
+    notes: "Simple tomato sauce pasta. Use dried pasta (pasta secca - no eggs). Refuse Parmesan."
+    verification: "Pasta secca, senza Parmigiano (Dried pasta, no Parmesan)"
+
+  - name: "Pasta Aglio e Olio"
+    name_local: "Pasta aglio e olio"
+    confidence: "HIGH"  # 85%
+    notes: "Garlic and olive oil pasta. Use dried pasta, refuse Parmesan."
+    verification: "Senza formaggio"
+
+  - name: "Bruschetta (if no cheese)"
+    name_local: "Bruschetta"
+    confidence: "HIGH"  # 80%
+    notes: "Grilled bread with tomato, basil, olive oil. Usually vegan."
+    verification: "Check for cheese or butter on bread"
+
+  - name: "Caponata"
+    name_local: "Caponata"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Sicilian eggplant dish with tomatoes, olives, capers. Usually vegan."
+
+  - name: "Focaccia (plain)"
+    name_local: "Focaccia"
+    confidence: "HIGH"  # 85%
+    notes: "Italian flatbread with olive oil, salt. Usually vegan (check toppings)."
+
+  - name: "Sorbetto (Fruit Sorbet)"
+    name_local: "Sorbetto"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Fruit sorbet. Usually dairy-free and vegan. Confirm no milk."
+
+  - name: "Pasta e Fagioli (bean soup - if vegetable broth)"
+    name_local: "Pasta e fagioli"
+    confidence: "MODERATE"  # 60%
+    notes: "Pasta and bean soup. Check if broth is vegetable or meat-based."
+    verification: "Fatto con brodo vegetale? (Made with vegetable broth?)"
+
+# Cultural Notes
+cultural_context:
+  vegetarian_concept:
+    understanding_level: "MODERATE_TO_HIGH"
+    notes: |
+      - "Vegetariano" understood, but interpretation varies
+      - Many Italians consider Parmesan "vegetarian" (unaware of rennet)
+      - "Vegano" (vegan) increasingly understood in cities, less in rural areas
+      - Italian cuisine has many naturally vegan staples (pasta, bread, vegetables)
+      - Traditional approach: food is regional and seasonal - modifications less common
+
+    effective_terminology:
+      best: "Vegano - no carne, pesce, latticini, uova, formaggio"
+      good: "Vegetariano - plus explain: no cheese, no eggs, no dairy"
+      clarify: "Senza formaggio, senza burro (without cheese, without butter)"
+
+  modification_culture:
+    overall_acceptance: "MODERATE"
+    notes: |
+      Italians are proud of traditional cuisine. Modifications can be seen as
+      disrespectful to the dish. However, simpler dishes (pasta with tomato sauce)
+      are easier to modify. Fine dining less flexible than casual trattorias.
+
+    by_restaurant_type:
+      - type: "Traditional trattorias"
+        acceptance_rate: 60  # 55-65%
+        success_factors:
+          - "Simple, classic dishes can often be modified"
+          - "Can leave off cheese"
+          - "Substitute olive oil for butter"
+        limitations:
+          - "Fresh pasta contains eggs (cannot change)"
+          - "Traditional sauces (pesto, carbonara) hard to modify"
+        approach: "Polite but clear. Emphasize health/allergy if needed."
+
+      - type: "Modern/urban restaurants"
+        acceptance_rate: 70  # 65-75%
+        success_factors:
+          - "More awareness of vegan diets"
+          - "May have vegan options on menu"
+        approach: "Direct. Many have 'opzioni vegane' (vegan options)"
+
+      - type: "Pizzerias"
+        acceptance_rate: 80  # 75-85%
+        success_factors:
+          - "Easy to order pizza without cheese"
+          - "Pizza marinara is traditionally vegan"
+        approach: "Simple request: 'Pizza marinara, senza formaggio'"
+
+      - type: "Fine dining"
+        acceptance_rate: 45  # 40-50%
+        limitations:
+          - "Dishes are curated, modifications discouraged"
+          - "Complex preparations"
+        approach: "Ask if they can create vegan dish. If not, choose different restaurant."
+
+  etiquette:
+    how_to_ask:
+      approach: "Polite, respectful of tradition"
+      tone: "Friendly but not demanding"
+      staff_english_level: "MEDIUM"  # Tourist areas high, rural areas low
+      tips:
+        - "Use 'per favore' (please) and 'grazie' (thank you)"
+        - "Explain dietary restriction: 'Sono vegano/a' (I'm vegan)"
+        - "Tourist areas (Rome, Florence, Venice) have good English"
+        - "Rural areas: limited English, Italian phrases help"
+        - "If modification resisted, don't push - choose simpler dish"
+
+    language_expectations:
+      tourist_cities:
+        english_proficiency: "MEDIUM_TO_HIGH"
+        notes: "Rome, Florence, Venice, Milan - most staff speak English"
+
+      rural_areas:
+        english_proficiency: "LOW_TO_MEDIUM"
+        notes: "Small towns, countryside - limited English"
+
+    common_responses:
+      positive:
+        - phrase: "Certo"
+          transliteration: "Certo"
+          meaning: "Certainly / Of course"
+        - phrase: "Nessun problema"
+          transliteration: "Nessun problema"
+          meaning: "No problem"
+
+      negative:
+        - phrase: "Non è possibile"
+          transliteration: "Non è possibile"
+          meaning: "It's not possible"
+        - phrase: "Mi dispiace"
+          transliteration: "Mi dispiace"
+          meaning: "I'm sorry (cannot do)"
+
+      uncertain:
+        - phrase: "Chiedo in cucina"
+          transliteration: "Chiedo in cucina"
+          meaning: "I'll ask the kitchen"
+
+# Common Modification Patterns
+modification_patterns:
+  easy:
+    - ingredient: "Parmesan cheese (topping)"
+      feasibility: "EASY"
+      success_rate: 90
+      reason: "Added on top, easy to omit"
+      phrase: "Senza formaggio (Senza formaggio)"
+
+    - ingredient: "Cheese on pizza"
+      feasibility: "EASY"
+      success_rate: 85
+      reason: "Can order pizza without cheese"
+      phrase: "Pizza senza formaggio (Pizza senza formaggio)"
+
+  moderate:
+    - ingredient: "Butter → Olive oil"
+      feasibility: "MODERATE"
+      success_rate: 65
+      reason: "Can substitute if cooking to order"
+      phrase: "Con olio d'oliva invece di burro (Con olio d'oliva invece di burro)"
+
+    - ingredient: "Meat broth → Vegetable broth"
+      feasibility: "MODERATE"
+      success_rate: 55
+      reason: "Depends if they have vegetable broth"
+      phrase: "Con brodo vegetale (Con brodo vegetale)"
+
+    - ingredient: "Fresh pasta → Dried pasta"
+      feasibility: "EASY_TO_MODERATE"
+      success_rate: 70
+      reason: "Most restaurants have both"
+      phrase: "Con pasta secca (Con pasta secca)"
+
+  impossible:
+    - ingredient: "Eggs in fresh pasta dough"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 5
+      reason: "Eggs mixed into dough, cannot separate"
+      alternative: "Ask for 'pasta secca' (dried pasta)"
+
+    - ingredient: "Cheese in pesto sauce"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 10
+      reason: "Pesto pre-made with cheese"
+      alternative: "Ask for aglio e olio (garlic and oil) instead"
+
+# Key Phrases for Ordering
+key_phrases:
+  - context: "I'm vegan"
+    english: "I'm vegan"
+    italian: "Sono vegano/a"
+    transliteration: "Sono vegano/a"
+    notes: "Use 'vegano' if male, 'vegana' if female"
+
+  - context: "Explaining dietary restrictions"
+    english: "I don't eat meat, fish, dairy, eggs, or cheese"
+    italian: "Non mangio carne, pesce, latticini, uova, o formaggio"
+    transliteration: "Non mangio carne, pesce, latticini, uova, o formaggio"
+
+  - context: "Without cheese"
+    english: "Without cheese, please"
+    italian: "Senza formaggio, per favore"
+    transliteration: "Senza formaggio, per favore"
+
+  - context: "Without Parmesan"
+    english: "Without Parmesan"
+    italian: "Senza Parmigiano"
+    transliteration: "Senza Parmigiano"
+
+  - context: "With olive oil instead of butter"
+    english: "With olive oil instead of butter"
+    italian: "Con olio d'oliva invece di burro"
+    transliteration: "Con olio d'oliva invece di burro"
+
+  - context: "Is this made with vegetable broth?"
+    english: "Is this made with vegetable broth?"
+    italian: "È fatto con brodo vegetale?"
+    transliteration: "È fatto con brodo vegetale?"
+
+  - context: "Does this have eggs?"
+    english: "Does this have eggs?"
+    italian: "Contiene uova?"
+    transliteration: "Contiene uova?"
+
+  - context: "Can I have dried pasta instead of fresh?"
+    english: "Can I have dried pasta instead of fresh?"
+    italian: "Posso avere la pasta secca invece di fresca?"
+    transliteration: "Posso avere la pasta secca invece di fresca?"
+
+  - context: "Thank you"
+    english: "Thank you very much"
+    italian: "Grazie mille"
+    transliteration: "Grazie mille"
+
+# Language Details
+language:
+  name: "Italian"
+  script: "Latin alphabet"
+  ocr_difficulty: "EASY"
+  ocr_accuracy_range: "95%+"
+  challenges:
+    - "Minimal - standard Latin alphabet"
+    - "Accents on some letters (à, è, ì, ò, ù)"
+    - "Generally very easy for OCR"
+  phase: "Phase 1"  # Easy language, can include in launch
+  phase_timeline: "Launch (Latin script priority)"
+  priority: "MEDIUM_HIGH"
+
+# Fallback Strategies
+fallback_strategies:
+  - scenario: "Restaurant doesn't understand"
+    strategy: "Ask for simple dishes: pizza marinara, pasta al pomodoro"
+    phrases:
+      - "Pizza marinara, senza formaggio"
+      - "Pasta al pomodoro, senza Parmigiano"
+
+  - scenario: "No vegan options"
+    strategy: "Order simple vegetables, bread, salad"
+    dishes:
+      - "Insalata mista (mixed salad) - senza formaggio"
+      - "Pane (bread)"
+      - "Verdure grigliate (grilled vegetables)"
+
+  - scenario: "Fresh pasta only (contains eggs)"
+    strategy: "Ask for dried pasta"
+    phrase: "Avete pasta secca? (Do you have dried pasta?)"
+
+# Useful Resources
+resources:
+  vegan_friendly_areas:
+    - city: "Rome"
+      notes: "Growing vegan scene. Many restaurants have vegan options."
+    - city: "Florence"
+      notes: "Good vegan options in tourist areas."
+    - city: "Milan"
+      notes: "Modern city with many vegan restaurants."
+
+  apps:
+    - "HappyCow - vegan restaurant finder"
+
+# Data Quality
+metadata:
+  last_updated: "2025-11-18"
+  research_date: "2025-11"
+  confidence: "HIGH"
+  sources:
+    - "Global Vegan Menu Scanning Challenges Research (Nov 2025)"
+    - "Utopia - Is Parmesan Vegetarian?"
+    - "The Nomadic Vegan - Sicily guide"
+  needs_validation:
+    - "Regional variations (North vs South Italy)"
+    - "Acceptance rates by restaurant type"

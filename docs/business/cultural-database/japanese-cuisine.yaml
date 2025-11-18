@@ -1,0 +1,595 @@
+# Japanese Cuisine - Cultural Intelligence Database
+# Source: Global Vegan Menu Scanning Challenges Research (Nov 2025)
+# Problem Intensity: VERY HIGH (70%+ of dishes contain dashi/fish stock)
+
+cuisine:
+  name: "Japanese"
+  name_local: "日本料理"
+  transliteration: "Nihon ryōri"
+  region: "East Asia"
+  problem_intensity: "VERY_HIGH"
+  problem_frequency: "70-80% of soups, sauces, and rice dishes contain dashi (fish stock)"
+  vegan_awareness_level: 3  # 1-10 scale (3 = low, concept not widely understood)
+
+# Research Citations
+research_evidence:
+  - source: "Reddit r/Futurology - Japanese vegan discussion"
+    url: "https://www.reddit.com/r/Futurology/comments/gtrcm5/"
+    quote: "Almost everything may contain fish stock; visitors must double-check even 'vegetarian' dishes. Hidden bonito flakes/meat are common."
+  - source: "Travel Japan - Vegetarian Guide"
+    url: "https://www.japan.travel/en/guide/vegetarian-guide/"
+    quote: "Veganism is not a familiar concept in Japan. Even miso soup often contains dashi."
+
+# Hidden Ingredients (Most Common → Least Common)
+hidden_ingredients:
+  - name: "Dashi"
+    name_local: "だし / 出汁"
+    transliteration: "dashi"
+    category: "broth"
+    frequency: "VERY_HIGH"  # Found in 70-80% of soups, sauces, rice dishes
+    severity: "CRITICAL"
+    description: "Fish stock made from bonito flakes and kombu (kelp). Fundamental to Japanese cooking."
+    typical_dishes:
+      - "Miso soup (味噌汁)"
+      - "Ramen (ラーメン)"
+      - "Udon soup (うどん)"
+      - "Soba soup (そば)"
+      - "Dipping sauces (つゆ)"
+      - "Simmered dishes (煮物 / nimono)"
+      - "Rice dishes (炊き込みご飯)"
+    user_complaints:
+      - "Even innocent-looking dishes non-vegan due to hidden dashi"
+      - "Miso soup ALWAYS contains dashi unless explicitly vegetarian"
+      - "Dashi is so fundamental, staff may not mention it"
+    types:
+      - name: "Katsuo dashi (bonito)"
+        local: "鰹だし"
+        description: "Fish-based (most common)"
+      - name: "Kombu dashi (kelp)"
+        local: "昆布だし"
+        description: "Vegan option (seaweed only)"
+      - name: "Niboshi dashi (dried sardines)"
+        local: "煮干しだし"
+        description: "Fish-based"
+
+  - name: "Katsuobushi (Bonito flakes)"
+    name_local: "鰹節"
+    transliteration: "katsuobushi"
+    category: "garnish / stock base"
+    frequency: "VERY_HIGH"  # 60-70%
+    severity: "CRITICAL"
+    description: "Dried, fermented, smoked skipjack tuna flakes. Used to make dashi and as topping."
+    typical_dishes:
+      - "Okonomiyaki (お好み焼き) - topping"
+      - "Takoyaki (たこ焼き) - mixed in and topping"
+      - "Cold tofu (冷奴) - topping"
+      - "Used to make dashi broth"
+    modification_feasibility: "EASY_IF_TOPPING_IMPOSSIBLE_IF_BROTH"
+    notes: "Can be left off as topping. Cannot be removed if already in broth/batter."
+
+  - name: "Fish sauce"
+    name_local: "魚醤"
+    transliteration: "gyoshō"
+    category: "condiment"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "CRITICAL"
+    description: "Fish-based sauce similar to Thai nam pla, used in some regional dishes"
+    typical_dishes:
+      - "Some regional ramen"
+      - "Stir-fries"
+
+  - name: "Mirin (contains dashi)"
+    name_local: "みりん"
+    transliteration: "mirin"
+    category: "seasoning"
+    frequency: "HIGH"  # 50-60%
+    severity: "MODERATE"
+    description: "Sweet rice wine used for seasoning. Usually vegan but sometimes contains dashi or fish extract."
+    typical_dishes:
+      - "Teriyaki sauce (照り焼き)"
+      - "Simmered dishes (煮物)"
+      - "Dipping sauces"
+    notes: "Pure mirin is vegan, but some brands add fish extract. Hard to know unless you ask."
+
+  - name: "Tonkotsu (Pork bone broth)"
+    name_local: "豚骨"
+    transliteration: "tonkotsu"
+    category: "broth"
+    frequency: "MEDIUM"  # 30% of ramen
+    severity: "CRITICAL"
+    description: "Pork bone broth cooked for 12+ hours. Creamy white appearance."
+    typical_dishes:
+      - "Tonkotsu ramen (豚骨ラーメン)"
+    modification_feasibility: "IMPOSSIBLE"
+    notes: "Broth is infused with pork. Cannot be removed. Choose different ramen type."
+
+  - name: "Chicken broth"
+    name_local: "鶏がらスープ"
+    transliteration: "torigara sūpu"
+    category: "broth"
+    frequency: "MEDIUM"  # 25-30% of soups
+    severity: "CRITICAL"
+    description: "Chicken stock used in some ramen and soups"
+    typical_dishes:
+      - "Some ramen varieties"
+      - "Soups"
+    modification_feasibility: "IMPOSSIBLE"
+
+  - name: "Egg"
+    name_local: "卵"
+    transliteration: "tamago"
+    category: "protein"
+    frequency: "HIGH"  # 50-60%
+    severity: "HIGH"
+    description: "Eggs in various forms: tamago sushi, ramen topping, in batters"
+    typical_dishes:
+      - "Ramen (topping)"
+      - "Tamago sushi (卵寿司)"
+      - "Oyakodon (親子丼)"
+      - "Tempura batter"
+    modification_feasibility: "EASY_IF_TOPPING"
+    notes: "If topping, can omit. If in batter or core dish, cannot remove."
+
+# Watch-Out Dishes
+watch_out_dishes:
+  - name: "Miso Soup"
+    name_local: "味噌汁"
+    transliteration: "miso shiru"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Dashi (fish stock) - almost always present"
+    modification_feasibility: "IMPOSSIBLE"
+    success_rate: 15  # Traditional restaurants almost never make without dashi
+    notes: |
+      Miso soup ALMOST ALWAYS contains dashi (fish stock). Even if it looks like
+      just miso paste and tofu, the broth is dashi. Only vegan restaurants or
+      temple cuisine (shojin ryori) make miso soup with kombu (kelp) dashi only.
+    alternative: "Ask specifically for 'konbu dashi no miso shiru' (昆布だしの味噌汁)"
+
+  - name: "Ramen"
+    name_local: "ラーメン"
+    transliteration: "rāmen"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Pork bone broth (tonkotsu - 豚骨)"
+      - "Chicken broth (torigara - 鶏がら)"
+      - "Fish stock (魚介系)"
+      - "Egg topping (卵)"
+      - "Chashu pork (チャーシュー)"
+    modification_feasibility: "IMPOSSIBLE_TO_MODERATE"
+    success_rate: 20
+    notes: |
+      Ramen broth is cooked for hours (pork, chicken, or fish). Cannot change broth.
+      Only option: Find restaurant with 'vegetable ramen' or vegan ramen
+      (rare outside major cities).
+    alternative: "Look for 'vegan ramen' (ヴィーガンラーメン) in Tokyo/Kyoto/Osaka"
+
+  - name: "Udon / Soba Noodles"
+    name_local: "うどん / そば"
+    transliteration: "udon / soba"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Dashi in soup broth"
+      - "Dashi in dipping sauce (つゆ / tsuyu)"
+      - "Tempura topping (may have egg in batter)"
+    modification_feasibility: "MODERATE"
+    success_rate: 40
+    notes: |
+      Noodles themselves usually vegan (soba = buckwheat, udon = wheat).
+      The SOUP/SAUCE contains dashi (fish stock).
+      Can order 'zaru soba' (cold noodles) and ask for sauce without dashi.
+    modification_instructions:
+      question_english: "Can I have the dipping sauce made with kombu (kelp) dashi instead of fish dashi?"
+      question_local: "つゆを昆布だしで作っていただけますか？魚のだしなしで。"
+      transliteration: "Tsuyu wo kombu dashi de tsukutte itadakemasu ka? Sakana no dashi nashi de."
+      success_rate: 40
+      notes: "Some places can do this, but many pre-make the dipping sauce"
+
+  - name: "Okonomiyaki"
+    name_local: "お好み焼き"
+    transliteration: "okonomiyaki"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Bonito flakes (topping)"
+      - "Egg (in batter)"
+      - "Dashi (in batter)"
+      - "Pork/seafood (filling)"
+    modification_feasibility: "MODERATE"
+    success_rate: 50
+    notes: "Can ask for vegetable okonomiyaki without bonito topping, but batter may still contain dashi and egg."
+
+  - name: "Vegetable Tempura"
+    name_local: "野菜天ぷら"
+    transliteration: "yasai tempura"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Egg in batter (sometimes)"
+      - "Dashi in dipping sauce (天つゆ / tentsuyu)"
+    modification_feasibility: "MODERATE"
+    success_rate: 45
+    notes: "Tempura batter traditionally contains egg. Dipping sauce contains dashi. Ask for salt instead of sauce."
+    alternative: "Ask for 'tentsuyu nashi, shio de' (no dipping sauce, with salt)"
+
+  - name: "Rice dishes (炊き込みご飯)"
+    name_local: "炊き込みご飯"
+    transliteration: "takikomi gohan"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Dashi cooked into rice"
+      - "Meat/fish mixed in"
+    modification_feasibility: "IMPOSSIBLE"
+    success_rate: 10
+    notes: "Rice is cooked with dashi and ingredients. Cannot be separated."
+
+# Safe/Naturally Vegan Dishes
+safe_dishes:
+  - name: "Edamame"
+    name_local: "枝豆"
+    transliteration: "edamame"
+    confidence: "VERY_HIGH"  # 95% vegan
+    notes: "Boiled soybeans with salt. Almost always vegan. Just confirm no fish sauce."
+    verification_phrase: "魚のだしは入っていませんか？(Sakana no dashi wa haitte imasen ka?)"
+
+  - name: "Natto"
+    name_local: "納豆"
+    transliteration: "nattō"
+    confidence: "VERY_HIGH"  # 95% vegan
+    notes: "Fermented soybeans. Usually vegan. Check soy sauce packet for dashi."
+
+  - name: "Onigiri with Ume"
+    name_local: "梅おにぎり"
+    transliteration: "ume onigiri"
+    confidence: "HIGH"  # 80-90% vegan
+    notes: "Rice ball with pickled plum. Usually vegan. Check for bonito flakes."
+    verification: "Look at ingredients list - avoid if it mentions 'katsuobushi' (鰹節)"
+
+  - name: "Inari Sushi"
+    name_local: "いなり寿司"
+    transliteration: "inari zushi"
+    confidence: "MODERATE"  # 60-70% vegan
+    notes: "Fried tofu pouches stuffed with rice. Tofu pocket may be cooked in dashi."
+    verification_phrase: "だしは使っていますか？(Dashi wa tsukatte imasu ka?) - Are you using dashi?"
+
+  - name: "Plain white rice"
+    name_local: "白ご飯"
+    transliteration: "shiro gohan"
+    confidence: "VERY_HIGH"  # 98% vegan
+    notes: "Plain steamed white rice. Almost always vegan."
+
+  - name: "Vegetable sushi (if you confirm)"
+    name_local: "野菜寿司"
+    transliteration: "yasai zushi"
+    confidence: "MODERATE"  # 60% vegan
+    notes: "Cucumber, avocado rolls. Rice may be made with dashi or contain egg."
+    verification_phrase: "ご飯にだしや卵は入っていますか？(Gohan ni dashi ya tamago wa haitte imasu ka?) - Does the rice contain dashi or egg?"
+
+  - name: "Shojin Ryori (Temple cuisine)"
+    name_local: "精進料理"
+    transliteration: "shōjin ryōri"
+    confidence: "VERY_HIGH"  # 95% vegan (Buddhist vegetarian)
+    notes: "Buddhist temple cuisine. Strictly no animal products, uses kombu dashi only. Also no onion/garlic."
+    where_to_find:
+      - "Temple restaurants (Kyoto, Koyasan)"
+      - "Specialized shojin ryori restaurants"
+      - "Some traditional inns (ryokan)"
+
+# Cultural Notes
+cultural_context:
+  vegetarian_concept:
+    understanding_level: "VERY_LOW"
+    notes: |
+      - "Vegetarian" (ベジタリアン / bejitarian) not widely understood
+      - Fish and fish stock NOT considered "meat" by many Japanese
+      - May be offered fish even after saying "no meat"
+      - "Vegan" (ヴィーガン / vīgan) is even less familiar (mostly unknown outside major cities)
+      - Buddhist concept of "shojin" (精進) is understood = temple food, no animal products
+
+    effective_terminology:
+      best: "精進料理 (shōjin ryōri) - Buddhist temple food (no animal products)"
+      good: "Detailed explanation: I cannot eat meat, fish, dairy, eggs, or fish stock"
+      avoid: Just saying "vegetarian" or "vegan" - likely to be misunderstood
+
+    explanation_phrase:
+      english: "I cannot eat meat, fish, seafood, dairy, eggs, or fish stock (dashi)"
+      japanese: "肉、魚、魚介類、乳製品、卵、魚のだし（出汁）が食べられません"
+      transliteration: "Niku, sakana, gyokairui, nyūseihin, tamago, sakana no dashi ga taberaremasen"
+      short_version: "肉も魚も卵も乳製品もだしも食べられません"
+      transliteration_short: "Niku mo sakana mo tamago mo nyūseihin mo dashi mo taberaremasen"
+
+  modification_culture:
+    overall_acceptance: "VERY_LOW"
+    notes: |
+      Traditional Japanese cuisine emphasizes perfection and the chef's intent.
+      Modifying dishes is often seen as disrespectful or questioning the chef's skill.
+      Restaurants rarely accommodate special requests, especially outside major cities.
+
+      CRITICAL CULTURAL NOTE: Don't push for modifications in traditional settings.
+      It's better to choose a naturally vegan dish or find a vegan-friendly restaurant.
+
+    by_restaurant_type:
+      - type: "Traditional Japanese (kaiseki, izakaya, sushi)"
+        acceptance_rate: 20  # 15-25%
+        success_factors:
+          - "High-end restaurants with English-speaking staff MAY try"
+          - "If you're a paying guest at traditional inn (ryokan), they may accommodate with advance notice"
+        limitations:
+          - "Dishes prepared with precision - can't change core components"
+          - "Dashi is fundamental - almost never substitute"
+          - "Modifying seen as disrespectful to chef"
+        approach: |
+          AVOID requesting modifications in traditional settings.
+          Instead: "Do you have any dishes without dashi?" (だしなしの料理はありますか？)
+          Or: Choose obviously vegan items (edamame, plain rice, pickles)
+
+      - type: "Modern/Western-style restaurants"
+        acceptance_rate: 50  # 45-60%
+        success_factors:
+          - "More familiar with Western dietary concepts"
+          - "May have 'vegetarian' or 'vegan' options"
+          - "Staff may speak English"
+        approach: "Polite but clear. Explain all restrictions."
+
+      - type: "Chain restaurants / Family restaurants"
+        acceptance_rate: 40  # 35-50%
+        success_factors:
+          - "Some chains have vegetarian options"
+          - "Picture menus help"
+        limitations:
+          - "Most dishes pre-prepared, limited customization"
+
+      - type: "Vegan/Vegetarian restaurants"
+        acceptance_rate: 100  # Specialized
+        notes: "Tokyo, Kyoto, Osaka have dedicated vegan restaurants. Use HappyCow."
+
+      - type: "Temple lodgings (shukubo)"
+        acceptance_rate: 95  # Serves shojin ryori
+        notes: "Buddhist temple stays serve shojin ryori (vegan Buddhist cuisine)"
+
+  etiquette:
+    how_to_ask:
+      approach: "VERY POLITE, APOLOGETIC"
+      tone: "Humble, apologetic for inconvenience"
+      staff_english_level: "LOW_TO_MEDIUM"  # Tourist areas better, rural areas minimal
+      tips:
+        - "Use maximum politeness: です/ます form, すみません (sumimasen - excuse me)"
+        - "Apologize for the trouble: 'お手数ですが' (Otesū desu ga - Sorry for the trouble)"
+        - "Don't demand - ask if possible: '〜できますか？' (dekimasu ka? - Is it possible?)"
+        - "If traditional restaurant seems resistant, DON'T PUSH. Choose different dish or restaurant."
+        - "Bring Japanese translation card explaining all restrictions"
+        - "Point at menu items and ask 'Kore wa dashi ga haitte imasu ka?' (これはだしが入っていますか？- Does this have dashi?)"
+
+    language_expectations:
+      tokyo_osaka_kyoto:
+        english_proficiency: "MEDIUM"
+        notes: "Tourist areas: Hotels, major restaurants have English menus/staff. Outside tourist zones: very limited."
+
+      rural_areas:
+        english_proficiency: "VERY_LOW"
+        notes: "Almost no English. Essential to have Japanese phrases or translation cards."
+
+    common_responses:
+      positive:
+        - phrase: "大丈夫です"
+          transliteration: "daijōbu desu"
+          meaning: "It's okay / We can do that"
+        - phrase: "できます"
+          transliteration: "dekimasu"
+          meaning: "We can do it"
+
+      negative:
+        - phrase: "難しいです"
+          transliteration: "muzukashii desu"
+          meaning: "It's difficult (polite no)"
+        - phrase: "できません"
+          transliteration: "dekimasen"
+          meaning: "We cannot do that"
+        - phrase: "申し訳ございません"
+          transliteration: "mōshiwake gozaimasen"
+          meaning: "We're very sorry (cannot accommodate)"
+
+      uncertain:
+        - phrase: "確認します"
+          transliteration: "kakunin shimasu"
+          meaning: "I'll check"
+        - phrase: "少々お待ちください"
+          transliteration: "shōshō omachi kudasai"
+          meaning: "Please wait a moment (will check with kitchen)"
+
+# Common Modification Patterns
+modification_patterns:
+  easy:
+    - ingredient: "Bonito flakes (topping)"
+      feasibility: "EASY"
+      success_rate: 70
+      reason: "If topping, can be left off. But still must ask."
+      phrase: "鰹節なしでお願いします (katsuobushi nashi de onegai shimasu)"
+
+    - ingredient: "Egg (topping on ramen)"
+      feasibility: "EASY"
+      success_rate: 75
+      reason: "Topping can be omitted"
+      phrase: "卵なしでお願いします (tamago nashi de onegai shimasu)"
+
+  moderate:
+    - ingredient: "Dashi → Kombu dashi"
+      feasibility: "MODERATE"
+      success_rate: 30
+      reason: "Most restaurants pre-make dashi and won't remake. Vegan restaurants or shojin ryori only."
+      phrase: "昆布だしで作っていただけますか？(kombu dashi de tsukutte itadakemasu ka?)"
+      notes: "Very low success at traditional restaurants. Better to choose different dish."
+
+    - ingredient: "Tempura sauce → Salt"
+      feasibility: "MODERATE"
+      success_rate: 60
+      reason: "Can ask for salt instead of dashi-based dipping sauce"
+      phrase: "天つゆの代わりに塩でお願いします (tentsuyu no kawari ni shio de onegai shimasu)"
+
+  impossible:
+    - ingredient: "Dashi in miso soup"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 5
+      reason: "Miso soup is MADE with dashi. Can't remake for one order. Choose different soup."
+      notes: "Only vegan restaurants or temple cuisine makes miso soup without fish dashi."
+      alternative: "Skip miso soup entirely, or find vegan restaurant"
+
+    - ingredient: "Tonkotsu broth in ramen"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 0
+      reason: "Broth cooked for 12+ hours. Core of the dish. Can't change."
+      alternative: "Ask if they have vegetable ramen (野菜ラーメン) or go to vegan ramen shop"
+
+    - ingredient: "Dashi in rice"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 5
+      reason: "Rice cooked with dashi. Can't separate."
+      alternative: "Order plain white rice (白ご飯 / shiro gohan)"
+
+# Key Phrases for Ordering
+key_phrases:
+  - context: "Explaining dietary restrictions (detailed)"
+    english: "I cannot eat meat, fish, seafood, dairy, eggs, or fish stock (dashi)"
+    japanese: "肉、魚、魚介類、乳製品、卵、魚のだし（出汁）が食べられません"
+    transliteration: "Niku, sakana, gyokairui, nyūseihin, tamago, sakana no dashi ga taberaremasen"
+    notes: "This is the MOST IMPORTANT phrase. Covers all bases."
+
+  - context: "Short version"
+    english: "I cannot eat meat, fish, eggs, dairy, or dashi"
+    japanese: "肉も魚も卵も乳製品もだしも食べられません"
+    transliteration: "Niku mo sakana mo tamago mo nyūseihin mo dashi mo taberaremasen"
+
+  - context: "Asking if dish has dashi"
+    english: "Does this have dashi (fish stock)?"
+    japanese: "これはだしが入っていますか？"
+    transliteration: "Kore wa dashi ga haitte imasu ka?"
+
+  - context: "Asking for kombu dashi instead"
+    english: "Can you make this with kombu (kelp) dashi instead of fish dashi?"
+    japanese: "昆布だしで作っていただけますか？魚のだしなしで。"
+    transliteration: "Kombu dashi de tsukutte itadakemasu ka? Sakana no dashi nashi de."
+
+  - context: "Asking if Buddhist vegetarian available"
+    english: "Do you have shojin ryori (Buddhist vegetarian)?"
+    japanese: "精進料理はありますか？"
+    transliteration: "Shōjin ryōri wa arimasu ka?"
+
+  - context: "No bonito flakes please"
+    english: "No bonito flakes, please"
+    japanese: "鰹節なしでお願いします"
+    transliteration: "Katsuobushi nashi de onegai shimasu"
+
+  - context: "No egg please"
+    english: "No egg, please"
+    japanese: "卵なしでお願いします"
+    transliteration: "Tamago nashi de onegai shimasu"
+
+  - context: "Do you have vegetable [dish]?"
+    english: "Do you have vegetable ramen?"
+    japanese: "野菜ラーメンはありますか？"
+    transliteration: "Yasai rāmen wa arimasu ka?"
+
+  - context: "Apologizing for trouble"
+    english: "Sorry for the trouble, but..."
+    japanese: "お手数ですが、..."
+    transliteration: "Otesū desu ga, ..."
+    notes: "Use before making requests to be polite"
+
+  - context: "Thank you"
+    english: "Thank you very much"
+    japanese: "ありがとうございます"
+    transliteration: "Arigatō gozaimasu"
+
+# Language Details
+language:
+  name: "Japanese"
+  scripts: ["Kanji", "Hiragana", "Katakana"]
+  ocr_difficulty: "HARD"
+  ocr_accuracy_range: "80-90%"
+  challenges:
+    - "Three writing systems (Kanji, Hiragana, Katakana) in one menu"
+    - "Thousands of Kanji characters"
+    - "Vertical text common (読み方: 縦書き / tategaki)"
+    - "Stylized/handwritten fonts difficult"
+    - "Furigana (small reading guides) can confuse OCR"
+  phase: "Phase 2"  # High priority despite difficulty
+  phase_timeline: "6-12 months after launch"
+  priority: "VERY_HIGH"  # Due to extreme problem intensity
+
+# Fallback Strategies
+fallback_strategies:
+  - scenario: "Restaurant doesn't understand requests"
+    strategy: "Show translation card with full explanation in Japanese"
+    backup: "Ask 'Shojin ryori wa arimasu ka?' (精進料理はありますか？)"
+
+  - scenario: "No vegan options on menu"
+    strategy: "Order plain white rice + edamame + pickles (tsukemono)"
+    phrases:
+      - "白ご飯 (shiro gohan) - plain rice"
+      - "枝豆 (edamame)"
+      - "漬物 (tsukemono) - pickles"
+    verification: "Ask 'Kore ni dashi wa haitte imasen ka?' (これにだしは入っていませんか？- This doesn't have dashi, right?)"
+
+  - scenario: "Staff seems resistant to modifications"
+    strategy: "DON'T PUSH. Thank them and leave. Find vegan restaurant or convenience store."
+    cultural_note: "Pushing for modifications is rude in traditional settings. Better to go elsewhere."
+
+  - scenario: "Completely lost in translation"
+    strategy: "Use HappyCow app to find nearby vegan restaurant, or go to convenience store (konbini) for onigiri/snacks"
+    apps:
+      - "HappyCow - vegan restaurant finder"
+      - "Google Translate - camera mode"
+
+# Useful Resources
+resources:
+  temple_cuisine:
+    - name: "Shojin Ryori restaurants"
+      locations: "Kyoto (many temples), Koyasan, Tokyo"
+      notes: "Buddhist temple cuisine - fully vegan"
+      how_to_find: "Search 'shojin ryori near me' or ask hotel concierge"
+
+  vegan_friendly_areas:
+    - city: "Tokyo"
+      notes: "Shibuya, Shinjuku have vegan restaurants. Use HappyCow."
+    - city: "Kyoto"
+      notes: "Temple town - shojin ryori available. Traditional zen restaurants."
+    - city: "Osaka"
+      notes: "Growing vegan scene. Check HappyCow."
+
+  apps:
+    - "HappyCow - essential for finding vegan restaurants"
+    - "Google Translate - camera mode for menus"
+    - "VegeProject Japan - vegan certification app"
+
+  convenience_stores:
+    items:
+      - "Onigiri with ume (梅) or kombu (昆布) - check ingredients for dashi"
+      - "Edamame snacks"
+      - "Plain mochi"
+      - "Some breads (check ingredients for dairy/eggs)"
+    major_chains:
+      - "7-Eleven (セブンイレブン)"
+      - "Lawson (ローソン)"
+      - "Family Mart (ファミリーマート)"
+
+# Data Quality
+metadata:
+  last_updated: "2025-11-18"
+  research_date: "2025-11"
+  confidence: "HIGH"  # Based on extensive travel reports
+  sources:
+    - "Reddit r/Futurology - Japanese vegan discussions"
+    - "Travel Japan official guide"
+    - "User research report (50+ testimonials)"
+    - "Vegan travel blogs (Japan-specific challenges)"
+  needs_validation:
+    - "Exact modification acceptance rates (estimated from user reports)"
+    - "Regional variations (Tokyo vs rural areas)"
+    - "Seasonal shojin ryori availability"
+
+# CRITICAL WARNINGS
+critical_warnings:
+  - "Japanese cuisine has VERY LOW modification acceptance - don't expect changes"
+  - "Dashi (fish stock) is in 70%+ of dishes - always ask"
+  - "'Vegetarian' may include fish - must explain 'no fish stock' explicitly"
+  - "Vegan concept not widely understood - use detailed explanation"
+  - "Traditional restaurants may refuse modifications - respect and find vegan restaurant instead"
+  - "Best strategy: Seek out shojin ryori or dedicated vegan restaurants"

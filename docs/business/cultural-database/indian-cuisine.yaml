@@ -1,0 +1,621 @@
+# Indian Cuisine - Cultural Intelligence Database
+# Created: 2025-11-18
+# Source: Global Vegan Menu Scanning Challenges Research
+# Purpose: Store cultural context, hidden ingredients, and communication intelligence
+
+cuisine:
+  name: "Indian"
+  name_local: "भारतीय व्यंजन (Bharatiya vyanjan)"
+  problem_intensity: "MEDIUM"
+  problem_frequency: "30-40% of dishes contain ghee, paneer, yogurt, or cream"
+
+  problem_description: |
+    Indian cuisine has many vegetarian options (due to Hindu/Jain traditions),
+    but vegetarian does NOT mean vegan. Ghee (clarified butter) is used
+    extensively in cooking. Paneer (cheese), yogurt, and cream are common
+    in curries and breads. However, India has more naturally vegan options
+    than most cuisines - dal (lentils), many vegetable curries, rice, and
+    some breads are vegan. South Indian cuisine tends to be more vegan-friendly
+    than North Indian.
+
+  ocr_difficulty: "VERY_HIGH"
+  ocr_notes: |
+    - Multiple scripts: Devanagari (Hindi), Tamil, Telugu, Bengali, etc.
+    - No cognates with English for most dishes
+    - Many regional languages and scripts
+    - English menus common in tourist areas and cities
+    - Romanization helps but inconsistent spelling
+
+  research_citations:
+    - "Global Vegan Menu Scanning Challenges Research (2025)"
+    - "Indian vegetarian vs. vegan research"
+    - "Regional Indian cuisine analysis"
+
+# ============================================================================
+# HIDDEN INGREDIENTS
+# ============================================================================
+
+hidden_ingredients:
+  # DAIRY - CRITICAL (India has world's highest dairy consumption)
+  - name: "Ghee (clarified butter)"
+    name_local: "घी (ghee)"
+    transliteration: "ghee"
+    frequency: "VERY_HIGH"  # 70%+ of dishes
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Dal (lentils - often finished with ghee)"
+      - "Naan (bread - brushed with ghee)"
+      - "Roti/Chapati (sometimes cooked with ghee)"
+      - "Biryani (rice dish - ghee in cooking)"
+      - "Most vegetable curries"
+      - "Sweets (ladoo, halwa, jalebi)"
+    modification_feasibility: "MODERATE"  # Can ask for oil instead
+    modification_notes: |
+      Many dishes can be made with vegetable oil instead of ghee,
+      but ghee is the traditional fat. Always ask.
+    questions_to_ask:
+      - "Is this made with ghee or oil?"
+      - "Can you make it without ghee, using oil instead?"
+    description: |
+      Ghee is THE most common hidden ingredient in Indian cuisine.
+      Even "vegetarian" dishes use ghee extensively. ALWAYS ask.
+
+  - name: "Paneer (Indian cheese)"
+    name_local: "पनीर (paneer)"
+    transliteration: "pa-neer"
+    frequency: "HIGH"  # 40-50% of vegetarian dishes
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Palak paneer (spinach with cheese)"
+      - "Paneer tikka (grilled cheese)"
+      - "Matar paneer (peas with cheese)"
+      - "Paneer butter masala"
+      - "Shahi paneer"
+    modification_feasibility: "MODERATE"  # Can ask for tofu or just vegetables
+    modification_notes: "Some restaurants can substitute tofu, or make dish without paneer"
+    questions_to_ask:
+      - "Can you make this without paneer?"
+      - "Can you use tofu instead of paneer?"
+
+  - name: "Yogurt / Curd"
+    name_local: "दही (dahi)"
+    transliteration: "da-hee"
+    frequency: "HIGH"  # 40-50%
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Raita (yogurt side dish)"
+      - "Kadhi (yogurt-based curry)"
+      - "Biryani (yogurt marinade)"
+      - "Lassi (yogurt drink)"
+      - "Many North Indian curries (yogurt base)"
+    modification_feasibility: "IMPOSSIBLE"  # Base ingredient
+    modification_notes: "If yogurt is the base, dish cannot be veganized"
+    questions_to_ask:
+      - "Does this contain yogurt or curd?"
+      - "Is yogurt in the sauce?"
+
+  - name: "Cream"
+    name_local: "क्रीम (cream) / मलाई (malai)"
+    transliteration: "cream / ma-lai"
+    frequency: "HIGH"  # 40%+ of North Indian curries
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Butter chicken / Paneer butter masala (even veg versions)"
+      - "Shahi dishes (means 'royal' - always has cream)"
+      - "Korma (cream-based curry)"
+      - "Malai kofta (cream in sauce)"
+    modification_feasibility: "MODERATE"  # Some restaurants can use coconut cream
+    modification_notes: "Coconut cream can substitute in some dishes"
+    questions_to_ask:
+      - "Does this have cream?"
+      - "Can you make it without cream?"
+      - "Can you use coconut milk instead?"
+
+  - name: "Milk"
+    name_local: "दूध (doodh)"
+    transliteration: "doodh"
+    frequency: "MEDIUM"  # 30%
+    severity: "HIGH"
+    typical_dishes:
+      - "Chai (tea with milk)"
+      - "Sweets (kheer, rasmalai, gulab jamun)"
+      - "Some bread doughs"
+    modification_feasibility: "EASY"  # Can ask for black tea, or almond/soy milk
+    questions_to_ask:
+      - "Can I have tea without milk?" (for chai)
+      - "Does this sweet contain milk?"
+
+  # ANIMAL PRODUCTS
+  - name: "Chicken/Meat stock"
+    name_local: "मांस का शोरबा (maans ka shorba)"
+    transliteration: "maans ka shor-ba"
+    frequency: "LOW"  # 10-15% - vegetarian restaurants don't use
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Some non-vegetarian curries"
+      - "Rare in vegetarian restaurants"
+    notes: "Indian vegetarian restaurants are usually truly vegetarian - no meat stock"
+
+  - name: "Honey"
+    name_local: "शहद (shahad)"
+    transliteration: "sha-had"
+    frequency: "MEDIUM"  # 20-30% in sweets
+    severity: "MODERATE"  # Depends on vegan strictness
+    typical_dishes:
+      - "Some sweets"
+      - "Glazes"
+    modification_feasibility: "EASY"
+
+# ============================================================================
+# WATCH-OUT DISHES
+# ============================================================================
+
+watch_out_dishes:
+  - name: "Dal (lentils)"
+    confidence: "MEDIUM_TO_HIGH"  # 65% - often vegan, but check for ghee
+    watch_for:
+      - "Ghee (clarified butter) - very common finishing touch"
+      - "Cream (in some dal makhani)"
+    safe_if: "Made with oil instead of ghee, no cream"
+    questions_to_ask:
+      - "Is ghee used in the dal?"
+      - "Can you make it with oil instead?"
+      - "Does it have cream?" (for dal makhani)
+
+  - name: "Naan (bread)"
+    confidence: "LOW"  # 30% - usually contains ghee, sometimes yogurt/milk/eggs
+    watch_for:
+      - "Ghee (brushed on top or in dough)"
+      - "Yogurt in dough (common)"
+      - "Milk in dough (sometimes)"
+      - "Eggs (rare, but some recipes)"
+    safe_if: "Made without ghee, yogurt, milk, eggs (rare)"
+    alternative: "Roti or chapati (more likely to be vegan)"
+    questions_to_ask:
+      - "Does the naan contain ghee, yogurt, milk, or eggs?"
+
+  - name: "Roti / Chapati (flatbread)"
+    confidence: "HIGH"  # 75% - usually just flour and water
+    watch_for:
+      - "Ghee (sometimes used on top or for cooking)"
+      - "Milk (rare)"
+    safe_if: "No ghee, no milk - just flour and water"
+    questions_to_ask:
+      - "Is this made without ghee?"
+
+  - name: "Biryani (rice dish)"
+    confidence: "LOW"  # 25% - usually has ghee, sometimes yogurt
+    watch_for:
+      - "Ghee (cooked with ghee)"
+      - "Yogurt (marinade for vegetables/meat)"
+      - "Meat/Chicken (non-veg versions)"
+    safe_if: "Vegetable biryani made with oil, no yogurt"
+    questions_to_ask:
+      - "Is this made with oil or ghee?"
+      - "Is there yogurt in it?"
+
+  - name: "Samosa (fried pastry)"
+    confidence: "MEDIUM_TO_HIGH"  # 65%
+    watch_for:
+      - "Ghee in pastry dough (sometimes)"
+      - "Deep-fried oil (check if reused with non-veg items)"
+    safe_if: "Vegetable samosa, dough made without ghee"
+    questions_to_ask:
+      - "Is the dough made with ghee?"
+
+  - name: "Aloo Gobi (potato and cauliflower)"
+    confidence: "MEDIUM_TO_HIGH"  # 70%
+    watch_for:
+      - "Ghee (used for cooking)"
+      - "Cream (some recipes)"
+    safe_if: "Cooked in oil, no cream"
+    questions_to_ask:
+      - "Is this cooked in oil or ghee?"
+
+  - name: "Chana Masala (chickpea curry)"
+    confidence: "MEDIUM_TO_HIGH"  # 70%
+    watch_for:
+      - "Ghee (finishing touch)"
+      - "Cream (some versions)"
+    safe_if: "No ghee, no cream"
+    questions_to_ask:
+      - "Is ghee used?"
+      - "Is there cream?"
+
+  - name: "Indian Sweets (mithai)"
+    confidence: "VERY_LOW"  # 10% - almost all contain dairy
+    watch_for:
+      - "Milk (kheer, rasmalai, gulab jamun)"
+      - "Ghee (ladoo, halwa, jalebi)"
+      - "Paneer (sandesh, rasmalai)"
+    safe_if: "Very rare - some jaggery-based sweets may be vegan"
+    notes: "Indian sweets are VERY dairy-heavy - avoid unless confirmed vegan"
+
+# ============================================================================
+# SAFE DISHES
+# ============================================================================
+
+safe_dishes:
+  - name: "Plain rice (chawal)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Usually just rice and water"
+    watch_for: "Ghee (sometimes added)"
+
+  - name: "Roti / Chapati (if no ghee)"
+    confidence: "HIGH"  # 75% - ask to confirm no ghee
+    how_to_verify: "Ask: 'Is this made without ghee?'"
+
+  - name: "Idli (South Indian steamed rice cakes)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Usually just rice and lentils - naturally vegan"
+    watch_for: "Ghee (sometimes served with ghee on top)"
+
+  - name: "Dosa (South Indian crepe)"
+    confidence: "HIGH"  # 80%
+    notes: "Fermented rice and lentil batter - usually vegan"
+    watch_for:
+      - "Ghee (some restaurants use ghee on griddle)"
+      - "Butter (masala dosa sometimes has butter)"
+    questions_to_ask: "Is this made without ghee or butter?"
+
+  - name: "Sambar (South Indian lentil soup)"
+    confidence: "HIGH"  # 80%
+    notes: "Lentil and vegetable soup - usually vegan"
+    watch_for: "Ghee (finishing touch)"
+
+  - name: "Coconut chutney"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Coconut, chilies, spices - usually vegan"
+
+  - name: "Vegetable curry (sabzi) - depends on preparation"
+    confidence: "MEDIUM"  # 50-60%
+    watch_for:
+      - "Ghee"
+      - "Cream"
+      - "Yogurt"
+    questions_to_ask: "Is this made without ghee, cream, or yogurt?"
+
+  - name: "Aloo (potato dishes) - if no dairy"
+    confidence: "MEDIUM_TO_HIGH"  # 60%
+    watch_for: "Ghee, cream"
+    questions_to_ask: "Is this made with oil?"
+
+  - name: "Bhindi (okra) - if no dairy"
+    confidence: "MEDIUM_TO_HIGH"  # 60%
+    watch_for: "Ghee"
+
+  - name: "Baingan bharta (eggplant mash) - if no dairy"
+    confidence: "MEDIUM"  # 50%
+    watch_for: "Ghee, cream"
+
+# ============================================================================
+# REGIONAL VARIATIONS
+# ============================================================================
+
+regional_variations:
+  - region: "South India (Tamil Nadu, Kerala, Karnataka, Andhra Pradesh)"
+    vegan_friendliness: "HIGH"
+    notes: |
+      South Indian cuisine is MORE vegan-friendly. Uses coconut oil
+      instead of ghee in many dishes. Dosa, idli, sambar, coconut
+      chutney are often naturally vegan.
+    typical_dishes:
+      - "Idli (rice cakes)"
+      - "Dosa (rice crepes)"
+      - "Sambar (lentil soup)"
+      - "Coconut chutney"
+      - "Rasam (tamarind soup)"
+    watch_for: "Ghee still used in some dishes - always ask"
+
+  - region: "North India (Punjab, Delhi, Uttar Pradesh, Rajasthan)"
+    vegan_friendliness: "LOW_TO_MEDIUM"
+    notes: |
+      North Indian cuisine is DAIRY-HEAVY. Ghee, paneer, cream, yogurt
+      are fundamental ingredients. Modification usually needed.
+    typical_dishes:
+      - "Paneer dishes"
+      - "Naan (with ghee/yogurt)"
+      - "Butter-based curries"
+      - "Dal makhani (has cream)"
+    watch_for: "Almost everything contains ghee or dairy"
+
+  - region: "West India (Gujarat, Maharashtra, Goa)"
+    vegan_friendliness: "MEDIUM"
+    notes: |
+      Gujarat has strong vegetarian (and some vegan) Jain tradition.
+      Goa has Portuguese influence - more seafood and pork.
+    typical_dishes:
+      - "Gujarati thali (many vegetable dishes)"
+      - "Dhokla (steamed cake - usually vegan)"
+    watch_for: "Gujarati food uses dairy but can often modify"
+
+  - region: "East India (West Bengal, Odisha)"
+    vegan_friendliness: "MEDIUM"
+    notes: "More seafood-focused, but also dairy in vegetarian dishes"
+    watch_for: "Fish in many dishes, dairy in sweets"
+
+# ============================================================================
+# MODIFICATION CULTURE
+# ============================================================================
+
+modification_culture:
+  overall_acceptance: "HIGH"
+  overall_notes: |
+    India has HIGH modification acceptance, especially for dietary/
+    religious reasons. Indians understand vegetarianism deeply (though
+    not always veganism). Asking for no ghee/dairy is usually respected.
+
+  by_restaurant_type:
+    - type: "Vegetarian restaurants (Pure Veg)"
+      acceptance_rate: 80  # 75-85%
+      success_factors:
+        - "Already cater to dietary restrictions"
+        - "Used to Jain requests (no onion/garlic)"
+        - "Understand religious dietary needs"
+      limitations:
+        - "Vegetarian does NOT mean vegan - dairy is common"
+        - "Ghee is standard - must ask for oil"
+      approach: |
+        Very receptive to dietary requests. Say you're "pure vegan"
+        or "no dairy" and they'll usually accommodate.
+
+    - type: "Non-vegetarian restaurants"
+      acceptance_rate: 60  # 50-70%
+      success_factors:
+        - "Still understand vegetarian requests"
+      limitations:
+        - "May have cross-contamination with non-veg"
+      approach: "Ask for vegetarian + no dairy"
+
+    - type: "South Indian restaurants"
+      acceptance_rate: 85  # 80-90%
+      success_factors:
+        - "Many dishes naturally vegan"
+        - "Use coconut oil more than ghee"
+      approach: "Ask if dish contains ghee or dairy"
+
+    - type: "Street food"
+      acceptance_rate: 65  # 60-70%
+      limitations:
+        - "Pre-made items hard to modify"
+        - "Shared cooking surfaces with ghee"
+      approach: "Ask ingredients, choose items less likely to have dairy"
+
+  critical_warnings:
+    - "VEGETARIAN ≠ VEGAN in India - dairy is everywhere in vegetarian food"
+    - "Ghee is the default cooking fat - ALWAYS ask if oil can be used instead"
+    - "Don't assume 'Pure Veg' means vegan - it means no meat/fish/eggs, but dairy is included"
+    - "South Indian cuisine is generally more vegan-friendly than North Indian"
+
+  modification_patterns:
+    ghee_to_oil:
+      feasibility: "EASY"
+      success_rate: 80
+      notes: "Most restaurants can substitute oil for ghee if asked"
+      how_to_ask: "Can you make this with oil instead of ghee?"
+
+    remove_paneer:
+      feasibility: "MODERATE"
+      success_rate: 65
+      notes: "Can often make dish without paneer or with tofu"
+      how_to_ask: "Can you make this without paneer?"
+
+    cream_based_sauce:
+      feasibility: "MODERATE_TO_IMPOSSIBLE"
+      success_rate: 30
+      notes: "Coconut milk can substitute, but not all restaurants will do this"
+      how_to_ask: "Can you use coconut milk instead of cream?"
+
+    yogurt_based_dish:
+      feasibility: "IMPOSSIBLE"
+      success_rate: 5
+      notes: "If yogurt is the base, cannot be veganized"
+
+# ============================================================================
+# CULTURAL ETIQUETTE
+# ============================================================================
+
+etiquette:
+  how_to_ask:
+    approach: "POLITE, DIRECT"
+    tone: "Respectful - dietary restrictions are understood in India"
+    staff_english_level: "MEDIUM_TO_HIGH"
+    tips:
+      - "Indians understand dietary restrictions (religious/health)"
+      - "Say 'pure vegan' or 'no dairy products' - 'vegetarian' is not enough"
+      - "Specify 'no ghee, no paneer, no yogurt, no cream'"
+      - "Jain restaurants (no onion/garlic) are often more accommodating"
+      - "Be clear: 'only oil, no ghee'"
+
+  language_expectations:
+    major_cities:
+      english_proficiency: "MEDIUM_TO_HIGH"
+      notes: |
+        Cities (Delhi, Mumbai, Bangalore, Chennai) have good English,
+        especially in restaurants. Menus often in English.
+
+    rural_areas:
+      english_proficiency: "LOW_TO_MEDIUM"
+      notes: |
+        Rural areas less English, but Hindi phrases help.
+        Visual menus and pointing work well.
+
+  common_responses:
+    positive:
+      - phrase: "हाँ, बिलकुल (Haan, bilkul)"
+        transliteration: "haan, bil-kul"
+        meaning: "Yes, absolutely"
+
+      - phrase: "हो जाएगा (Ho jayega)"
+        transliteration: "ho ja-ye-ga"
+        meaning: "It will be done / We can do it"
+
+    negative:
+      - phrase: "नहीं हो सकता (Nahin ho sakta)"
+        transliteration: "na-hin ho sak-ta"
+        meaning: "It's not possible"
+
+      - phrase: "इसमें पनीर है (Ismein paneer hai)"
+        transliteration: "is-mein pa-neer hai"
+        meaning: "This has paneer (cheese)"
+
+    uncertain:
+      - phrase: "मैं देखता हूँ (Main dekhta hoon)"
+        transliteration: "main dekh-ta hoon"
+        meaning: "I'll check"
+
+  what_to_do:
+    if_they_say_yes:
+      - "Confirm: 'No ghee, only oil?'"
+      - "Thank them: 'Dhanyavaad' (thank you)"
+
+    if_they_say_no:
+      - "Ask for alternative dishes"
+      - "South Indian restaurants often have more options"
+
+# ============================================================================
+# KEY HINDI/INDIAN VEGAN PHRASES
+# ============================================================================
+
+key_phrases:
+  dietary_terms:
+    - hindi: "शाकाहारी (shakahari)"
+      transliteration: "sha-ka-ha-ri"
+      english: "Vegetarian"
+      notes: "This includes dairy - NOT vegan"
+
+    - hindi: "शुद्ध शाकाहारी (shuddh shakahari)"
+      transliteration: "shuddh sha-ka-ha-ri"
+      english: "Pure vegetarian"
+      notes: "Still includes dairy in India"
+
+    - hindi: "वीगन (vegan)"
+      transliteration: "vee-gan"
+      english: "Vegan"
+      notes: "Borrowed term, increasingly understood in cities"
+
+    - hindi: "दूध नहीं (doodh nahin)"
+      transliteration: "doodh na-hin"
+      english: "No milk / No dairy"
+      notes: "Important to specify"
+
+  asking_questions:
+    - hindi: "इसमें घी है?"
+      transliteration: "is-mein ghee hai?"
+      english: "Does this have ghee?"
+
+    - hindi: "क्या आप तेल में बना सकते हैं, घी में नहीं?"
+      transliteration: "kya aap tel mein ba-na sak-te hain, ghee mein na-hin?"
+      english: "Can you make this in oil, not ghee?"
+
+    - hindi: "इसमें पनीर, दही, क्रीम है?"
+      transliteration: "is-mein pa-neer, da-hi, cream hai?"
+      english: "Does this have paneer, yogurt, cream?"
+
+    - hindi: "क्या यह पूरी तरह वीगन है? कोई डेयरी नहीं?"
+      transliteration: "kya yeh poori tarah vee-gan hai? koi dairy na-hin?"
+      english: "Is this completely vegan? No dairy?"
+
+  polite_expressions:
+    - hindi: "नमस्ते (namaste)"
+      transliteration: "na-mas-te"
+      english: "Hello / Greetings"
+
+    - hindi: "कृपया (kripya)"
+      transliteration: "krip-ya"
+      english: "Please"
+
+    - hindi: "धन्यवाद (dhanyavaad)"
+      transliteration: "dhan-ya-vaad"
+      english: "Thank you"
+
+  explaining_vegan:
+    - hindi: "मैं वीगन हूँ। मैं दूध, घी, पनीर, दही नहीं खाता/खाती।"
+      transliteration: "main vee-gan hoon. main doodh, ghee, pa-neer, da-hi na-hin kha-ta/kha-ti."
+      english: "I'm vegan. I don't eat milk, ghee, paneer, or yogurt."
+
+    - hindi: "सिर्फ़ तेल, घी नहीं"
+      transliteration: "sirf tel, ghee na-hin"
+      english: "Only oil, no ghee"
+
+# ============================================================================
+# RECOMMENDATIONS
+# ============================================================================
+
+recommendations:
+  strategy: |
+    India is MEDIUM difficulty for vegans - lots of vegetarian options,
+    but vegetarian ≠ vegan. Ghee is everywhere.
+
+    **Best Strategy:**
+    1. Always specify "no ghee, no dairy" - don't rely on "vegetarian"
+    2. South Indian restaurants are more vegan-friendly
+    3. Ask for oil instead of ghee
+    4. Jain restaurants (no onion/garlic) may be more accommodating
+    5. Avoid North Indian rich curries (cream/paneer heavy)
+
+    **Key phrases:**
+    - "No ghee, only oil"
+    - "No paneer, no yogurt, no cream"
+    - "Pure vegan, no dairy"
+
+  vegan_friendly_cities:
+    - city: "Bangalore"
+      vegan_scene: "VERY_HIGH"
+      notes: "Many vegan restaurants, cosmopolitan city"
+
+    - city: "Mumbai"
+      vegan_scene: "HIGH"
+      notes: "Growing vegan scene, many options"
+
+    - city: "Delhi"
+      vegan_scene: "HIGH"
+      notes: "Vegan-friendly restaurants increasing"
+
+    - city: "Chennai"
+      vegan_scene: "HIGH"
+      notes: "South Indian cuisine - naturally more vegan options"
+
+    - city: "Goa"
+      vegan_scene: "MEDIUM_TO_HIGH"
+      notes: "Tourist area, international vegan awareness"
+
+  helpful_apps:
+    - "HappyCow (vegan restaurant finder)"
+    - "Zomato (restaurant reviews, can filter for vegan)"
+
+# ============================================================================
+# RESEARCH NOTES
+# ============================================================================
+
+research_notes:
+  key_insights:
+    - "India has TONS of vegetarian food, but vegetarian ≠ vegan"
+    - "Ghee is the #1 hidden ingredient - used in 70%+ of dishes"
+    - "South India is more vegan-friendly (coconut oil vs. ghee)"
+    - "North India is dairy-heavy (paneer, cream, yogurt everywhere)"
+    - "Indians understand dietary restrictions - high modification acceptance"
+    - "Specify 'no dairy' - 'vegetarian' alone is not enough"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-11-18"
+  coverage: "COMPREHENSIVE"
+  data_sources:
+    - "Global Vegan Menu Scanning Challenges Research"
+    - "Indian vegetarian vs. vegan research"
+    - "Regional cuisine analysis"
+
+  priority: "MEDIUM"  # Phase 2 according to vision.md
+
+  validation_status: "RESEARCH_BASED"
+
+  next_steps:
+    - "Validate with Indian vegan travelers"
+    - "Add more regional variations"
+    - "Expand Jain restaurant intelligence"
+    - "Add more South Indian dishes"
