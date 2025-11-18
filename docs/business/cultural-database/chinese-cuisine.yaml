@@ -1,0 +1,543 @@
+# Chinese Cuisine - Cultural Intelligence Database
+# Source: Global Vegan Menu Scanning Challenges Research (Nov 2025)
+# Problem Intensity: HIGH (50-70% of dishes contain hidden animal products)
+
+cuisine:
+  name: "Chinese"
+  name_local_simplified: "中国菜"
+  name_local_traditional: "中國菜"
+  transliteration: "Zhōngguó cài"
+  region: "East Asia"
+  problem_intensity: "HIGH"
+  problem_frequency: "50-70% of dishes contain oyster sauce, meat broths, or lard"
+  vegan_awareness_level: 5  # 1-10 scale (5 = moderate, Buddhist vegetarian tradition exists)
+
+# Research Citations
+research_evidence:
+  - source: "Easy Dog Food Recipes - Which Chinese dishes are vegetarian?"
+    url: "https://www.easydogfoodrecipes.com/dog-food-tips/which-chinese-dishes-are-vegetarian-e4d86872/"
+    quote: "Many 'vegetarian' labeled dishes still use chicken or fish broth. Oyster sauce is so common that even Chinese vegetarians often accept it."
+  - source: "Reddit r/chinesefood - Oyster sauce discussion"
+    url: "https://www.reddit.com/r/chinesefood/comments/1ixe6cr/"
+    quote: "Oyster sauce in almost every stir-fry. Hard to avoid."
+
+# Hidden Ingredients (Most Common → Least Common)
+hidden_ingredients:
+  - name: "Oyster sauce"
+    name_local_simplified: "蚝油"
+    name_local_traditional: "蠔油"
+    transliteration: "háoyóu"
+    category: "sauce"
+    frequency: "VERY_HIGH"  # Found in 60-70% of stir-fries
+    severity: "CRITICAL"
+    description: "Oyster-extract sauce used for umami in vegetables and stir-fries"
+    typical_dishes:
+      - "Stir-fried vegetables (炒青菜)"
+      - "Beef with broccoli (芥兰牛肉)"
+      - "Bok choy dishes (白菜)"
+      - "Chow mein (炒面)"
+    user_complaints:
+      - "Oyster sauce is SO common that even Chinese vegetarians often accept it"
+      - "Even 'vegetable' dishes have oyster sauce by default"
+    cultural_note: "Many Chinese vegetarians (素食者) accept oyster sauce as 'vegetarian' - you must explicitly say no."
+
+  - name: "Chicken powder / bouillon"
+    name_local_simplified: "鸡精"
+    name_local_traditional: "雞精"
+    transliteration: "jī jīng"
+    category: "seasoning"
+    frequency: "HIGH"  # 50-60%
+    severity: "CRITICAL"
+    description: "Chicken-flavored seasoning powder used instead of MSG. Very common."
+    typical_dishes:
+      - "Soups (汤)"
+      - "Stir-fries (炒菜)"
+      - "Fried rice (炒饭)"
+    notes: "Often used instead of MSG for flavor. May not be listed on menu."
+
+  - name: "Meat broth (chicken, pork)"
+    name_local_simplified: "高汤 / 鸡汤 / 肉汤"
+    name_local_traditional: "高湯 / 雞湯 / 肉湯"
+    transliteration: "gāotāng / jītāng / ròutāng"
+    category: "broth"
+    frequency: "HIGH"  # 50-60% of soups and some rice dishes
+    severity: "CRITICAL"
+    description: "Chicken or pork broth used as base for soups and sometimes rice"
+    typical_dishes:
+      - "Hot and sour soup (酸辣汤)"
+      - "Wonton soup (馄饨汤)"
+      - "Egg drop soup (蛋花汤)"
+      - "Congee/Rice porridge (粥)"
+    user_complaints:
+      - "Even 'vegetable soup' often starts with chicken or pork broth"
+
+  - name: "Lard"
+    name_local_simplified: "猪油"
+    name_local_traditional: "豬油"
+    transliteration: "zhūyóu"
+    category: "cooking fat"
+    frequency: "MEDIUM"  # 30-40% (regional, especially Southern China)
+    severity: "CRITICAL"
+    description: "Pork fat used for cooking and flavoring"
+    typical_dishes:
+      - "Fried rice (炒饭)"
+      - "Stir-fries (炒菜)"
+      - "Noodles (面)"
+      - "Chinese pastries (糕点)"
+    modification_feasibility: "IMPOSSIBLE_IF_ALREADY_COOKED"
+    notes: "Common in Southern Chinese cuisine. Food already cooked in lard - can't remove."
+
+  - name: "Fish sauce"
+    name_local_simplified: "鱼露"
+    name_local_traditional: "魚露"
+    transliteration: "yúlù"
+    category: "condiment"
+    frequency: "MEDIUM"  # 20-30% (more in coastal regions)
+    severity: "CRITICAL"
+    description: "Fish-based sauce, more common in coastal/Southern Chinese cuisine"
+    typical_dishes:
+      - "Some regional stir-fries"
+      - "Cantonese dishes"
+    notes: "Less universal than oyster sauce, but still present in many dishes."
+
+  - name: "Egg"
+    name_local_simplified: "蛋 / 鸡蛋"
+    name_local_traditional: "蛋 / 雞蛋"
+    transliteration: "dàn / jīdàn"
+    category: "protein"
+    frequency: "HIGH"  # 40-50%
+    severity: "HIGH"
+    description: "Eggs in fried rice, soups, noodles, batter"
+    typical_dishes:
+      - "Fried rice (炒饭)"
+      - "Egg drop soup (蛋花汤)"
+      - "Noodle dishes (面)"
+    modification_feasibility: "EASY_IF_SEPARATE_MODERATE_IF_MIXED"
+
+  - name: "Shrimp / Dried shrimp"
+    name_local_simplified: "虾 / 虾米"
+    name_local_traditional: "蝦 / 蝦米"
+    transliteration: "xiā / xiāmǐ"
+    category: "seafood / garnish"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "CRITICAL"
+    description: "Fresh or dried shrimp in dishes or as seasoning"
+    typical_dishes:
+      - "Fried rice (炒饭)"
+      - "Dim sum (点心)"
+      - "Stir-fries (炒菜)"
+    modification_feasibility: "EASY_IF_TOPPING_IMPOSSIBLE_IF_MIXED_IN"
+
+# Watch-Out Dishes
+watch_out_dishes:
+  - name: "Stir-fried vegetables"
+    name_local_simplified: "炒青菜 / 炒时蔬"
+    name_local_traditional: "炒青菜 / 炒時蔬"
+    transliteration: "chǎo qīngcài / chǎo shíshū"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Oyster sauce (蚝油)"
+      - "Chicken powder (鸡精)"
+      - "Lard for frying (猪油)"
+    modification_feasibility: "MODERATE"
+    success_rate: 60
+    notes: "Vegetables SEEM vegan but almost always cooked with oyster sauce and/or chicken powder."
+    modification_instructions:
+      question_english: "Can you stir-fry the vegetables without oyster sauce, chicken powder, or lard? Use vegetable oil and soy sauce."
+      question_simplified: "炒青菜可以不加蚝油、鸡精、猪油吗？用植物油和酱油。"
+      question_traditional: "炒青菜可以不加蠔油、雞精、豬油嗎？用植物油和醬油。"
+      transliteration: "Chǎo qīngcài kěyǐ bù jiā háoyóu, jī jīng, zhūyóu ma? Yòng zhíwù yóu hé jiàngyóu."
+
+  - name: "Fried rice"
+    name_local_simplified: "炒饭"
+    name_local_traditional: "炒飯"
+    transliteration: "chǎofàn"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Egg (蛋)"
+      - "Chicken/pork/shrimp pieces"
+      - "Chicken powder (鸡精)"
+      - "Lard (猪油) - especially in Southern China"
+    modification_feasibility: "MODERATE"
+    success_rate: 55
+    notes: "Can ask for vegetable fried rice without egg, but may still have chicken powder or lard."
+    modification_instructions:
+      question_english: "Can you make vegetable fried rice without egg, meat, chicken powder, or lard?"
+      question_simplified: "素菜炒饭可以不加蛋、肉、鸡精、猪油吗？"
+      question_traditional: "素菜炒飯可以不加蛋、肉、雞精、豬油嗎？"
+      transliteration: "Sù cài chǎofàn kěyǐ bù jiā dàn, ròu, jī jīng, zhūyóu ma?"
+
+  - name: "Hot and sour soup"
+    name_local_simplified: "酸辣汤"
+    name_local_traditional: "酸辣湯"
+    transliteration: "suānlàtāng"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Chicken or pork broth (鸡汤 / 肉汤)"
+      - "Egg (蛋)"
+      - "Pork pieces"
+    modification_feasibility: "IMPOSSIBLE_TO_MODERATE"
+    success_rate: 25
+    notes: "Base is usually chicken/pork broth. Most restaurants can't remake just for one order."
+    alternative: "Ask if they can make with vegetable broth (蔬菜汤 / shūcài tāng)"
+
+  - name: "Mapo Tofu"
+    name_local_simplified: "麻婆豆腐"
+    name_local_traditional: "麻婆豆腐"
+    transliteration: "mápó dòufu"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Ground pork (猪肉末)"
+      - "Chicken broth (鸡汤)"
+    modification_feasibility: "MODERATE"
+    success_rate: 50
+    notes: "Traditional recipe has ground pork. Can ask for vegetarian version (素麻婆豆腐)."
+    modification_instructions:
+      question_english: "Do you have vegetarian mapo tofu (without pork)?"
+      question_simplified: "有素麻婆豆腐吗？（没有猪肉）"
+      question_traditional: "有素麻婆豆腐嗎？（沒有豬肉）"
+      transliteration: "Yǒu sù mápó dòufu ma? (Méiyǒu zhūròu)"
+
+  - name: "Spring rolls"
+    name_local_simplified: "春卷"
+    name_local_traditional: "春卷"
+    transliteration: "chūnjuǎn"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Pork or shrimp filling (if not vegetable)"
+      - "Sometimes egg in wrapper"
+    modification_feasibility: "EASY_IF_VEGETABLE_VERSION_EXISTS"
+    success_rate: 70
+    notes: "Ask for vegetable spring rolls (素春卷 / sù chūnjuǎn)"
+
+# Safe/Naturally Vegan Dishes
+safe_dishes:
+  - name: "Buddhist vegetarian dishes (素菜)"
+    name_local_simplified: "素菜"
+    name_local_traditional: "素菜"
+    transliteration: "sù cài"
+    confidence: "HIGH"  # 80-90% if at Buddhist vegetarian restaurant
+    notes: |
+      Buddhist vegetarian restaurants (素食餐厅) serve vegan food.
+      "素" (sù) means vegetarian, but at specialized restaurants it's strictly no animal products.
+      Watch out: Regular restaurants may use "素" loosely and still include oyster sauce or eggs.
+    where_to_find:
+      - "Buddhist temples"
+      - "Vegetarian restaurants (素食餐厅 / sù shí cāntīng)"
+    verification_phrase: "这是全素的吗？没有蛋、奶、蚝油？(Zhè shì quán sù de ma? Méiyǒu dàn, nǎi, háoyóu?) - Is this fully vegetarian? No eggs, dairy, oyster sauce?"
+
+  - name: "Stir-fried bok choy (if confirmed no oyster sauce)"
+    name_local_simplified: "清炒白菜"
+    name_local_traditional: "清炒白菜"
+    transliteration: "qīngchǎo báicài"
+    confidence: "MODERATE"  # 60% - depends on sauce
+    notes: "Simple stir-fried greens. Must confirm no oyster sauce or chicken powder."
+    verification_phrase: "不加蚝油和鸡精？(Bù jiā háoyóu hé jī jīng?) - No oyster sauce and chicken powder?"
+
+  - name: "Steamed rice"
+    name_local_simplified: "白米饭"
+    name_local_traditional: "白米飯"
+    transliteration: "bái mǐfàn"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Plain steamed rice. Almost always vegan."
+
+  - name: "Steamed buns (vegetable filling)"
+    name_local_simplified: "素包子"
+    name_local_traditional: "素包子"
+    transliteration: "sù bāozi"
+    confidence: "HIGH"  # 75-85%
+    notes: "Vegetable-filled steamed buns. Confirm no lard in dough."
+    verification_phrase: "面团里有猪油吗？(Miàntuán lǐ yǒu zhūyóu ma?) - Does the dough have lard?"
+
+  - name: "Plain tofu (if steamed or boiled)"
+    name_local_simplified: "豆腐"
+    name_local_traditional: "豆腐"
+    transliteration: "dòufu"
+    confidence: "MODERATE"  # 60% - depends on preparation
+    notes: "Tofu itself is vegan. Watch out for sauces (oyster sauce) or if fried in lard."
+
+  - name: "Congee/Rice porridge (vegetable)"
+    name_local_simplified: "素粥"
+    name_local_traditional: "素粥"
+    transliteration: "sù zhōu"
+    confidence: "MODERATE"  # 50-60%
+    notes: "Rice porridge. Often made with chicken broth - must verify."
+    verification_phrase: "用什么汤煮的？蔬菜汤吗？(Yòng shénme tāng zhǔ de? Shūcài tāng ma?) - What broth is this cooked with? Vegetable broth?"
+
+# Cultural Notes
+cultural_context:
+  vegetarian_concept:
+    understanding_level: "MODERATE"
+    notes: |
+      - Buddhist vegetarian tradition (素食 / sù shí) well-established in China
+      - "素" (sù) means vegetarian, BUT interpretation varies:
+        - At Buddhist vegetarian restaurants: Strictly no animal products, no onion/garlic
+        - At regular restaurants: May just mean "no visible meat" - can include oyster sauce, eggs, dairy
+      - Many Chinese vegetarians accept oyster sauce as "vegetarian" (cultural norm)
+      - "Vegan" (纯素 / chúnsù or 严格素食 / yángé sù shí) is newer concept, understood in cities
+
+    effective_terminology:
+      best: "全素，不吃蛋奶蚝油 (quán sù, bù chī dàn nǎi háoyóu) - Fully vegetarian, no eggs, dairy, oyster sauce"
+      good: "素食 (sù shí) - vegetarian (but clarify no oyster sauce)"
+      avoid: Just saying "vegetarian" without specifics - may get oyster sauce
+
+  buddhist_vegetarian:
+    concept: "素食 (sù shí)"
+    strict_definition: "No meat, fish, eggs, dairy, onion, garlic (五辛 / wǔ xīn - five pungent spices)"
+    where_to_find:
+      - "Buddhist temples (寺庙 / sìmiào)"
+      - "Vegetarian restaurants (素食餐厅 / sù shí cāntīng)"
+      - "Some health food restaurants"
+    trust_level: "HIGH"  # At dedicated vegetarian restaurants
+    notes: "Dedicated vegetarian restaurants are MUCH more reliable than asking regular restaurants to modify."
+
+  modification_culture:
+    overall_acceptance: "MODERATE"
+    notes: |
+      Chinese restaurants can be flexible, especially if you're ordering and paying.
+      However, many dishes use pre-made sauces or are cooked in bulk, limiting modification.
+      Success depends heavily on restaurant type and whether they cook to order.
+
+    by_restaurant_type:
+      - type: "Buddhist vegetarian restaurants"
+        acceptance_rate: 95  # Already all vegan/vegetarian
+        notes: "Best option. Everything is designed for vegetarians."
+
+      - type: "Family-style restaurants"
+        acceptance_rate: 60  # 55-65%
+        success_factors:
+          - "Cook to order"
+          - "Can adjust seasonings if asked"
+        limitations:
+          - "May use pre-made sauces with oyster sauce"
+          - "Lard may be default cooking fat"
+        approach: "Polite but clear. Ask for no oyster sauce, chicken powder, or lard."
+
+      - type: "Street food / Food courts"
+        acceptance_rate: 40  # 35-45%
+        success_factors:
+          - "Some vendors flexible"
+        limitations:
+          - "Many pre-made dishes"
+          - "Limited customization"
+          - "Language barrier"
+
+      - type: "High-end restaurants"
+        acceptance_rate: 70  # 65-75%
+        success_factors:
+          - "More willing to accommodate special requests"
+          - "May have vegetarian options"
+        approach: "Explain dietary needs clearly. They may create custom dishes."
+
+  etiquette:
+    how_to_ask:
+      approach: "Polite, clear, specific"
+      tone: "Respectful but direct"
+      staff_english_level: "LOW_TO_MEDIUM"  # Major cities better, rural areas minimal
+      tips:
+        - "Use polite form: 可以吗？(kěyǐ ma?) - Is it possible?"
+        - "Be specific: List all restrictions (no eggs, dairy, oyster sauce, chicken powder, lard)"
+        - "Emphasize: 全素 (quán sù) - fully vegetarian"
+        - "In tourist areas, some English understood. Elsewhere, minimal."
+        - "Pointing at menu and saying '不要' (bù yào - don't want) + ingredient helps"
+
+    language_expectations:
+      beijing_shanghai_guangzhou:
+        english_proficiency: "LOW_TO_MEDIUM"
+        notes: "Tourist hotels and international restaurants have English. Local restaurants: very limited."
+
+      rural_areas:
+        english_proficiency: "VERY_LOW"
+        notes: "Almost no English. Essential to have Chinese phrases or translation app."
+
+    common_responses:
+      positive:
+        - phrase: "可以"
+          transliteration: "kěyǐ"
+          meaning: "Can do / Okay"
+        - phrase: "没问题"
+          transliteration: "méi wèntí"
+          meaning: "No problem"
+
+      negative:
+        - phrase: "不行"
+          transliteration: "bù xíng"
+          meaning: "Cannot / Not possible"
+        - phrase: "已经做好了"
+          transliteration: "yǐjīng zuò hǎo le"
+          meaning: "Already prepared (can't modify)"
+
+      uncertain:
+        - phrase: "我问一下"
+          transliteration: "wǒ wèn yīxià"
+          meaning: "I'll ask (check with kitchen)"
+
+# Common Modification Patterns
+modification_patterns:
+  easy:
+    - ingredient: "Egg (as topping or separate)"
+      feasibility: "EASY"
+      success_rate: 75
+      reason: "Can be left out if cooked separately"
+      phrase: "不要蛋 (bù yào dàn)"
+
+    - ingredient: "Visible meat pieces"
+      feasibility: "EASY"
+      success_rate: 80
+      reason: "Can order vegetable-only version"
+      phrase: "素菜，不要肉 (sù cài, bù yào ròu)"
+
+  moderate:
+    - ingredient: "Oyster sauce → Soy sauce"
+      feasibility: "MODERATE"
+      success_rate: 60
+      reason: "If cooking to order, can substitute"
+      phrase: "不要蚝油，用酱油 (bù yào háoyóu, yòng jiàngyóu)"
+      notes: "Success depends if they cook fresh vs. use pre-made sauce"
+
+    - ingredient: "Chicken powder → Salt"
+      feasibility: "MODERATE"
+      success_rate: 55
+      reason: "Can substitute if aware of it"
+      phrase: "不要鸡精，用盐 (bù yào jī jīng, yòng yán)"
+
+    - ingredient: "Lard → Vegetable oil"
+      feasibility: "MODERATE"
+      success_rate: 50
+      reason: "Depends if they normally use lard. Must ask before cooking."
+      phrase: "不要猪油，用植物油 (bù yào zhūyóu, yòng zhíwù yóu)"
+
+  impossible:
+    - ingredient: "Broth in soup (if pre-made)"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 10
+      reason: "Soup broth made in large batches. Can't remake for one order."
+      notes: "Most restaurants use chicken/pork broth as base. Can't change."
+      alternative: "Go to vegetarian restaurant or skip soup"
+
+    - ingredient: "Lard (if food already cooked)"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 0
+      reason: "Food already fried in lard. Can't remove after cooking."
+      alternative: "Ask BEFORE they cook: '用植物油吗？' (Yòng zhíwù yóu ma? - Using vegetable oil?)"
+
+# Key Phrases for Ordering
+key_phrases:
+  - context: "I'm vegetarian (strict)"
+    english: "I'm vegetarian - I don't eat meat, fish, eggs, dairy, or oyster sauce"
+    chinese_simplified: "我吃素，不吃肉、鱼、蛋、奶、蚝油"
+    chinese_traditional: "我吃素，不吃肉、魚、蛋、奶、蠔油"
+    transliteration: "Wǒ chī sù, bù chī ròu, yú, dàn, nǎi, háoyóu"
+
+  - context: "Fully vegetarian (no animal products)"
+    english: "Fully vegetarian - no eggs, dairy, oyster sauce, chicken powder, or lard"
+    chinese_simplified: "全素，不要蛋、奶、蚝油、鸡精、猪油"
+    chinese_traditional: "全素，不要蛋、奶、蠔油、雞精、豬油"
+    transliteration: "Quán sù, bù yào dàn, nǎi, háoyóu, jī jīng, zhūyóu"
+
+  - context: "Does this have oyster sauce?"
+    english: "Does this have oyster sauce?"
+    chinese_simplified: "这个有蚝油吗？"
+    chinese_traditional: "這個有蠔油嗎？"
+    transliteration: "Zhège yǒu háoyóu ma?"
+
+  - context: "No oyster sauce, please"
+    english: "No oyster sauce, please"
+    chinese_simplified: "不要蚝油"
+    chinese_traditional: "不要蠔油"
+    transliteration: "Bù yào háoyóu"
+
+  - context: "Use soy sauce instead"
+    english: "Use soy sauce instead"
+    chinese_simplified: "用酱油"
+    chinese_traditional: "用醬油"
+    transliteration: "Yòng jiàngyóu"
+
+  - context: "No chicken powder"
+    english: "No chicken powder, please"
+    chinese_simplified: "不要鸡精"
+    chinese_traditional: "不要雞精"
+    transliteration: "Bù yào jī jīng"
+
+  - context: "Use vegetable oil, not lard"
+    english: "Use vegetable oil, not lard"
+    chinese_simplified: "用植物油，不要猪油"
+    chinese_traditional: "用植物油，不要豬油"
+    transliteration: "Yòng zhíwù yóu, bù yào zhūyóu"
+
+  - context: "Is there a vegetarian restaurant nearby?"
+    english: "Is there a vegetarian restaurant nearby?"
+    chinese_simplified: "附近有素食餐厅吗？"
+    chinese_traditional: "附近有素食餐廳嗎？"
+    transliteration: "Fùjìn yǒu sù shí cāntīng ma?"
+
+  - context: "Do you have Buddhist vegetarian food?"
+    english: "Do you have Buddhist vegetarian food?"
+    chinese_simplified: "有素菜吗？"
+    chinese_traditional: "有素菜嗎？"
+    transliteration: "Yǒu sù cài ma?"
+
+# Language Details
+language:
+  name: "Chinese"
+  variants:
+    - name: "Simplified Chinese"
+      script: "简体中文"
+      used_in: "Mainland China, Singapore"
+    - name: "Traditional Chinese"
+      script: "繁體中文"
+      used_in: "Taiwan, Hong Kong, Macau"
+  ocr_difficulty: "MEDIUM"
+  ocr_accuracy_range: "85-95%"
+  challenges:
+    - "Thousands of characters"
+    - "No spaces between characters (but each character is distinct)"
+    - "Simplified vs Traditional variants"
+    - "Context-dependent meanings"
+  phase: "Phase 2"
+  phase_timeline: "6-12 months after launch"
+  priority: "HIGH"
+
+# Fallback Strategies
+fallback_strategies:
+  - scenario: "Restaurant doesn't understand"
+    strategy: "Ask for Buddhist vegetarian restaurant (素食餐厅)"
+    phrase: "附近有素食餐厅吗？(Fùjìn yǒu sù shí cāntīng ma?)"
+
+  - scenario: "No clear vegan options"
+    strategy: "Order plain rice + stir-fried bok choy (confirm no oyster sauce)"
+    dishes:
+      - "白米饭 (bái mǐfàn) - steamed rice"
+      - "清炒白菜 (qīngchǎo báicài) - stir-fried bok choy, no oyster sauce"
+    verification: "不要蚝油，不要鸡精 (bù yào háoyóu, bù yào jī jīng)"
+
+  - scenario: "Staff resistant"
+    strategy: "Find Buddhist vegetarian restaurant using app or asking locals"
+    apps:
+      - "HappyCow - vegan restaurant finder"
+      - "Baidu Maps (百度地图) - search '素食餐厅'"
+
+# Useful Resources
+resources:
+  buddhist_vegetarian_restaurants:
+    where: "Most cities have at least one"
+    how_to_find: "Search '素食餐厅' on Baidu Maps or ask 'Fùjìn yǒu sù shí cāntīng ma?'"
+    notes: "Safest option for vegans in China"
+
+  apps:
+    - "HappyCow - international vegan restaurant finder"
+    - "Baidu Maps (百度地图) - better than Google Maps in China"
+    - "WeChat - can use to translate and communicate"
+
+# Data Quality
+metadata:
+  last_updated: "2025-11-18"
+  research_date: "2025-11"
+  confidence: "HIGH"
+  sources:
+    - "Reddit r/chinesefood user discussions"
+    - "Vegan travel blogs"
+    - "User research report (50+ testimonials)"
+  needs_validation:
+    - "Regional variations (Northern vs Southern cuisine)"
+    - "Modern vs traditional restaurant acceptance rates"

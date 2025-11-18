@@ -1,0 +1,444 @@
+# Thai Cuisine - Cultural Intelligence Database
+# Source: Global Vegan Menu Scanning Challenges Research (Nov 2025)
+# Problem Intensity: VERY HIGH (80-90% of dishes contain hidden animal products)
+
+cuisine:
+  name: "Thai"
+  name_local: "อาหารไทย"
+  region: "Southeast Asia"
+  problem_intensity: "VERY_HIGH"
+  problem_frequency: "80-90% of dishes contain fish sauce or shrimp paste"
+  vegan_awareness_level: 6  # 1-10 scale (6 = moderate, growing awareness)
+
+# Research Citations
+research_evidence:
+  - source: "Reddit r/ThailandTourism"
+    url: "https://www.reddit.com/r/ThailandTourism/comments/ywq7n4/"
+    quote: "Fish sauce is in almost everything. I asked for vegetarian, no egg, no fish sauce - it tasted of fish."
+  - source: "The Veganary"
+    url: "https://www.theveganary.com/5-vegan-thai-food-dishes-that-can-be-easily-veganized/"
+    quote: "Fish sauce is pervasive in Thai cuisine. Must explicitly request 'no fish sauce'."
+
+# Hidden Ingredients (Most Common → Least Common)
+hidden_ingredients:
+  - name: "Fish sauce"
+    name_local: "น้ำปลา"
+    transliteration: "nam pla"
+    category: "condiment"
+    frequency: "VERY_HIGH"  # Found in 80%+ of dishes
+    severity: "CRITICAL"  # Makes dish non-vegan
+    description: "Fish-based sauce used as primary seasoning in most Thai cooking"
+    typical_dishes:
+      - "Pad Thai"
+      - "Fried rice"
+      - "Stir-fries"
+      - "Curries"
+      - "Soups"
+      - "Dipping sauces"
+    user_complaints:
+      - "Fish sauce is EVERYWHERE, so it's not perceived as non-vegetarian"
+      - "Even 'vegetable' dishes often have fish sauce unless you specifically ask"
+
+  - name: "Shrimp paste"
+    name_local: "กะปิ"
+    transliteration: "kapi"
+    category: "paste"
+    frequency: "HIGH"  # Found in 60-70% of curry pastes and dips
+    severity: "CRITICAL"
+    description: "Fermented shrimp paste used in curry pastes and sauces"
+    typical_dishes:
+      - "Green curry (curry paste)"
+      - "Red curry (curry paste)"
+      - "Massaman curry (curry paste)"
+      - "Nam prik (chili dips)"
+    modification_feasibility: "IMPOSSIBLE"  # Pre-made into paste, can't remove
+    user_complaints:
+      - "Curry paste usually contains shrimp paste - restaurants can't modify this"
+
+  - name: "Oyster sauce"
+    name_local: "น้ำมันหอย"
+    transliteration: "nam man hoi"
+    category: "sauce"
+    frequency: "MEDIUM"  # Found in 40-50% of stir-fries
+    severity: "CRITICAL"
+    description: "Oyster-based sauce used for flavor in stir-fries and vegetables"
+    typical_dishes:
+      - "Pad see ew"
+      - "Stir-fried vegetables"
+      - "Pad krapow (basil stir-fry)"
+
+  - name: "Dried shrimp"
+    name_local: "กุ้งแห้ง"
+    transliteration: "goong haeng"
+    category: "garnish"
+    frequency: "MEDIUM"  # Found in 30-40% of salads and rice dishes
+    severity: "CRITICAL"
+    description: "Small dried shrimp used as topping or ingredient"
+    typical_dishes:
+      - "Som tam (papaya salad)"
+      - "Pad Thai"
+      - "Fried rice"
+    modification_feasibility: "EASY"  # Can be left out if asked
+
+  - name: "Egg"
+    name_local: "ไข่"
+    transliteration: "khai"
+    category: "protein"
+    frequency: "MEDIUM"  # Found in 40-50% of noodle/rice dishes
+    severity: "HIGH"  # Vegetarian concern, not always vegan
+    description: "Eggs used in fried rice, pad thai, and noodle dishes"
+    typical_dishes:
+      - "Pad Thai"
+      - "Fried rice"
+      - "Pad see ew"
+    modification_feasibility: "EASY"  # Cooked separately, easy to omit
+
+# Watch-Out Dishes (appear vegan but often aren't)
+watch_out_dishes:
+  - name: "Pad Thai"
+    name_local: "ผัดไทย"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Fish sauce (in sauce)"
+      - "Egg (scrambled in)"
+      - "Dried shrimp (topping)"
+    modification_feasibility: "MODERATE"  # Can ask for substitutions
+    success_rate: 70  # % chance restaurant will accommodate
+    modification_instructions:
+      easy_removals:
+        - "Egg (ไข่)"
+        - "Dried shrimp (กุ้งแห้ง)"
+      substitutions:
+        - from: "Fish sauce (น้ำปลา)"
+          to: "Soy sauce (ซีอิ๊ว / see ew)"
+      question_english: "Can you make Pad Thai without egg and fish sauce? Please use soy sauce instead."
+      question_local: "ทำผัดไทยไม่ใส่ไข่และน้ำปลา ใช้ซีอิ๊วแทนได้ไหมครับ/ค่ะ"
+      transliteration: "Tham pad thai mai sai khai lae nam pla, chai see ew thaen dai mai krap/ka"
+
+  - name: "Green Curry"
+    name_local: "แกงเขียวหวาน"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Shrimp paste (in curry paste - pre-made)"
+      - "Fish sauce (in sauce)"
+      - "Chicken/meat (if not vegetable curry)"
+    modification_feasibility: "IMPOSSIBLE_TO_MODERATE"
+    success_rate: 30  # % chance restaurant can make without shrimp paste
+    notes: "Curry paste is almost always pre-made with shrimp paste. Most restaurants cannot modify this. Only specialized vegan restaurants make curry paste without shrimp paste."
+    modification_instructions:
+      question_english: "Can you make Green Curry without fish sauce, shrimp paste, and oyster sauce?"
+      question_local: "ทำแกงเขียวหวานไม่ใส่น้ำปลา กะปิ และน้ำมันหอยได้ไหมครับ/ค่ะ"
+      warning: "⚠️ Curry paste usually contains shrimp paste. Some restaurants can't modify this."
+
+  - name: "Som Tam (Papaya Salad)"
+    name_local: "ส้มตำ"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Fish sauce (in dressing)"
+      - "Dried shrimp (topping)"
+      - "Fish paste (fermented fish)"
+    modification_feasibility: "EASY_TO_MODERATE"
+    success_rate: 75  # Street vendors usually accommodate
+    modification_instructions:
+      easy_removals:
+        - "Dried shrimp (กุ้งแห้ง)"
+      substitutions:
+        - from: "Fish sauce (น้ำปลา)"
+          to: "Soy sauce (ซีอิ๊ว)"
+      question_english: "Can you make Som Tam without fish sauce and dried shrimp? Use soy sauce instead."
+      question_local: "ทำส้มตำไม่ใส่น้ำปลาและกุ้งแห้ง ใช้ซีอิ๊วแทนได้ไหมครับ/ค่ะ"
+
+  - name: "Tom Yum Soup"
+    name_local: "ต้มยำ"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Shrimp or chicken (main ingredient)"
+      - "Fish sauce (in broth)"
+      - "Shrimp paste (optional)"
+    modification_feasibility: "MODERATE"  # Vegetable version exists
+    success_rate: 60  # If they have vegetable version
+    notes: "Traditional tom yum is seafood-based. Ask for 'Tom Yum Hed' (mushroom tom yum) without fish sauce."
+
+# Safe/Naturally Vegan Dishes
+safe_dishes:
+  - name: "Pad Pak (Stir-fried vegetables)"
+    name_local: "ผัดผัก"
+    confidence: "MODERATE"  # Still check for oyster sauce
+    notes: "Often vegan if you ask for no oyster sauce and no fish sauce. Use soy sauce instead."
+    verification_needed:
+      - "No oyster sauce (ไม่ใส่น้ำมันหอย)"
+      - "No fish sauce (ไม่ใส่น้ำปลา)"
+    question_local: "ผัดผักไม่ใส่น้ำมันหอยและน้ำปลา ใช้ซีอิ๊วได้ไหมครับ/ค่ะ"
+
+  - name: "Khao Pad (Fried rice)"
+    name_local: "ข้าวผัด"
+    confidence: "MODERATE"
+    notes: "Usually contains egg. Ask for vegetable fried rice without egg and fish sauce."
+    verification_needed:
+      - "No egg (ไม่ใส่ไข่)"
+      - "No fish sauce (ไม่ใส่น้ำปลา)"
+    question_local: "ข้าวผัดผักไม่ใส่ไข่และน้ำปลาได้ไหมครับ/ค่ะ"
+
+  - name: "Fresh Spring Rolls"
+    name_local: "ปอเปี๊ยะสด"
+    confidence: "HIGH"  # Usually vegan if vegetable version
+    notes: "Vegetable spring rolls are often vegan. Check dipping sauce for fish sauce."
+    verification_needed:
+      - "Dipping sauce - ask for peanut sauce or sweet chili (no fish sauce)"
+
+  - name: "Mango Sticky Rice"
+    name_local: "ข้าวเหนียวมะม่วง"
+    confidence: "VERY_HIGH"  # Almost always vegan
+    notes: "Dessert made with coconut milk, sticky rice, and mango. Usually vegan."
+    verification_needed:
+      - "Occasionally has sweetened condensed milk - confirm coconut milk only"
+
+# Cultural Notes
+cultural_context:
+  vegetarian_concept:
+    understanding_level: "MODERATE"
+    notes: |
+      - "Vegetarian" is understood but may include fish sauce (fish not seen as "meat")
+      - "Vegan" (วีแกน / wee-gan) is growing in awareness, especially in cities
+      - Buddhist concept of "เจ" (jay) is well understood = strict vegan (no animal products, no onion/garlic)
+    effective_terminology:
+      best: "เจ (jay) - Buddhist vegan"
+      good: "มังสวิรัติ (mang-sa-wi-rat) - vegetarian"
+      okay: "วีแกน (wee-gan) - vegan (loanword)"
+
+  jay_buddhist_vegan:
+    symbol: "เจ"
+    description: "Buddhist vegan food - no meat, fish, dairy, eggs, and often no onion/garlic"
+    look_for: "Yellow signs with red/orange 'เจ' character"
+    trust_level: "VERY_HIGH"  # If marked เจ, it's reliably vegan
+    where_to_find:
+      - "Vegetarian restaurants"
+      - "During vegetarian festivals (เทศกาลกินเจ)"
+      - "Some street food stalls (especially during festivals)"
+
+  modification_culture:
+    overall_acceptance: "HIGH"
+    notes: |
+      Thai culture is generally flexible and hospitality-focused. Street vendors
+      and casual restaurants cook to order and often accommodate modifications.
+      Fine dining may be less flexible, but still more accommodating than Japanese cuisine.
+
+    by_restaurant_type:
+      - type: "Street food"
+        acceptance_rate: 75  # 70-85%
+        success_factors:
+          - "Cook to order"
+          - "Understand 'gin jay' (eat vegan)"
+          - "Flexible with ingredients"
+        limitations:
+          - "Pre-made curry pastes (can't modify shrimp paste)"
+          - "Pre-made sauces (may have fish sauce already mixed)"
+        approach: "Direct and friendly. Most vendors understand dietary requests."
+
+      - type: "Casual restaurants"
+        acceptance_rate: 65  # 60-75%
+        success_factors:
+          - "Many have 'jay' options during festivals"
+          - "Staff usually understand vegetarian requests"
+        limitations:
+          - "Curry pastes pre-made"
+          - "Some sauces pre-made in large batches"
+
+      - type: "Fine dining"
+        acceptance_rate: 55  # 50-60%
+        success_factors:
+          - "More willing to customize than Japanese fine dining"
+          - "May have vegetarian/vegan options on menu"
+        limitations:
+          - "Some dishes prepared in advance"
+          - "Complex sauces may be pre-made"
+
+  etiquette:
+    how_to_ask:
+      approach: "Polite but direct"
+      tone: "Friendly and apologetic if making special requests"
+      staff_english_level: "MEDIUM"  # Tourist areas high, rural areas low
+      tips:
+        - "Use 'ครับ' (krap) if male, 'ค่ะ' (ka) if female at end of questions (polite)"
+        - "Smile and be friendly - Thai culture values 'sanuk' (fun/pleasant)"
+        - "If staff doesn't understand, ask for 'gin jay' (เจ) - widely understood"
+        - "Point at menu and use hand gestures to reinforce"
+        - "In tourist areas, English is often understood"
+
+    language_expectations:
+      tourist_areas:
+        english_proficiency: "MEDIUM_TO_HIGH"
+        notes: "Bangkok, Chiang Mai, Phuket, tourist islands - many staff speak English"
+
+      rural_areas:
+        english_proficiency: "LOW"
+        notes: "Outside tourist zones, English is limited. Use Thai phrases or 'เจ' symbol."
+
+    common_responses:
+      positive:
+        - phrase: "ได้ครับ/ค่ะ"
+          transliteration: "dai krap/ka"
+          meaning: "Yes, we can do that"
+        - phrase: "ไม่มีปัญหา"
+          transliteration: "mai mee pan-ha"
+          meaning: "No problem"
+
+      negative:
+        - phrase: "ไม่ได้"
+          transliteration: "mai dai"
+          meaning: "Cannot do / Not possible"
+        - phrase: "เราทำไว้แล้ว"
+          transliteration: "rao tham wai laew"
+          meaning: "We already made it (pre-prepared)"
+
+      uncertain:
+        - phrase: "ไม่แน่ใจ"
+          transliteration: "mai nae jai"
+          meaning: "Not sure"
+        - response: "Ask them to check with the chef: 'ถามพ่อครัวหน่อยครับ/ค่ะ' (tham por krua noi krap/ka)"
+
+# Common Modification Patterns
+modification_patterns:
+  easy:
+    - ingredient: "Egg (ไข่)"
+      feasibility: "EASY"
+      success_rate: 90
+      reason: "Cooked separately, easy to omit"
+      phrase: "ไม่ใส่ไข่ (mai sai khai)"
+
+    - ingredient: "Dried shrimp topping (กุ้งแห้ง)"
+      feasibility: "EASY"
+      success_rate: 85
+      reason: "Added as garnish, can leave off"
+      phrase: "ไม่ใส่กุ้งแห้ง (mai sai goong haeng)"
+
+  moderate:
+    - ingredient: "Fish sauce → Soy sauce"
+      feasibility: "MODERATE"
+      success_rate: 70
+      reason: "Depends if cooking to order vs. pre-made sauce"
+      phrase: "ไม่ใส่น้ำปลา ใช้ซีอิ๊วแทน (mai sai nam pla, chai see ew thaen)"
+      notes: "Works best at street food and casual restaurants cooking to order"
+
+    - ingredient: "Oyster sauce → Soy sauce"
+      feasibility: "MODERATE"
+      success_rate: 65
+      reason: "Oyster sauce is common, but substitution possible if cooking fresh"
+      phrase: "ไม่ใส่น้ำมันหอย ใช้ซีอิ๊วแทน (mai sai nam man hoi, chai see ew thaen)"
+
+  impossible:
+    - ingredient: "Shrimp paste in curry paste"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 10
+      reason: "Curry paste is pre-made in large batches with shrimp paste. Can't remake for one order."
+      notes: "Only vegan restaurants make curry paste without shrimp paste. Regular restaurants can't modify."
+      alternative: "Ask if they have 'เจ' curry or skip curry dishes entirely"
+
+# Key Phrases for Ordering
+key_phrases:
+  - context: "Explaining you're vegan"
+    english: "I eat vegan (no meat, fish, dairy, eggs)"
+    thai: "ผม/ดิฉันกินเจ ไม่กินเนื้อ ปลา นม ไข่"
+    transliteration: "Pom/dichan gin jay, mai gin neuua, pla, nom, khai"
+    notes: "Use ผม (pom) if male, ดิฉัน (dichan) if female"
+
+  - context: "Short version - Buddhist vegan"
+    english: "I eat jay (vegan)"
+    thai: "กินเจ"
+    transliteration: "gin jay"
+    notes: "Most understood phrase. Implies strict vegan including no onion/garlic."
+
+  - context: "Asking if dish has fish sauce"
+    english: "Does this have fish sauce?"
+    thai: "นี่มีน้ำปลาไหม"
+    transliteration: "nee mee nam pla mai?"
+
+  - context: "Asking for no fish sauce"
+    english: "No fish sauce, please"
+    thai: "ไม่ใส่น้ำปลา"
+    transliteration: "mai sai nam pla"
+
+  - context: "Use soy sauce instead"
+    english: "Use soy sauce instead"
+    thai: "ใช้ซีอิ๊วแทน"
+    transliteration: "chai see ew thaen"
+
+  - context: "No egg"
+    english: "No egg, please"
+    thai: "ไม่ใส่ไข่"
+    transliteration: "mai sai khai"
+
+  - context: "Is this vegan?"
+    english: "Is this vegan? (jay)"
+    thai: "นี่เป็นอาหารเจไหม"
+    transliteration: "nee pen ahan jay mai?"
+
+  - context: "Can you make this without [ingredient]?"
+    english: "Can you make this without fish sauce?"
+    thai: "ทำได้ไหมโดยไม่ใส่น้ำปลา"
+    transliteration: "tham dai mai doi mai sai nam pla?"
+
+  - context: "Thank you"
+    english: "Thank you very much"
+    thai: "ขอบคุณมากครับ/ค่ะ"
+    transliteration: "khop khun mak krap/ka"
+
+# Language Details
+language:
+  name: "Thai"
+  script: "Thai script"
+  ocr_difficulty: "MEDIUM"
+  ocr_accuracy_range: "80-90%"
+  challenges:
+    - "No spaces between words (requires word segmentation)"
+    - "Tone marks above/below characters"
+    - "Stylized fonts can reduce accuracy"
+    - "Vowels can appear before, after, above, or below consonants"
+  phase: "Phase 2"  # After Latin scripts, before Japanese
+  phase_timeline: "6-12 months after launch"
+
+# Fallback Strategies
+fallback_strategies:
+  - scenario: "Restaurant doesn't understand requests"
+    strategy: "Show 'เจ' symbol and ask if they have 'ahan jay' (เจ food)"
+    phrase: "มีอาหารเจไหม (mee ahan jay mai?)"
+
+  - scenario: "Menu has no vegan options"
+    strategy: "Ask for simple stir-fried vegetables with rice"
+    dish: "ผัดผักกับข้าว (pad pak gap khao)"
+    modifications: "ไม่ใส่น้ำปลา ไม่ใส่น้ำมันหอย ใช้ซีอิ๊วแทน (no fish sauce, no oyster sauce, use soy sauce)"
+
+  - scenario: "Not sure if staff understood"
+    strategy: "Point at specific ingredients on menu and make 'X' gesture, then point at soy sauce bottle or say 'see ew' (soy sauce)"
+    backup: "Use Google Translate or VegyScan's phrase cards"
+
+  - scenario: "Staff seems unsure"
+    strategy: "Ask them to check with chef"
+    phrase: "ถามพ่อครัวหน่อยครับ/ค่ะ (tham por krua noi krap/ka)"
+
+# Useful Resources
+resources:
+  festivals:
+    - name: "Vegetarian Festival (เทศกาลกินเจ)"
+      timing: "Usually September/October (9th lunar month)"
+      description: "9-day festival where many restaurants offer 'เจ' food"
+      notes: "Best time to travel for vegans - yellow 'เจ' flags everywhere"
+
+  apps:
+    - "HappyCow - find vegan restaurants in Thailand"
+    - "Google Translate - camera mode for menu translation"
+    - "Jay! - Thai vegan restaurant finder"
+
+# Data Quality
+metadata:
+  last_updated: "2025-11-18"
+  research_date: "2025-11"
+  confidence: "HIGH"  # Based on extensive user testimonials and research
+  sources:
+    - "Reddit r/ThailandTourism user experiences"
+    - "Travel blogs (The Veganary, vegan travel guides)"
+    - "User research report (50+ testimonials)"
+  needs_validation:
+    - "Exact acceptance rates (estimated from user reports)"
+    - "Regional variations (Central vs Northern vs Southern Thai cuisine)"
+    - "Seasonal availability of 'เจ' options"
