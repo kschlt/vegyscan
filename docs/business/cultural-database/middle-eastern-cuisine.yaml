@@ -1,0 +1,617 @@
+# Middle Eastern Cuisine - Cultural Intelligence Database
+# Created: 2025-11-18
+# Source: Global Vegan Menu Scanning Challenges Research
+# Purpose: Store cultural context, hidden ingredients, and communication intelligence
+
+cuisine:
+  name: "Middle Eastern"
+  name_local: "مطبخ شرق أوسطي (Matbakh sharq awsati)"
+  problem_intensity: "LOW_TO_MEDIUM"
+  problem_frequency: "25-35% of dishes contain yogurt, butter, or meat"
+
+  problem_description: |
+    Middle Eastern cuisine has MANY naturally vegan options - hummus,
+    falafel, baba ganoush, tabbouleh, muhammara, and many vegetable
+    mezze are traditionally vegan. However, yogurt is used in some
+    dishes (labneh, some sauces), butter/ghee in rice pilaf and
+    pastries, and honey in desserts. The mezze (small plates) style
+    makes it easy to select vegan items.
+
+  regional_note: |
+    "Middle Eastern" encompasses diverse cuisines: Lebanese, Syrian,
+    Palestinian, Jordanian, Turkish, Egyptian, Israeli, Persian, etc.
+    This database focuses on Levantine cuisine (Lebanon, Syria, Palestine,
+    Jordan) as the most common internationally, with notes on Turkish
+    and other regional variations.
+
+  ocr_difficulty: "VERY_HIGH"
+  ocr_notes: |
+    - Arabic script (right-to-left) - completely different from Latin
+    - No cognates with English
+    - Many regional variations (Lebanese, Egyptian, Gulf Arabic)
+    - Turkish uses Latin alphabet with special characters (ş, ğ, ı, ç)
+    - Hebrew (Israel) uses different script
+    - English menus common in tourist areas
+
+  research_citations:
+    - "Global Vegan Menu Scanning Challenges Research (2025)"
+    - "Middle Eastern vegan food guides"
+    - "Traditional mezze research"
+
+# ============================================================================
+# HIDDEN INGREDIENTS
+# ============================================================================
+
+hidden_ingredients:
+  # DAIRY
+  - name: "Yogurt"
+    name_local: "لبن (laban - Arabic) / Yoğurt (Turkish)"
+    transliteration: "la-ban / yo-urt"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "HIGH"
+    typical_dishes:
+      - "Labneh (strained yogurt)"
+      - "Cacik (Turkish yogurt-cucumber)"
+      - "Some shawarma sauces"
+      - "Some kebab marinades"
+      - "Ayran (yogurt drink)"
+    modification_feasibility: "IMPOSSIBLE"  # Base ingredient
+    modification_notes: "If yogurt is the base (labneh, cacik), dish cannot be veganized"
+    questions_to_ask:
+      - "هل يحتوي على لبن؟" (Hal yahtawi 'ala laban? - Does it contain yogurt? - Arabic)
+      - "Yoğurt var mı?" (Does it have yogurt? - Turkish)
+    description: |
+      Yogurt is used in some sauces, dips (labneh), and drinks.
+      However, many mezze are yogurt-free.
+
+  - name: "Butter / Ghee"
+    name_local: "زبدة (zubda - butter) / سمن (samn - ghee)"
+    transliteration: "zub-da / sam-n"
+    frequency: "MEDIUM"  # 30%
+    severity: "MODERATE"
+    typical_dishes:
+      - "Rice pilaf (some recipes)"
+      - "Baklava (layers brushed with butter)"
+      - "Knafeh (dessert)"
+      - "Some Turkish dishes"
+    modification_feasibility: "MODERATE"  # Rice can be made with oil
+    modification_notes: "Rice pilaf often made with butter, but can use olive oil"
+    questions_to_ask:
+      - "هل يُطبخ بالزبدة أو بالزيت؟" (Hal yutbakh bil-zubda aw bil-zayt? - Is it cooked with butter or oil?)
+
+  - name: "Cheese"
+    name_local: "جبنة (jubna - Arabic) / Peynir (Turkish)"
+    transliteration: "jub-na / pey-nir"
+    frequency: "MEDIUM"  # 25-30%
+    severity: "MODERATE"
+    typical_dishes:
+      - "Halloumi (grilled cheese)"
+      - "Borek (cheese pastry)"
+      - "Manakish (flatbread with cheese)"
+      - "Some salads (feta)"
+    modification_feasibility: "EASY"  # Usually topping
+    questions_to_ask:
+      - "هل يحتوي على جبنة؟" (Hal yahtawi 'ala jubna? - Does it have cheese?)
+
+  # MEAT STOCK (less common than other cuisines)
+  - name: "Chicken stock"
+    name_local: "مرق دجاج (maraq dajaj)"
+    transliteration: "ma-raq da-jaj"
+    frequency: "LOW_TO_MEDIUM"  # 20%
+    severity: "HIGH"
+    typical_dishes:
+      - "Some rice dishes"
+      - "Some soups"
+    modification_feasibility: "MODERATE"
+    notes: "Less common than in other cuisines - many dishes use water/vegetable broth"
+
+  # SWEETENERS
+  - name: "Honey"
+    name_local: "عسل ('asal - Arabic) / Bal (Turkish)"
+    transliteration: "a-sal / bal"
+    frequency: "MEDIUM"  # 30% in desserts
+    severity: "MODERATE"  # Depends on vegan strictness
+    typical_dishes:
+      - "Baklava (honey syrup)"
+      - "Knafeh (sometimes)"
+      - "Some pastries"
+    modification_feasibility: "MODERATE"  # Sugar syrup can substitute
+    questions_to_ask:
+      - "هل يحتوي على عسل؟" (Hal yahtawi 'ala 'asal? - Does it have honey?)
+
+  # EGGS (less common in traditional dishes)
+  - name: "Eggs"
+    name_local: "بيض (bayd)"
+    transliteration: "bayd"
+    frequency: "LOW"  # 15-20%
+    severity: "MODERATE"
+    typical_dishes:
+      - "Shakshuka (eggs in tomato sauce)"
+      - "Some borek pastries"
+    modification_feasibility: "EASY"  # Usually obvious
+    notes: "Eggs are usually visible - not a hidden ingredient"
+
+# ============================================================================
+# WATCH-OUT DISHES
+# ============================================================================
+
+watch_out_dishes:
+  - name: "Hummus (حمص)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Chickpeas, tahini, lemon, garlic - naturally vegan"
+    watch_for: "Butter/ghee on top (rare, but some restaurants do this)"
+    safe_if: "No butter garnish"
+
+  - name: "Baba Ganoush (بابا غنوج)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Eggplant, tahini, lemon, garlic - naturally vegan"
+
+  - name: "Falafel (فلافل)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Chickpeas/fava beans, herbs, spices - naturally vegan"
+    watch_for:
+      - "Fried in same oil as meat (cross-contamination)"
+      - "Eggs (very rare, but some recipes add)"
+    questions_to_ask:
+      - "Does the falafel contain eggs?"
+
+  - name: "Tabbouleh (تبولة)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Parsley, bulgur, tomato, onion, lemon, olive oil - naturally vegan"
+
+  - name: "Muhammara (محمرة)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Red pepper and walnut dip - naturally vegan"
+
+  - name: "Fattoush (فتوش salad)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Mixed salad with fried pita - usually vegan"
+    watch_for: "Cheese (rare)"
+
+  - name: "Dolma / Warak Enab (ورق عنب - stuffed grape leaves)"
+    confidence: "MEDIUM"  # 60% - depends on filling
+    watch_for:
+      - "Meat filling (common)"
+      - "Vegetarian version usually vegan (rice, herbs)"
+    safe_if: "Vegetarian/vegan filling (rice and herbs)"
+    questions_to_ask:
+      - "Is the filling vegetarian (just rice and herbs)?"
+
+  - name: "Rice Pilaf"
+    confidence: "MEDIUM_TO_HIGH"  # 70%
+    watch_for:
+      - "Butter or ghee (some recipes)"
+      - "Chicken stock (some recipes)"
+    safe_if: "Cooked with olive oil and water/vegetable broth"
+    questions_to_ask:
+      - "Is the rice cooked with butter or oil?"
+      - "Does it have chicken stock?"
+
+  - name: "Manakish / Mana'eesh (مناقيش - flatbread)"
+    confidence: "MEDIUM_TO_HIGH"  # 65% for zaatar version
+    watch_for:
+      - "Cheese version (obviously not vegan)"
+      - "Labneh version (yogurt)"
+    safe_if: "Za'atar version (thyme, sesame, olive oil)"
+    questions_to_ask:
+      - "Is this the za'atar version?"
+
+  - name: "Labneh (لبنة)"
+    confidence: "VERY_LOW"  # 0% - it IS yogurt
+    notes: "Labneh is strained yogurt - NOT vegan"
+
+  - name: "Borek / Börek (Turkish pastry)"
+    confidence: "LOW"  # 30%
+    watch_for:
+      - "Cheese filling (very common)"
+      - "Meat filling"
+      - "Butter in pastry layers"
+    safe_if: "Vegetable filling, no butter (rare)"
+    questions_to_ask:
+      - "What is the filling?"
+      - "Is the pastry made with butter?"
+
+  - name: "Baklava (بقلاوة)"
+    confidence: "LOW"  # 25%
+    watch_for:
+      - "Butter between layers (very common)"
+      - "Honey in syrup (common)"
+    safe_if: "Made with oil, sugar syrup instead of honey (rare)"
+    notes: "Traditional baklava is NOT vegan - has butter"
+
+  - name: "Halloumi (حلومي - grilled cheese)"
+    confidence: "VERY_LOW"  # 0% - it IS cheese
+    notes: "Halloumi is cheese - NOT vegan"
+
+# ============================================================================
+# SAFE DISHES
+# ============================================================================
+
+safe_dishes:
+  - name: "Hummus (حمص)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Chickpeas, tahini, lemon, garlic, olive oil - naturally vegan"
+
+  - name: "Baba Ganoush (بابا غنوج)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Roasted eggplant, tahini, lemon, garlic - naturally vegan"
+
+  - name: "Falafel (فلافل)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Ground chickpeas or fava beans, herbs - naturally vegan"
+
+  - name: "Tabbouleh (تبولة)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Parsley salad with bulgur - naturally vegan"
+
+  - name: "Muhammara (محمرة)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Red pepper and walnut dip - naturally vegan"
+
+  - name: "Fattoush (فتوش)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Mixed vegetable salad with fried pita - naturally vegan"
+
+  - name: "Moutabal (متبل - similar to baba ganoush)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Eggplant dip - naturally vegan"
+
+  - name: "Ful Medames (فول مدمس)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Fava bean stew - naturally vegan (Egyptian)"
+
+  - name: "Za'atar Manakish (مناقيش زعتر)"
+    confidence: "VERY_HIGH"  # 85%
+    notes: "Flatbread with thyme, sesame, olive oil - naturally vegan"
+
+  - name: "Olives (زيتون)"
+    confidence: "VERY_HIGH"  # 98%
+    notes: "Naturally vegan"
+
+  - name: "Pickles (مخلل - mkhallal)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Pickled vegetables - naturally vegan"
+
+  - name: "Grape leaves (vegetarian version)"
+    confidence: "HIGH"  # 85%
+    notes: "Rice and herb filling - usually vegan"
+    how_to_verify: "Ask if filling is vegetarian (no meat)"
+
+  - name: "Lentil soup (شوربة عدس - shorbet 'adas)"
+    confidence: "HIGH"  # 80%
+    watch_for: "Chicken stock (sometimes)"
+    how_to_verify: "Ask if made with vegetable broth"
+
+# ============================================================================
+# REGIONAL VARIATIONS
+# ============================================================================
+
+regional_variations:
+  - region: "Levantine (Lebanon, Syria, Palestine, Jordan)"
+    vegan_friendliness: "HIGH"
+    notes: |
+      Levantine cuisine has the MOST vegan-friendly mezze tradition.
+      Hummus, baba ganoush, falafel, tabbouleh are all naturally vegan.
+      Easy to order a fully vegan meal from mezze selection.
+    typical_vegan_dishes:
+      - "Hummus"
+      - "Baba ganoush"
+      - "Falafel"
+      - "Tabbouleh"
+      - "Fattoush"
+      - "Muhammara"
+      - "Grape leaves (vegetarian)"
+
+  - region: "Turkish"
+    vegan_friendliness: "MEDIUM_TO_HIGH"
+    notes: |
+      Turkish cuisine has many vegetable dishes and mezze.
+      Some dairy (yogurt, cheese) and butter in pastries.
+    typical_vegan_dishes:
+      - "Mercimek çorbası (lentil soup)"
+      - "Ezme (spicy tomato dip)"
+      - "Stuffed eggplant (without yogurt)"
+    watch_for:
+      - "Yogurt in many dishes (cacik, some sauces)"
+      - "Butter in borek and baklava"
+
+  - region: "Egyptian"
+    vegan_friendliness: "HIGH"
+    notes: |
+      Egyptian cuisine has street food staples that are vegan.
+      Ful medames (fava beans) and ta'ameya (Egyptian falafel).
+    typical_vegan_dishes:
+      - "Ful medames (fava bean stew)"
+      - "Ta'ameya (falafel)"
+      - "Koshari (lentils, rice, pasta - usually vegan)"
+
+  - region: "Persian/Iranian"
+    vegan_friendliness: "MEDIUM"
+    notes: |
+      Persian cuisine has many rice dishes and stews.
+      Saffron rice, herb stews can be vegan.
+    watch_for:
+      - "Butter/ghee in rice"
+      - "Yogurt side dishes"
+
+# ============================================================================
+# MODIFICATION CULTURE
+# ============================================================================
+
+modification_culture:
+  overall_acceptance: "HIGH"
+  overall_notes: |
+    Middle Eastern restaurants are VERY accommodating to dietary needs.
+    The mezze (small plates) style makes it easy to select vegan items.
+    Falafel, hummus, and baba ganoush are universally available and vegan.
+
+  by_restaurant_type:
+    - type: "Mezze-style restaurants"
+      acceptance_rate: 90  # 85-95%
+      success_factors:
+        - "Mezze style = small plates, easy to choose vegan items"
+        - "Many naturally vegan options"
+        - "Used to customization"
+      approach: "Just order the vegan mezze - hummus, baba ganoush, falafel, tabbouleh"
+
+    - type: "Falafel shops / Street food"
+      acceptance_rate: 85  # 80-90%
+      success_factors:
+        - "Falafel is naturally vegan"
+        - "Easy to customize toppings"
+      watch_for: "Yogurt sauce (ask for tahini instead)"
+      approach: "Ask for no yogurt sauce, use tahini"
+
+    - type: "Fine dining Middle Eastern"
+      acceptance_rate: 80  # 75-85%
+      success_factors:
+        - "Accommodating to dietary needs"
+        - "Can modify dishes"
+      approach: "Explain vegan needs, ask for recommendations"
+
+    - type: "Turkish restaurants"
+      acceptance_rate: 70  # 65-75%
+      limitations:
+        - "More dairy use (yogurt)"
+        - "Butter in pastries"
+      approach: "Ask about yogurt and butter"
+
+  critical_warnings:
+    - "Middle Eastern cuisine is one of the EASIEST for vegans - many naturally vegan mezze"
+    - "Yogurt is used in some dishes - always ask"
+    - "Falafel, hummus, baba ganoush are almost always vegan"
+    - "Baklava and other sweets usually have butter and honey"
+
+  modification_patterns:
+    select_vegan_mezze:
+      feasibility: "EASY"
+      success_rate: 95
+      notes: "Just order from the many vegan mezze options"
+
+    remove_yogurt_sauce:
+      feasibility: "EASY"
+      success_rate: 90
+      notes: "Ask for tahini sauce instead of yogurt"
+      how_to_ask: "Can I have tahini sauce instead of yogurt?"
+
+    rice_without_butter:
+      feasibility: "MODERATE"
+      success_rate: 70
+      notes: "Some restaurants can make rice with olive oil instead"
+
+# ============================================================================
+# CULTURAL ETIQUETTE
+# ============================================================================
+
+etiquette:
+  how_to_ask:
+    approach: "POLITE, FRIENDLY"
+    tone: "Respectful and friendly - Middle Eastern hospitality culture"
+    staff_english_level: "MEDIUM_TO_HIGH"
+    tips:
+      - "Middle Eastern culture is very hospitable and accommodating"
+      - "Say 'I don't eat meat, dairy, or eggs' - concept understood"
+      - "Many staff speak English in restaurants (especially cities)"
+      - "Falafel wrap/plate is universally available and vegan"
+      - "Use 'min fadlak/min fadlik' (please) when asking"
+
+  language_expectations:
+    major_cities:
+      english_proficiency: "MEDIUM_TO_HIGH"
+      notes: |
+        Cities (Beirut, Istanbul, Dubai, Cairo, Tel Aviv, Amman) have
+        good English in restaurants, especially tourist areas.
+
+    rural_areas:
+      english_proficiency: "LOW_TO_MEDIUM"
+      notes: "Arabic or Turkish phrases helpful"
+
+  common_responses:
+    positive:
+      - phrase: "نعم (na'am - Arabic) / Evet (Turkish)"
+        transliteration: "na-am / e-vet"
+        meaning: "Yes"
+
+      - phrase: "طبعاً (tab'an - Arabic) / Tabii (Turkish)"
+        transliteration: "tab-an / ta-bi"
+        meaning: "Of course"
+
+    negative:
+      - phrase: "لا (la - Arabic) / Hayır (Turkish)"
+        transliteration: "la / ha-yır"
+        meaning: "No"
+
+      - phrase: "فيه لبن (fihi laban - Arabic)"
+        transliteration: "fi-hi la-ban"
+        meaning: "It has yogurt"
+
+  what_to_do:
+    if_they_say_yes:
+      - "Thank them: 'Shukran' (Arabic) / 'Teşekkürler' (Turkish)"
+
+    if_unclear:
+      - "Order safe items: hummus, falafel, baba ganoush, tabbouleh"
+
+# ============================================================================
+# KEY ARABIC VEGAN PHRASES
+# ============================================================================
+
+key_phrases:
+  dietary_terms:
+    - arabic: "نباتي (nabati)"
+      transliteration: "na-ba-ti"
+      english: "Vegan / Plant-based"
+
+    - arabic: "بدون منتجات حيوانية (bidoon muntajat hayawaniya)"
+      transliteration: "bi-doon mun-ta-jat ha-ya-wa-ni-ya"
+      english: "Without animal products"
+
+  asking_questions:
+    - arabic: "هل هذا نباتي؟"
+      transliteration: "hal hadha nabati?"
+      english: "Is this vegan?"
+
+    - arabic: "هل يحتوي على لبن، جبنة، أو بيض؟"
+      transliteration: "hal yahtawi 'ala laban, jubna, aw bayd?"
+      english: "Does it contain yogurt, cheese, or eggs?"
+
+    - arabic: "هل يُطبخ بالزبدة؟"
+      transliteration: "hal yutbakh bil-zubda?"
+      english: "Is it cooked with butter?"
+
+  polite_expressions:
+    - arabic: "من فضلك / من فضلكِ (min fadlak/min fadlik)"
+      transliteration: "min fad-lak / min fad-lik"
+      english: "Please (to male/female)"
+
+    - arabic: "شكراً (shukran)"
+      transliteration: "shuk-ran"
+      english: "Thank you"
+
+  explaining_vegan:
+    - arabic: "أنا نباتي. لا آكل لحم، سمك، بيض، أو منتجات ألبان."
+      transliteration: "ana nabati. la akul lahm, samak, bayd, aw muntajat alban."
+      english: "I'm vegan. I don't eat meat, fish, eggs, or dairy."
+
+  ordering:
+    - arabic: "حمص، بابا غنوج، فلافل، من فضلك"
+      transliteration: "hummus, baba ghanouj, falafel, min fadlak"
+      english: "Hummus, baba ganoush, falafel, please"
+
+# ============================================================================
+# KEY TURKISH VEGAN PHRASES
+# ============================================================================
+
+key_phrases_turkish:
+  dietary_terms:
+    - turkish: "Vegan"
+      transliteration: "ve-gan"
+      english: "Vegan"
+      notes: "Borrowed from English, increasingly understood"
+
+    - turkish: "Bitkisel"
+      transliteration: "bit-ki-sel"
+      english: "Plant-based"
+
+  asking_questions:
+    - turkish: "Bu vegan mı?"
+      transliteration: "bu ve-gan mı?"
+      english: "Is this vegan?"
+
+    - turkish: "Yoğurt, peynir, veya yumurta var mı?"
+      transliteration: "yo-urt, pey-nir, ve-ya yu-mur-ta var mı?"
+      english: "Does it have yogurt, cheese, or eggs?"
+
+    - turkish: "Tereyağı ile mi yapılıyor?"
+      transliteration: "te-re-ya-ı i-le mi ya-pı-lı-yor?"
+      english: "Is it made with butter?"
+
+  polite_expressions:
+    - turkish: "Lütfen"
+      transliteration: "lüt-fen"
+      english: "Please"
+
+    - turkish: "Teşekkürler / Teşekkür ederim"
+      transliteration: "te-şek-kür-ler / te-şek-kür e-de-rim"
+      english: "Thank you"
+
+# ============================================================================
+# RECOMMENDATIONS
+# ============================================================================
+
+recommendations:
+  strategy: |
+    Middle Eastern cuisine is one of the EASIEST for vegans.
+    Hummus, falafel, baba ganoush, and many mezze are naturally vegan.
+
+    **Best Strategy:**
+    1. Order mezze platter - select vegan items:
+       - Hummus, baba ganoush, falafel, tabbouleh,
+         fattoush, muhammara, stuffed grape leaves
+    2. Avoid: labneh (yogurt), halloumi (cheese), meat dishes
+    3. Ask about yogurt in sauces (use tahini instead)
+    4. Baklava usually has butter - skip desserts or ask
+
+    **Easiest Vegan Meal:**
+    Falafel wrap with hummus, tabbouleh, pickles, tahini sauce.
+    Almost universally available and vegan.
+
+  vegan_friendly_cities:
+    - city: "Beirut, Lebanon"
+      vegan_scene: "VERY_HIGH"
+      notes: "Excellent mezze culture, many vegan options naturally"
+
+    - city: "Istanbul, Turkey"
+      vegan_scene: "HIGH"
+      notes: "Many vegan restaurants, vegetable dishes"
+
+    - city: "Tel Aviv, Israel"
+      vegan_scene: "VERY_HIGH"
+      notes: "One of the most vegan-friendly cities globally"
+
+    - city: "Dubai, UAE"
+      vegan_scene: "HIGH"
+      notes: "International city, many vegan restaurants"
+
+    - city: "Cairo, Egypt"
+      vegan_scene: "MEDIUM_TO_HIGH"
+      notes: "Ful medames, ta'ameya (falafel) widely available"
+
+  helpful_apps:
+    - "HappyCow (vegan restaurant finder)"
+
+# ============================================================================
+# RESEARCH NOTES
+# ============================================================================
+
+research_notes:
+  key_insights:
+    - "Middle Eastern cuisine is one of the MOST vegan-friendly globally"
+    - "Mezze culture = many small vegetable-based dishes"
+    - "Hummus, falafel, baba ganoush are almost always vegan"
+    - "Yogurt is the main animal product to watch for"
+    - "Baklava and sweets usually have butter and honey"
+    - "Very accommodating culture - high modification acceptance"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-11-18"
+  coverage: "COMPREHENSIVE"
+  data_sources:
+    - "Global Vegan Menu Scanning Challenges Research"
+    - "Middle Eastern vegan food guides"
+    - "Mezze tradition research"
+
+  priority: "MEDIUM"  # Phase 3 according to vision.md
+
+  validation_status: "RESEARCH_BASED"
+
+  next_steps:
+    - "Validate with Middle Eastern vegan travelers"
+    - "Add more regional variations (Gulf, North African)"
+    - "Expand Turkish cuisine specifics"
+    - "Add Persian/Iranian dishes"

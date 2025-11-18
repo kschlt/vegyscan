@@ -1,0 +1,455 @@
+# Vietnamese Cuisine - Cultural Intelligence Database
+# Source: Global Vegan Menu Scanning Challenges Research (Nov 2025)
+# Problem Intensity: HIGH (60-70% of dishes contain fish sauce or shrimp paste)
+
+cuisine:
+  name: "Vietnamese"
+  name_local: "Ẩm thực Việt Nam"
+  transliteration: "Ẩm thực Việt Nam"
+  region: "Southeast Asia"
+  problem_intensity: "HIGH"
+  problem_frequency: "60-70% of dishes contain fish sauce (nước mắm) or shrimp paste"
+  vegan_awareness_level: 4  # 1-10 scale (4 = low-moderate, Buddhism influence but fish sauce pervasive)
+
+# Research Citations
+research_evidence:
+  - source: "Global Vegan Menu Scanning Challenges Research"
+    quote: "Fish sauce (nước mắm) in dipping sauces and soups, shrimp paste in stews. Similar to Thai cuisine, fish sauce is pervasive."
+  - source: "Vegan travel blogs"
+    insight: "Fish sauce is fundamental to Vietnamese cooking, used as ubiquitously as salt in Western cuisine."
+
+# Hidden Ingredients (Most Common → Least Common)
+hidden_ingredients:
+  - name: "Fish sauce"
+    name_local: "Nước mắm"
+    transliteration: "Nước mắm"
+    category: "condiment"
+    frequency: "VERY_HIGH"  # 70-80% of dishes
+    severity: "CRITICAL"
+    description: "Fermented fish sauce, fundamental to Vietnamese cuisine. Used in almost all sauces, soups, and dipping sauces."
+    typical_dishes:
+      - "Phở (soup broth)"
+      - "Bún (noodle dishes)"
+      - "Dipping sauces (nước chấm)"
+      - "Spring rolls dipping sauce"
+      - "Salads"
+      - "Stir-fries"
+    user_complaints:
+      - "Fish sauce is in EVERYTHING, even dipping sauces that look vegetarian"
+      - "Even 'vegetable' phở has fish sauce in the broth"
+
+  - name: "Shrimp paste"
+    name_local: "Mắm tôm"
+    transliteration: "Mắm tôm"
+    category: "paste"
+    frequency: "HIGH"  # 50-60%
+    severity: "CRITICAL"
+    description: "Fermented shrimp paste, used in stews and sauces"
+    typical_dishes:
+      - "Bún bò Huế (spicy beef noodle soup)"
+      - "Stews"
+      - "Some dipping sauces"
+    modification_feasibility: "IMPOSSIBLE"  # Pre-made into paste
+
+  - name: "Oyster sauce"
+    name_local: "Dầu hào"
+    transliteration: "Dầu hào"
+    category: "sauce"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "CRITICAL"
+    description: "Oyster-based sauce used in stir-fries"
+    typical_dishes:
+      - "Vegetable stir-fries"
+      - "Noodle dishes"
+
+  - name: "Chicken/pork broth"
+    name_local: "Nước dùng gà / lợn"
+    transliteration: "Nước dùng gà / lợn"
+    category: "broth"
+    frequency: "VERY_HIGH"  # 70%+ of soups
+    severity: "CRITICAL"
+    description: "Meat broths used as base for phở and other soups"
+    typical_dishes:
+      - "Phở (almost always chicken or beef broth)"
+      - "Bún bò Huế"
+      - "Mì (noodle soups)"
+    modification_feasibility: "IMPOSSIBLE"  # Broth cooked for hours
+
+  - name: "Egg"
+    name_local: "Trứng"
+    transliteration: "Trứng"
+    category: "protein"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "HIGH"
+    description: "Eggs in bánh mì, noodle dishes, spring rolls"
+    typical_dishes:
+      - "Bánh mì (sandwich)"
+      - "Egg rolls"
+      - "Some noodle dishes"
+    modification_feasibility: "EASY_IF_SEPARATE"
+
+  - name: "Dried shrimp"
+    name_local: "Tôm khô"
+    transliteration: "Tôm khô"
+    category: "garnish"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "CRITICAL"
+    description: "Small dried shrimp used as topping or in dishes"
+    typical_dishes:
+      - "Bánh xèo (sizzling pancake)"
+      - "Spring rolls"
+      - "Salads"
+    modification_feasibility: "EASY_IF_TOPPING"
+
+# Watch-Out Dishes
+watch_out_dishes:
+  - name: "Phở (Noodle Soup)"
+    name_local: "Phở"
+    transliteration: "Phở"
+    risk_level: "VERY_HIGH"
+    typical_animal_products:
+      - "Chicken or beef broth (nước dùng)"
+      - "Fish sauce (nước mắm) in broth"
+      - "Meat slices (beef, chicken)"
+    modification_feasibility: "IMPOSSIBLE"
+    success_rate: 10
+    notes: |
+      Phở broth is cooked for 12+ hours with bones and fish sauce.
+      Cannot be modified. Even "vegetable phở" often uses same broth.
+    alternative: "Ask for 'Phở chay' (Buddhist vegetarian phở) at specialized restaurants. Most regular phở places cannot make vegan broth."
+
+  - name: "Spring Rolls (Fresh)"
+    name_local: "Gỏi cuốn"
+    transliteration: "Gỏi cuốn"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Shrimp or pork filling"
+      - "Dipping sauce (nước chấm) contains fish sauce"
+    modification_feasibility: "EASY_TO_MODERATE"
+    success_rate: 70
+    notes: "Can order vegetable spring rolls, but dipping sauce almost always has fish sauce."
+    modification_instructions:
+      question_english: "Can I have vegetable spring rolls with soy sauce instead of fish sauce for dipping?"
+      question_local: "Cho tôi gỏi cuốn chay với nước tương thay vì nước mắm được không?"
+      transliteration: "Cho tôi gỏi cuốn chay với nước tương thay vì nước mắm được không?"
+
+  - name: "Fried Spring Rolls"
+    name_local: "Chả giò"
+    transliteration: "Chả giò"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Pork or shrimp filling"
+      - "Fish sauce in dipping sauce"
+      - "Sometimes egg in wrapper"
+    modification_feasibility: "MODERATE"
+    success_rate: 60
+    notes: "Vegetable version exists (chả giò chay). Ask for vegetarian version."
+
+  - name: "Bánh Mì (Sandwich)"
+    name_local: "Bánh mì"
+    transliteration: "Bánh mì"
+    risk_level: "MEDIUM"
+    typical_animal_products:
+      - "Pork, chicken, or pâté"
+      - "Sometimes egg"
+      - "Mayonnaise (contains egg)"
+    modification_feasibility: "MODERATE"
+    success_rate: 65
+    notes: "Can get vegetable bánh mì, but check for pâté spread and mayo."
+
+  - name: "Bánh Xèo (Sizzling Pancake)"
+    name_local: "Bánh xèo"
+    transliteration: "Bánh xèo"
+    risk_level: "HIGH"
+    typical_animal_products:
+      - "Pork and shrimp filling"
+      - "Dried shrimp topping"
+      - "Fish sauce in dipping sauce"
+    modification_feasibility: "MODERATE"
+    success_rate: 50
+    notes: "Some places can make vegetable version. Dipping sauce will have fish sauce."
+
+# Safe/Naturally Vegan Dishes
+safe_dishes:
+  - name: "Vietnamese Vegetarian Food (Chay)"
+    name_local: "Cơm chay / Món chay"
+    transliteration: "Cơm chay / Món chay"
+    confidence: "HIGH"  # 85-90% at vegetarian restaurants
+    notes: |
+      Vietnam has strong Buddhist vegetarian tradition. Look for 'Cơm chay' or 'Quán chay' (vegetarian restaurant).
+      'Chay' means vegetarian/vegan for religious purposes.
+    where_to_find:
+      - "Buddhist temples"
+      - "Vegetarian restaurants (Quán chay)"
+      - "Especially during full moon and new moon (Buddhist days)"
+    trust_level: "VERY_HIGH"  # At dedicated vegetarian restaurants
+
+  - name: "Fresh Fruit"
+    name_local: "Trái cây tươi"
+    transliteration: "Trái cây tươi"
+    confidence: "VERY_HIGH"  # 98%
+    notes: "Vietnam has excellent fresh fruit. Almost always vegan."
+
+  - name: "Banh Mi Chay (Vegetarian Sandwich)"
+    name_local: "Bánh mì chay"
+    transliteration: "Bánh mì chay"
+    confidence: "HIGH"  # 80%
+    notes: "Vegetarian bánh mì. Confirm no pâté, no mayo, no egg."
+    verification_phrase: "Không có pate, không có trứng, không có nước mắm?"
+
+  - name: "Rice"
+    name_local: "Cơm trắng"
+    transliteration: "Cơm trắng"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Plain white rice. Almost always vegan."
+
+  - name: "Vegetable Spring Rolls (if confirmed no fish sauce)"
+    name_local: "Gỏi cuốn chay"
+    transliteration: "Gỏi cuốn chay"
+    confidence: "MODERATE"  # 70% - depends on sauce
+    notes: "Vegetable spring rolls. Main issue is dipping sauce (fish sauce). Ask for soy sauce."
+
+# Cultural Notes
+cultural_context:
+  vegetarian_concept:
+    understanding_level: "MODERATE"
+    notes: |
+      - Buddhist vegetarian tradition (ăn chay) well-established in Vietnam
+      - "Chay" means vegetarian for religious purposes (usually vegan)
+      - Many Vietnamese practice vegetarian diet on full moon and new moon days
+      - However, in regular restaurants, fish sauce is so fundamental they may not consider it "meat"
+      - "Vegan" as Western concept less understood outside cities
+
+    effective_terminology:
+      best: "Ăn chay - Buddhist vegetarian"
+      good: "Không ăn thịt, cá, trứng, sữa - No meat, fish, eggs, dairy"
+      explain: "Không ăn nước mắm - No fish sauce (CRITICAL to mention)"
+
+  buddhist_vegetarian:
+    concept: "Ăn chay"
+    description: "Buddhist vegetarian food - usually vegan (no meat, fish, eggs, dairy)"
+    when: "Full moon and new moon days - many restaurants offer 'món chay'"
+    where_to_find:
+      - "Buddhist temples"
+      - "Vegetarian restaurants (Quán chay, Cơm chay)"
+      - "Some regular restaurants on Buddhist days"
+    trust_level: "HIGH"  # At dedicated vegetarian places
+
+  modification_culture:
+    overall_acceptance: "MODERATE_TO_HIGH"
+    notes: |
+      Vietnamese cuisine can be flexible, especially street food.
+      However, fish sauce and broths are so fundamental that substitutions
+      can be challenging. Success depends on whether they're cooking to order
+      vs. using pre-made components.
+
+    by_restaurant_type:
+      - type: "Street food"
+        acceptance_rate: 65  # 60-70%
+        success_factors:
+          - "Cook to order"
+          - "Can leave out meat/shrimp"
+        limitations:
+          - "Fish sauce is in almost all sauces/broths"
+          - "Broths pre-made (phở broth cannot be changed)"
+        approach: "Direct but polite. Ask specifically about fish sauce."
+
+      - type: "Casual restaurants"
+        acceptance_rate: 60  # 55-65%
+        success_factors:
+          - "Some flexibility with stir-fries"
+          - "Can make vegetable versions of some dishes"
+        limitations:
+          - "Broths and sauces often pre-made with fish sauce"
+
+      - type: "Buddhist vegetarian restaurants"
+        acceptance_rate: 95  # Already vegetarian/vegan
+        notes: "Best option. Everything designed for vegetarians."
+
+  etiquette:
+    how_to_ask:
+      approach: "Polite, direct, friendly"
+      tone: "Respectful"
+      staff_english_level: "LOW_TO_MEDIUM"  # Cities better, rural areas minimal
+      tips:
+        - "Be polite: Use 'Xin' (please) and 'Cảm ơn' (thank you)"
+        - "Mention 'ăn chay' (Buddhist vegetarian) - widely understood"
+        - "Specifically ask about fish sauce - it's in almost everything"
+        - "Tourist areas (Ho Chi Minh, Hanoi, Hoi An) have some English"
+        - "Pointing and gestures help in rural areas"
+
+    language_expectations:
+      ho_chi_minh_hanoi_hoi_an:
+        english_proficiency: "LOW_TO_MEDIUM"
+        notes: "Tourist areas have some English. Local restaurants very limited."
+
+      rural_areas:
+        english_proficiency: "VERY_LOW"
+        notes: "Almost no English. Vietnamese phrases essential."
+
+    common_responses:
+      positive:
+        - phrase: "Được"
+          transliteration: "Được"
+          meaning: "Yes / Okay"
+        - phrase: "Không vấn đề gì"
+          transliteration: "Không vấn đề gì"
+          meaning: "No problem"
+
+      negative:
+        - phrase: "Không được"
+          transliteration: "Không được"
+          meaning: "Cannot / Not possible"
+        - phrase: "Hết rồi"
+          transliteration: "Hết rồi"
+          meaning: "Finished / Sold out"
+
+      uncertain:
+        - phrase: "Tôi hỏi bếp"
+          transliteration: "Tôi hỏi bếp"
+          meaning: "I'll ask the kitchen"
+
+# Common Modification Patterns
+modification_patterns:
+  easy:
+    - ingredient: "Meat/shrimp (if topping or visible)"
+      feasibility: "EASY"
+      success_rate: 75
+      reason: "Can order vegetable version"
+      phrase: "Không thịt, không tôm (Không thịt, không tôm)"
+
+    - ingredient: "Dried shrimp (topping)"
+      feasibility: "EASY"
+      success_rate: 80
+      reason: "Added as garnish"
+      phrase: "Không tôm khô (Không tôm khô)"
+
+  moderate:
+    - ingredient: "Fish sauce in dipping sauce → Soy sauce"
+      feasibility: "MODERATE"
+      success_rate: 60
+      reason: "Can substitute if they have soy sauce"
+      phrase: "Cho tôi nước tương thay vì nước mắm (Cho tôi nước tương thay vì nước mắm)"
+      notes: "Works for dipping sauces, harder for cooked dishes"
+
+    - ingredient: "Vegetable version of dish"
+      feasibility: "MODERATE"
+      success_rate: 65
+      reason: "Many dishes can be made with vegetables instead of meat"
+      phrase: "Bản chay có được không? (Bản chay có được không?)"
+
+  impossible:
+    - ingredient: "Fish sauce in phở broth"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 5
+      reason: "Broth cooked for hours with fish sauce and bones. Cannot remake."
+      notes: "Only vegetarian restaurants make phở without fish sauce."
+      alternative: "Find 'Quán chay' (vegetarian restaurant) for 'Phở chay'"
+
+    - ingredient: "Shrimp paste in bún bò Huế"
+      feasibility: "IMPOSSIBLE"
+      success_rate: 10
+      reason: "Shrimp paste is fundamental to the dish flavor"
+      alternative: "Choose different dish"
+
+# Key Phrases for Ordering
+key_phrases:
+  - context: "I'm vegetarian (Buddhist style)"
+    english: "I eat vegetarian (Buddhist style)"
+    vietnamese: "Tôi ăn chay"
+    transliteration: "Tôi ăn chay"
+    notes: "'Chay' is well understood as Buddhist vegetarian (usually vegan)"
+
+  - context: "Explaining dietary restrictions"
+    english: "I don't eat meat, fish, eggs, dairy, or fish sauce"
+    vietnamese: "Tôi không ăn thịt, cá, trứng, sữa, và nước mắm"
+    transliteration: "Tôi không ăn thịt, cá, trứng, sữa, và nước mắm"
+
+  - context: "Does this have fish sauce?"
+    english: "Does this have fish sauce?"
+    vietnamese: "Món này có nước mắm không?"
+    transliteration: "Món này có nước mắm không?"
+
+  - context: "No fish sauce please"
+    english: "No fish sauce, please"
+    vietnamese: "Không nước mắm"
+    transliteration: "Không nước mắm"
+
+  - context: "Use soy sauce instead"
+    english: "Use soy sauce instead"
+    vietnamese: "Dùng nước tương thay vì nước mắm"
+    transliteration: "Dùng nước tương thay vì nước mắm"
+
+  - context: "Do you have vegetarian version?"
+    english: "Do you have a vegetarian version?"
+    vietnamese: "Có bản chay không?"
+    transliteration: "Có bản chay không?"
+
+  - context: "Is there a vegetarian restaurant nearby?"
+    english: "Is there a vegetarian restaurant nearby?"
+    vietnamese: "Gần đây có quán chay không?"
+    transliteration: "Gần đây có quán chay không?"
+
+  - context: "Thank you"
+    english: "Thank you"
+    vietnamese: "Cảm ơn"
+    transliteration: "Cảm ơn"
+
+# Language Details
+language:
+  name: "Vietnamese"
+  script: "Latin alphabet with diacritics"
+  ocr_difficulty: "MEDIUM"
+  ocr_accuracy_range: "85-92%"
+  challenges:
+    - "Diacritical marks (tone marks) crucial for meaning"
+    - "Six tones - OCR must recognize tone marks correctly"
+    - "Similar to Latin alphabet but with extensive diacritics"
+  phase: "Phase 2"
+  phase_timeline: "6-12 months after launch"
+  priority: "HIGH"
+
+# Fallback Strategies
+fallback_strategies:
+  - scenario: "Restaurant doesn't understand"
+    strategy: "Ask for 'quán chay' (vegetarian restaurant)"
+    phrase: "Gần đây có quán chay không? (Gần đây có quán chay không?)"
+
+  - scenario: "No vegan options"
+    strategy: "Order plain rice + fresh vegetables + fruit"
+    dishes:
+      - "Cơm trắng (white rice)"
+      - "Rau sống (fresh vegetables)"
+      - "Trái cây (fruit)"
+
+  - scenario: "Phở has fish sauce"
+    strategy: "Find vegetarian restaurant for 'Phở chay'"
+    notes: "Regular phở restaurants cannot make vegan broth"
+
+# Useful Resources
+resources:
+  buddhist_vegetarian_restaurants:
+    where: "Most cities, especially near temples"
+    how_to_find: "Search 'Quán chay' or 'Cơm chay' on Google Maps"
+    notes: "Best option for vegans in Vietnam"
+
+  buddhist_days:
+    description: "Full moon and new moon - many Vietnamese eat vegetarian"
+    opportunity: "More vegetarian options available on these days"
+
+  apps:
+    - "HappyCow - vegan restaurant finder"
+    - "Google Maps - search 'quán chay'"
+
+# Data Quality
+metadata:
+  last_updated: "2025-11-18"
+  research_date: "2025-11"
+  confidence: "HIGH"
+  sources:
+    - "Global Vegan Menu Scanning Challenges Research (Nov 2025)"
+    - "Vegan travel blogs"
+    - "User testimonials"
+  needs_validation:
+    - "Modification acceptance rates by restaurant type"
+    - "Regional variations (North vs South Vietnam)"

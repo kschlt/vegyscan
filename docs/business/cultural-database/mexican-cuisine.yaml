@@ -1,0 +1,607 @@
+# Mexican Cuisine - Cultural Intelligence Database
+# Created: 2025-11-18
+# Source: Global Vegan Menu Scanning Challenges Research
+# Purpose: Store cultural context, hidden ingredients, and communication intelligence
+
+cuisine:
+  name: "Mexican"
+  name_local: "Cocina mexicana"
+  problem_intensity: "MEDIUM"
+  problem_frequency: "35-45% of dishes contain lard, cheese, crema, or meat stock"
+
+  problem_description: |
+    Mexican cuisine has hidden animal products in seemingly vegetarian
+    dishes. Lard (pork fat) is traditionally used in refried beans,
+    tamales, and tortillas. Chicken or beef stock is used in rice and
+    beans. Cheese and crema (Mexican sour cream) are common toppings.
+    However, many dishes can be modified, and there are naturally
+    vegan options (guacamole, salsa, black beans without lard).
+
+  ocr_difficulty: "LOW"
+  ocr_notes: |
+    - Spanish language - Latin alphabet (same as English)
+    - Many cognates and familiar words
+    - Accent marks (á, é, í, ó, ú, ñ) usually not critical for understanding
+    - OCR generally accurate for Spanish text
+
+  research_citations:
+    - "Global Vegan Menu Scanning Challenges Research (2025)"
+    - "Mexican cuisine vegan guides"
+    - "Traditional cooking methods research"
+
+# ============================================================================
+# HIDDEN INGREDIENTS
+# ============================================================================
+
+hidden_ingredients:
+  # LARD - CRITICAL
+  - name: "Lard (pork fat)"
+    name_local: "Manteca (de cerdo)"
+    transliteration: "man-te-ka (deh ser-do)"
+    frequency: "VERY_HIGH"  # 70%+ traditional restaurants
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Refried beans (frijoles refritos)"
+      - "Tamales"
+      - "Flour tortillas (some)"
+      - "Rice (some restaurants)"
+    modification_feasibility: "MODERATE"  # Can ask for beans made with oil
+    modification_notes: |
+      Traditional refried beans use lard. Many modern/chain restaurants
+      use vegetable oil. ALWAYS ask.
+    questions_to_ask:
+      - "¿Los frijoles tienen manteca o aceite vegetal?" (Do the beans have lard or vegetable oil?)
+      - "¿Esto se cocina con manteca de cerdo?" (Is this cooked with lard?)
+    description: |
+      Lard is the #1 hidden ingredient in Mexican food. Used in
+      refried beans, tamales, tortillas. Modern restaurants often
+      use oil, but traditional places use lard. Always ask.
+
+  # CHEESE - HIGH
+  - name: "Cheese"
+    name_local: "Queso"
+    transliteration: "ke-so"
+    frequency: "VERY_HIGH"  # 65%+
+    severity: "MODERATE"
+    typical_dishes:
+      - "Quesadillas"
+      - "Enchiladas"
+      - "Tacos (often as topping)"
+      - "Nachos"
+      - "Chiles rellenos"
+    modification_feasibility: "EASY"  # Usually topping, can be left off
+    modification_notes: "Cheese is usually a topping - easy to remove"
+    questions_to_ask:
+      - "¿Puede hacerlo sin queso?" (Can you make it without cheese?)
+      - "¿Tiene queso?" (Does it have cheese?)
+
+  - name: "Crema (Mexican sour cream)"
+    name_local: "Crema"
+    transliteration: "kre-ma"
+    frequency: "HIGH"  # 50%+
+    severity: "MODERATE"
+    typical_dishes:
+      - "Tacos (topping)"
+      - "Enchiladas"
+      - "Tostadas"
+      - "Sopes"
+    modification_feasibility: "EASY"  # Topping
+    questions_to_ask:
+      - "¿Sin crema, por favor?" (Without cream, please?)
+
+  # STOCK/BROTH
+  - name: "Chicken stock"
+    name_local: "Caldo de pollo"
+    transliteration: "kal-do deh po-yo"
+    frequency: "HIGH"  # 50%+
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Mexican rice (arroz rojo)"
+      - "Beans (sometimes)"
+      - "Soups"
+      - "Sauces (mole, sometimes)"
+    modification_feasibility: "MODERATE"  # Depends on restaurant
+    modification_notes: "Rice/beans often pre-made with chicken stock"
+    questions_to_ask:
+      - "¿El arroz se hace con caldo de pollo o agua?" (Is the rice made with chicken stock or water?)
+      - "¿Los frijoles tienen caldo de pollo?" (Do the beans have chicken stock?)
+
+  - name: "Beef stock"
+    name_local: "Caldo de res"
+    transliteration: "kal-do deh res"
+    frequency: "MEDIUM"  # 30%
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Some soups"
+      - "Some beans"
+    modification_feasibility: "MODERATE"
+
+  # DAIRY
+  - name: "Milk"
+    name_local: "Leche"
+    transliteration: "le-che"
+    frequency: "MEDIUM"  # 30%
+    severity: "MODERATE"
+    typical_dishes:
+      - "Horchata (rice drink - sometimes has milk)"
+      - "Flan (dessert)"
+      - "Tres leches cake"
+    modification_feasibility: "IMPOSSIBLE"  # In desserts
+    notes: "Traditional horchata is made with water, but some add milk"
+    questions_to_ask:
+      - "¿La horchata tiene leche o es solo agua?" (Does the horchata have milk or is it just water?)
+
+  # EGGS
+  - name: "Eggs"
+    name_local: "Huevos"
+    transliteration: "we-vos"
+    frequency: "MEDIUM"  # 30% breakfast items
+    severity: "MODERATE"
+    typical_dishes:
+      - "Breakfast dishes (huevos rancheros)"
+      - "Some breads/pastries"
+    modification_feasibility: "EASY"  # Can be left off
+    notes: "Common in breakfast, but easy to avoid or remove"
+
+  # ANIMAL FAT
+  - name: "Chicharrón (pork skin)"
+    name_local: "Chicharrón"
+    transliteration: "chi-cha-ron"
+    frequency: "MEDIUM"  # In specific dishes
+    severity: "HIGH"
+    typical_dishes:
+      - "Refried beans (sometimes mixed in)"
+      - "Tacos"
+      - "Salsa (sometimes)"
+    modification_feasibility: "MODERATE"
+    questions_to_ask:
+      - "¿Tiene chicharrón?" (Does it have chicharrón/pork skin?)
+
+# ============================================================================
+# WATCH-OUT DISHES
+# ============================================================================
+
+watch_out_dishes:
+  - name: "Refried beans (frijoles refritos)"
+    confidence: "MEDIUM"  # 50% - depends if made with lard or oil
+    watch_for:
+      - "Lard (manteca) - very common in traditional restaurants"
+      - "Cheese (sometimes on top)"
+      - "Chicharrón mixed in (some recipes)"
+    safe_if: "Made with vegetable oil, no cheese, no chicharrón"
+    questions_to_ask:
+      - "¿Los frijoles se hacen con aceite vegetal o manteca?" (Are the beans made with vegetable oil or lard?)
+      - "¿Tienen queso o chicharrón?" (Do they have cheese or chicharrón?)
+
+  - name: "Black beans / Pinto beans (whole beans)"
+    confidence: "MEDIUM_TO_HIGH"  # 65%
+    watch_for:
+      - "Lard (less common than refried, but possible)"
+      - "Chicken/pork stock"
+    safe_if: "Cooked in water/vegetable broth with no lard"
+    questions_to_ask:
+      - "¿Se cocinan con manteca o caldo de pollo?" (Are they cooked with lard or chicken stock?)
+
+  - name: "Mexican rice (arroz rojo)"
+    confidence: "MEDIUM"  # 50%
+    watch_for:
+      - "Chicken stock (very common)"
+      - "Lard or butter (some recipes)"
+    safe_if: "Made with water/vegetable broth, no lard"
+    questions_to_ask:
+      - "¿El arroz se hace con caldo de pollo?" (Is the rice made with chicken stock?)
+
+  - name: "Guacamole"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Usually just avocado, lime, cilantro, onion, tomato - naturally vegan"
+    watch_for: "Crema or cheese (very rare, but ask)"
+
+  - name: "Salsa"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Usually vegan - tomatoes, chilies, onion, cilantro"
+    watch_for: "Chicharrón (pork skin) in some salsas (rare)"
+
+  - name: "Corn tortillas"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Usually just corn, water, lime - vegan"
+    watch_for: "Lard (rare in corn tortillas, more common in flour)"
+
+  - name: "Flour tortillas"
+    confidence: "MEDIUM"  # 55%
+    watch_for:
+      - "Lard (traditional recipes)"
+      - "Butter (some modern recipes)"
+    safe_if: "Made with vegetable oil"
+    questions_to_ask:
+      - "¿Las tortillas de harina tienen manteca?" (Do the flour tortillas have lard?)
+
+  - name: "Tamales"
+    confidence: "LOW"  # 30% - traditionally made with lard
+    watch_for:
+      - "Lard in masa (corn dough) - very common"
+      - "Meat filling (obviously)"
+      - "Cheese filling"
+    safe_if: "Vegetable tamales made without lard (rare)"
+    questions_to_ask:
+      - "¿La masa tiene manteca?" (Does the masa have lard?)
+      - "¿Tienen tamales vegetarianos sin manteca?" (Do you have vegetarian tamales without lard?)
+
+  - name: "Quesadilla"
+    confidence: "LOW"  # 20% - cheese is in the name
+    watch_for:
+      - "Cheese (obviously - it's in the name)"
+      - "Lard in tortilla (if flour)"
+    safe_if: "Can ask for vegetable filling, no cheese (but then it's just a taco)"
+    notes: "Quesadilla = cheese tortilla. Can ask for no cheese, but unusual."
+
+  - name: "Enchiladas"
+    confidence: "LOW_TO_MEDIUM"  # 35%
+    watch_for:
+      - "Cheese (very common)"
+      - "Crema"
+      - "Chicken/meat filling"
+      - "Sauce may have chicken stock"
+    safe_if: "Vegetable filling, no cheese, no crema, vegan sauce"
+    questions_to_ask:
+      - "¿Pueden hacer enchiladas de verduras sin queso ni crema?" (Can you make vegetable enchiladas without cheese or cream?)
+
+  - name: "Mole"
+    confidence: "MEDIUM"  # 50% - complex sauce
+    watch_for:
+      - "Chicken stock (sometimes)"
+      - "Lard (traditional recipes)"
+      - "Chocolate with milk (some moles)"
+    safe_if: "Vegan mole (some restaurants make it vegan)"
+    notes: "Mole is complex - 20+ ingredients. Varies widely by restaurant."
+    questions_to_ask:
+      - "¿El mole es vegano?" (Is the mole vegan?)
+      - "¿Tiene manteca o caldo de pollo?" (Does it have lard or chicken stock?)
+
+# ============================================================================
+# SAFE DISHES
+# ============================================================================
+
+safe_dishes:
+  - name: "Guacamole"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Avocado, lime, cilantro, onion, tomato - naturally vegan"
+
+  - name: "Pico de gallo (fresh salsa)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Tomato, onion, cilantro, lime, jalapeño - naturally vegan"
+
+  - name: "Salsa verde / Salsa roja"
+    confidence: "HIGH"  # 85-90%
+    notes: "Usually vegan - tomatillos/tomatoes, chilies, spices"
+
+  - name: "Corn tortillas (usually)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Corn, water, lime - usually vegan"
+
+  - name: "Chips and salsa"
+    confidence: "HIGH"  # 80%
+    notes: "Fried corn tortillas + salsa"
+    watch_for: "Fried in animal fat (rare, but possible)"
+
+  - name: "Mexican rice (if made properly)"
+    confidence: "MEDIUM"  # 50% - need to ask about stock
+    how_to_verify: "Ask if made with water/vegetable broth, no lard"
+
+  - name: "Black beans (if made properly)"
+    confidence: "MEDIUM_TO_HIGH"  # 65%
+    how_to_verify: "Ask if made without lard or chicken stock"
+
+  - name: "Vegetable tacos (if modified)"
+    confidence: "MEDIUM_TO_HIGH"  # 60%
+    watch_for: "Cheese, crema (ask to remove)"
+    how_to_verify: "Ask for no cheese, no crema, corn tortillas"
+
+  - name: "Nopales (cactus)"
+    confidence: "MEDIUM_TO_HIGH"  # 70%
+    notes: "Grilled cactus - usually vegan"
+    watch_for: "Cheese (sometimes served with cheese)"
+
+  - name: "Elote (grilled corn) - if modified"
+    confidence: "MEDIUM"  # 40% - traditionally has cheese/mayo/crema
+    watch_for:
+      - "Mayo (always)"
+      - "Cheese (always)"
+      - "Crema (always)"
+    safe_if: "Ask for just corn with lime and chili powder"
+    questions_to_ask:
+      - "¿Puede darme elote solo con limón y chile, sin queso, crema, ni mayonesa?" (Can I have corn with just lime and chili, no cheese, cream, or mayo?)
+
+# ============================================================================
+# MODIFICATION CULTURE
+# ============================================================================
+
+modification_culture:
+  overall_acceptance: "MODERATE_TO_HIGH"
+  overall_notes: |
+    Mexican restaurants generally accommodate modifications well,
+    especially in tourist areas and modern restaurants. Traditional
+    family restaurants may be less flexible. Street vendors are
+    usually willing to leave off toppings (cheese, crema).
+
+  by_restaurant_type:
+    - type: "Chain/Modern restaurants"
+      acceptance_rate: 75  # 70-80%
+      success_factors:
+        - "Used to customization"
+        - "Often use vegetable oil instead of lard (more cost-effective)"
+      approach: "Direct - just ask for modifications"
+
+    - type: "Traditional family restaurants"
+      acceptance_rate: 55  # 50-60%
+      limitations:
+        - "Beans/rice may be pre-made with lard/stock"
+        - "Less familiar with vegan requests"
+      approach: "Polite - explain dietary needs"
+
+    - type: "Street food / Taco stands"
+      acceptance_rate: 70  # 65-75%
+      success_factors:
+        - "Cook to order"
+        - "Easy to leave off cheese/crema"
+      limitations:
+        - "Beans/tortillas may have lard"
+      approach: "Direct - easy to customize toppings"
+
+    - type: "Upscale/Modern Mexican"
+      acceptance_rate: 80  # 75-85%
+      success_factors:
+        - "Aware of dietary trends"
+        - "More willing to accommodate"
+      approach: "Direct requests usually work"
+
+  critical_warnings:
+    - "Lard in refried beans is VERY common - always ask"
+    - "Chicken stock in rice is standard - must ask"
+    - "Flour tortillas often have lard - corn tortillas safer"
+    - "Even 'vegetarian' dishes may have lard or chicken stock"
+
+  modification_patterns:
+    remove_toppings:
+      feasibility: "EASY"
+      examples:
+        - "Cheese on tacos"
+        - "Crema on tostadas"
+      success_rate: 90
+      notes: "Very easy - just ask 'sin queso, sin crema'"
+
+    beans_without_lard:
+      feasibility: "MODERATE"
+      success_rate: 60
+      notes: "Chain restaurants often use oil. Traditional use lard."
+      how_to_ask: "¿Los frijoles tienen manteca?"
+
+    rice_without_stock:
+      feasibility: "MODERATE"
+      success_rate: 50
+      notes: "Rice is often pre-made with chicken stock"
+      how_to_ask: "¿El arroz tiene caldo de pollo?"
+
+    tamales_without_lard:
+      feasibility: "LOW"
+      success_rate: 20
+      notes: "Masa is traditionally made with lard - hard to find vegan version"
+
+# ============================================================================
+# CULTURAL ETIQUETTE
+# ============================================================================
+
+etiquette:
+  how_to_ask:
+    approach: "POLITE, DIRECT"
+    tone: "Friendly and respectful"
+    staff_english_level: "MEDIUM_TO_HIGH"
+    tips:
+      - "Use 'por favor' (please) when asking"
+      - "Say 'soy vegano/vegana' (I'm vegan) to explain"
+      - "Be specific: 'sin queso, sin crema, sin manteca'"
+      - "Mexican culture is generally friendly and accommodating"
+      - "In tourist areas, staff often speak English"
+
+  language_expectations:
+    tourist_areas:
+      english_proficiency: "MEDIUM_TO_HIGH"
+      notes: |
+        Tourist areas (Cancun, Playa del Carmen, Puerto Vallarta, etc.)
+        have good English. Most restaurants have English menus.
+
+    mexico_city:
+      english_proficiency: "MEDIUM"
+      notes: "Varies - tourist areas better, local areas less English"
+
+    rural_mexico:
+      english_proficiency: "LOW_TO_MEDIUM"
+      notes: "Spanish essential. Less English spoken."
+
+  common_responses:
+    positive:
+      - phrase: "Sí, claro"
+        transliteration: "see, kla-ro"
+        meaning: "Yes, of course"
+
+      - phrase: "Sí, sin problema"
+        transliteration: "see, sin pro-ble-ma"
+        meaning: "Yes, no problem"
+
+      - phrase: "Está bien"
+        transliteration: "es-ta bien"
+        meaning: "It's fine / Okay"
+
+    negative:
+      - phrase: "No se puede"
+        transliteration: "no se pwe-de"
+        meaning: "It's not possible"
+
+      - phrase: "Ya está hecho con manteca"
+        transliteration: "ya es-ta e-cho con man-te-ka"
+        meaning: "It's already made with lard"
+
+    uncertain:
+      - phrase: "Voy a preguntar"
+        transliteration: "voy a pre-gun-tar"
+        meaning: "I'm going to ask (the kitchen)"
+
+  what_to_do:
+    if_they_say_yes:
+      - "Thank them: 'Gracias' (thank you)"
+      - "Confirm: 'Sin queso y sin crema, ¿verdad?' (No cheese and no cream, right?)"
+
+    if_they_say_no:
+      - "Ask for alternatives: '¿Qué platos son veganos?' (What dishes are vegan?)"
+      - "Order safe items: guacamole, salsa, chips"
+
+# ============================================================================
+# KEY SPANISH VEGAN PHRASES
+# ============================================================================
+
+key_phrases:
+  dietary_terms:
+    - spanish: "Vegano/Vegana"
+      transliteration: "ve-ga-no / ve-ga-na"
+      english: "Vegan (male/female)"
+
+    - spanish: "Vegetariano/Vegetariana"
+      transliteration: "ve-he-ta-ria-no / ve-he-ta-ria-na"
+      english: "Vegetarian (male/female)"
+      notes: "NOT the same as vegan - may include dairy/eggs"
+
+    - spanish: "Sin productos animales"
+      transliteration: "sin pro-duk-tos a-ni-ma-les"
+      english: "Without animal products"
+
+  asking_questions:
+    - spanish: "¿Esto es vegano?"
+      transliteration: "es-to es ve-ga-no?"
+      english: "Is this vegan?"
+
+    - spanish: "¿Tiene carne, pollo, pescado, huevos, o lácteos?"
+      transliteration: "tie-ne kar-ne, po-yo, pes-ka-do, we-vos, o lak-te-os?"
+      english: "Does it have meat, chicken, fish, eggs, or dairy?"
+
+    - spanish: "¿Los frijoles tienen manteca de cerdo?"
+      transliteration: "los fri-ho-les tie-nen man-te-ka de ser-do?"
+      english: "Do the beans have lard?"
+
+    - spanish: "¿El arroz se hace con caldo de pollo?"
+      transliteration: "el a-ros se a-se con kal-do de po-yo?"
+      english: "Is the rice made with chicken stock?"
+
+    - spanish: "¿Puede hacerlo sin queso y sin crema?"
+      transliteration: "pwe-de a-ser-lo sin ke-so ee sin kre-ma?"
+      english: "Can you make it without cheese and without cream?"
+
+  polite_expressions:
+    - spanish: "Por favor"
+      transliteration: "por fa-vor"
+      english: "Please"
+
+    - spanish: "Gracias"
+      transliteration: "gra-sias"
+      english: "Thank you"
+
+    - spanish: "Disculpe"
+      transliteration: "dis-kul-pe"
+      english: "Excuse me"
+
+  explaining_vegan:
+    - spanish: "Soy vegano/vegana. No como carne, pescado, huevos, lácteos, ni manteca."
+      transliteration: "soy ve-ga-no/ve-ga-na. no ko-mo kar-ne, pes-ka-do, we-vos, lak-te-os, ni man-te-ka."
+      english: "I'm vegan. I don't eat meat, fish, eggs, dairy, or lard."
+
+  ordering:
+    - spanish: "Sin queso, por favor"
+      transliteration: "sin ke-so, por fa-vor"
+      english: "Without cheese, please"
+
+    - spanish: "Sin crema"
+      transliteration: "sin kre-ma"
+      english: "Without cream"
+
+    - spanish: "¿Qué platos son veganos?"
+      transliteration: "ke pla-tos son ve-ga-nos?"
+      english: "What dishes are vegan?"
+
+# ============================================================================
+# RECOMMENDATIONS
+# ============================================================================
+
+recommendations:
+  strategy: |
+    Mexico is MEDIUM difficulty for vegans. Hidden lard is the main
+    challenge, but modifications are usually well-accepted.
+
+    **Best Strategy:**
+    1. Always ask about lard in beans, rice, tortillas
+    2. Stick to corn tortillas (safer than flour)
+    3. Ask for no cheese, no crema (easy to remove)
+    4. Guacamole, salsa, chips are safe bets
+    5. Chain restaurants often use vegetable oil (more cost-effective than lard)
+
+    **Key Questions:**
+    - "¿Los frijoles tienen manteca?" (Do beans have lard?)
+    - "¿El arroz tiene caldo de pollo?" (Does rice have chicken stock?)
+    - "Sin queso, sin crema" (No cheese, no cream)
+
+  vegan_friendly_cities:
+    - city: "Mexico City"
+      vegan_scene: "VERY_HIGH"
+      notes: "Tons of vegan restaurants, growing scene"
+
+    - city: "Guadalajara"
+      vegan_scene: "HIGH"
+      notes: "Good vegan options"
+
+    - city: "Playa del Carmen / Tulum"
+      vegan_scene: "HIGH"
+      notes: "Tourist areas, vegan-friendly, health-conscious"
+
+    - city: "Oaxaca"
+      vegan_scene: "MEDIUM_TO_HIGH"
+      notes: "Foodie city, accommodating"
+
+    - city: "Cancun"
+      vegan_scene: "MEDIUM"
+      notes: "Tourist area, some vegan options"
+
+  helpful_apps:
+    - "HappyCow (vegan restaurant finder)"
+    - "Google Translate (for Spanish)"
+
+# ============================================================================
+# RESEARCH NOTES
+# ============================================================================
+
+research_notes:
+  key_insights:
+    - "Lard is the #1 hidden ingredient - in beans, tamales, tortillas"
+    - "Chicken stock commonly used in rice"
+    - "Modification acceptance is generally good"
+    - "Chain restaurants more likely to use vegetable oil (cost savings)"
+    - "Traditional restaurants more likely to use lard (flavor tradition)"
+    - "Corn tortillas safer than flour tortillas"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-11-18"
+  coverage: "COMPREHENSIVE"
+  data_sources:
+    - "Global Vegan Menu Scanning Challenges Research"
+    - "Mexican vegan travel guides"
+    - "Traditional cooking methods research"
+
+  priority: "MEDIUM"  # Phase 3 according to vision.md
+
+  validation_status: "RESEARCH_BASED"
+
+  next_steps:
+    - "Validate with Mexico vegan travelers"
+    - "Add regional variations (Oaxaca, Yucatan, etc.)"
+    - "Expand street food intelligence"

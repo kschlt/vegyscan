@@ -1,0 +1,624 @@
+# French Cuisine - Cultural Intelligence Database
+# Created: 2025-11-18
+# Source: Global Vegan Menu Scanning Challenges Research
+# Purpose: Store cultural context, hidden ingredients, and communication intelligence
+
+cuisine:
+  name: "French"
+  name_local: "Cuisine française"
+  problem_intensity: "MEDIUM_HIGH"
+  problem_frequency: "50-60% of dishes contain butter, cream, cheese, or eggs"
+
+  problem_description: |
+    French cuisine is heavily dairy-based - butter, cream, and cheese
+    are foundational ingredients. Even seemingly vegan dishes often
+    contain butter or cream. Modification acceptance is VERY LOW -
+    traditional French chefs view recipes as art and resist changes.
+
+  ocr_difficulty: "MEDIUM"
+  ocr_notes: |
+    - Standard Latin alphabet (same as English)
+    - Accent marks (é, è, ê, ç) usually not critical for OCR
+    - Challenges: Handwritten menus in traditional restaurants
+    - Menu terminology uses many French-specific culinary terms
+
+  research_citations:
+    - "Global Vegan Menu Scanning Challenges Research (2025)"
+    - "Vegan travel blogs: France modification challenges"
+    - "French culinary tradition and chef resistance to modifications"
+
+# ============================================================================
+# HIDDEN INGREDIENTS
+# ============================================================================
+
+hidden_ingredients:
+  # DAIRY - CRITICAL
+  - name: "Butter"
+    name_local: "Beurre"
+    transliteration: "beur"
+    frequency: "VERY_HIGH"  # 70%+ of dishes
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Croissants"
+      - "Pastries (viennoiseries)"
+      - "Sauces (beurre blanc, hollandaise)"
+      - "Vegetables (often sautéed in butter)"
+      - "Crepes"
+    modification_feasibility: "MODERATE_TO_IMPOSSIBLE"
+    modification_notes: |
+      In pastries: IMPOSSIBLE (butter is integral to structure)
+      In sauces: IMPOSSIBLE (butter-based sauces)
+      In vegetables: MODERATE (can ask for olive oil instead)
+    questions_to_ask:
+      - "Est-ce qu'il y a du beurre dans ce plat?" (Is there butter in this dish?)
+      - "Pouvez-vous utiliser de l'huile d'olive au lieu du beurre?" (Can you use olive oil instead of butter?)
+    description: |
+      Butter is everywhere in French cuisine - in pastries, sauces,
+      vegetables, even in bread sometimes. Always ask.
+
+  - name: "Cream"
+    name_local: "Crème"
+    transliteration: "krehm"
+    frequency: "VERY_HIGH"  # 60%+ of sauces
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Cream sauces (sauce crème)"
+      - "Soups (often finished with cream)"
+      - "Pasta dishes"
+      - "Gratins"
+      - "Desserts"
+    modification_feasibility: "IMPOSSIBLE"
+    modification_notes: "Cream-based sauces cannot be made without cream"
+    questions_to_ask:
+      - "Ce plat contient-il de la crème?" (Does this dish contain cream?)
+      - "La sauce est-elle à base de crème?" (Is the sauce cream-based?)
+
+  - name: "Cheese"
+    name_local: "Fromage"
+    transliteration: "fro-mahj"
+    frequency: "VERY_HIGH"  # 60%+ of dishes
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Gratins"
+      - "Quiches"
+      - "Salads (chèvre chaud, etc.)"
+      - "Onion soup (gruyère on top)"
+      - "Croque monsieur/madame"
+    modification_feasibility: "EASY"  # Usually topping
+    modification_notes: "Usually on top - can be left off"
+    questions_to_ask:
+      - "Y a-t-il du fromage dans ce plat?" (Is there cheese in this dish?)
+      - "Pouvez-vous le préparer sans fromage?" (Can you prepare it without cheese?)
+
+  - name: "Eggs"
+    name_local: "Œufs"
+    transliteration: "uh(f)"
+    frequency: "HIGH"  # 40-50%
+    severity: "HIGH"
+    typical_dishes:
+      - "Quiches"
+      - "Crepes (batter contains eggs)"
+      - "Pastries"
+      - "Mayonnaise"
+      - "Soufflés"
+    modification_feasibility: "IMPOSSIBLE"  # In batter/structure
+    modification_notes: "When eggs are in the batter or structure, cannot be removed"
+    questions_to_ask:
+      - "Est-ce qu'il y a des œufs dans ce plat?" (Are there eggs in this dish?)
+
+  # ANIMAL PRODUCTS IN UNEXPECTED PLACES
+  - name: "Lard / Pork fat"
+    name_local: "Saindoux / Graisse de porc"
+    transliteration: "san-doo / grehss duh por"
+    frequency: "MEDIUM"  # 20-30% traditional cooking
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Traditional vegetable dishes (confit)"
+      - "Beans (cassoulet region)"
+      - "Pâté"
+    modification_feasibility: "IMPOSSIBLE"  # Already cooked with it
+    questions_to_ask:
+      - "Est-ce cuisiné avec du saindoux ou de la graisse animale?" (Is this cooked with lard or animal fat?)
+
+  - name: "Chicken stock / Beef stock"
+    name_local: "Bouillon de poulet / Bouillon de bœuf"
+    transliteration: "boo-yon duh poo-lay / boo-yon duh buhf"
+    frequency: "HIGH"  # 50%+ of soups/sauces
+    severity: "CRITICAL"
+    typical_dishes:
+      - "French onion soup (bouillon de bœuf)"
+      - "Risotto"
+      - "Sauces"
+      - "Vegetable soups"
+    modification_feasibility: "IMPOSSIBLE"  # Base of dish
+    questions_to_ask:
+      - "Le bouillon est-il fait avec du poulet ou du bœuf?" (Is the stock made with chicken or beef?)
+      - "Y a-t-il un bouillon de légumes?" (Is there a vegetable stock?)
+
+  - name: "Anchovies"
+    name_local: "Anchois"
+    transliteration: "ahn-shwa"
+    frequency: "MEDIUM"  # In specific dishes
+    severity: "HIGH"
+    typical_dishes:
+      - "Salade niçoise (traditional)"
+      - "Tapenade"
+      - "Pissaladière (onion tart)"
+    modification_feasibility: "EASY"  # Can be left off
+    questions_to_ask:
+      - "Y a-t-il des anchois dans ce plat?" (Are there anchovies in this dish?)
+
+  - name: "Wine (with animal fining agents)"
+    name_local: "Vin"
+    transliteration: "van"
+    frequency: "MEDIUM"  # In sauces
+    severity: "MODERATE"  # Depends on vegan strictness
+    typical_dishes:
+      - "Coq au vin"
+      - "Boeuf bourguignon"
+      - "Wine sauces"
+    modification_feasibility: "UNKNOWN"
+    description: |
+      French wines may be fined with animal products (egg whites,
+      fish bladder, gelatin). Wine in cooking may not be vegan.
+    questions_to_ask:
+      - "Le vin utilisé est-il végane?" (Is the wine used vegan?)
+
+  - name: "Honey"
+    name_local: "Miel"
+    transliteration: "myel"
+    frequency: "MEDIUM"  # In desserts, dressings
+    severity: "MODERATE"  # Depends on vegan strictness
+    typical_dishes:
+      - "Salad dressings"
+      - "Desserts"
+      - "Glazes"
+    modification_feasibility: "EASY"
+    questions_to_ask:
+      - "Y a-t-il du miel?" (Is there honey?)
+
+# ============================================================================
+# WATCH-OUT DISHES
+# ============================================================================
+
+watch_out_dishes:
+  - name: "Ratatouille"
+    confidence: "MEDIUM"  # 60% - often vegan, but check
+    watch_for:
+      - "Butter used for sautéing (some recipes)"
+      - "Cheese on top (some variations)"
+    safe_if: "Cooked in olive oil only, no cheese"
+    questions_to_ask:
+      - "Est-ce cuisiné avec de l'huile d'olive ou du beurre?" (Is it cooked with olive oil or butter?)
+      - "Y a-t-il du fromage?" (Is there cheese?)
+
+  - name: "Salade niçoise"
+    confidence: "LOW"  # 30% - usually contains anchovies, eggs, tuna
+    watch_for:
+      - "Anchovies (traditional recipe)"
+      - "Tuna (traditional recipe)"
+      - "Hard-boiled eggs"
+    safe_if: "All animal ingredients removed (ask for vegetable version)"
+    questions_to_ask:
+      - "Pouvez-vous préparer sans anchois, thon, et œufs?" (Can you prepare without anchovies, tuna, and eggs?)
+
+  - name: "French Onion Soup"
+    confidence: "VERY_LOW"  # 5% - almost always beef stock + cheese
+    watch_for:
+      - "Beef stock (bouillon de bœuf) - CRITICAL"
+      - "Gruyère cheese on top"
+    safe_if: "Made with vegetable stock, no cheese (very rare)"
+    questions_to_ask:
+      - "Est-ce fait avec un bouillon de légumes?" (Is it made with vegetable stock?)
+      - "Peut-on le servir sans fromage?" (Can it be served without cheese?)
+
+  - name: "Vegetable soup (Soupe de légumes)"
+    confidence: "MEDIUM"  # 50% - depends on restaurant
+    watch_for:
+      - "Chicken or beef stock"
+      - "Cream finish"
+      - "Butter"
+    questions_to_ask:
+      - "Le bouillon est-il végétal?" (Is the stock vegetable-based?)
+      - "Y a-t-il de la crème ou du beurre?" (Is there cream or butter?)
+
+  - name: "Crepes"
+    confidence: "VERY_LOW"  # 5% - batter contains milk and eggs
+    watch_for:
+      - "Milk in batter (always)"
+      - "Eggs in batter (always)"
+      - "Butter for cooking"
+    safe_if: "Restaurant makes vegan batter (extremely rare)"
+    modification_feasibility: "IMPOSSIBLE"
+    notes: "Traditional crepe batter cannot be veganized"
+
+  - name: "Bread (Pain)"
+    confidence: "HIGH"  # 70-80% - usually just flour, water, salt, yeast
+    watch_for:
+      - "Butter (some breads)"
+      - "Milk (pain de mie, brioche)"
+      - "Eggs (brioche)"
+    safe_if: "Baguette, pain de campagne (usually vegan)"
+    questions_to_ask:
+      - "Ce pain contient-il du beurre, du lait, ou des œufs?" (Does this bread contain butter, milk, or eggs?)
+
+# ============================================================================
+# SAFE DISHES
+# ============================================================================
+
+safe_dishes:
+  - name: "Ratatouille (if made properly)"
+    confidence: "MEDIUM"  # 60% - check for butter/cheese
+    notes: "Ask if cooked in olive oil only, no butter or cheese"
+    how_to_verify:
+      - "Est-ce cuisiné avec de l'huile d'olive seulement?" (Is it cooked with olive oil only?)
+
+  - name: "Baguette (traditional)"
+    confidence: "VERY_HIGH"  # 90%
+    notes: "Traditional baguette: flour, water, salt, yeast. Usually vegan."
+    how_to_verify:
+      - "C'est une baguette traditionnelle?" (Is this a traditional baguette?)
+
+  - name: "Fruit salad (Salade de fruits)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Usually just fresh fruit"
+    watch_for: "Honey (sometimes used)"
+
+  - name: "Pommes frites (French fries)"
+    confidence: "MEDIUM"  # 60%
+    watch_for:
+      - "Fried in animal fat (some traditional restaurants)"
+      - "Butter added after cooking"
+    questions_to_ask:
+      - "Dans quelle huile sont-elles frites?" (What oil are they fried in?)
+      - "Y a-t-il du beurre?" (Is there butter?)
+
+  - name: "Tapenade (olive spread) - if no anchovies"
+    confidence: "MEDIUM"  # 50% - many contain anchovies
+    notes: "Black olive tapenade often vegan, but check for anchovies"
+    questions_to_ask:
+      - "Y a-t-il des anchois dans la tapenade?" (Are there anchovies in the tapenade?)
+
+  - name: "Sorbet"
+    confidence: "HIGH"  # 80%
+    notes: "Usually dairy-free (unlike ice cream/gelato)"
+    watch_for: "Some may contain milk - always ask"
+    questions_to_ask:
+      - "Le sorbet contient-il du lait?" (Does the sorbet contain milk?)
+
+# ============================================================================
+# MODIFICATION CULTURE
+# ============================================================================
+
+modification_culture:
+  overall_acceptance: "VERY_LOW"
+  overall_notes: |
+    French cuisine is renowned for tradition and chef artistry.
+    Modifications are often seen as disrespectful or insulting to
+    the chef's vision. Expect resistance, especially in traditional
+    or high-end restaurants.
+
+  by_restaurant_type:
+    - type: "Traditional French (bistros, brasseries, haute cuisine)"
+      acceptance_rate: 15  # 10-20%
+      success_factors:
+        - "High-end restaurants with accommodating chefs (rare)"
+        - "Tourist-friendly restaurants in Paris"
+      limitations:
+        - "Chef may refuse modifications entirely"
+        - "Modifications seen as insulting to culinary tradition"
+        - "Menu is considered fixed art"
+      approach: |
+        Be extremely polite and apologetic. Expect "non" (no).
+        If chef refuses, respect the answer - don't push.
+        Better strategy: Find vegan restaurant instead.
+
+    - type: "Modern/Casual restaurants"
+      acceptance_rate: 40  # 30-50%
+      success_factors:
+        - "Younger chefs more flexible"
+        - "Casual atmosphere"
+        - "Tourist areas with international clientele"
+      approach: |
+        Still be very polite, but chances are better here.
+        Ask if modifications are possible before ordering.
+
+    - type: "Cafés"
+      acceptance_rate: 50  # 40-60%
+      success_factors:
+        - "Simple dishes easier to modify"
+        - "Salads can be customized"
+      approach: "Direct but polite"
+
+  critical_warnings:
+    - "France has one of the LOWEST modification acceptance rates globally"
+    - "Traditional chefs view recipes as sacred - modifications = disrespect"
+    - "Even simple requests (no butter, no cheese) may be refused"
+    - "Better strategy: Find vegan-friendly restaurant or order obviously vegan items"
+    - "Don't expect the same flexibility as in UK/US"
+
+  modification_patterns:
+    toppings:
+      feasibility: "EASY"
+      examples:
+        - "Cheese on salad"
+        - "Cheese on soup"
+      success_rate: 70
+      notes: "Easier to accommodate, but still expect resistance"
+
+    cooking_method:
+      feasibility: "MODERATE_TO_IMPOSSIBLE"
+      examples:
+        - "Use olive oil instead of butter"
+        - "No cream in sauce"
+      success_rate: 20
+      notes: "Most chefs will refuse to change cooking method"
+
+    base_ingredients:
+      feasibility: "IMPOSSIBLE"
+      examples:
+        - "Cream-based sauce"
+        - "Butter in pastry"
+        - "Eggs in crepe batter"
+      success_rate: 5
+      notes: "Cannot be modified - these are integral to the dish"
+
+# ============================================================================
+# CULTURAL ETIQUETTE
+# ============================================================================
+
+etiquette:
+  how_to_ask:
+    approach: "EXTREMELY POLITE, APOLOGETIC"
+    tone: "Humble, apologetic, respectful of chef's artistry"
+    staff_english_level: "MEDIUM_TO_HIGH"
+    tips:
+      - "Use 'Excusez-moi' (excuse me) before asking"
+      - "Be very polite: 's'il vous plaît' (please), 'merci' (thank you)"
+      - "Apologize for the inconvenience: 'Je suis désolé(e)' (I'm sorry)"
+      - "Frame as question, not demand: 'Est-ce possible...?' (Is it possible...?)"
+      - "If chef refuses, ACCEPT gracefully - don't argue"
+      - "Expect resistance - this is normal in France"
+
+  language_expectations:
+    paris_tourist_areas:
+      english_proficiency: "MEDIUM_TO_HIGH"
+      notes: |
+        Paris restaurants in tourist areas (Marais, Latin Quarter,
+        near Eiffel Tower) usually have English-speaking staff.
+        However, speaking French is still appreciated.
+
+    rural_france:
+      english_proficiency: "LOW_TO_MEDIUM"
+      notes: |
+        Outside major cities, English proficiency drops significantly.
+        French phrases essential. Many servers won't speak English.
+
+    french_attitude:
+      notes: |
+        French culture values effort - attempting to speak French
+        (even badly) is appreciated. Starting in English without
+        trying French may be seen as rude.
+
+  common_responses:
+    positive:
+      - phrase: "Oui, pas de problème"
+        transliteration: "wee, pah duh prob-lem"
+        meaning: "Yes, no problem"
+
+      - phrase: "C'est possible"
+        transliteration: "seh poss-eebl"
+        meaning: "It's possible"
+
+      - phrase: "D'accord"
+        transliteration: "dah-kor"
+        meaning: "Okay / Agreed"
+
+    negative:
+      - phrase: "Non, ce n'est pas possible"
+        transliteration: "nohn, suh neh pah poss-eebl"
+        meaning: "No, it's not possible"
+
+      - phrase: "Désolé, le chef ne peut pas modifier"
+        transliteration: "day-zo-lay, luh shef nuh puh pah mod-ee-fee-ay"
+        meaning: "Sorry, the chef cannot modify"
+
+      - phrase: "C'est la recette"
+        transliteration: "seh lah ruh-set"
+        meaning: "It's the recipe (implying: cannot be changed)"
+
+    uncertain:
+      - phrase: "Je vais demander au chef"
+        transliteration: "zhuh vay duh-mahn-day oh shef"
+        meaning: "I'll ask the chef"
+
+      - phrase: "Je ne sais pas"
+        transliteration: "zhuh nuh say pah"
+        meaning: "I don't know"
+
+  what_to_do:
+    if_they_say_yes:
+      - "Thank them: 'Merci beaucoup' (thank you very much)"
+      - "Confirm the modification when ordering"
+
+    if_they_say_no:
+      - "Accept gracefully: 'D'accord, merci' (Okay, thank you)"
+      - "Don't argue or push - culturally inappropriate"
+      - "Order something else or find a vegan restaurant"
+
+    if_they_check:
+      - "Wait patiently"
+      - "Don't pressure server"
+
+# ============================================================================
+# KEY FRENCH VEGAN PHRASES
+# ============================================================================
+
+key_phrases:
+  dietary_terms:
+    - french: "Végane / Végan"
+      transliteration: "vay-gan"
+      english: "Vegan"
+      notes: "Both spellings used. 'Végétalien' is also correct but less common."
+
+    - french: "Végétarien"
+      transliteration: "vay-zhay-tah-ree-an"
+      english: "Vegetarian"
+      notes: "NOT the same as vegan - includes dairy and eggs"
+
+    - french: "Sans produits d'origine animale"
+      transliteration: "sahn pro-dwee dor-ee-zheen an-ee-mal"
+      english: "Without animal products"
+      notes: "More explicit than 'vegan'"
+
+  asking_questions:
+    - french: "Est-ce que ce plat est végane?"
+      transliteration: "ess-kuh suh plah eh vay-gan?"
+      english: "Is this dish vegan?"
+
+    - french: "Y a-t-il du beurre, de la crème, ou du fromage dans ce plat?"
+      transliteration: "ee-ah-teel dew beur, duh lah krehm, oo dew fro-mahj dahn suh plah?"
+      english: "Is there butter, cream, or cheese in this dish?"
+
+    - french: "Est-ce cuisiné avec du bouillon de légumes ou du bouillon de viande?"
+      transliteration: "ess-kuh kwee-zee-nay ah-vek dew boo-yon duh lay-goom oo dew boo-yon duh vee-ahnd?"
+      english: "Is this cooked with vegetable stock or meat stock?"
+
+    - french: "Pouvez-vous le préparer sans beurre et sans crème?"
+      transliteration: "poo-vay-voo luh pray-pah-ray sahn beur ay sahn krehm?"
+      english: "Can you prepare it without butter and without cream?"
+
+    - french: "Avez-vous des plats véganes?"
+      transliteration: "ah-vay-voo day plah vay-gan?"
+      english: "Do you have vegan dishes?"
+
+  polite_expressions:
+    - french: "Excusez-moi"
+      transliteration: "ex-kew-zay-mwa"
+      english: "Excuse me"
+      usage: "Use before asking questions"
+
+    - french: "S'il vous plaît"
+      transliteration: "seel voo pleh"
+      english: "Please"
+      usage: "Always use when asking for something"
+
+    - french: "Merci beaucoup"
+      transliteration: "mehr-see boh-koo"
+      english: "Thank you very much"
+
+    - french: "Je suis désolé(e) pour l'inconvénient"
+      transliteration: "zhuh swee day-zo-lay poor lan-con-vay-nee-ahn"
+      english: "I'm sorry for the inconvenience"
+      usage: "Use when making special requests"
+
+  explaining_vegan:
+    - french: "Je ne mange pas de viande, poisson, œufs, produits laitiers, ou miel"
+      transliteration: "zhuh nuh mahnj pah duh vee-ahnd, pwa-sohn, uh, pro-dwee lay-tee-ay, oo mee-el"
+      english: "I don't eat meat, fish, eggs, dairy products, or honey"
+
+  fallback:
+    - french: "Où puis-je trouver un restaurant végane?"
+      transliteration: "oo pwee-zhuh troo-vay uhn res-toh-rahn vay-gan?"
+      english: "Where can I find a vegan restaurant?"
+
+# ============================================================================
+# RECOMMENDATIONS
+# ============================================================================
+
+recommendations:
+  strategy: |
+    France is one of the MOST CHALLENGING countries for vegan dining.
+
+    **Best Strategy:**
+    1. Find vegan-specific restaurants (Paris has many)
+    2. Use HappyCow to locate vegan-friendly places
+    3. At traditional restaurants: Order obviously vegan items only
+       (salads without cheese/eggs, fruit, bread)
+    4. Don't expect modifications - chefs will likely refuse
+
+    **When to give up:**
+    - If restaurant has no obviously vegan items
+    - If chef refuses modifications (respect and leave)
+    - If menu is entirely dairy/meat-based
+
+    **Better approach:**
+    Research vegan restaurants before dining. Paris, Lyon, Nice,
+    Marseille all have dedicated vegan options.
+
+  vegan_friendly_cities:
+    - city: "Paris"
+      vegan_scene: "VERY_HIGH"
+      notes: "Lots of vegan restaurants, especially in Marais, Oberkampf"
+
+    - city: "Lyon"
+      vegan_scene: "MEDIUM"
+      notes: "Growing vegan scene, but still limited"
+
+    - city: "Nice"
+      vegan_scene: "MEDIUM"
+      notes: "Mediterranean influence = more vegetables"
+
+    - city: "Marseille"
+      vegan_scene: "MEDIUM"
+      notes: "Port city with diverse food options"
+
+    - city: "Rural France"
+      vegan_scene: "VERY_LOW"
+      notes: "Extremely limited options - research ahead essential"
+
+  helpful_apps:
+    - "HappyCow (vegan restaurant finder)"
+    - "VeggieHotels"
+    - "Vanilla Bean (Paris-specific vegan guide)"
+
+# ============================================================================
+# RESEARCH NOTES
+# ============================================================================
+
+research_notes:
+  key_insights:
+    - "France has VERY LOW modification acceptance compared to other countries"
+    - "Traditional French chefs view recipes as art - modifications = insult"
+    - "Butter, cream, cheese are foundational - not optional toppings"
+    - "Even simple requests ('no butter') may be refused"
+    - "Paris has vegan options, but rural France is extremely difficult"
+    - "Speaking French (even poorly) improves reception significantly"
+
+  user_testimonials:
+    - quote: "French chef refused to leave butter off vegetables - said it's part of the recipe"
+      source: "Vegan travel blog"
+
+    - quote: "Asked for salad without cheese in Provence - waiter looked offended"
+      source: "Reddit r/vegan"
+
+    - quote: "Found great vegan restaurants in Paris, but outside cities was nearly impossible"
+      source: "Travel forum"
+
+  comparison_to_other_cuisines:
+    - "Japan: Low modification acceptance, but respectful culture"
+    - "France: Low modification acceptance + may seem rude/offended by requests"
+    - "Thailand: High flexibility - stark contrast to France"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-11-18"
+  coverage: "COMPREHENSIVE"
+  data_sources:
+    - "Global Vegan Menu Scanning Challenges Research"
+    - "Vegan travel blogs and forums"
+    - "French culinary tradition research"
+
+  priority: "HIGH"  # Phase 2 according to vision.md
+
+  validation_status: "RESEARCH_BASED"
+
+  next_steps:
+    - "Validate with French vegan travelers"
+    - "Add regional variations (Provence, Brittany, Alsace)"
+    - "Expand safe dishes list"
+    - "Add restaurant-specific success rates (chain vs. independent)"

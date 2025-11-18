@@ -1,0 +1,591 @@
+# Korean Cuisine - Cultural Intelligence Database
+# Created: 2025-11-18
+# Source: Global Vegan Menu Scanning Challenges Research
+# Purpose: Store cultural context, hidden ingredients, and communication intelligence
+
+cuisine:
+  name: "Korean"
+  name_local: "한국 요리 (Hanguk yori)"
+  problem_intensity: "MEDIUM_HIGH"
+  problem_frequency: "50-60% of dishes contain fish sauce, anchovy broth, or animal products"
+
+  problem_description: |
+    Korean cuisine has hidden animal products in many seemingly vegetarian
+    dishes. Kimchi (fermented vegetables) almost always contains fish sauce
+    or shrimp paste. Gochujang (red pepper paste) may contain anchovy.
+    Many broths use anchovy or beef stock. However, Korea has a Buddhist
+    vegetarian tradition (사찰음식 - sachal eumsik / temple food), so
+    some vegan options exist.
+
+  ocr_difficulty: "VERY_HIGH"
+  ocr_notes: |
+    - Hangul (한글) alphabet - completely different from Latin script
+    - No cognates or familiar words for English speakers
+    - Characters are phonetic blocks (syllables), not individual letters
+    - Requires Korean language pack for OCR
+    - Handwritten menus can be very difficult
+
+  research_citations:
+    - "Global Vegan Menu Scanning Challenges Research (2025)"
+    - "Korean Buddhist temple food research"
+    - "Vegan travel blogs: Korea challenges"
+
+# ============================================================================
+# HIDDEN INGREDIENTS
+# ============================================================================
+
+hidden_ingredients:
+  # FISH/SEAFOOD - CRITICAL
+  - name: "Fish sauce in kimchi"
+    name_local: "김치에 들어간 액젓 (kimchi-e deureogan aekjeot)"
+    transliteration: "kim-chi-eh deu-reo-gan aek-jeot"
+    frequency: "VERY_HIGH"  # 85%+ of kimchi
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Kimchi (김치)"
+      - "Kimchi jjigae (김치찌개 - kimchi stew)"
+      - "Kimchi bokkeumbap (김치볶음밥 - kimchi fried rice)"
+      - "Any dish with kimchi"
+    modification_feasibility: "IMPOSSIBLE"  # Already fermented with it
+    modification_notes: "Kimchi is pre-made and fermented with fish sauce or shrimp paste - cannot be removed"
+    questions_to_ask:
+      - "김치에 액젓이나 새우젓이 들어갔나요?" (Does the kimchi contain fish sauce or shrimp paste?)
+      - "채식 김치 있나요?" (Do you have vegetarian kimchi?)
+    description: |
+      Traditional Korean kimchi is fermented with fish sauce (액젓) or
+      shrimp paste (새우젓). This is in 85%+ of kimchi. Some modern
+      restaurants make vegan kimchi, but it's rare. ALWAYS ask.
+
+  - name: "Shrimp paste in kimchi"
+    name_local: "새우젓 (saeujeot)"
+    transliteration: "sae-u-jeot"
+    frequency: "VERY_HIGH"  # 80%+ of kimchi
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Kimchi (김치)"
+      - "All dishes containing kimchi"
+    modification_feasibility: "IMPOSSIBLE"
+    description: "Alternative to fish sauce - equally common in kimchi fermentation"
+
+  - name: "Anchovy broth"
+    name_local: "멸치 육수 (myeolchi yuksu)"
+    transliteration: "myeol-chi yuk-su"
+    frequency: "VERY_HIGH"  # 70%+ of soups/stews
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Doenjang jjigae (된장찌개 - soybean paste stew)"
+      - "Sundubu jjigae (순두부찌개 - soft tofu stew)"
+      - "Miyeok guk (미역국 - seaweed soup)"
+      - "Most Korean soups and stews"
+    modification_feasibility: "IMPOSSIBLE"  # Base of dish
+    modification_notes: "Broth is already made - cannot change it"
+    questions_to_ask:
+      - "육수가 멸치로 만들어졌나요?" (Is the broth made with anchovy?)
+      - "채소 육수 사용 가능한가요?" (Can you use vegetable broth?)
+
+  - name: "Beef broth"
+    name_local: "소고기 육수 (sogogi yuksu)"
+    transliteration: "so-go-gi yuk-su"
+    frequency: "MEDIUM"  # 30-40% of soups
+    severity: "CRITICAL"
+    typical_dishes:
+      - "Miyeok guk (미역국 - seaweed soup, sometimes)"
+      - "Some stews"
+    modification_feasibility: "IMPOSSIBLE"
+
+  - name: "Gochujang with anchovy"
+    name_local: "멸치가 들어간 고추장 (myeolchi-ga deureogan gochujang)"
+    transliteration: "myeol-chi-ga deu-reo-gan go-chu-jang"
+    frequency: "MEDIUM"  # 40-50% of gochujang
+    severity: "HIGH"
+    typical_dishes:
+      - "Bibimbap (비빔밥)"
+      - "Tteokbokki (떡볶이 - spicy rice cakes)"
+      - "Anything with gochujang"
+    modification_feasibility: "MODERATE"  # Can ask for plain version
+    questions_to_ask:
+      - "고추장에 멸치가 들어갔나요?" (Does the gochujang contain anchovy?)
+      - "채식 고추장 있나요?" (Do you have vegetarian gochujang?)
+    description: |
+      Some brands of gochujang contain anchovy extract for umami.
+      Not all do, but many do. Always ask.
+
+  # EGGS
+  - name: "Egg"
+    name_local: "계란 (gyeran)"
+    transliteration: "gye-ran"
+    frequency: "HIGH"  # 40-50%
+    severity: "MODERATE"
+    typical_dishes:
+      - "Bibimbap (비빔밥 - mixed rice)"
+      - "Gyeran jjim (계란찜 - steamed egg)"
+      - "Japchae (잡채 - sometimes)"
+      - "Fried rice"
+    modification_feasibility: "EASY"  # Usually topping
+    modification_notes: "Egg is usually on top - can be left off"
+    questions_to_ask:
+      - "계란 빼고 주세요" (Please leave out the egg)
+
+  # DAIRY
+  - name: "Cheese (in fusion dishes)"
+    name_local: "치즈 (chijeu)"
+    transliteration: "chi-jeu"
+    frequency: "MEDIUM"  # 30% modern/fusion dishes
+    severity: "MODERATE"
+    typical_dishes:
+      - "Cheese tteokbokki (치즈떡볶이)"
+      - "Cheese buldak (치즈불닭)"
+      - "Korean-style corn cheese"
+    modification_feasibility: "EASY"
+    notes: "Fusion/modern Korean food - traditional Korean rarely has dairy"
+
+  # MEAT
+  - name: "Meat in vegetable dishes"
+    name_local: "고기 (gogi)"
+    transliteration: "go-gi"
+    frequency: "MEDIUM"  # 30-40%
+    severity: "HIGH"
+    typical_dishes:
+      - "Japchae (잡채 - glass noodles, sometimes has beef)"
+      - "Bibimbap (sometimes has beef)"
+    modification_feasibility: "EASY"  # Can be left out
+    questions_to_ask:
+      - "고기 없이 만들 수 있나요?" (Can you make it without meat?)
+
+# ============================================================================
+# WATCH-OUT DISHES
+# ============================================================================
+
+watch_out_dishes:
+  - name: "Kimchi (김치)"
+    confidence: "VERY_LOW"  # 15% - usually contains fish sauce/shrimp paste
+    watch_for:
+      - "Fish sauce (액젓) - VERY common"
+      - "Shrimp paste (새우젓) - VERY common"
+    safe_if: "Restaurant explicitly makes vegan kimchi (rare)"
+    questions_to_ask:
+      - "채식 김치 있나요?" (Do you have vegetarian kimchi?)
+      - "김치에 액젓이나 새우젓이 들어갔나요?" (Does the kimchi contain fish sauce or shrimp paste?)
+
+  - name: "Bibimbap (비빔밥)"
+    confidence: "MEDIUM"  # 50% - can be made vegan
+    watch_for:
+      - "Egg on top (usually)"
+      - "Beef (sometimes)"
+      - "Gochujang may contain anchovy"
+    safe_if: "No egg, no meat, vegetarian gochujang"
+    questions_to_ask:
+      - "계란 빼고 주세요" (Please leave out the egg)
+      - "고기 없이 만들 수 있나요?" (Can you make it without meat?)
+      - "고추장은 채식인가요?" (Is the gochujang vegetarian?)
+
+  - name: "Japchae (잡채 - glass noodles)"
+    confidence: "MEDIUM"  # 60% - often vegetarian, sometimes has beef
+    watch_for:
+      - "Beef (some recipes)"
+      - "Egg (some recipes)"
+    safe_if: "Just vegetables and noodles"
+    questions_to_ask:
+      - "고기 없이 만들 수 있나요?" (Can you make it without meat?)
+
+  - name: "Doenjang jjigae (된장찌개 - soybean paste stew)"
+    confidence: "LOW"  # 30% - usually has anchovy broth
+    watch_for:
+      - "Anchovy broth (very common)"
+      - "Clams or seafood (sometimes)"
+      - "Pork (sometimes)"
+    safe_if: "Made with vegetable broth only"
+    questions_to_ask:
+      - "육수가 채소로 만들어졌나요?" (Is the broth made with vegetables?)
+      - "해산물이나 고기 없나요?" (No seafood or meat?)
+
+  - name: "Sundubu jjigae (순두부찌개 - soft tofu stew)"
+    confidence: "LOW"  # 25% - usually has seafood or anchovy broth
+    watch_for:
+      - "Anchovy broth (very common)"
+      - "Seafood (clams, shrimp)"
+      - "Pork or beef"
+      - "Egg (sometimes)"
+    safe_if: "Vegetable broth, no seafood, no meat, no egg"
+    questions_to_ask:
+      - "채소 육수로 만들 수 있나요?" (Can you make it with vegetable broth?)
+      - "해산물 없이 주세요" (Please make it without seafood)
+
+  - name: "Tteokbokki (떡볶이 - spicy rice cakes)"
+    confidence: "MEDIUM"  # 50%
+    watch_for:
+      - "Fish cakes (어묵 - eomuk) - very common"
+      - "Anchovy in gochujang or broth"
+      - "Hard-boiled eggs (sometimes)"
+    safe_if: "No fish cakes, no eggs, vegetarian sauce"
+    questions_to_ask:
+      - "어묵 빼고 주세요" (Please leave out the fish cakes)
+      - "육수는 채식인가요?" (Is the broth vegetarian?)
+
+  - name: "Kimbap (김밥 - seaweed rice rolls)"
+    confidence: "MEDIUM"  # 50%
+    watch_for:
+      - "Egg (common)"
+      - "Ham or imitation crab (common)"
+      - "Fish cake"
+    safe_if: "Vegetable kimbap only"
+    questions_to_ask:
+      - "야채 김밥 있나요?" (Do you have vegetable kimbap?)
+      - "계란이나 고기 없이 만들 수 있나요?" (Can you make it without egg or meat?)
+
+# ============================================================================
+# SAFE DISHES
+# ============================================================================
+
+safe_dishes:
+  - name: "Temple food (사찰음식 - sachal eumsik)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: |
+      Buddhist temple food - strictly vegan (no onion/garlic/chives either).
+      If you find a temple food restaurant, everything is vegan.
+    how_to_find: "Search for '사찰음식' or 'temple food' restaurants"
+
+  - name: "Vegetable banchan (side dishes)"
+    confidence: "MEDIUM_TO_HIGH"  # 60-70%
+    watch_for:
+      - "Kimchi (usually has fish sauce)"
+      - "Some may have fish sauce or anchovy"
+    safe_if: "Ask which banchan are vegan"
+    questions_to_ask:
+      - "어떤 반찬이 채식인가요?" (Which side dishes are vegetarian?)
+
+  - name: "Steamed rice (밥 - bap)"
+    confidence: "VERY_HIGH"  # 95%
+    notes: "Plain white or mixed grain rice - usually vegan"
+
+  - name: "Vegetable kimbap (야채김밥 - yachae kimbap)"
+    confidence: "HIGH"  # 75%
+    watch_for: "May still contain egg - ask to remove"
+    questions_to_ask:
+      - "계란 빼고 주세요" (Please leave out the egg)
+
+  - name: "Oi muchim (오이무침 - cucumber salad)"
+    confidence: "MEDIUM_TO_HIGH"  # 70%
+    watch_for: "Dressing may contain fish sauce"
+    questions_to_ask:
+      - "액젓 없나요?" (No fish sauce?)
+
+  - name: "Namul (나물 - seasoned vegetables)"
+    confidence: "MEDIUM_TO_HIGH"  # 65%
+    watch_for: "Some may use fish sauce or anchovy"
+    notes: "Usually just sesame oil, garlic, salt - but always ask"
+
+  - name: "Patbingsu (팥빙수 - shaved ice dessert) - without condensed milk"
+    confidence: "MEDIUM"  # 50%
+    watch_for:
+      - "Condensed milk (common topping)"
+      - "Ice cream"
+    safe_if: "Just shaved ice, sweet red beans, fruit"
+    questions_to_ask:
+      - "연유 없이 주세요" (Please make it without condensed milk)
+
+# ============================================================================
+# MODIFICATION CULTURE
+# ============================================================================
+
+modification_culture:
+  overall_acceptance: "MODERATE"
+  overall_notes: |
+    Korea has moderate modification acceptance. Street food and
+    casual restaurants are usually flexible. Traditional restaurants
+    may be less accommodating. Buddhist temple food restaurants are
+    completely vegan-friendly.
+
+  by_restaurant_type:
+    - type: "Temple food restaurants (사찰음식)"
+      acceptance_rate: 100  # Everything is vegan
+      notes: "Specifically vegan - no modifications needed"
+      approach: "Just order anything - all vegan"
+
+    - type: "Casual restaurants / Street food"
+      acceptance_rate: 65  # 60-70%
+      success_factors:
+        - "Younger staff more accommodating"
+        - "Used to customization requests"
+      limitations:
+        - "Kimchi is pre-made (cannot remove fish sauce)"
+        - "Broth is pre-made (cannot change to vegetable stock)"
+      approach: |
+        Be polite and direct. Many Koreans understand vegetarian
+        requests, especially in Seoul. Say "채식" (chaesik - vegetarian)
+        or "비건" (bigeon - vegan).
+
+    - type: "Traditional restaurants"
+      acceptance_rate: 40  # 35-45%
+      limitations:
+        - "Fixed recipes, less flexibility"
+        - "Kimchi and broth are pre-made"
+      approach: "Polite but expect limited options"
+
+    - type: "Modern / Fusion restaurants"
+      acceptance_rate: 70  # 65-75%
+      success_factors:
+        - "More international awareness"
+        - "Seoul/Busan have growing vegan scene"
+      approach: "Direct requests usually work well"
+
+  critical_warnings:
+    - "Kimchi almost ALWAYS contains fish sauce or shrimp paste - don't assume it's vegan"
+    - "Most Korean soups/stews use anchovy or beef broth"
+    - "Gochujang may contain anchovy - always ask"
+    - "Temple food restaurants are your safest bet for guaranteed vegan meals"
+
+  modification_patterns:
+    toppings:
+      feasibility: "EASY"
+      examples:
+        - "Egg on bibimbap"
+        - "Cheese on fusion dishes"
+      success_rate: 85
+      notes: "Easy to remove toppings"
+
+    ingredients_in_dish:
+      feasibility: "MODERATE"
+      examples:
+        - "Meat in japchae"
+        - "Fish cakes in tteokbokki"
+      success_rate: 60
+      notes: "Can usually be left out if asked"
+
+    base_ingredients:
+      feasibility: "IMPOSSIBLE"
+      examples:
+        - "Fish sauce in kimchi (already fermented)"
+        - "Anchovy broth (already made)"
+      success_rate: 5
+      notes: "Cannot change fermented or pre-made items"
+
+# ============================================================================
+# CULTURAL ETIQUETTE
+# ============================================================================
+
+etiquette:
+  how_to_ask:
+    approach: "POLITE, DIRECT"
+    tone: "Respectful and friendly"
+    staff_english_level: "MEDIUM"
+    tips:
+      - "Use polite form: '주세요' (ju-se-yo - please give me)"
+      - "Say '채식주의자예요' (chae-sik-ju-ui-ja-ye-yo - I'm vegetarian)"
+      - "Or '비건이에요' (bi-geon-i-e-yo - I'm vegan)"
+      - "Be clear about fish sauce: '액젓 없이' (aek-jeot eop-si - without fish sauce)"
+      - "Koreans are generally helpful and accommodating"
+
+  language_expectations:
+    seoul_busan:
+      english_proficiency: "MEDIUM"
+      notes: |
+        Seoul and Busan have moderate English proficiency, especially
+        in tourist areas and among younger staff. Many restaurants have
+        English menus.
+
+    rural_korea:
+      english_proficiency: "LOW"
+      notes: |
+        Outside major cities, English is limited. Korean phrases essential.
+        Visual menus and pointing help.
+
+  common_responses:
+    positive:
+      - phrase: "네, 가능합니다"
+        transliteration: "ne, ga-neung-ham-ni-da"
+        meaning: "Yes, it's possible"
+
+      - phrase: "알겠습니다"
+        transliteration: "al-get-seum-ni-da"
+        meaning: "I understand / Okay"
+
+    negative:
+      - phrase: "안 됩니다"
+        transliteration: "an doem-ni-da"
+        meaning: "It's not possible"
+
+      - phrase: "김치는 이미 만들어졌어요"
+        transliteration: "kim-chi-neun i-mi man-deu-reo-jyeo-sseo-yo"
+        meaning: "The kimchi is already made (can't change it)"
+
+    uncertain:
+      - phrase: "확인해볼게요"
+        transliteration: "hwak-in-hae-bol-ge-yo"
+        meaning: "I'll check"
+
+  what_to_do:
+    if_they_say_yes:
+      - "Thank them: '감사합니다' (gam-sa-ham-ni-da - thank you)"
+      - "Confirm the modification when ordering"
+
+    if_they_say_no:
+      - "Understand that some items are pre-made (kimchi, broth)"
+      - "Ask for alternative dishes"
+      - "Find temple food restaurant for guaranteed vegan options"
+
+# ============================================================================
+# KEY KOREAN VEGAN PHRASES
+# ============================================================================
+
+key_phrases:
+  dietary_terms:
+    - korean: "채식 (chaesik)"
+      transliteration: "chae-sik"
+      english: "Vegetarian"
+      notes: "General term for plant-based eating"
+
+    - korean: "비건 (bigeon)"
+      transliteration: "bi-geon"
+      english: "Vegan"
+      notes: "Borrowed from English - increasingly understood"
+
+    - korean: "사찰음식 (sachal eumsik)"
+      transliteration: "sa-chal eum-sik"
+      english: "Temple food (Buddhist vegan food)"
+      notes: "Strictly vegan - no animal products, no onion/garlic"
+
+  asking_questions:
+    - korean: "이 음식은 채식인가요?"
+      transliteration: "i eum-sig-eun chae-sig-in-ga-yo?"
+      english: "Is this food vegetarian?"
+
+    - korean: "고기나 생선 들어갔나요?"
+      transliteration: "go-gi-na saeng-seon deu-reo-gan-na-yo?"
+      english: "Does it contain meat or fish?"
+
+    - korean: "김치에 액젓이나 새우젓 들어갔나요?"
+      transliteration: "kim-chi-e aek-jeot-i-na sae-u-jeot deu-reo-gan-na-yo?"
+      english: "Does the kimchi contain fish sauce or shrimp paste?"
+
+    - korean: "육수가 채소로 만들어졌나요?"
+      transliteration: "yuk-su-ga chae-so-ro man-deu-reo-jyeon-na-yo?"
+      english: "Is the broth made with vegetables?"
+
+    - korean: "계란 빼고 주세요"
+      transliteration: "gye-ran ppae-go ju-se-yo"
+      english: "Please leave out the egg"
+
+    - korean: "고기 없이 만들 수 있나요?"
+      transliteration: "go-gi eop-si man-deul su in-na-yo?"
+      english: "Can you make it without meat?"
+
+  polite_expressions:
+    - korean: "실례합니다"
+      transliteration: "sil-lye-ham-ni-da"
+      english: "Excuse me"
+      usage: "To get server's attention"
+
+    - korean: "주세요"
+      transliteration: "ju-se-yo"
+      english: "Please (give me)"
+      usage: "When asking for something"
+
+    - korean: "감사합니다"
+      transliteration: "gam-sa-ham-ni-da"
+      english: "Thank you"
+
+  explaining_vegan:
+    - korean: "저는 비건이에요. 고기, 생선, 계란, 유제품을 먹지 않아요."
+      transliteration: "jeo-neun bi-geon-i-e-yo. go-gi, saeng-seon, gye-ran, yu-je-pum-eul meok-ji an-a-yo."
+      english: "I'm vegan. I don't eat meat, fish, eggs, or dairy."
+
+    - korean: "액젓이나 새우젓도 안 돼요"
+      transliteration: "aek-jeot-i-na sae-u-jeot-do an dwae-yo"
+      english: "Fish sauce and shrimp paste are also not okay"
+
+  fallback:
+    - korean: "사찰음식 식당이 어디 있나요?"
+      transliteration: "sa-chal-eum-sik sik-dang-i eo-di in-na-yo?"
+      english: "Where is a temple food restaurant?"
+
+# ============================================================================
+# RECOMMENDATIONS
+# ============================================================================
+
+recommendations:
+  strategy: |
+    Korea is MEDIUM-HIGH difficulty for vegans, primarily because of
+    hidden fish sauce/shrimp paste in kimchi and anchovy broth in soups.
+
+    **Best Strategy:**
+    1. Find temple food (사찰음식) restaurants - 100% vegan
+    2. Ask specifically about fish sauce/shrimp paste in kimchi
+    3. Ask about broth base (vegetable vs. anchovy/beef)
+    4. Seoul has growing vegan scene - use HappyCow
+
+    **When to give up:**
+    - If kimchi is only option and contains fish sauce
+    - If all soups/stews use anchovy broth
+    - Better to find temple food restaurant
+
+    **Key insight:**
+    Don't assume kimchi or "vegetable" dishes are vegan - always ask
+    about fish sauce, shrimp paste, and anchovy broth.
+
+  vegan_friendly_cities:
+    - city: "Seoul"
+      vegan_scene: "HIGH"
+      notes: "Growing vegan scene, many vegan cafes and restaurants, especially in Gangnam and Itaewon"
+
+    - city: "Busan"
+      vegan_scene: "MEDIUM"
+      notes: "Some vegan options, temple food restaurants"
+
+    - city: "Jeju Island"
+      vegan_scene: "MEDIUM"
+      notes: "Fresh vegetables, some vegan-friendly restaurants"
+
+    - city: "Rural Korea"
+      vegan_scene: "LOW"
+      notes: "Limited options - temple food best bet"
+
+  helpful_apps:
+    - "HappyCow (vegan restaurant finder)"
+    - "Creatrip (Korea travel - has vegan guides)"
+    - "Papago (Naver translation app - better than Google for Korean)"
+
+# ============================================================================
+# RESEARCH NOTES
+# ============================================================================
+
+research_notes:
+  key_insights:
+    - "Kimchi is NOT vegan in 85%+ of cases - contains fish sauce or shrimp paste"
+    - "Anchovy broth is used in most Korean soups/stews"
+    - "Temple food (사찰음식) is strictly vegan - best option for guaranteed vegan meals"
+    - "Growing vegan scene in Seoul - younger generation more aware"
+    - "Korean culture generally helpful and accommodating to dietary requests"
+
+  user_testimonials:
+    - quote: "Thought kimchi was vegan until I learned about fish sauce - it's in almost all of them"
+      source: "Vegan travel blog"
+
+    - quote: "Temple food restaurants saved my trip to Korea - everything is vegan"
+      source: "Reddit r/vegan"
+
+    - quote: "Seoul has amazing vegan cafes and restaurants now - much easier than 5 years ago"
+      source: "Travel forum"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-11-18"
+  coverage: "COMPREHENSIVE"
+  data_sources:
+    - "Global Vegan Menu Scanning Challenges Research"
+    - "Korean temple food research"
+    - "Vegan travel blogs and forums"
+
+  priority: "MEDIUM"  # Phase 2 according to vision.md
+
+  validation_status: "RESEARCH_BASED"
+
+  next_steps:
+    - "Validate with Korean vegan travelers"
+    - "Add regional Korean cuisine variations"
+    - "Expand temple food restaurant list"
+    - "Add more banchan (side dish) intelligence"
