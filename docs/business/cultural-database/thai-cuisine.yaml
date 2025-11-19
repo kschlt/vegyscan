@@ -26,59 +26,118 @@ hidden_ingredients:
     transliteration: "nam pla"
     category: "condiment"
     frequency: "VERY_HIGH"  # Found in 80%+ of dishes
+    frequency_rating: 5  # 1-5 scale (5 = extremely common)
     severity: "CRITICAL"  # Makes dish non-vegan
-    description: "Fish-based sauce used as primary seasoning in most Thai cooking"
+    severity_rating: 3  # 1-3 scale (3 = fermented fish, clearly non-vegan)
+    description: "Salty, amber-colored sauce made from fermented anchovies. It's the default seasoning in Thai cuisine – essentially 'Thai salt'"
+    why_invisible: "Menus rarely list 'fish sauce' as an ingredient. An English menu might just say 'tofu with chili and basil,' but the stir-fry sauce will almost certainly have nam pla or oyster sauce. Many Thai cooks consider fish sauce essential even in veggie dishes – some may not fully grasp that vegans avoid fish."
     typical_dishes:
       - "Pad Thai"
-      - "Fried rice"
-      - "Stir-fries"
-      - "Curries"
-      - "Soups"
-      - "Dipping sauces"
+      - "Fried rice (khao pad)"
+      - "Stir-fries (pad pak, pad krapow)"
+      - "Curries (in paste or added by chef)"
+      - "Soups (tom yum, tom kha)"
+      - "Dipping sauces (nam jim)"
+      - "Salad dressings (som tam)"
     user_complaints:
       - "Fish sauce is EVERYWHERE, so it's not perceived as non-vegetarian"
       - "Even 'vegetable' dishes often have fish sauce unless you specifically ask"
+      - "I asked for vegetarian, no egg, no fish sauce - it tasted of fish"
+      - "Fish sauce is in almost everything. When in doubt, assume a dish has fish sauce unless confirmed otherwise"
+    real_world_examples:
+      - scenario: "Ordered vegetable green curry at non-veg restaurant"
+        outcome: "Later discovered all curries had fish sauce via prepared paste"
+        quote: "We asked if the curry had fish sauce – the chef said 'all of them do' (via the pre-made paste)"
+    veganization_tip: "Say 'mai sai nam pla' (no fish sauce) or use the term 'อาหารเจ (ahan jay)' meaning strict vegetarian Buddhist-style food. However, outside dedicated veg eateries, avoiding nam pla is very difficult."
 
   - name: "Shrimp paste"
     name_local: "กะปิ"
     transliteration: "kapi"
     category: "paste"
     frequency: "HIGH"  # Found in 60-70% of curry pastes and dips
+    frequency_rating: 5  # 1-5 scale (nearly universal in traditional recipes)
     severity: "CRITICAL"
-    description: "Fermented shrimp paste used in curry pastes and sauces"
+    severity_rating: 3  # 1-3 scale (contains shellfish)
+    description: "Pungent paste made from fermented ground shrimp or krill with salt. Used to build umami flavor in Thai cuisine. Classic Thai curry pastes (red, green, etc.) almost always include shrimp paste for depth of flavor."
+    why_invisible: "Like fish sauce, shrimp paste is a 'behind-the-scenes' ingredient – not visible and rarely translated on menus. A dish listed simply as 'vegetable green curry' gives no hint that the curry paste inside contains seafood. Restaurant staff might not realize it contains shrimp, especially if they use pre-made curry paste."
     typical_dishes:
-      - "Green curry (curry paste)"
-      - "Red curry (curry paste)"
+      - "Green curry (แกงเขียวหวาน - curry paste)"
+      - "Red curry (แกงเผ็ด - curry paste)"
       - "Massaman curry (curry paste)"
       - "Nam prik (chili dips)"
+      - "Pad Thai (tamarind sauce)"
+      - "Khao soi curry noodles"
     modification_feasibility: "IMPOSSIBLE"  # Pre-made into paste, can't remove
     user_complaints:
       - "Curry paste usually contains shrimp paste - restaurants can't modify this"
+      - "Some Thai chili oils have kapi for flavor"
+    real_world_examples:
+      - scenario: "Vegan couple ordered green curry they were told was plant-based"
+        outcome: "Staff change revealed 'actually, all our curries have fish sauce' (via prepared paste)"
+        quote: "They had unknowingly been consuming shrimp/fish products"
+    veganization_tip: "Ask if the curry paste is 'jay' (vegetarian) or made without shrimp/fish. In tourist areas you might find explicitly vegan curry paste. If unsure, it may be safer to avoid curries entirely or bring a packet of vegan curry paste to the kitchen."
 
   - name: "Oyster sauce"
     name_local: "น้ำมันหอย"
     transliteration: "nam man hoi"
     category: "sauce"
     frequency: "MEDIUM"  # Found in 40-50% of stir-fries
+    frequency_rating: 4  # 1-5 scale (very common in cooked dishes)
     severity: "CRITICAL"
-    description: "Oyster-based sauce used for flavor in stir-fries and vegetables"
+    severity_rating: 3  # 1-3 scale (contains shellfish)
+    description: "Thick, brown sauce made from oyster extracts, sugar, and soy. Extremely common in Thai and Chinese cooking for its savory-sweet taste."
+    why_invisible: "English translations may simply say 'stir-fried vegetables in sauce' or list soy sauce but not oyster sauce. Many Thai cooks view oyster sauce as a standard 'vegetarian' seasoning (since it's not chunks of meat), so they might not mention it unless asked. Vegans who don't realize oyster sauce contains real oysters might also miss it."
     typical_dishes:
       - "Pad see ew"
-      - "Stir-fried vegetables"
+      - "Stir-fried vegetables (pad pak)"
       - "Pad krapow (basil stir-fry)"
+      - "Morning glory stir-fry (pad pak boong)"
+      - "Noodle stir-fries"
+      - "Fried rice"
+    user_complaints:
+      - "Stir-fried vegetable dishes are often glazed with oyster sauce by default"
+      - "Even vegetable/tofu stir fries have oyster sauce in them"
+      - "Morning glory (pak boong) stir-fried with garlic will typically be finished with a splash of oyster sauce"
+    veganization_tip: "Learn the phrase 'mai sai nam man hoi' (no oyster sauce). If a dish tastes mysteriously rich or 'meaty,' double-check about oyster sauce or fish sauce. When ordering stir-fries, you can request soy sauce only as the seasoning."
 
   - name: "Dried shrimp"
     name_local: "กุ้งแห้ง"
     transliteration: "goong haeng"
     category: "garnish"
     frequency: "MEDIUM"  # Found in 30-40% of salads and rice dishes
+    frequency_rating: 3  # 1-5 scale (regularly used, but visible)
     severity: "CRITICAL"
+    severity_rating: 3  # 1-3 scale (contains shellfish)
     description: "Small dried shrimp used as topping or ingredient"
     typical_dishes:
       - "Som tam (papaya salad)"
       - "Pad Thai"
       - "Fried rice"
     modification_feasibility: "EASY"  # Can be left out if asked
+    veganization_tip: "Som Tam Thai often includes dried shrimp or salted crab. Even if you say no fish sauce, you might still find tiny shrimp in your salad, so ask for none of those too."
+
+  - name: "Meat-based broths and stocks"
+    name_local: "น้ำซุปสัตว์"
+    transliteration: "nam soup sat"
+    category: "broth/stock"
+    frequency: "MEDIUM"  # Found in soups and noodle dishes
+    frequency_rating: 3  # 1-5 scale (regularly used in soups/curries)
+    severity: "CRITICAL"
+    severity_rating: 2  # 1-3 scale (secondary ingredient, but still non-vegan)
+    description: "Chicken, pork, or beef stock used as the base for soups, noodle dishes, and even some stir-fry sauces. In Thailand, pork bone broth often simmers in big pots for noodle soups, and bouillon powders (chicken flavor) are common."
+    why_invisible: "Broth typically isn't listed on menus at all. A tourist might see 'clear vegetable soup' and assume it's safe, only to find out the 'clear' broth came from chicken bones. Culturally, if the soup has no pieces of meat, Thai cooks might still call it a 'vegetable soup' despite the stock."
+    typical_dishes:
+      - "Noodle soups (kuay tiew)"
+      - "Vegetable soups"
+      - "Tofu noodle soup (from street vendors)"
+      - "Thai curries (thinned with chicken stock)"
+      - "Rice dishes (cooked in broth)"
+      - "Some stir-fry sauces"
+    user_complaints:
+      - "Ordered 'vegetable soup' at street vendor - later found it used pork bone broth"
+      - "Hidden meat or stock is an issue if you're strict about it"
+    modification_feasibility: "MODERATE"
+    veganization_tip: "Use a translation card or phrase to ask 'Is this made with animal stock?' Dishes labeled 'เจ (jay)' should use veggie stock. If you're not at a jay restaurant, soups and curries are risky – some experienced veg travelers simply avoid soups, curries, and papaya salad altogether in Thai eateries."
 
   - name: "Egg"
     name_local: "ไข่"

@@ -36,36 +36,40 @@ cuisine:
 
 hidden_ingredients:
   # FISH/SEAFOOD - CRITICAL
-  - name: "Fish sauce in kimchi"
-    name_local: "김치에 들어간 액젓 (kimchi-e deureogan aekjeot)"
-    transliteration: "kim-chi-eh deu-reo-gan aek-jeot"
+  - name: "Fish sauce & fermented shrimp in kimchi (Jeotgal)"
+    name_local: "젓갈 (액젓/새우젓)"
+    transliteration: "jeot-gal (aekjeot/saeujeot)"
     frequency: "VERY_HIGH"  # 85%+ of kimchi
+    frequency_rating: 5  # 1-5 scale (nearly universal in kimchi)
     severity: "CRITICAL"
+    severity_rating: 3  # 1-3 scale (fish/shellfish content)
     typical_dishes:
-      - "Kimchi (김치)"
+      - "Kimchi (김치) - cabbage, radish, cucumber"
       - "Kimchi jjigae (김치찌개 - kimchi stew)"
       - "Kimchi bokkeumbap (김치볶음밥 - kimchi fried rice)"
+      - "Other banchan (side dishes) - seasoned soybean sprouts, spinach, radish"
       - "Any dish with kimchi"
+    why_invisible: "Kimchi looks like just cabbage and chili, so new veg travelers happily munch it until they learn the recipe. It's rarely listed as containing fish on menus because it's assumed knowledge in Korea. Similarly, the small dishes of seasoned veggies don't list ingredients – you'd have to ask the chef. Many Koreans consider kimchi and these condiments as 'vegetables,' forgetting the little bit of seafood in the seasoning."
+    user_complaints:
+      - "I ordered something with no meat and still got kimchi on the side (fishy) and realized the soup base had anchovy"
+      - "Some Korean Buddhists eat kimchi with fish sauce because they consider the amounts medicinal or negligible"
+    real_world_examples:
+      - scenario: "Ordered tofu stew 'with no meat'"
+        outcome: "Got kimchi as banchan (side dish), which contained fish sauce"
+        note: "Kimchi is served automatically with most meals"
     modification_feasibility: "IMPOSSIBLE"  # Already fermented with it
-    modification_notes: "Kimchi is pre-made and fermented with fish sauce or shrimp paste - cannot be removed"
+    modification_notes: "Kimchi is pre-made and fermented with fish sauce (액젓 aekjeot) or tiny salted shrimp (새우젓 saeujeot) - cannot be removed after fermentation. These are core ingredients for kimchi."
     questions_to_ask:
       - "김치에 액젓이나 새우젓이 들어갔나요?" (Does the kimchi contain fish sauce or shrimp paste?)
       - "채식 김치 있나요?" (Do you have vegetarian kimchi?)
+    veganization_tip: "Look for or ask for 'Bibim-kimchi' or 'vegetarian kimchi' (채식 김치), which some restaurants might have (made with dried shiitake or kelp stock instead). Use the word '나는 채식주의자라서 젓갈 들어간 건 못 먹어요' (I'm vegetarian, so I can't eat things with fermented fish/shrimp). There are increasing places offering 'vegan kimchi', but standard restaurants won't."
     description: |
-      Traditional Korean kimchi is fermented with fish sauce (액젓) or
-      shrimp paste (새우젓). This is in 85%+ of kimchi. Some modern
-      restaurants make vegan kimchi, but it's rare. ALWAYS ask.
-
-  - name: "Shrimp paste in kimchi"
-    name_local: "새우젓 (saeujeot)"
-    transliteration: "sae-u-jeot"
-    frequency: "VERY_HIGH"  # 80%+ of kimchi
-    severity: "CRITICAL"
-    typical_dishes:
-      - "Kimchi (김치)"
-      - "All dishes containing kimchi"
-    modification_feasibility: "IMPOSSIBLE"
-    description: "Alternative to fish sauce - equally common in kimchi fermentation"
+      Jeotgal (젓갈) refers to salted, fermented seafood like fish sauce (액젓 aekjeot)
+      or tiny salted shrimp (새우젓 saeujeot). These are core ingredients in making kimchi,
+      the famous spicy fermented cabbage, as well as other fermented pastes. Virtually all
+      traditional kimchi (cabbage, radish, cucumber) is made with either fish sauce or tiny
+      shrimp for fermentation. Many other banchan (side dishes) also use fish sauce for
+      seasoning – e.g., seasoned soybean sprouts, some spinach or radish salads.
 
   - name: "Anchovy broth"
     name_local: "멸치 육수 (myeolchi yuksu)"

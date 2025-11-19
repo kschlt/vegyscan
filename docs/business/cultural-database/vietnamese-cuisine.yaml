@@ -22,34 +22,53 @@ research_evidence:
 hidden_ingredients:
   - name: "Fish sauce"
     name_local: "Nước mắm"
-    transliteration: "Nước mắm"
+    transliteration: "nước mắm"
     category: "condiment"
     frequency: "VERY_HIGH"  # 70-80% of dishes
+    frequency_rating: 5  # 1-5 scale (nearly every non-sweet dish uses it)
     severity: "CRITICAL"
-    description: "Fermented fish sauce, fundamental to Vietnamese cuisine. Used in almost all sauces, soups, and dipping sauces."
+    severity_rating: 3  # 1-3 scale (it's fish)
+    description: "Similar to Thai nam pla, this is a staple fermented fish sauce made from anchovies. Ubiquitous in Vietnam - often mixed with lime, sugar, garlic, and chili to create the famous dipping sauce nước chấm."
+    why_invisible: "The menu might just say 'fried tofu with tomato sauce,' but that sauce could include fish sauce for saltiness. Unless you specifically ask or the place caters to vegetarians, fish sauce will not be mentioned. Some Vietnamese assume fish sauce is acceptable to vegetarians (since it's not 'meat'). The term 'chay' helps, but you must ensure they know it excludes fish sauce."
     typical_dishes:
       - "Phở (soup broth)"
-      - "Bún (noodle dishes)"
-      - "Dipping sauces (nước chấm)"
-      - "Spring rolls dipping sauce"
+      - "Bún dishes (noodle bowls)"
+      - "Dipping sauces (nước chấm) for spring rolls"
+      - "Bánh xèo (sizzling pancakes) - dipping sauce"
       - "Salads"
       - "Stir-fries"
+      - "Fried rice"
     user_complaints:
       - "Fish sauce is in EVERYTHING, even dipping sauces that look vegetarian"
       - "Even 'vegetable' phở has fish sauce in the broth"
+      - "I ordered spring rolls and they were filled only with veggies – but they gave me the usual dipping sauce (fish sauce) without warning"
+    real_world_examples:
+      - scenario: "Ordered vegetable spring rolls"
+        outcome: "Veggie-only filling was fine, but dipping sauce was fish sauce-based nước chấm"
+        quote: "Vegan forums recommend always saying 'không nước mắm' (no fish sauce) when ordering anything, even salad or vegetables"
+    veganization_tip: "Learn to ask for soy sauce (xì dầu) or salt instead. In tourist spots, some restaurants have vegetarian fish sauce made from soy or pineapple, but don't count on it. Always say 'không nước mắm' (no fish sauce) explicitly."
 
-  - name: "Shrimp paste"
-    name_local: "Mắm tôm"
-    transliteration: "Mắm tôm"
+  - name: "Shrimp & Fermented Seafood Pastes"
+    name_local: "Mắm tôm / Mắm ruốc"
+    transliteration: "mắm tôm / mắm ruốc"
     category: "paste"
     frequency: "HIGH"  # 50-60%
+    frequency_rating: 3  # 1-5 scale (regular in traditional recipes like soups)
     severity: "CRITICAL"
-    description: "Fermented shrimp paste, used in stews and sauces"
+    severity_rating: 3  # 1-3 scale (contains shellfish)
+    description: "Various fermented shrimp or fish condiments. Mắm tôm is a purple fermented shrimp paste (famously used with bún riêu or as a dipping sauce for fried tofu in Hanoi). Mắm ruốc is a fermented krill paste common in central/southern Vietnam."
+    why_invisible: "If you don't know the Vietnamese name, you'd never identify these from an English description. They might just call it 'special sauce' or 'flavor paste.' Even locals sometimes forget these count as animal products when advising vegetarians. The broth of 'vegetarian' pho can be suspect if the restaurant isn't purely veg – some travelers have found out the hard way that their pho's depth came from a sneaky shrimp paste or meat bone addition."
     typical_dishes:
-      - "Bún bò Huế (spicy beef noodle soup)"
-      - "Stews"
-      - "Some dipping sauces"
+      - "Bún bò Huế (spicy Huế noodle soup - has fermented crab/shrimp paste)"
+      - "Bún riêu (tomato crab noodle soup)"
+      - "Regional veggie dishes (central Vietnam)"
+      - "Dipping sauces (for grilled rice paper rolls)"
+      - "Some pho broth (not always, but possible)"
+    user_complaints:
+      - "Ordered 'vegetarian' pho and found out broth had shrimp paste"
+      - "Super pungent sauce with tofu turned out to be shrimp paste-based"
     modification_feasibility: "IMPOSSIBLE"  # Pre-made into paste
+    veganization_tip: "Stick to eateries explicitly advertising 'phở chay' or 'đồ chay' where they know to omit these. If you smell something fishy or overly funky in a dish that should be just veggies, inquire – it could be hidden mắm."
 
   - name: "Oyster sauce"
     name_local: "Dầu hào"
@@ -62,18 +81,31 @@ hidden_ingredients:
       - "Vegetable stir-fries"
       - "Noodle dishes"
 
-  - name: "Chicken/pork broth"
-    name_local: "Nước dùng gà / lợn"
-    transliteration: "Nước dùng gà / lợn"
-    category: "broth"
+  - name: "Meat Broths (Chicken/Pork/Beef)"
+    name_local: "Nước dùng (gà/lợn/bò)"
+    transliteration: "nước dùng"
+    category: "broth/stock"
     frequency: "VERY_HIGH"  # 70%+ of soups
+    frequency_rating: 4  # 1-5 scale (very common in soups and rice at non-veg places)
     severity: "CRITICAL"
-    description: "Meat broths used as base for phở and other soups"
+    severity_rating: 2  # 1-3 scale (it's a hidden base, not chunks, but definitely animal-derived)
+    description: "Beef, chicken, or pork stock used in soups, stews, and even to cook certain rice dishes. Vietnam is famous for soup noodles, and the richness usually comes from long-simmered bones. Unfortunately, some places will serve 'vegetarian' versions but still use the same broth minus the meat pieces."
+    why_invisible: "Broth is entirely behind the scenes. Menu names like 'Pho rau' (vegetable pho) or 'canh chay' (veg soup) might lull you into security, but unless the place specializes in chay cuisine, ask how the broth is made. In Vietnamese, nước dùng means broth. Many locals simply don't consider stock as 'meat' in the dish's name."
     typical_dishes:
       - "Phở (almost always chicken or beef broth)"
       - "Bún bò Huế"
       - "Mì (noodle soups)"
-    modification_feasibility: "IMPOSSIBLE"  # Broth cooked for hours
+      - "Vietnamese rice (cơm) - often cooked with chicken stock or Knorr chicken bouillon cube"
+      - "Stir-fried rice or noodles (moistened with broth during cooking)"
+    user_complaints:
+      - "Ordered 'vegetarian pho' at normal phở shop, verified broth - some smaller shops use beef/chicken broth by default (no separate pot)"
+      - "Suspected local 'vegan phở' broth was still made with beef and shrimp, just without the meat garnishes"
+    real_world_examples:
+      - scenario: "Ordered vegetarian pho at regular pho shop"
+        outcome: "Small shop only had one pot of broth (beef), just didn't add meat slices"
+        quote: "One Reddit user suspected the local 'vegan phở' broth was still made with beef and shrimp, just without the meat garnishes"
+    modification_feasibility: "IMPOSSIBLE"  # Broth cooked for hours, can't remake
+    veganization_tip: "Use the phrase 'không dùng nước dùng thịt' (don't use meat broth) when ordering soups or rice. Or seek Buddhist-run restaurants where all broths are plant-based by philosophy."
 
   - name: "Egg"
     name_local: "Trứng"
