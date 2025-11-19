@@ -39,23 +39,38 @@ hidden_ingredients:
     name_local: "Manteca (de cerdo)"
     transliteration: "man-te-ka (deh ser-do)"
     frequency: "VERY_HIGH"  # 70%+ traditional restaurants
+    frequency_rating: 5  # 1-5 scale (traditional recipes, especially beans and tamales, nearly always use lard unless conscious veg version)
     severity: "CRITICAL"
+    severity_rating: 3  # 1-3 scale (pork fat is 100% off-limits to vegetarians/vegans)
+    description: "Rendered pork fat, called manteca in Spanish. It's a traditional cooking fat especially in Mexican cuisine. Refried beans (frijoles refritos) are fried in lard for richness. Unless labeled 'vegetarian beans' or 'frijoles de la olla' (whole beans usually just boiled), assume refried beans at a restaurant contain lard or occasionally bacon grease."
+    why_invisible: "Lard doesn't leave a distinct taste in moderate amounts; your beans just taste rich. Menus won't mention 'fried in pork fat.' Many omnivores and even vegetarians are oblivious to the prevalence of lard in Mexican cooking. It's often something one finds out by specifically asking or reading blogs. Staff might not always know or convey correctly, so learning key Spanish phrases is crucial."
     typical_dishes:
-      - "Refried beans (frijoles refritos)"
-      - "Tamales"
-      - "Flour tortillas (some)"
+      - "Refried beans (frijoles refritos) - almost always lard in traditional"
+      - "Tamales (masa dough is traditionally whipped with lard)"
+      - "Flour tortillas (traditional ones use lard or shortening)"
       - "Rice (some restaurants)"
+      - "Fried foods (chips, chalupas in authentic places might be fried in lard)"
+      - "Empanada dough - often has butter, lard, or shortening"
+    user_complaints:
+      - "Lard in refried beans surprised me... I had no clue"
+      - "I always ask but not sure if answer is accurate"
+      - "I basically ate lard for weeks not knowing (traveler in Mexico)"
+    real_world_examples:
+      - scenario: "Ordered vegetarian tacos with refried beans"
+        outcome: "Beans were fried in lard - didn't know until asked specifically"
+        quote: "A Redditor was pained to discover after a year that the beans they loved had lard"
     modification_feasibility: "MODERATE"  # Can ask for beans made with oil
     modification_notes: |
-      Traditional refried beans use lard. Many modern/chain restaurants
-      use vegetable oil. ALWAYS ask.
+      Traditional refried beans use lard. Many modern/chain restaurants and tourist
+      spots now offer "vegetarian refried beans" cooked with vegetable oil. Black beans
+      are more often vegetarian at restaurants (but still ask!). Street food though -
+      assume the worst (e.g., street tamale very likely has lard unless it's a special
+      vegan vendor).
     questions_to_ask:
-      - "¿Los frijoles tienen manteca o aceite vegetal?" (Do the beans have lard or vegetable oil?)
+      - "¿Los frijoles se cocinan/fríen con manteca de cerdo o aceite vegetal?" (Are these beans cooked with pork lard or vegetable oil?)
+      - "¿Las tortillas de harina llevan manteca?" (Do the flour tortillas have lard?)
       - "¿Esto se cocina con manteca de cerdo?" (Is this cooked with lard?)
-    description: |
-      Lard is the #1 hidden ingredient in Mexican food. Used in
-      refried beans, tamales, tortillas. Modern restaurants often
-      use oil, but traditional places use lard. Always ask.
+    veganization_tip: "Say 'I'm vegan, no animal products' (Soy vegano, sin productos animales) and specifically mention: no manteca, no mantequilla (butter), no consomé de pollo (chicken broth). Many guidebooks advise vegetarians to specifically mention lard when ordering in Latin America."
 
   # CHEESE - HIGH
   - name: "Cheese"
