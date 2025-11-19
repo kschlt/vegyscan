@@ -69,24 +69,131 @@
 
 ### Geographic Focus
 
-**Phase 1 (Launch):** [Countries/regions]
-- **Why:** [Market readiness, language support, regulatory simplicity]
-- **Size:** [X] million target users
-- **Languages:** [Languages to support]
+> **Source:** Geographic Market Opportunity Analysis (market-analysis.md) - November 2025
+>
+> **Status:** ✅ Research-backed geographic strategy
 
-**Phase 2 (Expansion):** [Additional markets]
-- **Why:** [Strategic importance, market size]
-- **Timeline:** [Months after launch]
+**Phase 1 (Launch - Month 0): English-Speaking Markets**
 
-**Phase 3 (Scale):** [Global expansion]
-- **Why:** [Network effects, brand momentum]
-- **Timeline:** [Year 2-3]
+**Target Markets:**
+- 🎯 **PRIMARY**: United States (Market Score: 9.0/10)
+- 🎯 **SIMULTANEOUS**: United Kingdom, Canada, Australia (Scores: 7.8/10 each)
+
+**Why These Markets First:**
+- **No UI localization cost**: All use English interface
+- **Highest market scores**: Combined addressable market of ~4.5M iOS vegan users
+- **Similar cultures**: Travel behaviors and pain points aligned
+- **High iOS adoption**: US 58%, UK 52%, Canada 60%, Australia 55-60%
+- **High willingness to pay**: iOS users in these markets spend 2x more on apps than global Android average
+
+**Supported Languages (OCR Scanning):**
+- English (for domestic use and English menus abroad)
+- Spanish (for Mexico, Latin America, Spain)
+- French (for France, Belgium, Switzerland)
+- Italian (for Italy)
+- German (for Germany, Austria, Switzerland)
+- *Rationale*: Latin script languages = 95%+ OCR accuracy, covers most Phase 1 travel destinations
+
+**Combined Market Size:**
+- US: ~2.9M iOS vegan users
+- UK: ~680K iOS vegan users
+- Canada: ~900K iOS vegan users
+- Australia: ~480K iOS vegan users
+- **Total Phase 1 addressable: ~4.96M iOS vegan users**
+
+---
+
+**Phase 2 (Expansion - Month 3-6): European + Asian Language Support**
+
+**Geographic Expansion:**
+- 🟡 **Germany** (Score: 6.9/10) - after German UI localization
+  - Challenge: Only 39% iOS adoption (vs. 61% Android)
+  - Action: Localize UI to German, prepare Android version planning
+  - Market: ~468K iOS vegan users (but need Android to reach full 1.2M)
+
+- 🟡 **Nordics** (Sweden, Score: 6.8/10) - possibly with English UI
+  - Most Nordics speak English fluently
+  - May not require UI localization immediately
+  - Market: ~400K vegans (Sweden alone)
+
+**Language Support Expansion (OCR Scanning):**
+- 🔴 **Japanese** (for US/UK/AU travelers to Japan, NOT for Japanese market)
+  - Rationale: Japan is #1 requested destination with menu problems
+  - Target: US travelers visiting Japan (30M tourists annually, ~3M with dietary needs)
+  - OCR challenge: Japanese mixed scripts (Kanji/Hiragana/Katakana) = 80-90% accuracy
+
+- 🔴 **Chinese** (Simplified) (for travelers to China, restaurants abroad)
+  - Rationale: China is high-difficulty destination
+  - OCR: 85-95% accuracy for Chinese characters
+
+- 🔴 **Thai** (for Thailand travelers)
+  - Rationale: Thailand = #1 complaint destination ("fish sauce everywhere")
+  - OCR challenge: No spaces between words, 80-85% accuracy
+
+**Timeline:** Month 3-6 after launch
+
+**Why This Phasing:**
+- **Validate with easy languages first** (Latin scripts), then tackle hard ones (Asian scripts)
+- **Asian languages serve Phase 1 users traveling**: Not for local markets, but for US/UK travelers going TO Asia
+- **German UI expansion**: After validating pricing/model in US/UK
+
+---
+
+**Phase 3 (Scale - Month 6-12): Global Completion**
+
+**Geographic Expansion:**
+- France, Spain, Italy (with French/Spanish UI)
+- Additional European markets
+- Possible Middle East (Arabic OCR support)
+- Latin America markets
+
+**Platform Expansion:**
+- **Android version launch** (critical for Germany where 61% use Android)
+- Captures markets like Germany, parts of Europe with high Android adoption
+
+**Language Support Completion:**
+- Korean (for travelers to Korea + Korean diaspora)
+- Portuguese (for Brazil, Portugal)
+- Arabic (for Middle East travelers)
+- Russian (for Eastern Europe, if demand)
+
+**Timeline:** Month 6-12
+
+---
+
+**Platform Strategy: iOS-Only Initially**
+
+**Phase 1-2: iOS Only**
+- **Rationale**:
+  - US/UK/Canada/Australia have 52-60% iOS adoption = sufficient for validation
+  - iOS users have 2x higher app spend than Android globally
+  - Faster development, single platform to maintain
+- **Trade-off**: Missing 40-48% of market, acceptable for early validation
+
+**Phase 2-3: Android Development**
+- **Trigger**: Germany expansion (39% iOS = need Android for full market)
+- **Timeline**: Month 6-12
+- **Rationale**: Germany and other Android-heavy markets require Android for full penetration
+
+---
 
 **Localization Requirements:**
-- [ ] Language translation (UI/UX)
-- [ ] Cultural adaptation (dietary knowledge, food names)
-- [ ] Currency and payment methods
-- [ ] Regulatory compliance per market
+
+**Phase 1:**
+- [x] English UI (done)
+- [x] OCR for Latin scripts: EN/ES/FR/IT/DE
+- [ ] Cultural database for cuisines: Thai, Japanese, Chinese, Italian, Mexican, Middle Eastern (completed as YAMLs)
+
+**Phase 2:**
+- [ ] German UI localization
+- [ ] French UI localization (possible)
+- [ ] OCR for Asian scripts: Japanese, Chinese, Thai
+- [ ] Cultural adaptation: Japanese phrases, Chinese dish names, Thai "jay" concept
+
+**Phase 3:**
+- [ ] Spanish, Italian UI localization
+- [ ] OCR for Arabic, Korean, Portuguese
+- [ ] Full global cultural database
 
 ---
 
@@ -238,17 +345,202 @@
 
 ### Launch Timeline
 
-| Milestone | Date | Owner | Status |
-|-----------|------|-------|--------|
-| Landing page live | Month -3 | Marketing | ⏳ |
-| Beta program opens | Month -2 | Product | ⏳ |
-| Press kit prepared | Month -1 | Marketing | ⏳ |
-| Soft launch (iOS) | Month 0 | Product | ⏳ |
-| Soft launch (Android) | Month 0 | Product | ⏳ |
-| Public launch PR | Month 1 | Marketing | ⏳ |
-| Paid ads launch | Month 1 | Marketing | ⏳ |
-| Referral program live | Month 2 | Product | ⏳ |
-| Expansion to Phase 2 markets | Month 6 | Product | ⏳ |
+> **Source:** Deep research on menu scanning market - November 2025
+>
+> **Status:** ✅ Research-informed launch roadmap
+
+| Milestone | Date | Owner | Status | Notes |
+|-----------|------|-------|--------|-------|
+| **Phase 1: Launch Preparation** |
+| Landing page live | Month -3 | Marketing | ⏳ | Waitlist signup for beta |
+| Beta program opens | Month -2 | Product | ⏳ | Private, invite-only (target: 50-100 beta users) |
+| Press kit prepared | Month -1 | Marketing | ⏳ | Media outreach to vegan/travel publications |
+| App Store listing prepared | Month -1 | Marketing | ⏳ | ASO optimization, screenshots, video |
+| **Phase 2: Month 0 Launch (English Markets)** |
+| Soft launch (iOS) | **Month 0** | Product | ⏳ | US, UK, Canada, Australia App Stores |
+| ~~Soft launch (Android)~~ | N/A | N/A | ❌ Deferred | Deferred to Phase 3 (Month 6-12) - iOS-only initially |
+| Public launch PR | Month 0 | Marketing | ⏳ | Press release to VegNews, Lonely Planet, travel media |
+| Reddit/Community outreach | Month 0 | Marketing | ⏳ | r/VeganTravel, r/vegan, vegan travel Facebook groups |
+| Paid ads launch (small tests) | Month 1 | Marketing | ⏳ | Facebook/Instagram, Google App Campaigns (low budget) |
+| Influencer outreach | Month 1 | Marketing | ⏳ | Vegan travel bloggers, YouTubers |
+| **Phase 3: Month 3-6 Expansion** |
+| German UI localized | Month 3 | Product | ⏳ | For Germany market expansion |
+| Japanese/Chinese/Thai OCR | Month 3-6 | Product | ⏳ | For travelers to Asia (not local markets) |
+| Germany market launch | Month 3-6 | Marketing | ⏳ | Localized marketing to German vegan community |
+| Android development starts | Month 6 | Product | ⏳ | For Germany (39% iOS) and other Android-heavy markets |
+| **Phase 4: Month 6-12 Scale** |
+| Android version launch | Month 6-12 | Product | ⏳ | Capture Android markets (Germany, etc.) |
+| French/Spanish UI | Month 6-12 | Product | ⏳ | France, Spain, Latin America expansion |
+| Global language completion | Month 12 | Product | ⏳ | Korean, Arabic, Portuguese OCR support |
+
+---
+
+### Marketing Tactics (Research-Informed)
+
+> **Source:** Competitive analysis and user research (November 2025)
+>
+> **Evidence:** HappyCow ($4-6 app, >1M users) proves vegan travel market exists; Reddit r/VeganTravel highly active; vegan travel bloggers have engaged audiences
+
+**Primary Marketing Channels for Phase 1 (Month 0-3):**
+
+#### 1. **Reddit & Online Communities** (Highest Priority - LOW CAC, HIGH INTENT)
+
+**Rationale:** User research shows vegan travelers actively seek advice on Reddit (r/VeganTravel, r/vegan, r/solotravel, r/JapanTravel). Evidence: "Thailand is driving me crazy" post had 100+ comments; "22 Days in Japan as a Vegan" highly upvoted.
+
+**Tactics:**
+- 📌 Post app launch announcement on r/VeganTravel (with demo video showing Japan/Thailand menu scanning)
+- 📌 Share user success stories: "Used VegyScan in Bangkok - caught fish sauce in 'vegetarian' pad thai"
+- 📌 AMA (Ask Me Anything): "I built an app to solve the Japan vegan menu problem - AMA"
+- 📌 Respond helpfully in menu translation threads, mention app when relevant (authentic, not spammy)
+- **Target subreddits**: r/VeganTravel, r/vegan, r/vegetarian, r/travel, r/solotravel, r/JapanTravel, r/Thailand
+
+**Expected Results:**
+- CAC: ~$0 (organic community engagement)
+- High-intent users (actively struggling with menu problem)
+- Word-of-mouth amplification (Redditors share solutions)
+
+**Evidence from research:** Many user quotes came from Reddit - this is where the pain point is actively discussed.
+
+---
+
+#### 2. **Vegan Travel Bloggers & YouTubers** (HIGH PRIORITY - TRUSTED ENDORSEMENT)
+
+**Rationale:** User research shows travelers trust blog recommendations ("only go to restaurants with recent HappyCow reviews"). Influencers reach exact target audience.
+
+**Tactics:**
+- 🎥 Reach out to vegan travel YouTubers (e.g., "Vegan in Japan" content creators) - offer free app + affiliate/sponsorship
+- 📝 Guest posts on vegan travel blogs: "How I finally navigated Thai menus confidently as a vegan"
+- 📸 Instagram partnerships with vegan travel influencers (demo app scanning exotic menus)
+- 🎬 Create demo videos: "Scanning a Japanese menu - watch it catch hidden dashi"
+
+**Target Influencers:**
+- YouTube: Vegan travel vloggers with 10k-100k+ subscribers
+- Instagram: Vegan travel accounts with engaged followers
+- Blogs: Vegan travel blogs (e.g., The Nomadic Vegan, Vegan Travel has 100k+ monthly readers)
+
+**Partnership Structure:**
+- Free app access (if freemium model) or promo codes (if paid)
+- Affiliate commission if they drive downloads/purchases
+- Sponsored content (budget-dependent)
+
+**Expected Results:**
+- CAC: $10-30 per user (sponsorship cost / users acquired)
+- High conversion (trusted endorsement)
+- Long-tail traffic (blog posts and videos have ongoing reach)
+
+---
+
+#### 3. **Travel Publications & PR** (MEDIUM PRIORITY - CREDIBILITY)
+
+**Rationale:** Features in Lonely Planet, VegNews, Travel + Leisure build credibility and reach mass audience.
+
+**Tactics:**
+- 📰 Press release: "New App Solves Japan's Notorious Vegan Menu Problem" (newsworthy angle: Japan is known difficult destination)
+- 📨 Pitch to VegNews, The Vegan Society newsletter, Lonely Planet, Travel + Leisure
+- 🎙️ Podcast interviews: Vegan podcasts, travel podcasts
+- 📱 Product Hunt launch (tech community)
+
+**Media Angles:**
+- "App that saved my Thailand vacation" (human interest story)
+- "Cultural intelligence database: How tech is making vegan travel easier"
+- "Solo dev builds app used by thousands in Japan"
+
+**Expected Results:**
+- CAC: Low (PR is mostly time investment)
+- Credibility boost (media mentions validate app)
+- SEO benefit (backlinks from authoritative sites)
+
+---
+
+#### 4. **HappyCow Partnership** (STRATEGIC - ACCESS TO 1M VEGANS)
+
+**Rationale:** HappyCow has >1M paying members (research validated). They're THE vegan travel app. Partnership could provide access to existing user base.
+
+**Potential Partnership Approaches:**
+- **Integration**: HappyCow shows restaurant, VegyScan scans menu = complementary
+- **Cross-promotion**: "Use VegyScan to verify menus at HappyCow restaurants"
+- **Affiliate**: HappyCow recommends VegyScan, receives commission
+- **Acquisition target**: If VegyScan gains traction, could be acquisition candidate
+
+**Why This Works:**
+- HappyCow finds restaurants, VegyScan reads menus = combined workflow
+- No direct competition (HappyCow is restaurant finder, not menu scanner)
+- Aligned audiences (100% overlap)
+
+**Action:** Reach out to HappyCow team post-launch (need traction first to have leverage)
+
+---
+
+#### 5. **App Store Optimization (ASO)** (HIGH PRIORITY - ONGOING ORGANIC)
+
+**Rationale:** Research shows users search for "vegan translation", "menu translator", "dietary restriction app"
+
+**Tactics:**
+- 🔍 Keyword optimization: "vegan menu scanner", "translate menu", "vegan travel", "dietary restrictions", "food translator"
+- 📸 Screenshots: Show before/after (Japanese menu → English + vegan analysis)
+- 🎬 App preview video: 15-second demo scanning Thai menu catching fish sauce
+- ⭐ Reviews: Request reviews from happy beta users immediately (need 10+ reviews for credibility)
+- 📱 Localize App Store listing per market (US/UK/AU English, German for Germany)
+
+**Expected Results:**
+- Organic discovery from searches
+- CAC: $0
+- Ongoing source of users (compounds over time)
+
+---
+
+#### 6. **Paid Ads (PHASE 2 - Month 3+)** (LOW PRIORITY INITIALLY - TEST SMALL)
+
+**Rationale:** Research shows high iOS WTP, but initial budget low. Test small, scale what works.
+
+**Platforms to Test:**
+- Facebook/Instagram: Target users interested in "veganism", "travel", "food allergy", "Thailand travel", "Japan travel"
+- Google App Campaigns: Target searches for "vegan translation", "menu scanner"
+- Reddit Ads: Promoted posts in r/VeganTravel
+
+**Budget Strategy:**
+- Phase 1: $500-1000/month (testing only)
+- Phase 2: Scale winners from testing (if CAC < LTV)
+
+**Expected Results:**
+- CAC target: <$10 per user (research shows WTP in $4-8 range, need margin for LTV)
+- Learn which messaging resonates (test cultural intelligence vs. speed vs. safety)
+
+---
+
+### Marketing Message Testing
+
+**Research Finding:** Users express two primary pain points:
+1. **Hidden ingredients** ("fish sauce is everywhere")
+2. **Language barriers** ("can't read Japanese menus")
+
+**Message Testing Matrix:**
+
+| Message Angle | Headline Example | Target Pain | Test Channel |
+|---------------|------------------|-------------|--------------|
+| **Safety/Trust** | "Never accidentally order fish sauce again" | Hidden ingredients fear | Reddit (r/VeganTravel) |
+| **Speed** | "Scan any menu in seconds - no more 10-minute Google Translate sessions" | Time pressure, social awkwardness | Instagram ads |
+| **Cultural Intelligence** | "Understand Thai cuisine, not just Thai words" | Cultural confusion | Travel blogs |
+| **Confidence** | "Dine with confidence anywhere in the world" | Anxiety, trust | App Store listing |
+
+**A/B Testing Plan:**
+- Test 2-3 messages in parallel (Reddit posts, ad creatives, landing page headlines)
+- Measure conversion rate (which message drives most downloads?)
+- Double down on winner
+
+---
+
+### Community Building (Phase 1-2)
+
+**Rationale:** Research shows vegan travelers rely heavily on community ("only go to restaurants with recent HappyCow reviews confirmed"). Building community creates moat.
+
+**Tactics:**
+- 📱 In-app feedback: "Submit this menu to help other vegans" (crowdsourcing menu database)
+- 🗣️ User testimonials: Feature success stories on social media and website
+- 👥 VegyScan user community: Private Facebook group or Discord for users to share travel tips
+- 📧 Email newsletter: "Vegan travel tips + VegyScan updates" (keep users engaged)
+
+**Goal:** Create network effects - more users = more data = better app = more users
 
 ---
 

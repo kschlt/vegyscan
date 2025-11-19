@@ -319,6 +319,157 @@ Based on competitive evidence, **one-time purchase in $4-8 range** is likely opt
 
 ---
 
+#### Regional Monetization Preferences
+
+> **Source:** Deep research on menu scanning market by geography (November 2025)
+>
+> **Status:** ✅ Research-informed hypotheses, ⚠️ Require validation via Phase 1 survey
+
+**Research Finding:** Willingness to pay (WTP) and pricing model preferences vary significantly by market. Monetization strategy should be adapted per region.
+
+---
+
+**United States & United Kingdom: Subscription Model Acceptance (HIGH)**
+
+**Evidence:**
+- iOS users in North America spend 2x more on apps than Android globally
+- Subscription model acceptance high in US (many users have 5+ active subscriptions)
+- Travel spending context: $4-8/month trivial vs. $2000+ international trip cost
+
+**Recommended Model:**
+- **Option 1**: Monthly subscription $4.99/month OR Annual $29.99/year (save ~50%)
+- **Option 2**: Freemium + $4.99/month premium (or $24.99/year)
+- **Rationale**: US/UK users comfortable with subscriptions IF value is clear and ongoing
+
+**Messaging:**
+- Emphasize ongoing value: "Updated cultural database, new cuisines added monthly"
+- Annual discount: "Less than 1 coffee per month"
+- Positioning: "Your vegan travel companion" (suggests ongoing relationship)
+
+**Expected Metrics:**
+- Free → Premium conversion: 3-5% (typical freemium)
+- Monthly vs. Annual split: 30% monthly, 70% annual (typical for travel apps)
+- Churn: 10-15% monthly (seasonal usage May-Sep peaks, Nov-Feb lulls)
+
+---
+
+**Germany: One-Time Purchase Preference (HIGH)**
+
+**Evidence:**
+- German consumers more price-sensitive than US/UK
+- Preference for one-time purchases over subscriptions ("subscription fatigue")
+- Strong value-for-money culture ("get what you pay for")
+
+**Recommended Model:**
+- **Primary**: One-time purchase €6.99 or €7.99
+- **Alternative**: Freemium + €5.99 one-time unlock
+- **Rationale**: Germans dislike recurring charges, prefer "buy once, own forever"
+
+**Messaging:**
+- Emphasize value: "Pay once, use forever - no hidden costs"
+- Comparison: "Cost of one coffee, lifetime value"
+- Transparency: "One-time purchase, all features included"
+
+**Expected Metrics:**
+- Higher conversion on one-time (5-8%) vs. subscription (2-3%) in Germany
+- Lower LTV than US/UK ($5-8 vs. $30-50), but acceptable if CAC is low
+
+**Note:** This model requires Android version (Germany 39% iOS, 61% Android). iOS-only misses majority of German market.
+
+---
+
+**Japan: Traveler Pass Model (MEDIUM)**
+
+**Evidence:**
+- Small local vegan market (<1M total vegans)
+- High iOS adoption (69%) but limited local demand
+- Primary use case: Foreign tourists visiting Japan (not Japanese vegans)
+
+**Recommended Model:**
+- **Primary**: "Japan Travel Pass" - $2.99 for 30 days (or trip duration)
+- **Alternative**: Standard subscription $4.99/month (for expats living in Japan)
+- **Rationale**: Tourists need app for 1-2 week trip, don't want monthly recurring charge
+
+**Messaging:**
+- "Navigate Japanese menus for your entire trip"
+- "Less than one meal saved from ordering fish broth by mistake"
+- Time-limited urgency: "Active for 30 days from first scan"
+
+**Expected Metrics:**
+- High conversion among in-country tourists (need is immediate)
+- Low LTV per user ($2.99 one-time), but high volume (3M tourists with dietary needs annually)
+
+**Strategic Note:** Japan is destination, not primary user market. Marketing targets US/UK travelers BEFORE they go to Japan (not in Japan App Store).
+
+---
+
+**Canada & Australia: Follow US Model (HIGH)**
+
+**Similar Characteristics:**
+- High iOS adoption (60% Canada, 55-60% Australia)
+- Similar subscription acceptance as US
+- Affluent travelers, comfortable with app spending
+
+**Recommended Model:**
+- Same as US: Monthly $4.99 or Annual $29.99
+- No localization needed (same cultural context as US)
+
+---
+
+**Regional Pricing Strategy Summary**
+
+| Market | Primary Model | Price Point | Rationale | Priority |
+|--------|---------------|-------------|-----------|----------|
+| **US** | Subscription | $4.99/mo or $29.99/yr | High subscription acceptance, high WTP | **Phase 1** |
+| **UK** | Subscription | £4.99/mo or £29.99/yr | Same as US, localized currency | **Phase 1** |
+| **Canada** | Subscription | $6.99 CAD/mo or $39.99 CAD/yr | Same model, currency adjusted | **Phase 1** |
+| **Australia** | Subscription | $7.49 AUD/mo or $44.99 AUD/yr | Same model, currency adjusted | **Phase 1** |
+| **Germany** | One-time purchase | €6.99 or €7.99 | Prefer one-time, price-sensitive | **Phase 2** |
+| **Japan** (tourists) | Trip pass | $2.99/30 days | Short-term need (tourists) | **Phase 2** |
+| **Nordics** | Subscription | Same as UK (English markets) | High app spend, English-speaking | **Phase 2** |
+
+**Hybrid Approach (Recommended):**
+
+Since markets have different preferences, consider offering BOTH models simultaneously:
+
+- **Subscription**: $4.99/month or $29.99/year (for frequent travelers, ongoing value)
+- **Lifetime**: $59.99 one-time (for users who want to own forever, no recurring)
+
+**Precedent:** Many apps offer this hybrid (e.g., weather apps, productivity tools)
+
+**Benefit:**
+- Captures subscription-averse users (Germany, some US users)
+- Higher immediate revenue from lifetime purchases
+- Lifetime users become long-term advocates (no churn risk)
+
+**Pricing Logic:**
+- Lifetime = ~2 years of annual subscription ($29.99 × 2 ≈ $59.99)
+- If user stays >2 years, subscription more profitable
+- If user churns <2 years, lifetime was better
+
+---
+
+**Critical Validation Needed (Phase 1 Van Westendorp Survey):**
+
+1. ❓ Which model do US/UK users prefer: Subscription vs. One-time vs. Freemium?
+2. ❓ What price point maximizes revenue (not just adoption): $3.99 vs. $4.99 vs. $6.99?
+3. ❓ Would offering both subscription AND lifetime cannibalize or complement?
+4. ❓ Does "trip pass" model ($2.99/30 days) have demand for short-term travelers?
+
+**Survey Structure:**
+- Van Westendorp Price Sensitivity Meter (optimal price range)
+- Conjoint analysis (subscription vs. one-time vs. freemium preference)
+- Segment by travel frequency: 1-2 trips/year vs. frequent traveler
+- Segment by market: US vs. UK vs. Germany (to validate regional differences)
+
+**Hypothesis to Test:**
+- **H1**: US/UK users prefer subscription IF value is ongoing (updates, new cuisines)
+- **H2**: Germany users prefer one-time purchase by 2:1 margin vs. subscription
+- **H3**: Optimal price point is $4.99/month (not $3.99 or $6.99)
+- **H4**: Annual subscription converts 3x better than monthly (typical 70% annual, 30% monthly mix)
+
+---
+
 #### Revenue Stream Breakdown
 
 ##### Revenue Stream 1: Subscription Revenue (Primary)

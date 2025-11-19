@@ -196,6 +196,166 @@
 
 ---
 
+### Language Support & OCR Strategy
+
+> **Source:** Deep research on menu scanning by geography, cuisine, and language (November 2025)
+>
+> **Status:** ✅ Research-informed strategy, ⚠️ Accuracy targets require validation
+
+**OCR Technical Approach Decision:**
+
+**Platform:** iOS native OCR (VisionKit framework)
+
+**Rationale:**
+- **Speed:** On-device processing, no network latency
+- **Privacy:** No menu photos sent to cloud (user privacy concern for dietary restrictions)
+- **Cost:** No per-request API fees (sustainable at scale)
+- **Offline capability:** Works without internet connection (critical for travelers)
+
+**Trade-off:** iOS-only initially (deferred Android to Phase 2-3, Month 6-12)
+
+---
+
+#### Phased Language Rollout
+
+**Research Finding:** OCR accuracy varies dramatically by script type. Strategy: Start with proven/easy languages (Latin scripts), then tackle hard but critical languages (Asian scripts).
+
+##### Phase 1: Launch (Month 0) - Latin Script Languages
+
+**Supported Languages:**
+- 🇬🇧 English
+- 🇪🇸 Spanish
+- 🇫🇷 French
+- 🇮🇹 Italian
+- 🇩🇪 German
+- 🇵🇹 Portuguese
+
+**OCR Accuracy Target:** 95%+ (Latin scripts are mature technology)
+
+**iOS VisionKit Support:** ✅ Excellent for Latin scripts
+
+**Market Coverage:**
+- Phase 1 markets: US, UK, Canada, Australia (100% coverage)
+- Travel destinations: Mexico, Spain, France, Italy, Germany (80%+ popular vegan destinations)
+
+**Technical Feasibility:** ✅ **HIGH** - Proven technology, readily available
+
+---
+
+##### Phase 2: Expansion (Month 3-6) - Asian Languages
+
+**Supported Languages:**
+- 🇯🇵 Japanese (Hiragana, Katakana, Kanji mixed scripts)
+- 🇨🇳 Chinese Simplified (Mandarin)
+- 🇨🇳 Chinese Traditional (Cantonese, Taiwan)
+- 🇹🇭 Thai
+- 🇻🇳 Vietnamese
+
+**OCR Accuracy Target:** 80-90% (Lower than Latin scripts, but acceptable)
+
+**iOS VisionKit Support:** ✅ Good (Apple has invested in Asian language OCR)
+
+**Market Coverage:**
+- Critical travel destinations: Japan (#1 mentioned in user research), Thailand, China
+- Not targeting local Asian markets initially - targeting Western travelers to Asia
+
+**Technical Challenges:**
+1. **Japanese:** Mixed scripts (Hiragana, Katakana, Kanji) in single menu item
+2. **Thai:** No spaces between words, complex script
+3. **Chinese:** Thousands of characters, traditional vs simplified variants
+
+**Technical Feasibility:** ⚠️ **MEDIUM** - More complex, but iOS VisionKit handles Asian languages. Accuracy validation needed on real menus.
+
+**De-Risking Action:** Prototype Thai/Japanese OCR on 50-100 real menu photos before committing to Phase 2 timeline.
+
+---
+
+##### Phase 3: Completion (Month 6-12) - Remaining Languages
+
+**Supported Languages:**
+- 🇰🇷 Korean
+- 🇸🇦 Arabic (right-to-left script)
+- 🇮🇱 Hebrew (right-to-left script)
+- 🇮🇳 Hindi (Devanagari script)
+- 🇬🇷 Greek
+
+**OCR Accuracy Target:** 80-90%
+
+**Market Priority:** Lower (fewer user requests in research)
+
+**Technical Feasibility:** ✅ **MEDIUM** - VisionKit supports these scripts, but less critical for MVP
+
+---
+
+#### Language Support Feasibility Assessment
+
+| Phase | Languages | Script Type | OCR Accuracy | VisionKit Support | Market Demand | Feasibility | Risk |
+|-------|-----------|-------------|--------------|-------------------|---------------|-------------|------|
+| **Phase 1** | EN/ES/FR/IT/DE/PT | Latin | 95%+ | ✅ Excellent | High (Phase 1 markets) | ✅ High | Low |
+| **Phase 2** | JA/ZH/TH/VI | Asian | 80-90% | ✅ Good | High (travel to Asia) | ⚠️ Medium | Medium |
+| **Phase 3** | KO/AR/HE/HI/EL | Mixed | 80-90% | ✅ Adequate | Medium | ✅ Medium | Low |
+
+**Overall Language Strategy Feasibility:** ✅ **Feasible** with phased approach
+
+**Critical Success Factor:** Phase 1 Latin script OCR must achieve 95%+ accuracy on real menus to validate technical approach before investing in Phase 2.
+
+---
+
+#### OCR Technical Risks & Mitigation
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| **Poor photo quality** (lighting, angle, blur) | High | High | Photo guidance UI, retake flow, pre-processing enhancement |
+| **Handwritten menus** | Medium | Medium | Set user expectation: "Works best on printed menus", manual fallback |
+| **VisionKit accuracy lower than expected** | Low | High | Validate on 100+ real menus before launch, fallback to cloud OCR if needed |
+| **Asian language accuracy <80%** | Medium | Medium | Phase 2 prototype required, conservative flagging, defer if accuracy insufficient |
+| **Specialized food terminology** | Medium | Medium | Post-OCR NLP correction, user feedback loop, custom food dictionary |
+
+**Overall OCR Risk:** 🟡 **Medium** - Mitigatable with proper photo UX and validation
+
+---
+
+#### Offline Mode Capability
+
+**Research Finding:** Users strongly desire offline mode for international travel (no roaming data, airplane mode).
+
+**Current Technical Approach:**
+- ✅ **OCR:** Fully offline (iOS VisionKit on-device)
+- ✅ **Translation:** Possible offline with downloaded language packs (iOS translation API supports offline mode)
+- ❌ **LLM ingredient analysis:** Requires on-device LLM or cloud API (challenging offline)
+
+**Offline Mode Feasibility:**
+
+**Option 1: Fully Offline (Challenging)**
+- Requires: On-device LLM (e.g., Apple MLX, Core ML model)
+- Size: ~1-3 GB model download per user
+- Complexity: High - model quantization, on-device inference optimization
+- Accuracy: Lower than cloud LLM (smaller models)
+- Feasibility: ⚠️ **Difficult** - Significant engineering investment, model quality uncertain
+
+**Option 2: Hybrid (Pragmatic)**
+- Online mode: Full LLM analysis (high accuracy)
+- Offline mode: Basic keyword matching + translation only (lower accuracy, but functional)
+- User expectation: "Offline mode available with reduced accuracy"
+- Feasibility: ✅ **Feasible** - Reasonable engineering effort
+
+**Option 3: Online-Only (MVP)**
+- Require internet connection for LLM analysis
+- Offline OCR + translation only (no dietary analysis)
+- User expectation: "Analysis requires internet connection"
+- Feasibility: ✅ **Easy** - No additional engineering
+
+**Recommendation:**
+- **MVP (Phase 1):** Option 3 (online-only for LLM) - validate product-market fit first
+- **Post-MVP (Phase 2):** Option 2 (hybrid) if user feedback demands offline mode
+- **Long-term (Phase 3):** Option 1 (fully offline) if on-device LLM technology matures
+
+**Status:** 🟡 **Nice-to-Have, Not Critical** - User feedback: "if that's not possible, maybe I have to lack this feature"
+
+**De-Risking Action:** Survey beta users on offline mode importance vs. analysis accuracy trade-off.
+
+---
+
 ### Technical Architecture Feasibility
 
 **Proposed Architecture:**
